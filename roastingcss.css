@@ -1,0 +1,314 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family:Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background-color: whitesmoke;
+    margin: 0%;
+    padding: 0%;
+}
+html{
+    margin: 0px;
+    padding: 0%;
+}
+h1{
+    color:rgb(99, 163, 99);
+    text-align: center;
+
+}
+#topDiv{
+    background-color: rgb(97, 153, 97);
+    width: auto;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    height: 40px;
+}
+
+#topListDiv{
+    display: inline;
+    margin-top: 10px;
+    
+    padding: 10px;
+    width: fit-content;
+    vertical-align: middle;
+}
+#topListDiv:hover{
+    background-color: rgb(40, 109, 66);
+    color: white;
+    text-decoration: solid;
+    
+}
+
+#topListItem{
+    color: white;
+    font-size: 20px;
+    display: inline;
+    text-align: center;
+    margin: 0px;
+    text-decoration: solid;
+    vertical-align: middle;
+}
+
+.mainDivRow:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.column{
+    float: left;
+    padding: 10px;
+}
+.column.leftMenuDiv {
+    background-color: rgba(197, 163, 142, 0.781);
+    width: 20%;
+    margin: 0px 0px 0px 0px;
+    padding-top: 0px;
+}
+.column.mainContentDiv{
+    width: 60%;
+    height: 500px;
+    padding: 0px;
+    margin: 5px;
+}
+.formHeading{
+    text-align: center;
+    color: rgb(40, 109, 66);
+}
+#departmentMenuTitle{
+    padding-left: 5px;
+}
+.departmentMenuOption{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    color: black;
+    text-decoration:none;
+}
+.departmentMenuOption:hover{
+    background-color: brown;
+    color: white;
+    padding-left: 15px;
+}
+#grnFormDiv{
+    background-color: rgb(255, 255, 255);
+    height: 100px;
+    display:grid;
+    gap: 5px;
+    padding: 0px;
+    margin: 0px;
+}
+form.grnForm{
+    display:grid;
+    gap: 5px;
+    border-style: groove;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    font-size: x-small;
+    padding: 5px;
+}
+
+.formLabel{
+    grid-column: 1;
+    vertical-align: middle;
+}
+.formInput{
+    grid-column: 2;
+    padding-left: 0px;
+    margin-left: 0px;
+    
+    
+
+}
+.formHeading{
+    grid-row: 1;
+    grid-column: 1;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    text-align: center;
+    font-size: medium;
+
+}
+#section1Div{
+    display: grid;
+    gap: 5px;
+    grid-row: 2;
+    grid-column: 3;
+}
+    #grnDateDiv{
+        grid-row: 1;
+        grid-column: 1;
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+    #grnTimeDiv{
+        display: grid;
+        grid-row: 2;
+        grid-column: 1;
+    }
+        
+        #grnTimeInLabel{
+            grid-column: 1;
+        }
+        #grnTimeOutLabel{
+            grid-row: 1;
+            grid-column: 2;
+        }
+        #grnTimeIn{
+            grid-row: 2;
+            grid-column: 1;
+            width: 68px;
+        }
+        #grnTimeOut{
+            grid-row: 2;
+            grid-column: 2;
+            width: 68px;
+        }
+        
+#section2Div{
+    display: grid;
+    gap: 5px;
+    grid-row: 3;
+    grid-column: 1;
+}
+    #customerName{
+        width: 180px;
+    }
+    #grnAddress{
+        width: 180px;
+    }
+#section3Div{
+    display: grid;
+    gap: 5px;
+    grid-row: 3;
+    grid-column: 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+    #grnCoffeeTypeDiv{
+        grid-row: 1;
+        grid-column: 1;
+    }
+    #grnCoffeeType{
+        width: 100px;
+    }
+    #grnCoffeeGradeDiv{
+        grid-row: 1;
+        grid-column: 2;
+    }
+    #grnCoffeeGrade{
+        width: 130px;
+    }
+    #grnQuantityDiv{
+        grid-row: 2;
+        grid-column: 1;
+        width: 150px;
+    }
+        #grnQuantity{
+            width: 80px;
+            padding-right: 0px;
+            margin-right: 0px;
+        }
+        
+    #grnBagsDiv{
+        margin-right: 0px;
+        grid-row: 2;
+        grid-column: 2;
+    }
+        #grnBags{
+            width: 125px;
+        }
+        #grnMc{
+            width: 50px;
+        }
+        
+    #grnTruckDiv{
+        grid-row: 3;
+        grid-column: 1;
+    }
+        #grnTruckNo{
+            width: 80px;
+        }
+
+#section4Div{
+    display: grid;
+    gap: 5px;
+    grid-row: 4;
+    grid-column: 1;
+    padding-top: 20px;
+    
+}
+    #grnTruckDiv{
+        grid-row: 1;
+        grid-column: 1;
+    }
+    #grnContactDiv{
+        grid-row: 2;
+        grid-column: 1;
+    }
+    #grnDriverDiv{
+        grid-row: 1;
+        grid-column: 2;
+    }
+#section5Div{
+    margin-top: 25px;
+    display: grid;
+    gap: 5px;
+    grid-row: 5;
+    grid-column: 1;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+
+#section6Div{
+    display: grid;
+    padding-top: 20;
+    grid-row: 4;
+    grid-row-start: 4;
+    grid-row-end: 6;
+    grid-column: 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+    #qualityRemarks{
+        grid-row: 2;
+        grid-column: 1;
+    }
+    
+#buttonsDiv{
+    grid-row: 7;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    margin: auto;
+}
+    .controlButtons{
+        padding: 0px 2px;
+        margin: 0px 2px;
+    }
+    .controlButtons:hover{
+        padding: 0px 2px;
+        margin: 0px 2px;
+        background-color: rgb(40, 109, 66);
+        color: white;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer{
+    background-color: rgb(97, 153, 97);
+   
+}

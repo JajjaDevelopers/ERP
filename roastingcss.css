@@ -19,37 +19,44 @@ h1{
 
 }
 #topDiv{
+   
     background-color: rgb(97, 153, 97);
-    width: auto;
-    margin: 0px 0px 0px 0px;
-    padding: 0px;
-    height: 40px;
+    width: 100%;
+    margin: 1px;
+    padding: 10px 0px 0px 10px;
+    height: 35px;
 }
 
-#topListDiv{
-    display: inline;
-    margin-top: 10px;
-    
+.topListItem{
+    margin-top: 2px;
     padding: 10px;
-    width: fit-content;
+    height: 25px;
     vertical-align: middle;
-}
-#topListDiv:hover{
-    background-color: rgb(40, 109, 66);
     color: white;
+    font-size: 15px;
+    text-align: center;
     text-decoration: solid;
+}
+.topListItem:hover{
+    margin: 10px 0px 0px 0px;
+    padding: 5px 10px 10px 10px;
+    height: 25px;
+    background-color: whitesmoke;
+    color: rgba(121, 51, 7, 0.781);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     
 }
+    #roastAndGroundLink{
+        margin: 10px 0px 0px 0px;
+        padding: 5px 10px 10px 10px;
+        height: 25px;
+        background-color: whitesmoke;
+        color: rgba(121, 51, 7, 0.781);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
 
-#topListItem{
-    color: white;
-    font-size: 20px;
-    display: inline;
-    text-align: center;
-    margin: 0px;
-    text-decoration: solid;
-    vertical-align: middle;
-}
 
 .mainDivRow:after {
     content: "";
@@ -61,10 +68,12 @@ h1{
     padding: 10px;
 }
 .column.leftMenuDiv {
-    background-color: rgba(197, 163, 142, 0.781);
+    background-color: rgba(146, 112, 91, 0.781);
     width: 20%;
-    margin: 0px 0px 0px 0px;
-    padding-top: 0px;
+    height: 50%;
+    margin: 2px 0px 0px 1px;
+    padding-top: 5px;
+    border-radius: 5px;
 }
 .column.mainContentDiv{
     width: 60%;
@@ -77,19 +86,26 @@ h1{
     color: rgb(40, 109, 66);
 }
 #departmentMenuTitle{
-    padding-left: 5px;
+    margin: 10px 0px 0px 0px;
+    color: rgb(40, 109, 66);
+
 }
-.departmentMenuOption{
+.departmentMenuOptionDiv{
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 5px;
     color: black;
     text-decoration:none;
 }
-.departmentMenuOption:hover{
+    .leftMenuLink{
+        text-decoration: solid;
+        color: white;
+    }
+.departmentMenuOptionDiv:hover{
     background-color: brown;
     color: white;
     padding-left: 15px;
+    border-radius: 5px;
 }
 #grnFormDiv{
     background-color: rgb(255, 255, 255);
@@ -283,14 +299,18 @@ form.grnForm{
     grid-column-start: 1;
     grid-column-end: 4;
     margin: auto;
+    margin-top: 20px;
 }
     .controlButtons{
-        padding: 0px 2px;
+        padding: 3px;
         margin: 0px 2px;
+        background-color: rgb(194, 162, 162);
+        border-radius: 2px;
+        border-width: 1px;
+        color: #0f0f0f;
     }
     .controlButtons:hover{
-        padding: 0px 2px;
-        margin: 0px 2px;
+       
         background-color: rgb(40, 109, 66);
         color: white;
     }
@@ -310,5 +330,8 @@ form.grnForm{
 
 .footer{
     background-color: rgb(97, 153, 97);
+    margin: 1px 1px 1px 1px;
+    padding: 2px 0px;
+    height: 32px;
    
 }

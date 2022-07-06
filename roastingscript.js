@@ -5,7 +5,8 @@ robusta_grades = ["Screen 1800", "Screen 1700", "Screen 1500", "Screen 1200", "B
 
 
 function selectGrade(typeEntryID) {
-    document.getElementById("grnCoffeeGrade").innerHTML.list = ""
+
+    document.getElementById("grnCoffeeGrade").innerHTML.list = []
     let coffee_type = document.getElementById(typeEntryID).innerHTML;
     let coffee_grades = ""
     if (coffee_type = "Robusta") {
@@ -23,3 +24,5 @@ function selectGrade(typeEntryID) {
     }
     
 }
+
+

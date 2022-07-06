@@ -1,25 +1,46 @@
-<html>
-    
-    <head>
-        <title>Roast & Ground</title>
-        <link rel="stylesheet" href="roastingcss.css">
-        <script src="roastingscript.js"></script>
 
-    </head>
-    <body>
-        <div id="topDiv">
-            
-            <a id="mainHomeLink" class="topListItem" href="#"><b>Home</b></a>
-        
-            <a id="processingLink"  class="topListItem" href="#"><b>Processing</b></a>
-        
-            <a id="roastAndGroundLink"  class="topListItem" href="#"><b>Roast & Ground</b></a>
-        
-            <a id="greenCoffeeLink"  class="topListItem" href="#"><b>Green Coffee</b></a>
-        
-            <a id="membershipLink"  class="topListItem" href="#"><b>Membership</b></a>
-            
-        </div>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roast & Ground</title>
+    <link rel="stylesheet" href="roastingcss.css">
+    <script src="roastingscript.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+         <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
+    <div class="container">
+      <button 
+        class="navbar-toggler" 
+        type="button" data-bs-toggle="collapse" 
+        data-bs-target="#navmenu"
+      >
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a href="#learn" class="nav-link ">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#questions" class="nav-link">Processing</a>
+          </li>
+          <li class="nav-item">
+            <a href="#instructors" class="nav-link">Green Coffee</a>
+          </li>
+          <li class="nav-item">
+            <a href="#instructors" class="nav-link">Membership</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
         <div class="mainDivRow">
             <div id="leftMenuDiv" class="column leftMenuDiv">
                 <h3 id="departmentMenuTitle">Roast & Ground</h3>
@@ -129,8 +150,7 @@
                         <input type="submit" value="Record" id="recordButton" class="controlButtons">
                     </div>
                     
-                    
-                    
+     
                     <!--Customer deatils -->
                     
                     
@@ -138,20 +158,13 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
         <!--The footer-->
-        <div class="footer">
+        <div class="container">
             <p>© Copyright NGL</p>
         </div>
-
-    </body>
-
+            
+        <!-- bootstrap script -->
+        <script src="js/bootstrap.js"></script>
     
-
+</body>
 </html>

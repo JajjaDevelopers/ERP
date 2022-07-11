@@ -7,7 +7,7 @@
     <title>Roast & Ground</title>
     <link rel="stylesheet" href="main.css">
     <script src="mainscript.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="./bootsrap/css/bootstrap.css">
 </head>
 <body>
          <!-- Navbar -->
@@ -26,7 +26,7 @@
             <a href="#learn" class="nav-link ">Home</a>
           </li>
           <li class="nav-item">
-            <a href="/form.html" class="nav-link">Processing</a>
+            <a href="#" class="nav-link">Processing</a>
           </li>
           <li class="nav-item">
             <a href="#instructors" class="nav-link">Green Coffee</a>
@@ -35,32 +35,22 @@
             <a href="#instructors" class="nav-link">Membership</a>
           </li>
           <li class="nav-item">
-            <a href="#instructors" class="nav-link">Roast & Ground</a>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Roast & Ground
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="form.html">Recieve Goods</a></li>
+                <li><a class="dropdown-item" href="#">Services</a></li>
+                <li><a class="dropdown-item" href="#">Dispatch</a></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-        <div class="mainDivRow">
-            <div id="leftMenuDiv" class="column leftMenuDiv">
-                <h3 id="departmentMenuTitle">Roast & Ground</h3>
-                <div class="departmentMenuOptionDiv">
-                    <a id="grnHomePageLink" class="leftMenuLink" href="#">Home Page</a>
-                </div>
-                <div class="departmentMenuOptionDiv">
-                    <a id="receiveGoodsLink" class="leftMenuLink" href="#">Receive Goods</a>
-                </div>
-                <div class="departmentMenuOptionDiv">
-                    <a id="servicesLink" class="leftMenuLink" href="#">Services</a>
-                </div>
-                <div class="departmentMenuOptionDiv">
-                    <a id="dispatchLink" class="leftMenuLink" href="#">Dispatch</a>
-                </div>
-            </div>
-
-            <!--Roastery GRN form --> 
-            
 
         <!--The footer-->
         <div class="container">
@@ -68,7 +58,7 @@
         </div>
             
         <!-- bootstrap script -->
-        <script src="js/bootstrap.js"></script>
+        <script src="./bootsrap/js/bootstrap.bundle.min.js"></script>
     
 </body>
 </html>

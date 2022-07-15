@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <script src="mainscript.js"></script>
     <title>Goods Received Note</title>
 </head>
 <body>
@@ -44,19 +43,15 @@
             <div id="section3Div" class="grnDiv">
                 <div class="grnCoffeeTypeDiv">
                     <label for="grnCoffeeType" class="formLabel">Type:</label>
-                    <input list="coffeeTypes" id="grnCoffeeType" class="formInput" name="grnCoffeeType" size="10" onfocusout="selectGrade('grnCoffeeType')">
-                    <datalist id="coffeeTypes">
-                        <option >Robusta</option>
-                        <option>Arabica</option>
-                        
-                    </datalist>
+                    <ol>
+                        <li><input type="radio" class=" coffee" name="coffee type" id="ar" value="Arabica">Arabica</li>
+                        <li><input type="radio" class="coffee" name="coffee type"id="rob" value="Robusta">Robusta</li>
+                    </ol>
                 </div>
                 <div id="grnCoffeeGradeDiv">
-                    <label for="grnCoffeeGrade" class="formLabel">Grade</label>
-                    <input list="coffeeGrades" id="grnCoffeeGrade" class="formInput" name="grnCoffeeGrade">
-                    <datalist id="coffeeGrades">
-                        
-                    </datalist>
+                    <label for="grnCoffeeGrade" class="formLabel">Grade:</label>
+                    <select id="select">
+                    </select>
                 </div>
                 <div id="grnQuantityDiv">
                     <label for="grnQuantity" class="formLabel">Weight</label>
@@ -100,11 +95,14 @@
                 <input type="submit" value="Record" id="recordButton" class="controlButtons">
             </div>
             
-
-            <!--Customer deatils -->
-            
-            
         </form>
+<<<<<<< HEAD:roasteryGRN.html
     </div>  
+=======
+    </div>
+</div>
+<!--Script-->
+<script src="mainscript.js"></script>
+>>>>>>> 56612b6dd0a7513c574a8d7753bf17dafd9c0784:form.html
 </body>
 </html>

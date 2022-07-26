@@ -77,13 +77,19 @@ h1{
 }
 .column.mainContentDiv{
     width: 60%;
-    height: 500px;
+    height: 00px;
     padding: 0px;
     margin: 5px;
 }
 .formHeading{
     text-align: center;
     color: rgb(40, 109, 66);
+    grid-row: 1;
+    grid-column: 1;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    text-align: center;
+    font-size: medium;
 }
 #departmentMenuTitle{
     margin: 10px 0px 0px 0px;
@@ -107,6 +113,12 @@ h1{
     padding-left: 15px;
     border-radius: 5px;
 }
+form{
+    font-size: small;
+    background-color: whitesmoke;
+    border: 1px solid rgb(194, 162, 162);
+    border-radius: 5px;
+}
 #grnFormDiv{
     background-color: rgb(255, 255, 255);
     height: 100px;
@@ -115,7 +127,7 @@ h1{
     padding: 0px;
     margin: 0px;
 }
-form{
+#grnForm{
     display:grid;
     gap: 5px;
     border-style: groove;
@@ -135,18 +147,8 @@ form{
     padding-left: 0px;
     margin-left: 0px;
     
-    
-
 }
-.formHeading{
-    grid-row: 1;
-    grid-column: 1;
-    grid-column-start: 1;
-    grid-column-end: 4;
-    text-align: center;
-    font-size: medium;
 
-}
 #section1Div{
     display: grid;
     gap: 5px;
@@ -333,7 +335,9 @@ form{
 }
 .innerDiv{
     padding: 2px;
+    margin-left: 75%;
 }
+
 
 #deliveryNoteHeading{
     
@@ -342,6 +346,9 @@ form{
     grid-column: 1;
     grid-column-start: 1;
     grid-column-end: 5;
+}
+#deliveryNoteForm{
+    padding: 5px;
 }
 #deliveryNoteDiv1{
     padding-top: 0px;
@@ -385,25 +392,23 @@ form{
     grid-column-end: 5;
     height: 100px;
     background-color: white;
-    border: solid;
     border-width: 1px;
 }
 table, th, td{
     border: 1px solid #0f0f0f;
-    border-collapse:collapse;
+    border-collapse: collapse;
     font-size: 12px;
 }
 th, td{
-    padding: 0px
+    padding: 2px
 }
 th{
-    border-top: 0px;
+    padding: 0px;
 }
 td{
     background-color: white;
-    padding: 2px;
-    
 }
+
 .itmNoInput{
     margin: 0px;
     padding: 0px;
@@ -515,4 +520,80 @@ td{
     grid-column: 2;
     padding: 0px 5px;
     
+    
+}
+.regularForm{
+    font-size: small;
+    margin: 5px auto;
+    padding: 5px;
+    background-color: whitesmoke;
+    width: 700px;
+    height: 600px;
+
+}
+#topSummuryDiv{
+    margin: 0px;
+}
+#activityNumberLabel{
+    padding: 10px 0px 5px 75% ;
+    
+}
+#activityDateLabel{
+    padding: 10px 0px 5px 75% ;
+}
+#activityDate{
+    border: 1px solid black;
+    border-radius: 2px; 
+    text-align: center;
+    margin: 10px 0px;
+}
+#activityNumber{
+    border: 0px;
+    color: red;
+    width: 100px;
+    text-align: center;
+}
+
+.longInputField{
+    margin-top: 10px;
+    border: 1px solid brown;
+    border-radius: 5px;
+    background-color: white;
+    padding: 1px 5px;
+    width: 250px;
+
+}
+#roastingActivitiesTable{
+    margin: 20px 0px;
+    height: 150px;
+    background-color: inherit;
+}
+.tableInput{
+    text-align: right;
+    border: none;
+    width: 100%;
+    height: 20px;
+}
+.emptyCell{
+    border-width: 0px;
+}
+.remarks{
+    width: 100%;
+    border: none;
+}
+#activityPrepareDiv{
+    display: grid;
+    margin: auto;
+    padding-top: 20px;
+    width: 200px
+}
+#activityConfirmButton{
+    grid-row: 1;
+    grid-column: 1;
+    padding: 4px 5px;
+}
+#activityCancelButton{
+    grid-row: 1;
+    grid-column: 2;
+    padding: 0px 5px;
 }

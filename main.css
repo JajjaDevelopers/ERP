@@ -522,12 +522,12 @@ td{
     
     
 }
-#activitySheetForm{
+.regularForm{
     font-size: small;
-    margin: 5px;
+    margin: 5px auto;
     padding: 5px;
     background-color: whitesmoke;
-    width: 60%;
+    width: 700px;
     height: 600px;
 
 }
@@ -555,9 +555,9 @@ td{
 }
 
 .longInputField{
-    margin-top: 5px;
+    margin-top: 10px;
+    border: 1px solid brown;
     border-radius: 5px;
-    border-width: 0px;
     background-color: white;
     padding: 1px 5px;
     width: 250px;

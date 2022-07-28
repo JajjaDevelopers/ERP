@@ -6,6 +6,7 @@ const coffeeGrade = {
 
 const option = document.getElementById("select");
 const checkedOption = document.querySelectorAll(".coffee");
+console.log(checkedOption);
 let choice;
 checkedOption.forEach(checked => {
     checked.addEventListener("click", (event) => {
@@ -82,6 +83,7 @@ function insertValuationItems(highGradesList, lowGradesList){
 }
 insertValuationItems(activityQuantityIds, activityRateIds);
 */
+
 let fullItemList = ["Arabica A", "Arabica AA", "Arabica AAA", "Arabica B", "Arabica AB", "Arabica CPB", "Triage", "Black Beans"]
     for (var i=0; i < fullItemList.length; i++) {
         var tableRow = document.createElement("tr");

@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Valuation Report</title>
-    <link rel="stylesheet" href="main.css">
-</head>
-<body>
+
+<?php include_once('header.php'); ?>
     <form id="valuationForm" name="valuationForm" class="regularForm">
         <h3 class="formHeading">VALUATION REPORT</h3>
         <div style="padding: 15px 5px 5px 70%;">
@@ -212,6 +205,4 @@
             </table>
         </div>
     </form>
-<script src="mainscript.js"></script>
-</body>
-</html>
+    <?php include_once('footer.php'); ?>

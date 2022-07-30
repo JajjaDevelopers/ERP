@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Roast & Ground</title>
-    <link rel="stylesheet" href="main.css">
-</head>
-<body>
+
+<?php include_once('header.php'); ?>
     <div>
     <form id="activitySheetForm" name="activitySheetForm" class="regularForm">
         <div id="topSummuryDiv">
@@ -105,6 +98,5 @@
         </div>
     </form>
     </div>
-<script src="mainscript.js"></script>
-</body>
-</html>
+
+    <?php include_once('footer.php'); ?>

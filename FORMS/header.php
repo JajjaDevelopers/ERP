@@ -46,9 +46,13 @@
                 Roast & Ground
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+
                 <li><a class="dropdown-item" href="Receivednote.php">Recieve Goods</a></li>
                 <li><a class="dropdown-item" href="activtySheet.php">Services</a></li>
                 <li><a class="dropdown-item" href="roasteryDeliveryNote.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="Receivednote.html">Recieve Goods</a></li>
+                <li><a class="dropdown-item" href="activtySheet.html">Services</a></li>
+                <li><a class="dropdown-item" href="roasteryDeliveryNote.html">Dispatch</a></li>
               </ul>
             </div>
           </li>

@@ -5,9 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roast & Ground</title>
-    <link rel="stylesheet" href="main.css">
-    <script src="mainscript.js"></script>
-    <link rel="stylesheet" href="./bootsrap/css/bootstrap.css">
+    <link rel="stylesheet" href="..\ASSETS\CSS\main.css">
+    <link rel="stylesheet" href="..\ASSETS\CSS\bootsrap/css/bootstrap.css">
+    <link rel="stylesheet" href="..\ASSETS\CSS\forms.css">
+    <script src="..\ASSETS\SCRIPTS\Jquery/jquery-3.6.0.js"></script>
+    <script src="..\ASSETS\SCRIPTS\Jquery/jquery-ui/jquery-ui.js"></script>
+    <link rel="stylesheet" href="..\ASSETS\SCRIPTS\Jquery/jquery-ui/jquery-ui.css">
+    <link rel="stylesheet" href="..\ASSETS\SCRIPTS\Jquery/jquery-ui/jquery-ui.structure.css">
+    <link rel="stylesheet" href="..\ASSETS\SCRIPTS\Jquery/jquery-ui/jquery-ui.theme.css">
+    <script src="..\ASSETS\SCRIPTS\receivedgoods.js"></script>
 </head>
 <body>
          <!-- Navbar -->
@@ -40,6 +46,10 @@
                 Roast & Ground
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+
+                <li><a class="dropdown-item" href="Receivednote.php">Recieve Goods</a></li>
+                <li><a class="dropdown-item" href="activtySheet.php">Services</a></li>
+                <li><a class="dropdown-item" href="roasteryDeliveryNote.php">Dispatch</a></li>
                 <li><a class="dropdown-item" href="Receivednote.html">Recieve Goods</a></li>
                 <li><a class="dropdown-item" href="activtySheet.html">Services</a></li>
                 <li><a class="dropdown-item" href="roasteryDeliveryNote.html">Dispatch</a></li>
@@ -51,6 +61,3 @@
     </div>
   </nav>
 
-    <script src="./bootsrap/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>

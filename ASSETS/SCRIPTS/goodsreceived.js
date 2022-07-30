@@ -1,17 +1,3 @@
-$(document).ready(function(){
-  alert("Hi Jajja Developers, The Good Lord is with you!");
-  $("#date").datepicker({
-    showOtherMonths:true,
-     selectOtherMonths:true,
-     showButtonPanel:true,
-     changeMonth:true,
-     changeYear:true
-   });
-  //  console.log($("#date"));
-})
-
-//vanillascript code
-
 
 const coffeeGrade = {
   arabica_grades: ["Arabica A", "Arabica AA", "Arabica AAA", "Arabica B", "Arabica AB", "Arabica CPB", "Triage", "Black Beans"],

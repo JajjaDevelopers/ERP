@@ -1,54 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recieved Goods Form</title>
-  <link rel="stylesheet" href="./bootsrap/css/bootstrap.css">
-  <script src="./Jquery/jquery-3.6.0.js"></script>
-  <script src="./Jquery/jquery-ui/jquery-ui.js"></script>
-  <link rel="stylesheet" href="./Jquery/jquery-ui/jquery-ui.css">
-  <link rel="stylesheet" href="./Jquery/jquery-ui/jquery-ui.structure.css">
-  <link rel="stylesheet" href="./Jquery/jquery-ui/jquery-ui.theme.css">
-  <!-- <script src="receivedgoods.js"></script> -->
-</head>
-<style>
-  html{
-	box-sizing: border-box;
-  }
-     *{
-	box-sizing: inherit;
-  }
-  body{
-    margin:0px;
-    padding:0px;
-   
-  }
-  .container{
-    margin-top: 20px;
-    margin-bottom:20px;
-    font-weight:bold;
-  
-  }
-  /* input.textinput {
-  height: 2em;
-  border: 1px solid rgba(0, 0, 0, .3);
-  padding-left: 6px;
-  font-family: inherit;
-  font-size: .875em;
-} */
-  input::placeholder{
-    text-align: center;
-     }
-  form {
-    max-width: 40em;
-    border: 1px solid #666;
-    border-radius: 10px;
-    background-color: #f2f5d5;
-  }
-</style>
-<body>
+
+<?php include_once('header.php'); ?>
   <div class="container">
     <form action="received.php" class="row g-3" method="POST">
       <legend class="text-center">Goods Received Note</legend>
@@ -174,7 +125,4 @@
       </div>
   </form>
   </div>
-  <script src="./bootsrap/js/bootstrap.bundle.min.js"></script>
-  <script src="receivedgoods.js"></script>
-</body>
-</html>
+  <?php include_once('footer.php'); ?>

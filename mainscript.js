@@ -1,3 +1,23 @@
+function valuationPage(){
+    
+    var selectedTable = document.getElementById("valuationsTable");
+    
+    let fullItemList = ["Arabica 1A", "Arabica AA", "Arabica AAA", "Arabica B", "Arabica AB", "Arabica CPB", "Triage", "Black Beans"];
+        for (var i=0; i < fullItemList.length; i++) {
+            var tableRow = document.createElement("tr");
+            var itemNameCell = document.createElement("td");
+            var itemNameText = document.createTextNode(fullItemList[i]);
+            itemNameCell.appendChild(itemNameText);
+            tableRow.appendChild(itemNameCell);
+            for (var d = 0; d < 7; d++){
+                var tableData = document.createElement("td");
+                tableRow.appendChild(tableData);
+            }
+            
+            selectedTable.appendChild(tableRow);
+        }
+    }
+document.getElementById("valuationGrnNumber").addEventListener("blur", valuationPage);
 
 const coffeeGrade = {
     arabica_grades: ["Arabica A", "Arabica AA", "Arabica AAA", "Arabica B", "Arabica AB", "Arabica CPB", "Triage", "Black Beans"],
@@ -26,9 +46,9 @@ checkedOption.forEach(checked => {
     })
 })
 
-let activityQuantityIds = ["roastingQty", "grindingQty","sortingQty", "packaging250Qty", "packaging500Qty", "packaging1KgQty", "packagingOtherQty"]
-let activityRateIds = ["roastingRate", "grindingRate", "sortingRate", "packaging250Rate", "packaging500Rate", "packaging1KgRate", "packagingOtherRate"]
-let activityAmountIds = ["roastingAmount", "grindingAmount", "sortingAmount", "packaging250Amount", "packaging500Amount", "packaging1KgAmount", "packagingOtherAmount"]
+let activityQuantityIds = ["roastingQty", "grindingQty","sortingQty", "packaging250Qty", "packaging500Qty", "packaging1KgQty", "packagingOtherQty"];
+let activityRateIds = ["roastingRate", "grindingRate", "sortingRate", "packaging250Rate", "packaging500Rate", "packaging1KgRate", "packagingOtherRate"];
+let activityAmountIds = ["roastingAmount", "grindingAmount", "sortingAmount", "packaging250Amount", "packaging500Amount", "packaging1KgAmount", "packagingOtherAmount"];
 let responseEntries = activityQuantityIds.concat(activityRateIds);
 
 function computeTotal(){
@@ -41,8 +61,8 @@ function computeTotal(){
 }
 
 function computeAmount(){
-    var grandTotal = document.getElementById('totalAmount')
-    var activitiesTotal = []
+    var grandTotal = document.getElementById('totalAmount');
+    var activitiesTotal = [];
     for (var i=0; i < activityQuantityIds.length; i++) {
         var itemAmount = document.forms['activitySheetForm'][activityAmountIds[i]];
         y = document.getElementById(activityQuantityIds[i]).value;
@@ -59,8 +79,11 @@ function computeAmount(){
     grandTotal.setAttribute('value', sum);
 }
 
+
+
 for (var i=0; i < responseEntries.length; i++){
-    document.getElementById(responseEntries[i]).addEventListener("blur", computeAmount);
+    resField = document.getElementById(responseEntries[i]);
+    resField.addEventListener("blur", computeAmount);
 }
 
 /*
@@ -82,17 +105,3 @@ function insertValuationItems(highGradesList, lowGradesList){
 }
 insertValuationItems(activityQuantityIds, activityRateIds);
 */
-let fullItemList = ["Arabica A", "Arabica AA", "Arabica AAA", "Arabica B", "Arabica AB", "Arabica CPB", "Triage", "Black Beans"]
-    for (var i=0; i < fullItemList.length; i++) {
-        var tableRow = document.createElement("tr");
-        var itemNameCell = document.createElement("td");
-        var itemNameText = document.createTextNode(fullItemList[i]);
-        itemNameCell.appendChild(itemNameText);
-        tableRow.appendChild(itemNameCell);
-        for (var d = 0; d < 7; d++){
-            var tableData = document.createElement("td");
-            tableRow.appendChild(tableData);
-        }
-        var selectedTable = document.getElementById("valuationsTable");
-        selectedTable.appendChild(tableRow);
-    }

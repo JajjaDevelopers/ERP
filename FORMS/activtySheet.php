@@ -2,7 +2,7 @@
 <?php include_once('header.php'); ?>
     <div>
     <form id="activitySheetForm" name="activitySheetForm" class="regularForm">
-        <div id="topSummuryDiv">
+        <div>
             <h3 id="activitySheetHeading" class="formHeading">Roasting Order Form</h3>
             <label for="activityNumber" id="activityNumberLabel" class="activitySheetLabel" style="padding-top: 15px;">Order No.:</label>
             <input type="text" id="activityNumber" class="activitySheetInput" value="ASN-100001">

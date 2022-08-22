@@ -19,8 +19,7 @@ function valuationPage(){
     }
 document.getElementById("valuationGrnNumber").addEventListener("blur", valuationPage);
 
-<<<<<<< HEAD:ASSETS/SCRIPTS/mainscript.js
-=======
+
 const coffeeGrade = {
     arabica_grades: ["Arabica A", "Arabica AA", "Arabica AAA", "Arabica B", "Arabica AB", "Arabica CPB", "Triage", "Black Beans"],
     robusta_grades: ["Screen 1800", "Screen 1700", "Screen 1500", "Screen 1200", "Black Beans", "BHP", "1899"]
@@ -49,16 +48,16 @@ checkedOption.forEach(checked => {
     })
 })
 
-<<<<<<< HEAD:mainscript.js
-let activityQuantityIds = ["roastingQty", "grindingQty","sortingQty", "packaging250Qty", "packaging500Qty", "packaging1KgQty", "packagingOtherQty"];
-let activityRateIds = ["roastingRate", "grindingRate", "sortingRate", "packaging250Rate", "packaging500Rate", "packaging1KgRate", "packagingOtherRate"];
-let activityAmountIds = ["roastingAmount", "grindingAmount", "sortingAmount", "packaging250Amount", "packaging500Amount", "packaging1KgAmount", "packagingOtherAmount"];
-=======
->>>>>>> ec92b72e9c592d1433a6a8958ad16cd5c89cd342:mainscript.js
+// <<<<<<< HEAD:mainscript.js
+var activityQuantityIds = ["roastingQty", "grindingQty","sortingQty", "packaging250Qty", "packaging500Qty", "packaging1KgQty", "packagingOtherQty"];
+var activityRateIds = ["roastingRate", "grindingRate", "sortingRate", "packaging250Rate", "packaging500Rate", "packaging1KgRate", "packagingOtherRate"];
+var activityAmountIds = ["roastingAmount", "grindingAmount", "sortingAmount", "packaging250Amount", "packaging500Amount", "packaging1KgAmount", "packagingOtherAmount"];
+// =======
+// >>>>>>> ec92b72e9c592d1433a6a8958ad16cd5c89cd342:mainscript.js
 let activityQuantityIds = ["roastingQty", "grindingQty","sortingQty", "packaging250Qty", "packaging500Qty", "packaging1KgQty", "packagingOtherQty"]
 let activityRateIds = ["roastingRate", "grindingRate", "sortingRate", "packaging250Rate", "packaging500Rate", "packaging1KgRate", "packagingOtherRate"]
 let activityAmountIds = ["roastingAmount", "grindingAmount", "sortingAmount", "packaging250Amount", "packaging500Amount", "packaging1KgAmount", "packagingOtherAmount"]
->>>>>>> 9e87bd8b6c4fb8a5dc242b87ae4e26e785a9b613:ASSETS/SCRIPTS/mainscript.js
+// >>>>>>> 9e87bd8b6c4fb8a5dc242b87ae4e26e785a9b613:ASSETS/SCRIPTS/mainscript.js
 let responseEntries = activityQuantityIds.concat(activityRateIds);
 
 function computeTotal(){
@@ -115,10 +114,10 @@ function insertValuationItems(highGradesList, lowGradesList){
 }
 insertValuationItems(activityQuantityIds, activityRateIds);
 */
-<<<<<<< HEAD:mainscript.js
-=======
-<<<<<<< HEAD:ASSETS/SCRIPTS/mainscript.js
-=======
+// <<<<<<< HEAD:mainscript.js
+// =======
+// <<<<<<< HEAD:ASSETS/SCRIPTS/mainscript.js
+// =======
 
 let fullItemList = ["Arabica A", "Arabica AA", "Arabica AAA", "Arabica B", "Arabica AB", "Arabica CPB", "Triage", "Black Beans"]
     for (var i=0; i < fullItemList.length; i++) {
@@ -134,5 +133,5 @@ let fullItemList = ["Arabica A", "Arabica AA", "Arabica AAA", "Arabica B", "Arab
         var selectedTable = document.getElementById("valuationsTable");
         selectedTable.appendChild(tableRow);
     }
->>>>>>> ec92b72e9c592d1433a6a8958ad16cd5c89cd342:mainscript.js
->>>>>>> 9e87bd8b6c4fb8a5dc242b87ae4e26e785a9b613:ASSETS/SCRIPTS/mainscript.js
+// >>>>>>> ec92b72e9c592d1433a6a8958ad16cd5c89cd342:mainscript.js
+// >>>>>>> 9e87bd8b6c4fb8a5dc242b87ae4e26e785a9b613:ASSETS/SCRIPTS/mainscript.js

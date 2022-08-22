@@ -7,8 +7,8 @@
             <input type="text" id="valuationNumber" class="valuationInput" value="VAL-100001" style="width: 100px; text-align: center;">
             <label for="valuationNumber" id="valuationNumberLabel" class="valuationLabel" >Date:</label>
             <input type="date" id="valuationNumber" class="valuationInput" value="VAL-100001" style="width: 100px; text-align: center;"><br>
-            <label for="valuationNumber" id="valuationNumberLabel" class="valuationLabel" >GRN No.:</label>
-            <input type="text" id="valuationNumber" class="valuationInput" style="width: 100px; text-align: center;"><br>
+            <label for="valuationGrnNumber" id="valuationNumberLabel" class="valuationLabel" >GRN No.:</label>
+            <input type="text" id="valuationGrnNumber" class="valuationInput" style="width: 100px; text-align: center;"><br>
             <label for="valuationNumber" id="valuationNumberLabel" class="valuationLabel" >Delivery Date:</label>
             <input type="date" id="valuationNumber" class="valuationInput" value="VAL-100001" style="width: 100px; text-align: center;">
         </div>

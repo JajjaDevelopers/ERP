@@ -1,8 +1,8 @@
 
 <?php include_once('header.php'); ?>
   <div class="container">
-    <form action="received.php" class="row g-3" method="POST">
-      <legend class="text-center">Goods Received Note</legend>
+    <form action="received.php" class="regularForm" method="POST">
+      <legend class="formHeading">Goods Received Note</legend>
       <div class="row mb-3">
         <div class="col-6 ms-auto">
           <label for="date" class="form-label ">Date:</label>
@@ -29,6 +29,7 @@
           <input type="text" class="form-control form-control-sm" id="customer" placeholder="customer name"
           name="customername" value="">
         </div>
+        
         <div class="col-3">
           <fieldset class="row mb-3">
             <legend class="col-form-label col-sm-2 pt-0">Coffee Type:</legend>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,8 @@
     <script src="mainscript.js"></script>
     <title>Roast & Ground Dispatch</title>
 </head>
-<body>
+<body> -->
+<?php include("header.php");?>
     
     <form id="deliveryNoteForm" class="regularForm">
         <h3 id="deliveryNoteHeading" class="formHeading">Roastery Delivery Note</h3>
@@ -99,5 +100,4 @@
         </div>
     </form>
     
-</body>
-</html>
+<?php include("footer.php");?>

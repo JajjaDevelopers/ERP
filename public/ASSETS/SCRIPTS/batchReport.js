@@ -1,4 +1,3 @@
-
 var highGradeBagsList = ["highGrade1Bags", "highGrade2Bags", "highGrade3Bags", "highGrade4Bags"];
 var lowGradeBagsList = ["lowGrade1Bags", "lowGrade2Bags", "lowGrade3Bags", "lowGrade4Bags", "lowGrade5Bags"];
 var rejectsBagsList = ["blacks18Bags",  "blacks17Bags", "blacks15Bags", "blacks12Bags"];
@@ -68,3 +67,4 @@ for (i=0; i < allQtyList.length; i++){
 document.getElementById("inputQty").addEventListener("blur", updateBagsAndPer);
 document.getElementById("addSpillQty").addEventListener("blur", updateBagsAndPer);
 document.getElementById("lessSpillQty").addEventListener("blur", updateBagsAndPer);
+

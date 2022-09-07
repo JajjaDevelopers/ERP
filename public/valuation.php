@@ -1,20 +1,23 @@
 
 <?php include_once('header.php'); ?>
-    <form id="valuationForm" name="valuationForm" class="regularForm" style="height: 700px;">
+    <form id="valuationForm" name="valuationForm" class="regularForm" style="height: 800px;" method="POST" action="../private/valuationHandler.php">
         <h3 class="formHeading">VALUATION REPORT</h3>
         <div style="padding: 15px 5px 5px 70%;">
             <label for="valuationNumber" id="valuationNumberLabel" class="valuationLabel" >Valuation No.:</label>
-            <input type="text" id="valuationNumber" class="shortInput" value="VAL-100001" style="width: 100px; text-align: center;"><br>
-            <label for="valuationNumber" id="valuationNumberLabel" class="valuationLabel" >Date:</label>
-            <input type="date" id="valuationNumber" class="shortInput" value="VAL-100001" style="width: 100px; text-align: center;"><br>
+            <input type="text" id="valuationNumber" name="valuationNumber" class="shortInput" value="VAL-100001" style="width: 100px; text-align: center;"><br>
+
+            <label for="valuationDate" id="valuationNumberLabel" class="valuationLabel" >Date:</label>
+            <input type="date" id="valuationDate" name="valuationDate" class="shortInput" value="VAL-100001" style="width: 100px; text-align: center;"><br>
+
             <label for="valuationGrnNumber" id="valuationNumberLabel" class="valuationLabel" >GRN No.:</label>
             <input type="text" id="valuationGrnNumber" class="shortInput" style="width: 100px; text-align: center;"><br>
-            <label for="valuationNumber" id="valuationNumberLabel" class="valuationLabel" >Delivery Date:</label>
-            <input type="date" id="valuationNumber" class="shortInput" value="VAL-100001" style="width: 100px; text-align: center;">
+            
+            <label for="batchNo" id="batchNoLabel" class="valuationLabel" >Batch No:</label>
+            <input type="number" id="batchNo" name="batchNo" class="shortInput" value="VAL-100001" style="width: 100px; text-align: center;">
         </div>
         <div>
             <label for="valuationSupplier" id="valuationSupplierLabel" class="regularLabel">Supplier:</label>
-            <input type="text" id="valuationSupplier" class="longInputField" style="width: 400px;"><br>
+            <input type="text" id="valuationSupplier" name="valuationSupplier" class="longInputField" style="width: 400px;"><br>
             <label for="valuationContactPerson" id="valuationContactPersonLabel" class="regularLabel">Contact Person:</label>
             <input type="text" id="valuationContactPerson" class="longInputField">
             <label for="valuationTelephone" id="valuationTelephoneLabel" class="regularLabel" style="padding-left: 20px;">Telephone:</label>
@@ -172,37 +175,39 @@
                     <td></td>
                 </tr>
                 <tr>
+                    <td colspan="6"><input type="text" value="Costs:" id="costsDetails" name="costsDetails" class="tableInput" 
+                    style="text-align: left;" placeholder="Enter description of costs..."></td>
+                    <!-- <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td></td> -->
+                    <!-- <td></td> -->
+                    <td><input type="number" value="" id="totalCostsUsd" readonly name="totalCostsUsd" class="tableInput"></td>
+                    <td><input type="number" value="" id="totalCostsUgx" name="totalCostsUgx" class="tableInput"></td>
                 </tr>
                 <tr>
-                    <th>Sub-total Costs</th>
+                    <th colspan="6">Sub-total Costs</th>
+                    <!-- <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td></td> -->
+                    <!-- <td></td> -->
+                    <td><input type="number" value="" id="subTotalCostsUsd" readonly name="subTotalCostsUsd" class="tableInput"></td>
+                    <td><input type="number" value="" id="subTotalCostsUgx" readonly name="subTotalCostsUgx" class="tableInput"></td>
                 </tr>
                 <tr>
-                    <th>Total Value after Costs</th>
+                    <th colspan="6">Total Value after Costs</th>
+                    <!-- <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td></td> -->
+                    <!-- <td></td> -->
+                    <td><input type="number" value="" id="totalValueUsd" readonly name="totalValueUsd" class="tableInput"></td>
+                    <td><input type="number" value="" id="totalValueUgx" readonly name="totalValueUgx" class="tableInput"></td>
                 </tr>
                
             </table>
         </div>
+        <input type="submit" id="valuationConfirmButton" value="Confirm" class="controlButtons">
     </form>
-    <?php include_once('footer.php'); ?>
+    <?php include_once('footer.php');?>

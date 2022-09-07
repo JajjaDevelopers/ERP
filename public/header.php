@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +22,14 @@
     <link rel="stylesheet" href=".\ASSETS\CSS\main.css">
 </head>
 <body>
+<?php
+$_SESSION["servername"] = "localhost";
+$_SESSION["username"] = "root";
+$_SESSION["password"] = "root";
+$_SESSION["dbname"] = "factory";
+
+
+?>
          <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
     <div class="container">

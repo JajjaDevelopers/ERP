@@ -1,6 +1,15 @@
 <?php
 session_start();
+$_SESSION["servername"] = "localhost";
+$_SESSION["username"] = "root";
+$_SESSION["password"] = "root";
+$_SESSION["dbname"] = "factory";
 
+$servername = $_SESSION["servername"];
+$username = $_SESSION["username"];
+$password = $_SESSION["password"];
+$dbname = $_SESSION["dbname"];
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 ?>
 <!DOCTYPE html>
@@ -22,14 +31,6 @@ session_start();
     <link rel="stylesheet" href=".\ASSETS\CSS\main.css">
 </head>
 <body>
-<?php
-$_SESSION["servername"] = "localhost";
-$_SESSION["username"] = "root";
-$_SESSION["password"] = "root";
-$_SESSION["dbname"] = "factory";
-
-
-?>
          <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
     <div class="container">

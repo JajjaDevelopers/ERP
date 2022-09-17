@@ -32,7 +32,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 </head>
 <body>
          <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
+  <nav class="navbar navbar-expand-lg bg-secondary navbar-dark" style="background-color: green;">
     <div class="container">
       <button 
         class="navbar-toggler" 
@@ -97,6 +97,10 @@ $conn = new mysqli($servername, $username, $password, $dbname);
                 <li><a class="dropdown-item" href="activtySheet.html">Services</a></li>
                 <li><a class="dropdown-item" href="roasteryDeliveryNote.html">Dispatch</a></li> -->
               </ul>
+
+              <li class="nav-item">
+            <a href="logout.php" class="nav-link">Log out</a>
+          </li>
             </div>
           </li>
         </ul>

@@ -1,7 +1,7 @@
 <?php
-$server="localhost";
-$db="nucafelogin";
-$user="root";
+$server="premium33";
+$db="jajjadev";
+$user="isaac";
 $pwd="root";
 $charset="utf8mb4";
 

@@ -31,7 +31,8 @@
 
 
         <label for="valuationDate" id="valuationNumberLabel" class="valuationLabel" >Date:</label>
-        <input type="date" id="valuationDate" name="valuationDate" class="shortInput" value="VAL-100001" style="width: 100px; text-align: center;"><br>
+        
+        <input type="date" id="valuationDate" name="valuationDate" class="shortInput" style="width: 100px; text-align: center;"><br>
 
         <label for="valuationGrnNumber" id="valuationNumberLabel" class="valuationLabel" >GRN No.:</label>
         <input type="text" id="valuationGrnNumber" class="shortInput" style="width: 100px; text-align: center;"><br>
@@ -232,6 +233,7 @@
             
         </table>
     </div>
-    <input type="submit" id="valuationConfirmButton" value="Confirm" class="controlButtons">
+    <input type="submit" id="valuationConfirmButton" value="Submit" class="controlButtons">
 </form>
+
 <?php include_once('footer.php');?>

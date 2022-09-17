@@ -495,8 +495,7 @@ td{
     height: auto;
 }
 .approvalLabel{
-    border: 2px solid;
-    border-radius: 5px;
+    text-align: center;
     padding: 2px;
 }
 .approveInput{

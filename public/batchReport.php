@@ -34,11 +34,7 @@
                 }
 
             echo '</select><br>';
-            // Temporary elements to hold data for updating  on client selection
-            // echo '<label id="selectedCustomerName" style="display: none;">'.$row[$customer][1].'</label>';
-            // echo '<label id="selectedOrderNumber" style="display: none;" name="orderNumber">'.$row[$customer][0].'</label>';
-            // echo '<label id="selectedInputQty" style="display: none;">'.$row[$customer][3].'</label>';
-            // echo '<label id="selectedInputMc" style="display: none;"></label>';
+         
             ?>
             <script>
                 function updateOrder(){

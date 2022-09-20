@@ -1,22 +1,19 @@
 
 <?php include_once ("header.php");?>
-<form id="batchReportForm" class="regularForm"action="../private/batchReportHandler.php" method="POST">
+<form id="batchReportForm" class="regularForm"action="../private/batchReportHandler.php" method="POST" style="width: 900px;">
     <h3 id="batchReportHeading" class="formHeading">Production Report</h3>
     <div style="display: grid;">
-        <div style="grid-row: 1; grid-column: 1; padding-top: 50px; margin-bottom: 5px; ">
+        <div style="grid-row: 2; grid-column: 1; padding-top: 50px; margin-bottom: 5px; ">
             <label for="batchReportClient">Client</label>
             <!-- <select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 350px;"
             onchange="updateOrder()"> -->
+
+            <input type="text" id="customerId" name="customerId" class="shortInput" readonly value="" style="margin: 0px; width: 70px">
+            <input type="text" id="customerName" name="customerName" class="longInputField" readonly value="" style="margin: 0px; width: 300px">
+
             <?php
-            echo '<select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 350px;"
-            onchange="updateOrder()">';
-                
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $dbname = "factory";
-                
-                $conn = new mysqli($servername, $username, $password, $dbname);
+            echo '<select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
+            onchange="updateOrder(this.value)">';
                 
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
@@ -34,22 +31,12 @@
                 }
 
             echo '</select><br>';
-         
-            ?>
-            <script>
-                function updateOrder(){
-                    var selectedClient = document.getElementById('batchReportClient').value;
-                    var orderNo = selectedClient.slice(0,4);
-                    var batchOrderNumber =  document.getElementById('batchOrderNumber')
-                    var x = Number(orderNo);
-                    if ((typeof(x)) === "number"){
-                        batchOrderNumber.setAttribute('value', (orderNo));
-                    } else if(typeof(x) === "string"){
-                        batchOrderNumber.setAttribute('value', "-");
-                    }
-                }
                 
-            </script>
+            ?>
+            
+            <div id="ajaxDiv" style="display: none;" ></div>
+            
+            
             <label for="batchReportOfftaker">Offtaker</label>
             <select id="batchReportOfftaker" class="shortInput" name="batchReportOfftaker">
                 <option>Self</option>
@@ -59,12 +46,6 @@
         <div style="grid-row: 1; grid-column: 2;">
             <label for="batchReportNumber">Batch No.:</label>
             <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "root";
-            $dbname = "factory";
-            
-            $conn = new mysqli($servername, $username, $password, $dbname);
             
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
@@ -90,12 +71,10 @@
             // $newBatchNo = $row['lastNo'] +1 . '/21/2022';
             echo '<label id="batchReportNumber" class="shortInput" name="batchReportNumber">'.$newBatchNo .'</label>'.'<br>';
         
-            
-        
             ?>
             
             <label for="batchOrderNumber">Order No.:</label>
-            <input type="text" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" readonly onchange="updateClient(this.value)">
+            <input type="number" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" readonly onchange="batchSummary(this.value)">
             <br>
             <label for="batchReportDate">Date:</label>
             <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate">
@@ -111,8 +90,9 @@
                     <th style="width: 100px;">KGs</th>
                 </tr>
                 <tr>
-                    <td>INPUT FAQ</td>
-                    <td><input type="number" id="inputQty" name="inputQty" class="tableInput" value="0"></td>
+                    <td>INPUT - <input type="text" id="inputGrade" name="inputQty" class="tableInput" readonly value=""
+                    style="width: 70px; text-align: left; "></td>
+                    <td><input type="number" id="inputQty" name="inputQty" class="tableInput" readonly value="0"></td>
                 </tr>
                 <tr>
                     <td>Add Spill.Priv.Batch</td>
@@ -128,8 +108,8 @@
                 </tr>
             </table>
             <div style="display: inline-block; grid-row: 1; grid-column: 2;">
-                Avg. MC In: <input type="number" id="batchReportMcIn" class="shortInput" name="batchReportMcIn" style="width: 60px;">
-                Avg. MC Out: <input type="doubleval" id="batchReportMcIn" class="shortInput" name="batchReportMcOut" style="width: 60px;"><br>
+                Avg. MC In: <input type="number" id="batchReportMcIn" class="shortInput" name="batchReportMcIn" readonly style="width: 60px;">
+                Avg. MC Out: <input type="doubleval" id="batchReportMcOut" class="shortInput" name="batchReportMcOut" style="width: 60px;"><br>
                 Remarks:<br><textarea name="remarks" style="width: 300px; padding: 3px " placeholder="Any comment or remarks"></textarea>
             </div>
         </div>
@@ -336,16 +316,65 @@
                 <th class="batchItemLabel">ORIGIN / CLIENT</th>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><input type="date" id="batchSummaryDate" readonly name="batchSummaryDate" class="tableInput"></td>
+                <td><input type="number" id="batchSummarGrn" readonly name="batchSummarGrn" class="tableInput"></td>
+                <td><input type="number" id="batchSummarMc" readonly name="batchSummarMc" class="tableInput"></td>
+                <td><input type="number" id="batchSummarQty" readonly name="batchSummarQty" class="tableInput"></td>
+                <td><input type="text" id="batchSummarClient" readonly name="batchSummarClient" class="tableInput"></td>
             </tr>
         </table>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg">Record</button>
+    <?php include_once("../private/approvalDetails.php"); ?>
 </form>
+<script>
+    function updateOrder(str){
+        
+        
+        var selectedClient = document.getElementById('batchReportClient').value;
+        var orderNo = selectedClient.slice(0,4);
+        var batchOrderNumber =  document.getElementById('batchOrderNumber')
+        var x = Number(orderNo);
+        batchOrderNumber.setAttribute('value', (orderNo));
+        
+        
+        if (str == "") {
+            document.getElementById("customerId").setAttribute('value', '');
+            document.getElementById("customerName").setAttribute('value', '');
+            return;
+        } 
+        const xhttp = new XMLHttpRequest();
+        // Changing customer namne
+        xhttp.onload = function() {
+            document.getElementById("ajaxDiv").innerHTML = this.responseText;
 
+            var ajaxCustomerName = document.getElementById("ajaxCustomerName").value;
+            document.getElementById("customerName").setAttribute('value', ajaxCustomerName);
+
+            var ajaxCustomerId = document.getElementById("ajaxCustomerId").value;
+            document.getElementById("customerId").setAttribute('value', ajaxCustomerId);
+
+            var ajaxInputQty = document.getElementById("ajaxInputQty").value;
+            document.getElementById("inputQty").setAttribute('value', ajaxInputQty);
+
+            var ajaxMcIn = document.getElementById("ajaxMcIn").value;
+            document.getElementById("batchReportMcIn").setAttribute('value', ajaxMcIn);
+            document.getElementById("batchReportMcOut").setAttribute('value', ajaxMcIn);
+
+            var ajaxInputGrade = document.getElementById("ajaxInputGrade").value;
+            document.getElementById("inputGrade").setAttribute('value', ajaxInputGrade);
+
+        }
+        xhttp.open("GET", "ajax/batchReportAjax.php?q="+str);
+        xhttp.send();
+        
+        // xhttp.onload = function() {
+        //     document.getElementById("customerName").value = this.responseText;
+        // }
+        // xhttp.open("GET", "ajax/batchReportAjax.php?q="+str);
+        // xhttp.send();
+        
+    }
+    
+</script>
 <?php include_once ("footer.php")?>
 

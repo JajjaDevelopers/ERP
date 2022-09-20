@@ -1,5 +1,5 @@
 <?php include_once('header.php'); ?>
-<form id="valuationForm" name="valuationForm" class="regularForm" style="height: 800px;" method="POST" action="../private/valuationHandler.php">
+<form id="valuationForm" name="valuationForm" class="regularForm" style="height: 930px;" method="POST" action="../private/valuationHandler.php">
     <h3 class="formHeading">VALUATION REPORT</h3>
     <div style="padding: 15px 5px 5px 70%;">
         <label for="valuationNumber" id="valuationNumberLabel" class="valuationLabel" >Valuation No.:</label>
@@ -233,7 +233,7 @@
             
         </table>
     </div>
-    <input type="submit" id="valuationConfirmButton" value="Submit" class="controlButtons">
+    <?php include_once("../private/approvalDetails.php"); ?>
 </form>
 
 <?php include_once('footer.php');?>

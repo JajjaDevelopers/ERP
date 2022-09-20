@@ -1,7 +1,7 @@
 <?php
-$server="premium33";
-$db="jajjadev";
-$user="isaac";
+$server="localhost";
+$db="factory";
+$user="root";
 $pwd="root";
 $charset="utf8mb4";
 

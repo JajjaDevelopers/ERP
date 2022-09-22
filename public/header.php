@@ -1,6 +1,15 @@
 <?php
 session_start();
+$_SESSION["servername"] = "localhost";
+$_SESSION["username"] = "root";
+$_SESSION["password"] = "root";
+$_SESSION["dbname"] = "factory";
 
+$servername = $_SESSION["servername"];
+$username = $_SESSION["username"];
+$password = $_SESSION["password"];
+$dbname = $_SESSION["dbname"];
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 ?>
 <!DOCTYPE html>
@@ -22,16 +31,8 @@ session_start();
     <link rel="stylesheet" href=".\ASSETS\CSS\main.css">
 </head>
 <body>
-<?php
-$_SESSION["servername"] = "localhost";
-$_SESSION["username"] = "root";
-$_SESSION["password"] = "root";
-$_SESSION["dbname"] = "factory";
-
-
-?>
          <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
+  <nav class="navbar navbar-expand-lg bg-secondary navbar-dark" style="background-color: green;">
     <div class="container">
       <button 
         class="navbar-toggler" 
@@ -60,7 +61,7 @@ $_SESSION["dbname"] = "factory";
                 <li><a class="dropdown-item" href="roasterydispatch.php">Dispatch</a></li>
                 <li><a class="dropdown-item" href="#">Transfer</a></li>
                 <li><a class="dropdown-item" href="#">Reprocessing</a></li>
-                <li><a class="dropdown-item" href="#">Hulling</a></li> 
+                <li><a class="dropdown-item" href="hullerDisplay.php">Hulling</a></li> 
               </ul>
             </div>
           </li>
@@ -96,6 +97,10 @@ $_SESSION["dbname"] = "factory";
                 <li><a class="dropdown-item" href="activtySheet.html">Services</a></li>
                 <li><a class="dropdown-item" href="roasteryDeliveryNote.html">Dispatch</a></li> -->
               </ul>
+
+              <li class="nav-item">
+            <a href="logout.php" class="nav-link">Log out</a>
+          </li>
             </div>
           </li>
         </ul>

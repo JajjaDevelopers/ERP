@@ -21,7 +21,7 @@
         <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contact us</h5>
         <p><i class="fas fa-home mr-3"></i><a href="#" class="text white ms-3" style="text-decoration:none;" >Plot 385 
            2nd Floor, Elgon House</a></p>
-        <p><i class="fas fa-envelope mr-3"></i><a href="mailto:mechtechelectric@gmail.com" class="text white ms-3" style="text-decoration:none;">Jajjadev.tech.com</a></p>
+        <p><i class="fas fa-envelope mr-3"></i><a href="mailto:mechtechelectric@gmail.com" class="text white ms-3" style="text-decoration:none;">jajjadev.tech</a></p>
         <p><i class="fas fa-phone mr-3"></i><a href="tel:+256750869022" class="text white ms-3" style="text-decoration:none;">+256 750 869 022</a></p>
     </div>
     <hr class="mb-4">

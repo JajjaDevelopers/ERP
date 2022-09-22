@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: whitesmoke;
+    background-color:#6F4E37;
     margin: 0%;
     padding: 0%;
 }
@@ -495,8 +495,7 @@ td{
     height: auto;
 }
 .approvalLabel{
-    border: 2px solid;
-    border-radius: 5px;
+    text-align: center;
     padding: 2px;
 }
 .approveInput{

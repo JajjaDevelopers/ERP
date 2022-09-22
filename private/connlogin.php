@@ -1,8 +1,8 @@
 <?php
 $server="localhost";
-$db="nucafelogin";
+$db="factory";
 $user="root";
-$pwd="";
+$pwd="root";
 $charset="utf8mb4";
 
 $options=[

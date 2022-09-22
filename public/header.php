@@ -61,7 +61,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
                 <li><a class="dropdown-item" href="roasterydispatch.php">Dispatch</a></li>
                 <li><a class="dropdown-item" href="#">Transfer</a></li>
                 <li><a class="dropdown-item" href="#">Reprocessing</a></li>
-                <li><a class="dropdown-item" href="#">Hulling</a></li> 
+                <li><a class="dropdown-item" href="hullerDisplay.php">Hulling</a></li> 
               </ul>
             </div>
           </li>

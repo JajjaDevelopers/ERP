@@ -22,11 +22,11 @@ function batchSummary(){
     global $conn;
     $sql = $conn->prepare("INSERT INTO batch_reports_summary (batch_order_no, batch_report_date, mc_out, comment, offtaker) 
             VALUES (?, ?, ?, ?, ?)");
-    $orderNo = sanitize_table($_POST['batchOrderNumber']);
-    $reportDate = sanitize_table($_POST['batchReportDate']);
-    $mcOut = sanitize_table($_POST['batchReportMcOut']);
-    $comment = sanitize_table($_POST['remarks']);
-    $offtaker = sanitize_table($_POST['batchReportOfftaker']);
+    $orderNo = intval($_POST['batchOrderNumber']);
+    $reportDate = ($_POST['batchReportDate']);
+    $mcOut = ($_POST['batchReportMcOut']);
+    $comment = ($_POST['remarks']);
+    $offtaker = ($_POST['batchReportOfftaker']);
     $sql->bind_param("isdss", $orderNo, $reportDate, $mcOut, $comment, $offtaker);
     $sql->execute();
     $conn->rollback();

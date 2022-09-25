@@ -2,7 +2,7 @@
 session_start();
 $_SESSION["servername"] = "localhost";
 $_SESSION["username"] = "root";
-$_SESSION["password"] = "root";
+$_SESSION["password"] = "";
 $_SESSION["dbname"] = "factory";
 
 $servername = $_SESSION["servername"];

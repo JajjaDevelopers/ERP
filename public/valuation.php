@@ -29,7 +29,7 @@
                 style="width: 100px; text-align: center;"><br>'
         ?>
 
-
+        
         <label for="valuationDate" id="valuationNumberLabel" class="valuationLabel" >Date:</label>
         
         <input type="date" id="valuationDate" name="valuationDate" class="shortInput" style="width: 100px; text-align: center;"><br>
@@ -38,7 +38,8 @@
         <input type="text" id="valuationGrnNumber" class="shortInput" style="width: 100px; text-align: center;"><br>
         
         <label for="batchNo" id="batchNoLabel" class="valuationLabel" >Batch No:</label>
-        <input type="number" id="batchNo" name="batchNo" class="shortInput" value="VAL-100001" style="width: 100px; text-align: center;">
+        <input type="number" id="batchNo" name="batchNo" class="shortInput" value="VAL-100001" style="width: 100px; text-align: center;"
+        onchange="updateOrder(this.value)">
     </div>
     <div>
         <label for="valuationSupplier" id="valuationSupplierLabel" class="regularLabel">Supplier:</label>
@@ -48,25 +49,25 @@
         <input type="text" id="valuationSupplier" name="valuationSupplier" class="longInputField" readonly value="" style="margin: 0px; width: 300px">
 
         <?php
-            echo '<select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
+            echo '<select id="valuationClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
             onchange="updateOrder(this.value)">';
                 
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
 
-                $sql = "SELECT batch_report_no, customer_id ,customer_name, grn_no, contact_person, telephone
+                $sql = "SELECT batch_report_no, customer_name, grade_name, batch_order_input_qty
                         FROM batch_reports_summary
                         JOIN batch_processing_order USING (batch_order_no)
-                        JOIN customer USING (customer_id)
                         JOIN grn USING (batch_order_no)
-                        WHERE (processed=0)";
+                        JOIN customer USING (customer_id)
+                        WHERE (valuation_status=0 AND offtaker='NUCAFE')";
                 $getList = $conn->query($sql);
                 $row = mysqli_fetch_all($getList);
-                echo "<option></option>";
-                for ($customer=0; $customer<count($row); $customer++){
+                echo "<option>Select Batch to Value</option>";
+                for ($supplier=0; $supplier<count($row); $supplier++){
                     
-                    echo "<option>".$row[$customer][0]."--".$row[$customer][1]."--".$row[$customer][2]."--".$row[$customer][3]." Kg"."</option>";
+                    echo "<option>".$row[$supplier][0]."--".$row[$supplier][1]."--".$row[$supplier][2]."--".$row[$supplier][3]." Kg"."</option>";
                 }
 
             echo '</select><br>';
@@ -82,10 +83,8 @@
         <label for="valuationTelephone" id="valuationTelephoneLabel" class="regularLabel" style="padding-left: 20px;">Telephone:</label>
         <input type="tel" id="valuationTelephone" class="longInputField" style=" width:150px"><br>
     </div>
-    <div style="padding-top: 20px;">
-        <div id="testDiv">
-
-        </div>
+    <div id="ajaxDiv" style="display: none;"></div>
+    
         <table id="valuationsTable">
             <tr>
                 <th colspan="8">VALUATION SCHEDULE</th>
@@ -274,16 +273,16 @@
     function updateOrder(str){
         
         
-        var selectedClient = document.getElementById('batchReportClient').value;
-        var orderNo = selectedClient.slice(0,4);
-        var batchOrderNumber =  document.getElementById('batchOrderNumber')
-        var x = Number(orderNo);
-        batchOrderNumber.setAttribute('value', (orderNo));
+        var selectedClient = document.getElementById('valuationClient').value;
+        var batchNo = selectedClient.slice(0,6);
+        var batchOrderNumber =  document.getElementById('batchNo')
+        var x = Number(batchNo);
+        batchOrderNumber.setAttribute('value', (batchNo));
         
         
         if (str == "") {
             document.getElementById("customerId").setAttribute('value', '');
-            document.getElementById("customerName").setAttribute('value', '');
+            document.getElementById("valuationSupplier").setAttribute('value', '');
             return;
         } 
         const xhttp = new XMLHttpRequest();
@@ -291,24 +290,30 @@
         xhttp.onload = function() {
             document.getElementById("ajaxDiv").innerHTML = this.responseText;
 
-            var ajaxCustomerName = document.getElementById("ajaxCustomerName").value;
-            document.getElementById("customerName").setAttribute('value', ajaxCustomerName);
-
-            var ajaxCustomerId = document.getElementById("ajaxCustomerId").value;
+            var ajaxCustomerId = document.getElementById("cid").value;
             document.getElementById("customerId").setAttribute('value', ajaxCustomerId);
 
-            var ajaxInputQty = document.getElementById("ajaxInputQty").value;
-            document.getElementById("inputQty").setAttribute('value', ajaxInputQty);
+            var ajaxCustomerName = document.getElementById("name").value;
+            document.getElementById("valuationSupplier").setAttribute('value', ajaxCustomerName);
 
-            var ajaxMcIn = document.getElementById("ajaxMcIn").value;
-            document.getElementById("batchReportMcIn").setAttribute('value', ajaxMcIn);
-            document.getElementById("batchReportMcOut").setAttribute('value', ajaxMcIn);
+            var ajaxInputContactPerson = document.getElementById("contactPerson").value;
+            document.getElementById("valuationContactPerson").setAttribute('value', ajaxInputContactPerson);
 
-            var ajaxInputGrade = document.getElementById("ajaxInputGrade").value;
-            document.getElementById("inputGrade").setAttribute('value', ajaxInputGrade);
+            var ajaxTel = document.getElementById("tel").value;
+            document.getElementById("valuationTelephone").setAttribute('value', ajaxTel);
+            
+
+            var ajaxGrnNo= document.getElementById("grnNo").value;
+            document.getElementById("valuationGrnNumber").setAttribute('value', ajaxGrnNo);
+
+            // var ajaxInputGrade = document.getElementById("gradeName").value;
+            // document.getElementById("FAQQty").setAttribute('value', ajaxInputGrade);
+
+            var ajaxInputQty = document.getElementById("inputQty").value;
+            document.getElementById("FAQQty").setAttribute('value', ajaxInputQty);
 
         }
-        xhttp.open("GET", "ajax/batchReportAjax.php?q="+str);
+        xhttp.open("GET", "ajax/valuationAjax.php?q="+str);
         xhttp.send();
         
         // xhttp.onload = function() {

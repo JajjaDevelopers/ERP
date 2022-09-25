@@ -1,6 +1,6 @@
 
 <?php include_once ("header.php");?>
-<form id="batchReportForm" class="regularForm"action="../private/batchReportHandler.php" method="POST" style="width: 900px;">
+<form id="batchReportForm" class="regularForm"action="../connection/batchReport.php" method="POST" style="width: 900px;">
     <h3 id="batchReportHeading" class="formHeading">Production Report</h3>
     <div style="display: grid;">
         <div style="grid-row: 2; grid-column: 1; padding-top: 50px; margin-bottom: 5px; ">
@@ -74,7 +74,7 @@
             ?>
             
             <label for="batchOrderNumber">Order No.:</label>
-            <input type="number" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" readonly onchange="batchSummary(this.value)">
+            <input type="number" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" readonly value="" onchange="batchSummary(this.value)">
             <br>
             <label for="batchReportDate">Date:</label>
             <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate">
@@ -209,25 +209,25 @@
             <tr>
                 <td id="blacks18Name" name="blacks18Name" class="batchItemLabel">Black Beans Screen 1800</td>
                 <td><input type="number" id="blacks18Bags" readonly name="blacks18Bags" class="tableInput"></td>
-                <td><input type="number" id="blacks18Qty" name="blacks18Bags" class="tableInput"></td>
+                <td><input type="number" id="blacks18Qty" name="blacks18Qty" class="tableInput"></td>
                 <td><input type="number" id="blacks18Per" readonly name="blacks18Bags" class="tableInput"></td>
             </tr>
             <tr>
                 <td id="blacks17Name" name="blacks17Name" class="batchItemLabel">Black Beans Screen 1700</td>
                 <td><input type="number" id="blacks17Bags" readonly name="blacks17Bags" class="tableInput"></td>
-                <td><input type="number" id="blacks17Qty" name="blacks17Bags" class="tableInput"></td>
+                <td><input type="number" id="blacks17Qty" name="blacks17Qty" class="tableInput"></td>
                 <td><input type="number" id="blacks17Per" readonly name="blacks17Bags" class="tableInput"></td>
             </tr>
             <tr>
                 <td id="blacks15Name" name="blacks15Name" class="batchItemLabel">Black Beans Screen 1500</td>
                 <td><input type="number" id="blacks15Bags" readonly name="blacks15Bags" class="tableInput"></td>
-                <td><input type="number" id="blacks15Qty" name="blacks15Bags" class="tableInput"></td>
+                <td><input type="number" id="blacks15Qty" name="blacks15Qty" class="tableInput"></td>
                 <td><input type="number" id="blacks15Per" readonly name="blacks15Bags" class="tableInput"></td>
             </tr>
             <tr>
                 <td id="blacks12Name" name="blacks12Name" class="batchItemLabel">Black Beans Screen 1200</td>
                 <td><input type="number" id="blacks12Bags" readonly name="blacks12Bags" class="tableInput"></td>
-                <td><input type="number" id="blacks12Qty" name="blacks12Bags" class="tableInput"></td>
+                <td><input type="number" id="blacks12Qty" name="blacks12Qty" class="tableInput"></td>
                 <td><input type="number" id="blacks12Per" readonly name="blacks12Bags" class="tableInput"></td>
             </tr>
             <tr>

@@ -1,5 +1,5 @@
 <?php include_once('header.php'); ?>
-<form id="valuationForm" name="valuationForm" class="regularForm" style="height: 930px;" method="POST" action="../private/valuationHandler.php">
+<form id="valuationForm" name="valuationForm" class="regularForm" style="height: 930px;" method="POST" action="../connection/valuation.php">
     <h3 class="formHeading">VALUATION REPORT</h3>
     <div style="padding: 15px 5px 5px 70%;">
         <label for="valuationNumber" id="valuationNumberLabel" class="valuationLabel" >Valuation No.:</label>
@@ -42,7 +42,41 @@
     </div>
     <div>
         <label for="valuationSupplier" id="valuationSupplierLabel" class="regularLabel">Supplier:</label>
-        <input type="text" id="valuationSupplier" name="valuationSupplier" class="longInputField" style="width: 400px;"><br>
+        <!-- <input type="text" id="valuationSupplier" name="valuationSupplier" class="longInputField" style="width: 400px;"><br> -->
+
+        <input type="text" id="customerId" name="customerId" class="shortInput" readonly value="" style="margin: 0px; width: 70px">
+        <input type="text" id="valuationSupplier" name="valuationSupplier" class="longInputField" readonly value="" style="margin: 0px; width: 300px">
+
+        <?php
+            echo '<select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
+            onchange="updateOrder(this.value)">';
+                
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT batch_report_no, customer_id ,customer_name, grn_no, contact_person, telephone
+                        FROM batch_reports_summary
+                        JOIN batch_processing_order USING (batch_order_no)
+                        JOIN customer USING (customer_id)
+                        JOIN grn USING (batch_order_no)
+                        WHERE (processed=0)";
+                $getList = $conn->query($sql);
+                $row = mysqli_fetch_all($getList);
+                echo "<option></option>";
+                for ($customer=0; $customer<count($row); $customer++){
+                    
+                    echo "<option>".$row[$customer][0]."--".$row[$customer][1]."--".$row[$customer][2]."--".$row[$customer][3]." Kg"."</option>";
+                }
+
+            echo '</select><br>';
+            
+        ?>
+
+
+
+
+
         <label for="valuationContactPerson" id="valuationContactPersonLabel" class="regularLabel">Contact Person:</label>
         <input type="text" id="valuationContactPerson" class="longInputField">
         <label for="valuationTelephone" id="valuationTelephoneLabel" class="regularLabel" style="padding-left: 20px;">Telephone:</label>
@@ -235,5 +269,56 @@
     </div>
     <?php include_once("../private/approvalDetails.php"); ?>
 </form>
+<!-- summarizing valuation info -->
+<script>
+    function updateOrder(str){
+        
+        
+        var selectedClient = document.getElementById('batchReportClient').value;
+        var orderNo = selectedClient.slice(0,4);
+        var batchOrderNumber =  document.getElementById('batchOrderNumber')
+        var x = Number(orderNo);
+        batchOrderNumber.setAttribute('value', (orderNo));
+        
+        
+        if (str == "") {
+            document.getElementById("customerId").setAttribute('value', '');
+            document.getElementById("customerName").setAttribute('value', '');
+            return;
+        } 
+        const xhttp = new XMLHttpRequest();
+        // Changing customer namne
+        xhttp.onload = function() {
+            document.getElementById("ajaxDiv").innerHTML = this.responseText;
+
+            var ajaxCustomerName = document.getElementById("ajaxCustomerName").value;
+            document.getElementById("customerName").setAttribute('value', ajaxCustomerName);
+
+            var ajaxCustomerId = document.getElementById("ajaxCustomerId").value;
+            document.getElementById("customerId").setAttribute('value', ajaxCustomerId);
+
+            var ajaxInputQty = document.getElementById("ajaxInputQty").value;
+            document.getElementById("inputQty").setAttribute('value', ajaxInputQty);
+
+            var ajaxMcIn = document.getElementById("ajaxMcIn").value;
+            document.getElementById("batchReportMcIn").setAttribute('value', ajaxMcIn);
+            document.getElementById("batchReportMcOut").setAttribute('value', ajaxMcIn);
+
+            var ajaxInputGrade = document.getElementById("ajaxInputGrade").value;
+            document.getElementById("inputGrade").setAttribute('value', ajaxInputGrade);
+
+        }
+        xhttp.open("GET", "ajax/batchReportAjax.php?q="+str);
+        xhttp.send();
+        
+        // xhttp.onload = function() {
+        //     document.getElementById("customerName").value = this.responseText;
+        // }
+        // xhttp.open("GET", "ajax/batchReportAjax.php?q="+str);
+        // xhttp.send();
+        
+    }
+    
+</script>
 
 <?php include_once('footer.php');?>

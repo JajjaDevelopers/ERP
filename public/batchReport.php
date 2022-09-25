@@ -21,14 +21,21 @@
 
                 $sql = "SELECT batch_order_no, customer_name, grade_name, batch_order_input_qty, batch_order_mc
                         FROM batch_processing_order
-                        JOIN customer USING (customer_id) WHERE (processed=0)";
+                        JOIN grn USING (batch_order_no) 
+                        JOIN customer USING (customer_id) 
+                        WHERE (processed=0)";
                 $getList = $conn->query($sql);
                 $row = mysqli_fetch_all($getList);
-                echo "<option></option>";
-                for ($customer=0; $customer<count($row); $customer++){
-                    
-                    echo "<option>".$row[$customer][0]."--".$row[$customer][1]."--".$row[$customer][2]."--".$row[$customer][3]." Kg"."</option>";
+                if (count($row)==0){
+                    echo "<option>  There was no processing order found!</option>";
+                }else{
+                    echo "<option>Select Processing Order</option>";
+                    for ($customer=0; $customer<count($row); $customer++){
+                        
+                        echo "<option>".$row[$customer][0]."--".$row[$customer][1]."--".$row[$customer][2]."--".$row[$customer][3]." Kg"."</option>";
+                    }
                 }
+                
 
             echo '</select><br>';
                 
@@ -39,8 +46,8 @@
             
             <label for="batchReportOfftaker">Offtaker</label>
             <select id="batchReportOfftaker" class="shortInput" name="batchReportOfftaker">
-                <option>Self</option>
-                <option>Nucafe</option>
+                <option>SELF</option>
+                <option>NUCAFE</option>
             </select>
         </div>
         <div style="grid-row: 1; grid-column: 2;">
@@ -74,7 +81,7 @@
             ?>
             
             <label for="batchOrderNumber">Order No.:</label>
-            <input type="number" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" readonly value="" onchange="batchSummary(this.value)">
+            <input type="number" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" readonly value="" onchange="updateOrder(this.value)">
             <br>
             <label for="batchReportDate">Date:</label>
             <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate">

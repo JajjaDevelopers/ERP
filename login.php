@@ -16,7 +16,13 @@ require_once "header.php";
   {
     if($_GET["newpwd"]=="newpasswordupdated")
     {
-      echo "Thine password hast been updated successfully";
+      echo "Your have successfully updated your password";
+    }else if($_GET["newpwd"]=="empty")
+    {
+        echo "You submitted empty field! Please try again to reset password";
+    }else if($_GET["newpwd"]=="pwddonotmatch")
+    {
+        echo "Passwords did not match! Please try again to reset";
     }
  }
 ?>

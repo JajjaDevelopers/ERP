@@ -1,8 +1,9 @@
 <?php
-$server="localhost";
-$db="factory";
-$user="root";
-$pwd="";
+$server="premium33.web-hosting.com";
+// $port="3306";
+$db="jajjcrmv_jajjadev";
+$user="jajjcrmv_felix";
+$pwd="Melchizedek44@";
 $charset="utf8mb4";
 
 $options=[

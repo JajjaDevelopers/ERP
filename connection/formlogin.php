@@ -4,7 +4,7 @@ if(isset($_POST["submit"]))
   $username=$_POST["username"];
   $password=$_POST["password"];
 
-  include ("..\private\database.php");
+  include ("../private/database.php");
 
   if(loginInputEmpty($username,$password)!==false){
     header("location:../login.php?message=emptyinput");

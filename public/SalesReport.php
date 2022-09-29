@@ -1,3 +1,4 @@
+
 <?php include_once('header.php'); 
 // Fetch coffee grades from the system
 function CoffeeGrades(){

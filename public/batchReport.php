@@ -1,19 +1,22 @@
 
 <?php include_once ("header.php");?>
-<form id="batchReportForm" class="regularForm"action="../connection/batchReport.php" method="POST" style="width: 900px;">
+<form id="batchReportForm" class="regularForm"action="../private/batchReportHandler.php" method="POST">
     <h3 id="batchReportHeading" class="formHeading">Production Report</h3>
     <div style="display: grid;">
-        <div style="grid-row: 2; grid-column: 1; padding-top: 50px; margin-bottom: 5px; ">
+        <div style="grid-row: 1; grid-column: 1; padding-top: 50px; margin-bottom: 5px; ">
             <label for="batchReportClient">Client</label>
             <!-- <select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 350px;"
             onchange="updateOrder()"> -->
-
-            <input type="text" id="customerId" name="customerId" class="shortInput" readonly value="" style="margin: 0px; width: 70px">
-            <input type="text" id="customerName" name="customerName" class="longInputField" readonly value="" style="margin: 0px; width: 300px">
-
             <?php
-            echo '<select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
-            onchange="updateOrder(this.value)">';
+            echo '<select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 350px;"
+            onchange="updateOrder()">';
+                
+                $servername = "localhost";
+                $username = "root";
+                $password = "root";
+                $dbname = "factory";
+                
+                $conn = new mysqli($servername, $username, $password, $dbname);
                 
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
@@ -21,38 +24,51 @@
 
                 $sql = "SELECT batch_order_no, customer_name, grade_name, batch_order_input_qty, batch_order_mc
                         FROM batch_processing_order
-                        JOIN grn USING (batch_order_no) 
-                        JOIN customer USING (customer_id) 
-                        WHERE (processed=0)";
+                        JOIN customer USING (customer_id) WHERE (processed=0)";
                 $getList = $conn->query($sql);
                 $row = mysqli_fetch_all($getList);
-                if (count($row)==0){
-                    echo "<option>  There was no processing order found!</option>";
-                }else{
-                    echo "<option>Select Processing Order</option>";
-                    for ($customer=0; $customer<count($row); $customer++){
-                        
-                        echo "<option>".$row[$customer][0]."--".$row[$customer][1]."--".$row[$customer][2]."--".$row[$customer][3]." Kg"."</option>";
+                echo "<option></option>";
+                for ($customer=0; $customer<count($row); $customer++){
+                    
+                    echo "<option>".$row[$customer][0]."--".$row[$customer][1]."--".$row[$customer][2]."--".$row[$customer][3]." Kg"."</option>";
+                }
+
+            echo '</select><br>';
+            // Temporary elements to hold data for updating  on client selection
+            // echo '<label id="selectedCustomerName" style="display: none;">'.$row[$customer][1].'</label>';
+            // echo '<label id="selectedOrderNumber" style="display: none;" name="orderNumber">'.$row[$customer][0].'</label>';
+            // echo '<label id="selectedInputQty" style="display: none;">'.$row[$customer][3].'</label>';
+            // echo '<label id="selectedInputMc" style="display: none;"></label>';
+            ?>
+            <script>
+                function updateOrder(){
+                    var selectedClient = document.getElementById('batchReportClient').value;
+                    var orderNo = selectedClient.slice(0,4);
+                    var batchOrderNumber =  document.getElementById('batchOrderNumber')
+                    var x = Number(orderNo);
+                    if ((typeof(x)) === "number"){
+                        batchOrderNumber.setAttribute('value', (orderNo));
+                    } else if(typeof(x) === "string"){
+                        batchOrderNumber.setAttribute('value', "-");
                     }
                 }
                 
-
-            echo '</select><br>';
-                
-            ?>
-            
-            <div id="ajaxDiv" style="display: none;" ></div>
-            
-            
+            </script>
             <label for="batchReportOfftaker">Offtaker</label>
             <select id="batchReportOfftaker" class="shortInput" name="batchReportOfftaker">
-                <option>SELF</option>
-                <option>NUCAFE</option>
+                <option>Self</option>
+                <option>Nucafe</option>
             </select>
         </div>
         <div style="grid-row: 1; grid-column: 2;">
             <label for="batchReportNumber">Batch No.:</label>
             <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "root";
+            $dbname = "factory";
+            
+            $conn = new mysqli($servername, $username, $password, $dbname);
             
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
@@ -78,10 +94,12 @@
             // $newBatchNo = $row['lastNo'] +1 . '/21/2022';
             echo '<label id="batchReportNumber" class="shortInput" name="batchReportNumber">'.$newBatchNo .'</label>'.'<br>';
         
+            
+        
             ?>
             
             <label for="batchOrderNumber">Order No.:</label>
-            <input type="number" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" readonly value="" onchange="updateOrder(this.value)">
+            <input type="text" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" readonly onchange="updateClient(this.value)">
             <br>
             <label for="batchReportDate">Date:</label>
             <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate">
@@ -97,9 +115,8 @@
                     <th style="width: 100px;">KGs</th>
                 </tr>
                 <tr>
-                    <td>INPUT - <input type="text" id="inputGrade" name="inputQty" class="tableInput" readonly value=""
-                    style="width: 70px; text-align: left; "></td>
-                    <td><input type="number" id="inputQty" name="inputQty" class="tableInput" readonly value="0"></td>
+                    <td>INPUT FAQ</td>
+                    <td><input type="number" id="inputQty" name="inputQty" class="tableInput" value="0"></td>
                 </tr>
                 <tr>
                     <td>Add Spill.Priv.Batch</td>
@@ -115,8 +132,8 @@
                 </tr>
             </table>
             <div style="display: inline-block; grid-row: 1; grid-column: 2;">
-                Avg. MC In: <input type="number" id="batchReportMcIn" class="shortInput" name="batchReportMcIn" readonly style="width: 60px;">
-                Avg. MC Out: <input type="doubleval" id="batchReportMcOut" class="shortInput" name="batchReportMcOut" style="width: 60px;"><br>
+                Avg. MC In: <input type="number" id="batchReportMcIn" class="shortInput" name="batchReportMcIn" style="width: 60px;">
+                Avg. MC Out: <input type="doubleval" id="batchReportMcIn" class="shortInput" name="batchReportMcOut" style="width: 60px;"><br>
                 Remarks:<br><textarea name="remarks" style="width: 300px; padding: 3px " placeholder="Any comment or remarks"></textarea>
             </div>
         </div>
@@ -216,25 +233,25 @@
             <tr>
                 <td id="blacks18Name" name="blacks18Name" class="batchItemLabel">Black Beans Screen 1800</td>
                 <td><input type="number" id="blacks18Bags" readonly name="blacks18Bags" class="tableInput"></td>
-                <td><input type="number" id="blacks18Qty" name="blacks18Qty" class="tableInput"></td>
+                <td><input type="number" id="blacks18Qty" name="blacks18Bags" class="tableInput"></td>
                 <td><input type="number" id="blacks18Per" readonly name="blacks18Bags" class="tableInput"></td>
             </tr>
             <tr>
                 <td id="blacks17Name" name="blacks17Name" class="batchItemLabel">Black Beans Screen 1700</td>
                 <td><input type="number" id="blacks17Bags" readonly name="blacks17Bags" class="tableInput"></td>
-                <td><input type="number" id="blacks17Qty" name="blacks17Qty" class="tableInput"></td>
+                <td><input type="number" id="blacks17Qty" name="blacks17Bags" class="tableInput"></td>
                 <td><input type="number" id="blacks17Per" readonly name="blacks17Bags" class="tableInput"></td>
             </tr>
             <tr>
                 <td id="blacks15Name" name="blacks15Name" class="batchItemLabel">Black Beans Screen 1500</td>
                 <td><input type="number" id="blacks15Bags" readonly name="blacks15Bags" class="tableInput"></td>
-                <td><input type="number" id="blacks15Qty" name="blacks15Qty" class="tableInput"></td>
+                <td><input type="number" id="blacks15Qty" name="blacks15Bags" class="tableInput"></td>
                 <td><input type="number" id="blacks15Per" readonly name="blacks15Bags" class="tableInput"></td>
             </tr>
             <tr>
                 <td id="blacks12Name" name="blacks12Name" class="batchItemLabel">Black Beans Screen 1200</td>
                 <td><input type="number" id="blacks12Bags" readonly name="blacks12Bags" class="tableInput"></td>
-                <td><input type="number" id="blacks12Qty" name="blacks12Qty" class="tableInput"></td>
+                <td><input type="number" id="blacks12Qty" name="blacks12Bags" class="tableInput"></td>
                 <td><input type="number" id="blacks12Per" readonly name="blacks12Bags" class="tableInput"></td>
             </tr>
             <tr>
@@ -323,65 +340,16 @@
                 <th class="batchItemLabel">ORIGIN / CLIENT</th>
             </tr>
             <tr>
-                <td><input type="date" id="batchSummaryDate" readonly name="batchSummaryDate" class="tableInput"></td>
-                <td><input type="number" id="batchSummarGrn" readonly name="batchSummarGrn" class="tableInput"></td>
-                <td><input type="number" id="batchSummarMc" readonly name="batchSummarMc" class="tableInput"></td>
-                <td><input type="number" id="batchSummarQty" readonly name="batchSummarQty" class="tableInput"></td>
-                <td><input type="text" id="batchSummarClient" readonly name="batchSummarClient" class="tableInput"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
     </div>
-    <?php include_once("../private/approvalDetails.php"); ?>
+    <button type="submit" class="btn btn-primary btn-lg">Record</button>
 </form>
-<script>
-    function updateOrder(str){
-        
-        
-        var selectedClient = document.getElementById('batchReportClient').value;
-        var orderNo = selectedClient.slice(0,4);
-        var batchOrderNumber =  document.getElementById('batchOrderNumber')
-        var x = Number(orderNo);
-        batchOrderNumber.setAttribute('value', (orderNo));
-        
-        
-        if (str == "") {
-            document.getElementById("customerId").setAttribute('value', '');
-            document.getElementById("customerName").setAttribute('value', '');
-            return;
-        } 
-        const xhttp = new XMLHttpRequest();
-        // Changing customer namne
-        xhttp.onload = function() {
-            document.getElementById("ajaxDiv").innerHTML = this.responseText;
 
-            var ajaxCustomerName = document.getElementById("ajaxCustomerName").value;
-            document.getElementById("customerName").setAttribute('value', ajaxCustomerName);
-
-            var ajaxCustomerId = document.getElementById("ajaxCustomerId").value;
-            document.getElementById("customerId").setAttribute('value', ajaxCustomerId);
-
-            var ajaxInputQty = document.getElementById("ajaxInputQty").value;
-            document.getElementById("inputQty").setAttribute('value', ajaxInputQty);
-
-            var ajaxMcIn = document.getElementById("ajaxMcIn").value;
-            document.getElementById("batchReportMcIn").setAttribute('value', ajaxMcIn);
-            document.getElementById("batchReportMcOut").setAttribute('value', ajaxMcIn);
-
-            var ajaxInputGrade = document.getElementById("ajaxInputGrade").value;
-            document.getElementById("inputGrade").setAttribute('value', ajaxInputGrade);
-
-        }
-        xhttp.open("GET", "ajax/batchReportAjax.php?q="+str);
-        xhttp.send();
-        
-        // xhttp.onload = function() {
-        //     document.getElementById("customerName").value = this.responseText;
-        // }
-        // xhttp.open("GET", "ajax/batchReportAjax.php?q="+str);
-        // xhttp.send();
-        
-    }
-    
-</script>
 <?php include_once ("footer.php")?>
 

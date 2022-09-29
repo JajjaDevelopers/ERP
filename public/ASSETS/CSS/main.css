@@ -89,7 +89,7 @@ h1{
     grid-column-start: 1;
     grid-column-end: 4;
     text-align: center;
-    font-size:xx-large ;
+    font-size: medium;
 }
 #departmentMenuTitle{
     margin: 10px 0px 0px 0px;
@@ -495,7 +495,8 @@ td{
     height: auto;
 }
 .approvalLabel{
-    text-align: center;
+    border: 2px solid;
+    border-radius: 5px;
     padding: 2px;
 }
 .approveInput{
@@ -568,12 +569,6 @@ td{
     background-color: inherit;
 }
 .tableInput{
-    text-align: right;
-    border: none;
-    width: 100%;
-    height: 20px;
-}
-.tableTextInput{
     text-align: right;
     border: none;
     width: 100%;
@@ -670,3 +665,4 @@ td{
     
 
 }
+  }

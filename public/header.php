@@ -1,15 +1,6 @@
 <?php
 session_start();
-$_SESSION["servername"] = "localhost";
-$_SESSION["username"] = "root";
-$_SESSION["password"] = "";
-$_SESSION["dbname"] = "factory";
 
-$servername = $_SESSION["servername"];
-$username = $_SESSION["username"];
-$password = $_SESSION["password"];
-$dbname = $_SESSION["dbname"];
-$conn = new mysqli($servername, $username, $password, $dbname);
 
 ?>
 <!DOCTYPE html>
@@ -31,6 +22,10 @@ $conn = new mysqli($servername, $username, $password, $dbname);
     <link rel="stylesheet" href=".\ASSETS\CSS\main.css">
 </head>
 <body>
+<?php
+
+
+?>
          <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-secondary navbar-dark" style="background-color: green;">
     <div class="container">
@@ -61,7 +56,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
                 <li><a class="dropdown-item" href="roasterydispatch.php">Dispatch</a></li>
                 <li><a class="dropdown-item" href="#">Transfer</a></li>
                 <li><a class="dropdown-item" href="#">Reprocessing</a></li>
-                <li><a class="dropdown-item" href="hullerDisplay.php">Hulling</a></li> 
+                <li><a class="dropdown-item" href="#">Hulling</a></li> 
               </ul>
             </div>
           </li>

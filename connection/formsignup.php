@@ -1,5 +1,5 @@
 <?php
-include_once("..\private\database.php");//database connection details
+include_once("../private/database.php");//database connection details
 
 if(isset($_POST["submit"]))//checking whether user has submited info
 { 

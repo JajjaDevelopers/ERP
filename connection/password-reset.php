@@ -4,24 +4,26 @@ if(isset($_POST["reset-password-submit"]))
 {
   $selector=$_POST["selector"];
   $validator=$_POST["validator"];
-  $pwd=$_POST["pwd"];
+  $pas=$_POST["pwd"];
   $pwdRepeat=$_POST["pwdRepeat"];
+  
 
-  if(empty($pwd) || empty($pwdRepeat))
+  if(empty($pas) || empty($pwdRepeat))
   {
-    header("location:../create-new-password.php?newpwd=empty");
+    header("location:../login.php?newpwd=empty");
     exit();
   }
-  else if($pwd !== $pwdRepeat)
+  else if
+  ($pas !== $pwdRepeat)
   {
-    header("location:../create-new-password.php?newpwd=pwddonotmatch");
+    header("location:../login.php?newpwd=pwddonotmatch");
     exit();
   }
 
   $currentDate= date("U");
 
   require "../private/connlogin.php";
-  $query="SELECT * FROM pwdReset WHERE pwdResetSelector=? AND pwdResetExpires >=?;";
+  $query="SELECT * FROM pwdreset WHERE pwdResetSelector=? AND pwdResetExpires >=?;";
 
   $stmt=$pdo->prepare($query);
 
@@ -32,16 +34,16 @@ if(isset($_POST["reset-password-submit"]))
   } else
   {
    
-   $stmt->bindParam(1,$selector,PDO::PARAM_STR);
-   $stmt->bindParam(2,$currentDate,PDO::PARAM_INT);
-   $stmt->execute();
+  $stmt->bindParam(1,$selector,PDO::PARAM_STR);
+  $stmt->bindParam(2,$currentDate,PDO::PARAM_INT);
+  $stmt->execute();
 
-   $row=$stmt->fetch(PDO::FETCH_ASSOC);
-   if(!$row)
-   {
+  $row=$stmt->fetch(PDO::FETCH_ASSOC);
+  if(!$row)
+  {
     echo "An expected error occured and you need to resubmit your request";
     exit();
-   } else {
+  } else {
 
     $tokenBin=hex2bin($validator);
     $tokenCheck=password_verify($tokenBin,$row["pwdResetToken"]);
@@ -74,7 +76,7 @@ if(isset($_POST["reset-password-submit"]))
          exit();
         } else {
 
-          $query="UPDATE users SET usersPwd=? WHERE usersEmail=?;";
+          $query="UPDATE members SET UserPassword=? WHERE EmailAddress=?;";
           $stmt=$pdo->prepare($query);
 
           if(!$stmt)
@@ -83,14 +85,15 @@ if(isset($_POST["reset-password-submit"]))
             exit();
           } else
           {
-            $hashedNewPwd=password_hash($pwd,PASSWORD_DEFAULT);
+            $hashedNewPwd=password_hash($pas,PASSWORD_DEFAULT);
           
             $stmt->bindParam(1,$hashedNewPwd,PDO::PARAM_STR);
             $stmt->bindParam(2,$tokenEmail,PDO::PARAM_STR);
             $stmt->execute();
 
-            $query="DELETE FROM pwdReset WHERE pwdResetEmail=?;";
-            $stmt->$pdo->prepare($query);
+    ;
+             $query="DELETE FROM pwdreset WHERE pwdResetEmail=?";
+             $stmt=$pdo->prepare($query);
   
             if(!$stmt)
             {
@@ -101,7 +104,7 @@ if(isset($_POST["reset-password-submit"]))
         
               $stmt->bindParam(1,$tokenEmail,PDO::PARAM_STR);
               $stmt->execute();
-              header("Location:../signup.php?newpwd=newpasswordupdated");
+              header("Location:../login.php?newpwd=newpasswordupdated");
               exit();
             }
 
@@ -113,7 +116,7 @@ if(isset($_POST["reset-password-submit"]))
       }
     }
 
-   }
+  }
 
   }
 

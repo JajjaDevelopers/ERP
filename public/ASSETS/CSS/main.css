@@ -661,3 +661,12 @@ td{
   .batchItemPercent{
     width: 50px;
   }
+#salesReportNotes{
+    resize: vertical;
+    margin:5px;
+    max-height: 50px;
+    min-height: 30px;
+    padding: 5px 10px;
+    
+
+}

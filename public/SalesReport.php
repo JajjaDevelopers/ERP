@@ -41,9 +41,9 @@ function GetCustomerList(){
 }
 
 ?>
-
-<form id="salesReportForm" name="salesReportForm" class="regularForm" style="height: 700px; width:900px" method="POST" action="../private/SalesReportHandler.php">
-    <h2 class="formHeading">Sales Report</h2>
+<script src=".\ASSETS\SCRIPTS\salesreport.js"></script>
+<form id="salesReportForm" name="salesReportForm" class="regularForm" style="height: 800px; width:900px" method="POST" action="../connection/salesreport.php">
+    <h2 class="formHeading">SALES REPORT</h2>
     <div style="margin-left: 70%;">
         <label for="salesReportNumber" id="salesReportNumberLabel" class="salesReportLabel" >Sales No.:</label>
         <input type="text" id="salesReportNumber" readonly class="shortInput" style="width: 100px; text-align: center;"
@@ -77,6 +77,13 @@ function GetCustomerList(){
             <option value="Local">Local Sale</option>
             <option value="Export">Export</option>
         </select>
+
+        <label for="salesReportCurrency" class="salesReportLabel">Currency:</label>
+        <select id="salesReportCurrency" class="longInputField" name="salesReportCurrency" style="width: 100px;">
+            <option value="UGX">UGX</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+        </select>
         
     </div>
     <div>
@@ -93,9 +100,9 @@ function GetCustomerList(){
             
             <tr>
                 <td>
-                    <div id="item1Field" style="display: grid;">
-                        <input type="text" value="" id="item1Code" name="item1Code" class="itmNameInput" style="grid-column: 1; width: 60px">
-                        <input type="text" value="" id="item1Name" name="item1Name" class="itmNameInput" style="grid-column: 2; width: 270px">
+                    <div id="item1Field" style="display: grid;" class="itemName">
+                        <input type="text" value="" id="item1Code" readonly name="item1Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item1Name" readonly name="item1Name" class="itmNameInput" style="grid-column: 2; width: 330px">
                         <select id="item1Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="setCodeAndName(this.id)">
                             <?php CoffeeGrades(); ?>
                         </select>
@@ -105,14 +112,14 @@ function GetCustomerList(){
                 <td><input type="text" value="" id="item1Batch" name="item1Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item1UsdPx" name="item1UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item1UgxPx" name="item1UgxPx" class="tableInput"></td>
-                <td><input type="number" value="" id="item1UsdAmount" name="item1UsdAmount" class="tableInput"></td>
-                <td><input type="number" value="" id="item1UgxAmount" name="item1UgxAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item1UsdAmount" readonly name="item1UsdAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item1UgxAmount" readonly name="item1UgxAmount" class="tableInput"></td>
             </tr>
             <tr>
                 <td>
                     <div id="item2Field" style="display: grid;">
-                        <input type="text" value="" id="item2Code" name="item2Code" class="itmNameInput" style="grid-column: 1; width: 60px">
-                        <input type="text" value="" id="item2Name" name="item2Name" class="itmNameInput" style="grid-column: 2; width: 270px" >
+                        <input type="text" value="" id="item2Code" readonly name="item2Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item2Name" readonly name="item2Name" class="itmNameInput" style="grid-column: 2; width: 330px" >
                         <select id="item2Select" style="margin-left: 0px; width: 20px; grid-column: 3;" onchange="setCodeAndName(this.id)">
                         <?php CoffeeGrades(); ?>
                         </select>
@@ -122,14 +129,14 @@ function GetCustomerList(){
                 <td><input type="text" value="" id="item2Batch" name="item2Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item2UsdPx" name="item2UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item2UgxPx" name="item2UgxPx" class="tableInput"></td>
-                <td><input type="number" value="" id="item2UsdAmount" name="item2UsdAmount" class="tableInput"></td>
-                <td><input type="number" value="" id="item2UgxAmount" name="item2UgxAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item2UsdAmount" readonly name="item2UsdAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item2UgxAmount" readonly name="item2UgxAmount" class="tableInput"></td>
             </tr>
             <tr>
                 <td>
                     <div id="item3Field"  style="display: grid;">
-                        <input type="text" value="" id="item3Code" name="item3Code" class="itmNameInput" style="grid-column: 1; width: 60px">
-                        <input type="text" value="" id="item3Name" name="item3Name" class="itmNameInput" style="grid-column: 2; width: 270px">
+                        <input type="text" value="" id="item3Code" readonly name="item3Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item3Name" readonly name="item3Name" class="itmNameInput" style="grid-column: 2; width: 330px">
                         <select id="item3Select" style="margin-left: 0px; width: 20px; grid-column: 3;" onchange="setCodeAndName(this.id)">
                         <?php CoffeeGrades(); ?>
                         </select>
@@ -139,14 +146,14 @@ function GetCustomerList(){
                 <td><input type="text" value="" id="item3Batch" name="item3Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item3UsdPx" name="item3UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item3UgxPx" name="item3UgxPx" class="tableInput"></td>
-                <td><input type="number" value="" id="item3UsdAmount" name="item3UsdAmount" class="tableInput"></td>
-                <td><input type="number" value="" id="item3UgxAmount" name="item3UgxAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item3UsdAmount" readonly name="item3UsdAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item3UgxAmount" readonly name="item3UgxAmount" class="tableInput"></td>
             </tr>
             <tr>
                 <td >
                     <div id="item4Field" style="display: grid;">
-                        <input type="text" value="" id="item4Code" name="item4Code" class="itmNameInput" style="grid-column: 1; width: 60px">
-                        <input type="text" value="" id="item4Name" name="item4Name" class="itmNameInput" style="grid-column: 2; width: 270px">
+                        <input type="text" value="" id="item4Code" readonly name="item4Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item4Name" readonly name="item4Name" class="itmNameInput" style="grid-column: 2; width: 330px">
                         <select id="item4Select" style="margin-left: 0px; width: 20px; grid-column: 3;" onchange="setCodeAndName(this.id)">
                         <?php CoffeeGrades(); ?>
                         </select>
@@ -156,14 +163,14 @@ function GetCustomerList(){
                 <td><input type="text" value="" id="item4Batch" name="item4Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item4UsdPx" name="item4UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item4UgxPx" name="item4UgxPx" class="tableInput"></td>
-                <td><input type="number" value="" id="item4UsdAmount" name="item4UsdAmount" class="tableInput"></td>
-                <td><input type="number" value="" id="item4UgxAmount" name="item4UgxAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item4UsdAmount" readonly name="item4UsdAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item4UgxAmount" readonly name="item4UgxAmount" class="tableInput"></td>
             </tr>
             <tr>
                 <td>
                     <div id="item5Field" style="display: grid;">
-                        <input type="text" value="" id="item5Code" name="item5Code" class="itmNameInput" style="grid-column: 1; width: 60px">
-                        <input type="text" value="" id="item5Name" name="item5Name" class="itmNameInput" style="grid-column: 2; width: 270px">
+                        <input type="text" value="" id="item5Code" readonly name="item5Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item5Name" readonly name="item5Name" class="itmNameInput" style="grid-column: 2; width: 330px">
                         <select id="item5Select" style="margin-left: 0px; width: 20px; grid-column: 3;" onchange="setCodeAndName(this.id)">
                         <?php CoffeeGrades(); ?>
                         </select>
@@ -173,14 +180,14 @@ function GetCustomerList(){
                 <td><input type="text" value="" id="item5Batch" name="item5Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item5UsdPx" name="item5UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item5UgxPx" name="item5UgxPx" class="tableInput"></td>
-                <td><input type="number" value="" id="item5UsdAmount" name="item5UsdAmount" class="tableInput"></td>
-                <td><input type="number" value="" id="item5UgxAmount" name="item5UgxAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item5UsdAmount" readonly name="item5UsdAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item5UgxAmount" readonly name="item5UgxAmount" class="tableInput"></td>
             </tr>
             <tr>
                 <td>
                     <div id="item6Field" style="display: grid;">
-                        <input type="text" value="" id="item6Code" name="item6Code" class="itmNameInput" style="grid-column: 1; width: 60px">
-                        <input type="text" value="" id="item6Name" name="item6Name" class="itmNameInput" style="grid-column: 2; width: 270px">
+                        <input type="text" value="" id="item6Code" readonly name="item6Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item6Name" readonly name="item6Name" class="itmNameInput" style="grid-column: 2; width: 330px">
                         <select id="item6Select" style="margin-left: 0px; width: 20px; grid-column: 3;" onchange="setCodeAndName(this.id)">
                         <?php CoffeeGrades(); ?>
                         </select>
@@ -190,14 +197,14 @@ function GetCustomerList(){
                 <td><input type="text" value="" id="item6Batch" name="item6Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item6UsdPx" name="item6UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item6UgxPx" name="item6UgxPx" class="tableInput"></td>
-                <td><input type="number" value="" id="item6UsdAmount" name="item6UsdAmount" class="tableInput"></td>
-                <td><input type="number" value="" id="item6UgxAmount" name="item6UgxAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item6UsdAmount" readonly name="item6UsdAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item6UgxAmount" readonly name="item6UgxAmount" class="tableInput"></td>
             </tr>
             <tr>
                 <td>
                     <div id="item7Field" style="display: grid;">
-                        <input type="text" value="" id="item7Code" name="item7Code" class="itmNameInput" style="grid-column: 1; width: 60px">
-                        <input type="text" value="" id="item7Name" name="item7Name" class="itmNameInput" style="grid-column: 2; width: 270px">
+                        <input type="text" value="" id="item7Code" readonly name="item7Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item7Name" readonly name="item7Name" class="itmNameInput" style="grid-column: 2; width: 330px">
                         <select id="item7Select" style="margin-left: 0px; width: 20px; grid-column: 3;" onchange="setCodeAndName(this.id)">
                         <?php CoffeeGrades(); ?>
                         </select>
@@ -207,14 +214,14 @@ function GetCustomerList(){
                 <td><input type="text" value="" id="item7Batch" name="item7Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item7UsdPx" name="item7UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item7UgxPx" name="item7UgxPx" class="tableInput"></td>
-                <td><input type="number" value="" id="item7UsdAmount" name="item7UsdAmount" class="tableInput"></td>
-                <td><input type="number" value="" id="item7UgxAmount" name="item7UgxAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item7UsdAmount" readonly name="item7UsdAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item7UgxAmount" readonly name="item7UgxAmount" class="tableInput"></td>
             </tr>
             <tr>
                 <td>
                     <div id="item8Field" style="display: grid;">
-                        <input type="text" value="" id="item8Code" name="item8Code" class="itmNameInput" style="grid-column: 1; width: 60px">
-                        <input type="text" value="" id="item8Name" name="item8Name" class="itmNameInput" style="grid-column: 2; width: 270px">
+                        <input type="text" value="" id="item8Code" readonly name="item8Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item8Name" readonly name="item8Name" class="itmNameInput" style="grid-column: 2; width: 330px">
                         <select id="item8Select" style="margin-left: 0px; width: 20px; grid-column: 3;" onchange="setCodeAndName(this.id)">
                         <?php CoffeeGrades(); ?>
                         </select>
@@ -224,14 +231,14 @@ function GetCustomerList(){
                 <td><input type="text" value="" id="item8Batch" name="item8Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item8UsdPx" name="item8UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item8UgxPx" name="item8UgxPx" class="tableInput"></td>
-                <td><input type="number" value="" id="item8UsdAmount" name="item8UsdAmount" class="tableInput"></td>
-                <td><input type="number" value="" id="item8UgxAmount" name="item8UgxAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item8UsdAmount" readonly name="item8UsdAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item8UgxAmount" readonly name="item8UgxAmount" class="tableInput"></td>
             </tr>
             <tr>
                 <td>
                     <div id="item9Field" style="display: grid;">
-                        <input type="text" value="" id="item9Code" name="item9Code" class="itmNameInput" style="grid-column: 1; width: 60px">
-                        <input type="text" value="" id="item9Name" name="item9Name" class="itmNameInput" style="grid-column: 2; width: 270px">
+                        <input type="text" value="" id="item9Code" readonly name="item9Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item9Name" readonly name="item9Name" class="itmNameInput" style="grid-column: 2; width: 330px">
                         <select id="item9Select" style="margin-left: 0px; width: 20px; grid-column: 3;" onchange="setCodeAndName(this.id)">
                         <?php CoffeeGrades(); ?>
                         </select>
@@ -241,14 +248,14 @@ function GetCustomerList(){
                 <td><input type="text" value="" id="item9Batch" name="item9Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item9UsdPx" name="item9UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item9UgxPx" name="item9UgxPx" class="tableInput"></td>
-                <td><input type="number" value="" id="item9UsdAmount" name="item9UsdAmount" class="tableInput"></td>
-                <td><input type="number" value="" id="item9UgxAmount" name="item9UgxAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item9UsdAmount" readonly name="item9UsdAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item9UgxAmount" readonly name="item9UgxAmount" class="tableInput"></td>
             </tr>
             <tr>
                 <td>
                     <div id="item10Field" style="display: grid;">
-                        <input type="text" value="" id="item10Code" name="item10Code" class="itmNameInput" style="grid-column: 1; width: 60px">
-                        <input type="text" value="" id="item10Name" name="item10Name" class="itmNameInput" style="grid-column: 2; width: 270px">
+                        <input type="text" value="" id="item10Code" readonly name="item10Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item10Name" readonly name="item10Name" class="itmNameInput" style="grid-column: 2; width: 330px">
                         <select id="item10Select" style="margin-left: 0px; width: 20px; grid-column: 3;" onchange="setCodeAndName(this.id)">
                         <?php CoffeeGrades(); ?>
                         </select>
@@ -258,8 +265,8 @@ function GetCustomerList(){
                 <td><input type="text" value="" id="item10Batch" name="item10Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item10UsdPx" name="item10UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item10UgxPx" name="item10UgxPx" class="tableInput"></td>
-                <td><input type="number" value="" id="item10UsdAmount" name="item10UsdAmount" class="tableInput"></td>
-                <td><input type="number" value="" id="item10UgxAmount" name="item10UgxAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item10UsdAmount" readonly name="item10UsdAmount" class="tableInput"></td>
+                <td><input type="number" value="" id="item10UgxAmount" readonly name="item10UgxAmount" class="tableInput"></td>
             </tr>
             <tr>
                 <th>Total</th>
@@ -267,69 +274,24 @@ function GetCustomerList(){
                 <th></th>
                 <th></th>
                 <th></th>
-                <th><input type="number" value="" id="item1UsdAmount" name="item1UsdAmount" class="tableInput"></th>
-                <th><input type="number" value="" id="item1UgxAmount" name="item1UgxAmount" class="tableInput"></th>
+                <th><input type="number" value="" id="usdGrandTotal" readonly name="usdGrandTotal" class="tableInput"></th>
+                <th><input type="number" value="" id="ugxGrandTotal" readonly name="ugxGrandTotal" class="tableInput"></th>
             </tr>
         </table>
+        <div style="max-height: 50px;">
+            <label for="salesReportNotes">Notes:</label><br>
+            <textarea id="salesReportNotes" name="salesReportNotes" class="remarks" rows="3" maxlength="100"
+            style="resize: vertical; max-height: 50px; min-height: 30px; padding: 5px 10px;"></textarea>
+        </div>
+        
     </div>
+
     <?php include_once("../private/approvalDetails.php"); ?>
     
-
-
-
 </form>
 <script>
+    document.getElementById("exchangeRate").setAttribute("value", 3500);
+   
     
-    var itemCodes = [];
-    var itemNames = [];
-    var itemSelections = [];
-
-    //Adding ids to the respective lists
-    for (var x=1; x<=10; x++){
-        itemCodes.push(("item"+x+"Code"));
-        itemNames.push(("item"+x+"Name"));
-        itemSelections.push(("item"+x+"Select"));
-
-    }
-
-    function setCodeAndName(selectId){
-        var selectedItem = document.getElementById(selectId).value;
-        var selectIndex = Number(itemSelections.indexOf(selectId));
-        document.getElementById(itemCodes[selectIndex]).setAttribute("value", selectedItem.slice(0,6));
-        document.getElementById(itemNames[selectIndex]).setAttribute("value", selectedItem.substr(8));
-    }
-
-    //Autofill customer details
-    
-    function SelectCustomer(buyer){
-        var selectedBuyer = document.getElementById("salesReportBuyer").value;
-        document.getElementById("BuyerId").setAttribute("value", selectedBuyer.slice(0,6));
-        document.getElementById("BuyerName").setAttribute("value", selectedBuyer.substr(7));
-
-        if (buyer == "") {
-            document.getElementById("BuyerId").setAttribute('value', '');
-            document.getElementById("BuyerName").setAttribute('value', '');
-            document.getElementById("salesReportContact").setAttribute('value','');
-            document.getElementById("salesReportTel").setAttribute('value', '');
-            return;
-        } 
-
-        const xhttp = new XMLHttpRequest();
-        // Changing customer namne
-        xhttp.onload = function() {
-            document.getElementById("ajaxDiv").innerHTML = this.responseText;
-
-            var ajaxCustomerContact = document.getElementById("contactPerson").value;
-            document.getElementById("salesReportContact").setAttribute('value', ajaxCustomerContact);
-
-            var ajaxTel = document.getElementById("tel").value;
-            document.getElementById("salesReportTel").setAttribute('value', ajaxTel);
-        }
-        xhttp.open("GET", "ajax/salesReportAjax.php?q="+buyer);
-        xhttp.send();
-
-    }
-
-
 </script>
 <?php   include_once('footer.php'); ?>

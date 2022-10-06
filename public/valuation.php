@@ -6,30 +6,11 @@
 
 
         <?php
-        
-            $nextNoSql = "SELECT count(valuation_no) AS orders FROM valuation_report_summary";
-            $nextNoQuery = $conn->query($nextNoSql);
-            $nextNoResult = mysqli_fetch_array($nextNoQuery);
-            $number = $nextNoResult['orders'];
-            $nextNo = intval($number) +1;
-            $activityNo = "";
-            if ($number === 0){
-                $activityNo = "VAL-0001";
-            }else{
-                if ($nextNo<10){
-                    $activityNo = "VAL-000".$nextNo;
-                }
-                elseif ($nextNo<100){
-                    $activityNo = "VAL-00".$nextNo;
-                }elseif ($nextNo<1000){
-                    $activityNo = "VAL-0".$nextNo;
-                }else{$activityNo = "VAL-".$nextNo;}
-            }
-        echo '<input type="text" id="valuationNumber" name="valuationNumber" class="shortInput" readonly value='.$activityNo.' 
-                style="width: 100px; text-align: center;"><br>'
+            include ("../private/functions.php");
+            $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VAL");
+        echo '<input type="text" id="valuationNumber" name="valuationNumber" class="shortInput" readonly value='.$valuationNumber.' 
+                style="width: 100px; text-align: center;"><br>';
         ?>
-
-        
         <label for="valuationDate" id="valuationNumberLabel" class="valuationLabel" >Date:</label>
         
         <input type="date" id="valuationDate" name="valuationDate" class="shortInput" style="width: 100px; text-align: center;"><br>

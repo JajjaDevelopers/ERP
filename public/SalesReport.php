@@ -108,7 +108,7 @@ function GetCustomerList(){
                         </select>
                     </div>
                 </td>
-                <td><input type="number" value="" id="item1Qty" name="item1Qty" class="tableInput"></td>
+                <td><input type="number" value="5000" id="item1Qty" name="item1Qty" class="tableInput"></td>
                 <td><input type="text" value="" id="item1Batch" name="item1Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item1UsdPx" name="item1UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item1UgxPx" name="item1UgxPx" class="tableInput"></td>

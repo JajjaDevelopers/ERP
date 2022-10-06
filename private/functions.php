@@ -162,4 +162,42 @@ function  loginUser($username,$password)
   }
 }
 
+
+// Getting next document number for front end
+function nextDocNumber($table, $columName, $prefix){
+  include "connlogin.php"; 
+  $nextNoSql = "SELECT max($columName) AS numbers FROM $table";
+  $nextNoQuery = $conn->query($nextNoSql);
+  $nextNoResult = mysqli_fetch_array($nextNoQuery);
+  $number = $nextNoResult['numbers'];
+  $nextNo = intval($number) +1;
+  $docNumber = "";
+  if ($number === 0){
+    $docNumber = $prefix."-0001";
+  }else{
+    if ($nextNo<10){
+        $docNumber = $prefix."-000".$nextNo;
+    }
+    elseif ($nextNo<100){
+        $docNumber = $prefix."-00".$nextNo;
+    }elseif ($nextNo<1000){
+        $docNumber = $prefix."-0".$nextNo;
+    }else{
+      $docNumber = $prefix."-".$nextNo;}
+    }
+  return $docNumber;
+}
+
+
+// database table document number
+function documentNumber($table, $columName){
+  include "connlogin.php"; 
+  $nextNoSql = "SELECT max($columName) AS numbers FROM $table";
+  $nextNoQuery = $conn->query($nextNoSql);
+  $nextNoResult = mysqli_fetch_array($nextNoQuery);
+  $number = $nextNoResult['numbers'];
+  return intval($number) +1;
+}
+
+
 ?>

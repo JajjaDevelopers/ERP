@@ -2,7 +2,7 @@
 $server="localhost";
 $db="factory";
 $user="root";
-$pwd="";
+$pwd="root";
 $charset="utf8mb4";
 
 $options=[
@@ -20,4 +20,6 @@ try{
   throw new \PDOException($e->getMessage(), (int)$e->getCode());
 };
 
+//Isaac
+$conn = new mysqli($server, $user, $pwd, $db);
 ?>

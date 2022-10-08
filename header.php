@@ -8,22 +8,23 @@ session_start();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NUCAFE ERP</title>
+  <title>NUCAFE</title>
   <link href=".\ASSETS\bootsrap\css\bootstrap.min.css" rel="stylesheet">
   <link href=".\ASSETS\stylesheet.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- <script src=".\ASSETS\jquery-3.6.0.js"></script>
-    <script src=".\ASSETS\jquery-ui/jquery-ui.js"></script>
-    <script src=".\ASSETS\jquery.js"></script> -->
-    <!-- <link rel="stylesheet" href=".\ASSETS\jquery-ui/jquery-ui.css">
-    <link rel="stylesheet" href=".\ASSETS\jquery-ui/jquery-ui.structure.css">
-    <link rel="stylesheet" href=".\ASSETS\jquery-ui/jquery-ui.theme.css">
-    <link rel="stylesheet"href=".\ASSETS\owlcarousel\dist\assets\owl.carousel.min.css">
-    <link rel="stylesheet" href=".\ASSETS\owlcarousel\dist\assets\owl.theme.default.css"> -->
+  <!---Materiol Icons--->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"rel="stylesheet">
+  
 </head>
+<style>
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+</style>
 <body>
   <!-----Header section--->
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-1" id="img" >
       <img src="images\Logo.jpg" alt="NUCAFE LOGO" id="logo"/>
     </div>
@@ -41,7 +42,7 @@ session_start();
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login.php" class="navlist">Login</a>
-          </li>
+          </li> -->
           
           <?php
              if(isset(  $_SESSION["userName"]))
@@ -55,9 +56,9 @@ session_start();
                 </li>';
              }
           ?>
-        </ul>
+        <!-- </ul>
       </div>
     </div>
   </nav>
     </div>
-  </div>
+  </div> -->

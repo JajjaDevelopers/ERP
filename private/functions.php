@@ -157,7 +157,7 @@ function  loginUser($username,$password)
     session_start();
 
     $_SESSION["userName"]=$userExists["UserName"];
-    header("location:../public/index.php");
+    header("location:../home/forms/index.php");
     exit();
   }
 }

@@ -1,48 +1,20 @@
-
-<?php include_once ("header.php");?>
+<?php include_once ("header.php");
+include ("../connection/databaseConn.php");
+?>
 <form id="batchReportForm" class="regularForm"action="../connection/batchReport.php" method="POST" style="width: 900px;">
     <h3 id="batchReportHeading" class="formHeading">Production Report</h3>
     <div style="display: grid;">
         <div style="grid-row: 2; grid-column: 1; padding-top: 50px; margin-bottom: 5px; ">
             <label for="batchReportClient">Client</label>
-            <!-- <select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 350px;"
-            onchange="updateOrder()"> -->
-
             <input type="text" id="customerId" name="customerId" class="shortInput" readonly value="" style="margin: 0px; width: 70px">
             <input type="text" id="customerName" name="customerName" class="longInputField" readonly value="" style="margin: 0px; width: 300px">
-
-            <?php
-            echo '<select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
-            onchange="updateOrder(this.value)">';
-                
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-
-                $sql = "SELECT batch_order_no, customer_name, grade_name, batch_order_input_qty, batch_order_mc
-                        FROM batch_processing_order
-                        JOIN grn USING (batch_order_no) 
-                        JOIN customer USING (customer_id) 
-                        WHERE (processed=0)";
-                $getList = $conn->query($sql);
-                $row = mysqli_fetch_all($getList);
-                if (count($row)==0){
-                    echo "<option>  There was no processing order found!</option>";
-                }else{
-                    echo "<option>Select Processing Order</option>";
-                    for ($customer=0; $customer<count($row); $customer++){
-                        
-                        echo "<option>".$row[$customer][0]."--".$row[$customer][1]."--".$row[$customer][2]."--".$row[$customer][3]." Kg"."</option>";
-                    }
-                }
-                
-
-            echo '</select><br>';
-                
-            ?>
+            <select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
+            onchange="updateOrder(this.value)">
+            <?php selectBatchReportCustomer();?>
+            </select><br>
             
             <div id="ajaxDiv" style="display: none;" ></div>
-            
+        
             
             <label for="batchReportOfftaker">Offtaker</label>
             <select id="batchReportOfftaker" class="shortInput" name="batchReportOfftaker">
@@ -53,31 +25,8 @@
         <div style="grid-row: 1; grid-column: 2;">
             <label for="batchReportNumber">Batch No.:</label>
             <?php
-            
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            
-            $sql = "SELECT max(batch_report_no) AS lastNo FROM batch_reports_summary";
-            $getMax = $conn->query($sql);
-            $row = mysqli_fetch_array($getMax);
-            $newBatchNo = $row['lastNo'] +1;
-            $period = '/21/2022';
-            if ($newBatchNo < 10){
-                $zeros = '0000';
-            } elseif ($newBatchNo < 100){
-                $zeros = '000';
-            } elseif ($newBatchNo < 1000){
-                $zeros = '00';
-            }elseif ($newBatchNo < 10000){
-                $zeros = '0';
-            }else {
-                $zeros='';
-            }
-            $newBatchNo = $zeros.strval($newBatchNo).$period;
-            // $newBatchNo = $row['lastNo'] +1 . '/21/2022';
+            $newBatchNo = nextDocNumber("batch_reports_summary", "batch_report_no", "BR");
             echo '<label id="batchReportNumber" class="shortInput" name="batchReportNumber">'.$newBatchNo .'</label>'.'<br>';
-        
             ?>
             
             <label for="batchOrderNumber">Order No.:</label>
@@ -359,9 +308,15 @@
 
             var ajaxCustomerId = document.getElementById("ajaxCustomerId").value;
             document.getElementById("customerId").setAttribute('value', ajaxCustomerId);
-
+            
+            // set input qty
             var ajaxInputQty = document.getElementById("ajaxInputQty").value;
             document.getElementById("inputQty").setAttribute('value', ajaxInputQty);
+            var inputQty = Number(document.getElementById("inputQty").value);
+            var addSpill = Number(document.getElementById("addSpillQty").value);
+            var lessSpill = Number(document.getElementById("lessSpillQty").value);
+            document.getElementById("netInputQty").setAttribute('value', (inputQty + addSpill - lessSpill));
+            
 
             var ajaxMcIn = document.getElementById("ajaxMcIn").value;
             document.getElementById("batchReportMcIn").setAttribute('value', ajaxMcIn);
@@ -383,5 +338,6 @@
     }
     
 </script>
+<script src=".\ASSETS\SCRIPTS\batchReport.js"></script>
 <?php include_once ("footer.php")?>
 

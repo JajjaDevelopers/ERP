@@ -1,47 +1,9 @@
-<?php include_once('header.php'); 
-// Fetch coffee grades from the system
-function CoffeeGrades(){
-    global $conn;
-    include("CoffeeGrades.php");
-}
-
-// Sales Report No
-$query = "SELECT max(sales_report_no) FROM factory.sales_reports_summary";
-if ($stmt = $conn->prepare($query)) {
-    $stmt->execute();
-    $stmt->bind_result($sales_report_no);
-    $stmt->fetch();
-    $stmt->close();
-}
-$newNo = $sales_report_no + 1;
-if ($newNo < 10){
-    $zeros = '000';
-} elseif ($newNo < 100){
-    $zeros = '00';
-} elseif ($newNo < 1000){
-    $zeros = '0';
-}else {
-    $zeros='';
-}
-$nextSalesNo = $zeros.$newNo;
-
-// Customer List
-function GetCustomerList(){
-    global $conn;
-    $queryCustomer = "SELECT customer_id, customer_name FROM factory.customer";
-    if ($stmt = $conn->prepare($queryCustomer)) {
-    $stmt->execute();
-    $stmt->bind_result($customer_id, $customer_name);
-    echo '<option></option>';
-    while ($stmt->fetch()) {
-        echo '<option value="'.$customer_id.' '.$customer_name.'">'.$customer_id.' '.$customer_name.'</option>';
-    }
-    $stmt->close();
-}
-}
+<?php include_once('header.php');?>
+<?php include ("../connection/databaseConn.php");
+$nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");
 
 ?>
-<script src=".\ASSETS\SCRIPTS\salesreport.js"></script>
+
 <form id="salesReportForm" name="salesReportForm" class="regularForm" style="height: 800px; width:900px" method="POST" action="../connection/salesreport.php">
     <h2 class="formHeading">SALES REPORT</h2>
     <div style="margin-left: 70%;">
@@ -101,14 +63,14 @@ function GetCustomerList(){
             <tr>
                 <td>
                     <div id="item1Field" style="display: grid;" class="itemName">
-                        <input type="text" value="" id="item1Code" readonly name="item1Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item1Code" readonly name="item0Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
                         <input type="text" value="" id="item1Name" readonly name="item1Name" class="itmNameInput" style="grid-column: 2; width: 330px">
                         <select id="item1Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="setCodeAndName(this.id)">
                             <?php CoffeeGrades(); ?>
                         </select>
                     </div>
                 </td>
-                <td><input type="number" value="5000" id="item1Qty" name="item1Qty" class="tableInput"></td>
+                <td><input type="number" value="" id="item1Qty" name="item1Qty" class="tableInput"></td>
                 <td><input type="text" value="" id="item1Batch" name="item1Batch" class="tableInput"></td>
                 <td><input type="number" value="" id="item1UsdPx" name="item1UsdPx" class="tableInput"></td>
                 <td><input type="number" value="" id="item1UgxPx" name="item1UgxPx" class="tableInput"></td>
@@ -294,4 +256,5 @@ function GetCustomerList(){
    
     
 </script>
+<script src=".\ASSETS\SCRIPTS\salesreport.js"></script>
 <?php   include_once('footer.php'); ?>

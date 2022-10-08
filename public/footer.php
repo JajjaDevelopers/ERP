@@ -6,9 +6,9 @@
 
   <script src=".\ASSETS\CSS\bootsrap/js/bootstrap.bundle.min.js"></script>
   <!-- <script src=".\ASSETS\SCRIPTS\mainscript.js"></script> -->
-  <script src=".\ASSETS\SCRIPTS\valuationJavaScript.js"></script>
+  
   <script src=".\ASSETS\SCRIPTS\goodsreceived.js"></script> 
-  <script src=".\ASSETS\SCRIPTS\batchReport.js"></script>
+  
   <link rel="stylesheet" href=".\ASSETS\CSS\main.css">
 </body>
 </html>

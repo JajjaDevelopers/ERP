@@ -1,4 +1,7 @@
-<?php include_once('header.php'); ?>
+<?php include_once('header.php'); 
+include ("../connection/databaseConn.php");
+$valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VAL");
+?>
 <form id="valuationForm" name="valuationForm" class="regularForm" style="height: 930px;" method="POST" action="../connection/valuation.php">
     <h3 class="formHeading">VALUATION REPORT</h3>
     <div style="padding: 15px 5px 5px 70%;">
@@ -6,8 +9,7 @@
 
 
         <?php
-            include ("../private/functions.php");
-            $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VAL");
+            
         echo '<input type="text" id="valuationNumber" name="valuationNumber" class="shortInput" readonly value='.$valuationNumber.' 
                 style="width: 100px; text-align: center;"><br>';
         ?>
@@ -19,7 +21,7 @@
         <input type="text" id="valuationGrnNumber" class="shortInput" style="width: 100px; text-align: center;"><br>
         
         <label for="batchNo" id="batchNoLabel" class="valuationLabel" >Batch No:</label>
-        <input type="number" id="batchNo" name="batchNo" class="shortInput" value="VAL-100001" style="width: 100px; text-align: center;"
+        <input type="number" id="batchNo" name="batchNo" class="shortInput" value="" style="width: 100px; text-align: center;"
         onchange="updateOrder(this.value)">
     </div>
     <div>
@@ -32,33 +34,10 @@
         <?php
             echo '<select id="valuationClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
             onchange="updateOrder(this.value)">';
-                
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-
-                $sql = "SELECT batch_report_no, customer_name, grade_name, batch_order_input_qty
-                        FROM batch_reports_summary
-                        JOIN batch_processing_order USING (batch_order_no)
-                        JOIN grn USING (batch_order_no)
-                        JOIN customer USING (customer_id)
-                        WHERE (valuation_status=0 AND offtaker='NUCAFE')";
-                $getList = $conn->query($sql);
-                $row = mysqli_fetch_all($getList);
-                echo "<option>Select Batch to Value</option>";
-                for ($supplier=0; $supplier<count($row); $supplier++){
-                    
-                    echo "<option>".$row[$supplier][0]."--".$row[$supplier][1]."--".$row[$supplier][2]."--".$row[$supplier][3]." Kg"."</option>";
-                }
-
+            valuationCustomer();
             echo '</select><br>';
             
         ?>
-
-
-
-
-
         <label for="valuationContactPerson" id="valuationContactPersonLabel" class="regularLabel">Contact Person:</label>
         <input type="text" id="valuationContactPerson" class="longInputField">
         <label for="valuationTelephone" id="valuationTelephoneLabel" class="regularLabel" style="padding-left: 20px;">Telephone:</label>
@@ -93,106 +72,15 @@
                 <th style="width: 100px;">Amount (UGX)</th>
             </tr>
             
-            <tr>
-                <td id="highGrade1Name" name="highGrade1Name" >Screen 1800</td>
-                <td><input type="number" value="" id="highGrade1Yield" readonly name="highGrade1Yield" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade1Qty" name="highGrade1Qty" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade1PriceUs" name="highGrade1PriceUs" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade1PriceCts" name="highGrade1PriceCts" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade1PriceUgx" name="highGrade1PriceUgx" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade1AmountUs" readonly name="highGrade1AmountUs" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade1AmountUgx" readonly name="highGrade1AmountUgx" class="tableInput"></td>
-            </tr>
-            <tr>
-                <td id="highGrade2Name" name="highGrade2Name">Screen 1700</td>
-                <td><input type="number" value="" id="highGrade2Yield" readonly name="highGrade2Yield" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade2Qty" name="highGrade2Qty" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade2PriceUs" name="highGrade2PriceUs" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade2PriceCts" name="highGrade2PriceCts" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade2PriceUgx" name="highGrade2PriceUgx" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade2AmountUs" readonly name="highGrade2AmountUs" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade2AmountUgx" readonly name="highGrade2AmountUgx" class="tableInput"></td>
-            </tr>
-            <tr>
-                <td id="highGrade3Name" name="highGrade3Name">Screen 1500</td>
-                <td><input type="number" value="" id="highGrade3Yield" readonly name="highGrade3Yield" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade3Qty" name="highGrade3Qty" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade3PriceUs" name="highGrade3PriceUs" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade3PriceCts" name="highGrade3PriceCts" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade3PriceUgx" name="highGrade3PriceUgx" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade3AmountUs" readonly name="highGrade3AmountUs" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade3AmountUgx" readonly name="highGrade3AmountUgx" class="tableInput"></td>
-            </tr>
-            <tr>
-                <td id="highGrade4Name" name="highGrade4Name">Screen 1200</td>
-                <td><input type="number" value="" id="highGrade4Yield" readonly name="highGrade4Yield" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade4Qty" name="highGrade4Qty" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade4PriceUs" name="highGrade4PriceUs" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade4PriceCts" name="highGrade4PriceCts" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade4PriceUgx" name="highGrade4PriceUgx" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade4AmountUs" readonly name="highGrade4AmountUs" class="tableInput"></td>
-                <td><input type="number" value="" id="highGrade4AmountUgx" readonly name="highGrade4AmountUgx" class="tableInput"></td>
-            </tr>
-            <tr>
-                <td id="lowGrade1Name" name="lowGrade1Name">Rej. Black Beans</td>
-                <td><input type="number" value="" id="lowGrade1Yield" readonly name="lowGrade1Yield" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade1Qty" name="lowGrade1Qty" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade1PriceUs" name="lowGrade1PriceUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade1PriceCts" name="lowGrade1PriceCts" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade1PriceUgx" name="lowGrade1PriceUgx" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade1AmountUs" readonly name="lowGrade1AmountUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade1AmountUgx" readonly name="lowGrade1AmountUgx" class="tableInput"></td>
-            </tr>
-            <tr>
-                <td id="lowGrade2Name" name="lowGrade2Name">Rej-1599/1299(BHP)</td>
-                <td><input type="number" value="" id="lowGrade2Yield" readonly name="lowGrade2Yield" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade2Qty" name="lowGrade2Qty" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade2PriceUs" name="lowGrade2PriceUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade2PriceCts" name="lowGrade2PriceCts" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade2PriceUgx" name="lowGrade2PriceUgx" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade2AmountUs" readonly name="lowGrade2AmountUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade2AmountUgx" readonly name="lowGrade2AmountUgx" class="tableInput"></td>
-            </tr>
-            <tr>
-                <td id="lowGrade3Name" name="lowGrade3Name">Rej-1199</td>
-                <td><input type="number" value="" id="lowGrade3Yield" readonly name="lowGrade3Yield" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade3Qty" name="lowGrade3Qty" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade3PriceUs" name="lowGrade3PriceUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade3PriceCts" name="lowGrade3PriceCts" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade3PriceUgx" name="lowGrade3PriceUgx" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade3AmountUs" readonly name="lowGrade3AmountUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade3AmountUgx" readonly name="lowGrade3AmountUgx" class="tableInput"></td>
-            </tr>
-            <tr>
-                <td id="lowGrade4Name" name="lowGrade4Name">Rej-1899</td>
-                <td><input type="number" value="" id="lowGrade4Yield" readonly name="lowGrade4Yield" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade4Qty" name="lowGrade4Qty" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade4PriceUs" name="lowGrade4PriceUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade4PriceCts" name="lowGrade4PriceCts" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade4PriceUgx" name="lowGrade4PriceUgx" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade4AmountUs" readonly name="lowGrade4AmountUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade4AmountUgx" readonly name="lowGrade4AmountUgx" class="tableInput"></td>
-            </tr>
-            <tr>
-                <td id="lowGrade5Name" name="lowGrade5Name">PODS/P-Berry</td>
-                <td><input type="number" value="" id="lowGrade5Yield" readonly name="lowGrade5Yield" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade5Qty" name="lowGrade5Qty" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade5PriceUs" name="lowGrade5PriceUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade5PriceCts" name="lowGrade5PriceCts" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade5PriceUgx" name="lowGrade5PriceUgx" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade5AmountUs" readonly name="lowGrade5AmountUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade5AmountUgx" readonly name="lowGrade5AmountUgx" class="tableInput"></td>
-            </tr>
-            <tr>
-                <td id="lowGrade6Name" name="lowGrade6Name">Sweepings/Spillages</td>
-                <td><input type="number" value="" id="lowGrade6Yield" readonly name="lowGrade6Yield" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade6Qty" name="lowGrade6Qty" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade6PriceUs" name="lowGrade6PriceUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade6PriceCts" name="lowGrade6PriceCts" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade6PriceUgx" name="lowGrade6PriceUgx" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade6AmountUs" readonly name="lowGrade6AmountUs" class="tableInput"></td>
-                <td><input type="number" value="" id="lowGrade6AmountUgx" readonly name="lowGrade6AmountUgx" class="tableInput"></td>
-            </tr>
+            
+            <?php 
+                for ($row = 1; $row <= 10; $row ++){
+                    valuationItemRow($row); 
+                }
+            
+            ?>
+            
+            
             <tr>
                 <th>Actual Total Value Before Costs</th>
                 <td><input type="number" value="" id="totalYield" readonly name="totalYield" class="tableInput"></td>
@@ -216,31 +104,19 @@
             <tr>
                 <td colspan="6"><input type="text" value="Costs:" id="costsDetails" name="costsDetails" class="tableInput" 
                 style="text-align: left;" placeholder="Enter description of costs..."></td>
-                <!-- <td></td>
-                <td></td>
-                <td></td>
-                <td></td> -->
-                <!-- <td></td> -->
+                
                 <td><input type="number" value="" id="totalCostsUsd" readonly name="totalCostsUsd" class="tableInput"></td>
                 <td><input type="number" value="" id="totalCostsUgx" name="totalCostsUgx" class="tableInput"></td>
             </tr>
             <tr>
                 <th colspan="6">Sub-total Costs</th>
-                <!-- <td></td>
-                <td></td>
-                <td></td>
-                <td></td> -->
-                <!-- <td></td> -->
+                
                 <td><input type="number" value="" id="subTotalCostsUsd" readonly name="subTotalCostsUsd" class="tableInput"></td>
                 <td><input type="number" value="" id="subTotalCostsUgx" readonly name="subTotalCostsUgx" class="tableInput"></td>
             </tr>
             <tr>
                 <th colspan="6">Total Value after Costs</th>
-                <!-- <td></td>
-                <td></td>
-                <td></td>
-                <td></td> -->
-                <!-- <td></td> -->
+                
                 <td><input type="number" value="" id="totalValueUsd" readonly name="totalValueUsd" class="tableInput"></td>
                 <td><input type="number" value="" id="totalValueUgx" readonly name="totalValueUgx" class="tableInput"></td>
             </tr>
@@ -255,7 +131,7 @@
         
         
         var selectedClient = document.getElementById('valuationClient').value;
-        var batchNo = selectedClient.slice(0,6);
+        var batchNo = selectedClient.slice(0,5);
         var batchOrderNumber =  document.getElementById('batchNo')
         var x = Number(batchNo);
         batchOrderNumber.setAttribute('value', (batchNo));
@@ -306,5 +182,6 @@
     }
     
 </script>
+<script src=".\ASSETS\SCRIPTS\valuationJavaScript.js"></script>
 
 <?php include_once('footer.php');?>

@@ -13,7 +13,7 @@ $gradeIdList = array();
 $qtyOutList = array();
 $priceList = array();
 
-    for ($x=1; $x<11; $x++){
+    for ($x=0; $x<10; $x++){
         // $gradeId = ;
         array_push($gradeIdList, "item".$x."Code");
         // $qty = 
@@ -80,21 +80,25 @@ $conn->rollback();
 //capturing details
 function CaptureDetails(){
     
-    global $conn, $qtyOutList, $gradeIdList, $priceList;
+    global $conn, $qtyOutList, $gradeIdList, $priceList, $nextSalesNo;
     $detailSql = $conn->prepare("INSERT INTO nucafe_inventory (document_type, document_no, grade_id, qty_out, price_ugx) 
     VALUES (?, ?, ?, ?, ?)");
 
 
     for ($p=0; $p < count($qtyOutList); $p++){
         $qtyOut = intval(sanitize_table($_POST[$qtyOutList[$p]])) ;
-        if ($qtyOut > 0){
+        if ($qtyOut>0){
             $docType = "Sales Report";
             $gradeID = sanitize_table($_POST[$gradeIdList[$p]]);
-
             $itemPx = sanitize_table($_POST[$priceList[$p]]);
             $detailSql->bind_param("sisii", $docType, $nextSalesNo, $gradeID, $qtyOut, $itemPx);
             $detailSql->execute();
         }
+            // $docType = "Sales Report";
+            // $gradeID = sanitize_table($_POST[$gradeIdList[$p]]);
+            // $itemPx = sanitize_table($_POST[$priceList[$p]]);
+            // $detailSql->bind_param("sisii", $docType, $nextSalesNo, $gradeID, $qtyOut, $itemPx);
+            // $detailSql->execute();
 
 
     }  

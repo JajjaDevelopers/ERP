@@ -9,23 +9,23 @@
 
     //Adding ids to the respective lists
     for (var x=1; x<=10; x++){
-        var itemId = "item"+x;
-        itemCodes.push((itemId+"Code"));
-        itemNames.push((itemId+"Name"));
-        itemSelections.push((itemId+"Select"));
-        itemQtys.push((itemId+"Qty"));
-        itemUsdPrices.push((itemId+"UsdPx"));
-        itemUgxPrices.push((itemId+"UgxPx"));
-        itemUsdAmounts.push((itemId+"UsdAmount"));
-        itemUgxAmounts.push((itemId+"UgxAmount"));
+        // var itemId = "item"+x;
+        itemCodes.push(("item"+x+"Code"));
+        itemNames.push(("item"+x+"Name"));
+        itemSelections.push(("item"+x+"Select"));
+        itemQtys.push(("item"+x+"Qty"));
+        itemUsdPrices.push(("item"+x+"UsdPx"));
+        itemUgxPrices.push(("item"+x+"UgxPx"));
+        itemUsdAmounts.push(("item"+x+"UsdAmount"));
+        itemUgxAmounts.push(("item"+x+"UgxAmount"));
     }
 
     function setCodeAndName(selectId){
         var selectedItem = document.getElementById(selectId).value;
         var selectIndex = Number(itemSelections.indexOf(selectId));
 
-        document.getElementById(itemCodes[selectIndex]).setAttribute("value", "");
-        document.getElementById(itemNames[selectIndex]).setAttribute("value", "");
+        // document.getElementById(itemCodes[selectIndex]).setAttribute("value", "");
+        // document.getElementById(itemNames[selectIndex]).setAttribute("value", "");
 
         document.getElementById(itemCodes[selectIndex]).setAttribute("value", selectedItem.slice(0,6));
         document.getElementById(itemNames[selectIndex]).setAttribute("value", selectedItem.substr(8));

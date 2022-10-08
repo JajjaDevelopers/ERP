@@ -157,9 +157,142 @@ function  loginUser($username,$password)
     session_start();
 
     $_SESSION["userName"]=$userExists["UserName"];
-    header("location:../public/index.php");
+    header("location:../home/forms/index.php");
     exit();
   }
 }
 
+
+// Getting next document number for front end
+function nextDocNumber($table, $columName, $prefix){
+  include "connlogin.php"; 
+  $nextNoSql = "SELECT max($columName) AS numbers FROM $table";
+  $nextNoQuery = $conn->query($nextNoSql);
+  $nextNoResult = mysqli_fetch_array($nextNoQuery);
+  $number = $nextNoResult['numbers'];
+  $nextNo = intval($number) +1;
+  $docNumber = "";
+  if ($number === 0){
+    $docNumber = $prefix."-0001";
+  }else{
+    if ($nextNo<10){
+        $docNumber = $prefix."-000".$nextNo;
+    }
+    elseif ($nextNo<100){
+        $docNumber = $prefix."-00".$nextNo;
+    }elseif ($nextNo<1000){
+        $docNumber = $prefix."-0".$nextNo;
+    }else{
+      $docNumber = $prefix."-".$nextNo;}
+    }
+  return $docNumber;
+}
+
+
+// database table document number
+function documentNumber($table, $columName){
+  include "connlogin.php"; 
+  $nextNoSql = "SELECT max($columName) AS numbers FROM $table";
+  $nextNoQuery = $conn->query($nextNoSql);
+  $nextNoResult = mysqli_fetch_array($nextNoQuery);
+  $number = $nextNoResult['numbers'];
+  return intval($number) +1;
+}
+
+
+// Customer List
+function GetCustomerList(){
+  include "connlogin.php"; 
+  $queryCustomer = "SELECT customer_id, customer_name FROM factory.customer";
+  if ($stmt = $conn->prepare($queryCustomer)) {
+  $stmt->execute();
+  $stmt->bind_result($customer_id, $customer_name);
+  echo '<option></option>';
+  while ($stmt->fetch()) {
+      echo '<option value="'.$customer_id.' '.$customer_name.'">'.$customer_id.' '.$customer_name.'</option>';
+  }
+  $stmt->close();
+}
+}
+
+
+// Coffee Grades
+function coffeeGrades(){
+  include "connlogin.php"; 
+  $query = "SELECT grade_id, grade_name FROM grades";
+  if ($stmt = $conn->prepare($query)) {
+      $stmt->execute();
+      $stmt->bind_result($field1, $field2);
+      echo '<option></option>';
+      while ($stmt->fetch()) {
+          echo "<option value='".$field1."--".$field2."'>$field2</option>";
+      }
+      $stmt->close();
+  }
+}
+
+
+// Valuation customer Picker
+function valuationCustomer(){
+  include "connlogin.php"; 
+  $sql = "SELECT batch_report_no, customer_name, grade_name, batch_order_input_qty FROM batch_reports_summary
+          JOIN batch_processing_order USING (batch_order_no)
+          JOIN grn USING (batch_order_no)
+          JOIN customer USING (customer_id)
+          WHERE (valuation_status=0 AND offtaker='NUCAFE')";
+  $getList = $conn->query($sql);
+  $row = mysqli_fetch_all($getList);
+  echo "<option>Select Batch to Value</option>";
+  for ($supplier=0; $supplier<count($row); $supplier++){
+      
+      echo "<option>".$row[$supplier][0]."--".$row[$supplier][1]."--".$row[$supplier][2]."--".$row[$supplier][3]." Kg"."</option>";
+  }
+}
+
+
+// Generating Valuation Row
+function valuationItemRow($itemNo){
+
+echo '<tr>
+    <td>
+        <div id="item'.$itemNo.'Field" style="display: grid;" class="itemName">';
+            echo '<input type="text" value="" id="highGrade'.$itemNo.'Code" readonly name="highGrade'.$itemNo.'Code" class="itmNameInput" style="grid-column: 1; display:none">';
+            echo '<input type="text" value="" id="highGrade'.$itemNo.'Name" readonly name="highGrade'.$itemNo.'Name" class="itmNameInput" style="grid-column: 2; width: 250px">';
+            echo '<select id="highGrade'.$itemNo.'Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="valuationItemCodeAndName(this.id)">';
+                CoffeeGrades();
+            echo '</select>
+        </div>
+        
+    </td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'Yield" readonly name="highGrade'.$itemNo.'Yield" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'Qty" name="highGrade'.$itemNo.'Qty" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'PriceUs" name="highGrade'.$itemNo.'PriceUs" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'PriceCts" name="highGrade'.$itemNo.'PriceCts" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'PriceUgx" name="highGrade'.$itemNo.'PriceUgx" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'AmountUs" readonly name="highGrade'.$itemNo.'AmountUs" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'AmountUgx" readonly name="highGrade'.$itemNo.'AmountUgx" class="tableInput"></td>
+    </tr>';
+}
+
+
+// Batch Report customer list
+function selectBatchReportCustomer(){
+  include "connlogin.php"; 
+  $sql = "SELECT batch_order_no, customer_name, grade_name, batch_order_input_qty, batch_order_mc
+          FROM batch_processing_order
+          JOIN grn USING (batch_order_no) 
+          JOIN customer USING (customer_id) 
+          WHERE (processed=0)";
+  $getList = $conn->query($sql);
+  $row = mysqli_fetch_all($getList);
+  if (count($row)==0){
+      echo "<option>  There was no processing order found!</option>";
+  }else{
+      echo "<option>Select Processing Order</option>";
+      for ($customer=0; $customer<count($row); $customer++){
+          
+          echo "<option>".$row[$customer][0]."--".$row[$customer][1]."--".$row[$customer][2]."--".$row[$customer][3]." Kg"."</option>";
+      }
+  }
+}
 ?>

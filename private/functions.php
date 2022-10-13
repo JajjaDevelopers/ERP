@@ -173,17 +173,17 @@ function nextDocNumber($table, $columName, $prefix){
   $nextNo = intval($number) +1;
   $docNumber = "";
   if ($number === 0){
-    $docNumber = $prefix."-0001";
+    $docNumber = $prefix."--0001";
   }else{
     if ($nextNo<10){
-        $docNumber = $prefix."-000".$nextNo;
+        $docNumber = $prefix."--000".$nextNo;
     }
     elseif ($nextNo<100){
-        $docNumber = $prefix."-00".$nextNo;
+        $docNumber = $prefix."--00".$nextNo;
     }elseif ($nextNo<1000){
-        $docNumber = $prefix."-0".$nextNo;
+        $docNumber = $prefix."--0".$nextNo;
     }else{
-      $docNumber = $prefix."-".$nextNo;}
+      $docNumber = $prefix."--".$nextNo;}
     }
   return $docNumber;
 }

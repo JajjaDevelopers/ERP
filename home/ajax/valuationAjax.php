@@ -4,15 +4,6 @@ if($mysqli->connect_error) {
   exit('Could not connect');
 }
 
-
-
-// $sql = "SELECT customer_id, customer_name, contact_person, telephone, grn_no, grade_name, batch_order_input_qty 
-// FROM batch_reports_summary 
-// JOIN batch_processing_order USING (batch_order_no) 
-// JOIN grn USING (batch_order_no) 
-// JOIN customer USING (customer_id) 
-// WHERE (batch_report_no=?";
-
 $sql = "SELECT customer_id, customer_name, contact_person, telephone, grn_no, grade_name, batch_order_input_qty
 FROM batch_reports_summary
 JOIN batch_processing_order USING (batch_order_no)
@@ -41,15 +32,4 @@ echo '<input id="gradeName" value="'.$gradeName.'">';
 echo '<input id="inputQty" value="'.$inputQty.'">';
 
 
-
-
-
-// if ($stmt = $con->prepare($query)) {
-//     $stmt->execute();
-//     $stmt->bind_result($customer_id, $customer_name, $contact_person, $telephone, $grn_no, $grade_name, $batch_order_input_qty);
-//     while ($stmt->fetch()) {
-//         //printf("%s, %s, %s, %s, %s, %s, %s\n", $customer_id, $customer_name, $contact_person, $telephone, $grn_no, $grade_name, $batch_order_input_qty);
-//     }
-//     $stmt->close();
-// }
 ?>

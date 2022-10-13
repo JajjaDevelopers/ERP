@@ -37,7 +37,7 @@ function valuationItemCodeAndName(selectId){
 }
 
 
-
+window.onload = function(){
 function getListTotal(listName, totalId){ 
     
     var grandTotal = 0;
@@ -91,7 +91,6 @@ function captureUgxPrice(){
     
 }
 
-
 //Update values when Usd px is updated
 function captureUsdPrice(){
     //var excRate = Number(document.getElementById('exchangeRate').value);
@@ -107,11 +106,7 @@ function captureUsdPrice(){
 }
 
 
-for (var x=0; x < qtyIds.length; x++){
-    document.getElementById(qtyIds[x]).addEventListener("blur", captureQty);
-    document.getElementById(priceUgxIds[x]).addEventListener("blur", captureUgxPrice);
-    document.getElementById(priceUsIds[x]).addEventListener("blur", captureUsdPrice);
-}
+
 
 
 function captureCosts(){
@@ -126,4 +121,14 @@ function captureCosts(){
     document.getElementById('totalValueUsd').setAttribute('value', (grandTotaltValue - subTotalCosts)/excRate);
 }
 document.getElementById('totalCostsUgx').addEventListener("blur", captureCosts);
+
+    captureQty();
+    captureUsdPrice();
+    for (var x=0; x < qtyIds.length; x++){
+        document.getElementById(qtyIds[x]).addEventListener("blur", captureQty);
+        document.getElementById(priceUgxIds[x]).addEventListener("blur", captureUgxPrice);
+        document.getElementById(priceUsIds[x]).addEventListener("blur", captureUsdPrice);
+    }
+    
+}
 // add radio button for pricing choice

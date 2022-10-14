@@ -38,6 +38,7 @@ function valuationItemCodeAndName(selectId){
 
 
 window.onload = function(){
+    captureUgxPrice();
 function getListTotal(listName, totalId){ 
     
     var grandTotal = 0;
@@ -106,9 +107,6 @@ function captureUsdPrice(){
 }
 
 
-
-
-
 function captureCosts(){
     var ugxCosts = Number(document.getElementById('totalCostsUgx').value);
     document.getElementById('totalCostsUsd').setAttribute('value', ugxCosts/excRate);
@@ -122,13 +120,14 @@ function captureCosts(){
 }
 document.getElementById('totalCostsUgx').addEventListener("blur", captureCosts);
 
-    captureQty();
-    captureUsdPrice();
+    
     for (var x=0; x < qtyIds.length; x++){
         document.getElementById(qtyIds[x]).addEventListener("blur", captureQty);
         document.getElementById(priceUgxIds[x]).addEventListener("blur", captureUgxPrice);
         document.getElementById(priceUsIds[x]).addEventListener("blur", captureUsdPrice);
     }
     
+    
 }
+
 // add radio button for pricing choice

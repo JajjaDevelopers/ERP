@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Home</title>
+  <title>Nucafe Portal</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -169,7 +169,7 @@
             </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><h6 class="dropdown-header">Processing Data Entry Forms</h6></li>
-                <li><a class="dropdown-item active"  aria-current="true" href="Receivednote.php">Recieve Goods</a></li>
+                <li><a class="dropdown-item active"  aria-current="true" href="Goods_Received_Note.php">Recieve Goods</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item active"aria-current="true" href="batchReport.php">Batch Report</a></li>
                 <li><hr class="dropdown-divider"></li>

@@ -101,6 +101,7 @@ function previousValuationItemRow(){
 
 
 $previousValuationNo = $valuationNumber - 1; //nextDocNumber("valuation_report_summary", "valuation_no", "");
+$nextValuationNo = $valuationNumber + 1;
 ?>
 
 <form id="valuationForm" name="valuationForm" class="regularForm" style="height: 930px;" method="POST" action="../connection/valuation.php">

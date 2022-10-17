@@ -63,5 +63,5 @@ for ($x=0; $x < count($allGradeQty); $x++ ) {
     
 }
 
-header("location:../public/valuation.php") ;
+header("location:../forms/valuation.php") ;
 ?>

@@ -20,19 +20,9 @@ $nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");
         <input type="number" id="batchNo" name="batchNo" class="shortInput" value="" style="width: 100px; text-align: center;"> -->
     </div>
     <div id="ajaxDiv" style="display: none;"> </div>
+    <?php require("customerSelector.php"); ?>
     <div>
-        <label for="salesReportBuyer" id="salesReportBuyerLabel" class="salesReportLabel" >Buyer:</label>
-        <input type="text" id="BuyerId" name="BuyerId" readonly class="longInputField" placeholder="ID" style="width: 70px; margin-right: 0px;">
-        <input type="text" id="BuyerName" name="BuyerName" readonly class="longInputField" placeholder="Buyer Name" style="margin-left: 0px; margin-right: 0px;">
-        <select id="salesReportBuyer" class="longInputField" name="salesReportBuyer" style="margin-left: 0px; width: 20px"
-        onchange="SelectCustomer(this.value)">
-            <?php GetCustomerList(); ?>
-        </select><br>
-
-        <label for="salesReportContact" id="salesReportBuyerLabel"  class="salesReportLabel" >Contact:</label>
-        <input type="text" id="salesReportContact" readonly class="longInputField" placeholder="Contact Person" style="margin-right: 0px; width:150px">
-        <label for="salesReportContact" id="salesReportBuyerLabel" class="salesReportLabel" >Tel:</label>
-        <input type="text" id="salesReportTel" readonly class="longInputField" placeholder="Telephone" style="margin-right: 0px; width:120px">
+    
         <br>
         <label for="salesReportCategory" id="salesReportBuyerLabel" class="salesReportLabel">Category:</label>
         <select id="salesReportCategory" class="longInputField" name="salesReportCategory" style="width: 100px;">
@@ -63,7 +53,7 @@ $nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");
             <tr>
                 <td>
                     <div id="item1Field" style="display: grid;" class="itemName">
-                        <input type="text" value="" id="item1Code" readonly name="item0Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
+                        <input type="text" value="" id="item1Code" readonly name="item1Code" class="itmNameInput" style="grid-column: 1; width: 60px; display:none">
                         <input type="text" value="" id="item1Name" readonly name="item1Name" class="itmNameInput" style="grid-column: 2; width: 330px">
                         <select id="item1Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="setCodeAndName(this.id)">
                             <?php CoffeeGrades(); ?>

@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 <?php
 session_start();
 ?>
-=======
-<?php session_start();?>
->>>>>>> refs/remotes/origin/main
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,10 +19,7 @@ session_start();
   <!-- Material Icons-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
       rel="stylesheet">
-<<<<<<< HEAD
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-=======
->>>>>>> refs/remotes/origin/main
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -52,10 +45,6 @@ session_start();
   <link rel="stylesheet" href="../assets/js/Jquery/jquery-ui/jquery-ui.theme.css">
   <script src="../assets/js/receivedgoods.js"></script>
   <link rel="stylesheet" href="../assets/css/main.css">
-<<<<<<< HEAD
-=======
-  <!-- <script src="../assets/js/salesreport.js"></script> -->
->>>>>>> refs/remotes/origin/main
 </head>
 
 <body>
@@ -65,13 +54,8 @@ session_start();
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-<<<<<<< HEAD
         <img src="assets/img/logo2.png" alt="Logo">
         <span class="d-none d-lg-block">JAJJA</span>
-=======
-        <img src="../images/logo.jpg" alt="Logo">
-        <span class="d-none d-lg-block">NGL</span>
->>>>>>> refs/remotes/origin/main
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -79,7 +63,6 @@ session_start();
     <div class="search-bar">
       <form class="search-form d-flex align-items-center" method="POST" action="#">
         <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-<<<<<<< HEAD
         <button type="submit" title="Search"><span class="material-icons-sharp">search</span></button>
       </form>
     </div><!-- End Search Bar -->
@@ -89,40 +72,23 @@ session_start();
       <h1 class="text-primary" id="current_time"></h1>
     </div>
 
-=======
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
-
->>>>>>> refs/remotes/origin/main
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
-<<<<<<< HEAD
           <span class="material-symbols-sharp">
             <!-- search -->
           </span>
-=======
-            <i class="bi bi-search"></i>
->>>>>>> refs/remotes/origin/main
           </a>
         </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown">
-<<<<<<< HEAD
         
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
           <span class="material-icons-sharp">
           notifications
           </span>
-=======
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
-            <!-- <span class="badge bg-primary badge-number">4</span> -->
->>>>>>> refs/remotes/origin/main
           </a><!-- End Notification Icon -->
 
     
@@ -132,7 +98,6 @@ session_start();
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
-<<<<<<< HEAD
             <span class="d-none d-md-block dropdown-toggle ps-2">
             <?php
                 if(isset(  $_SESSION["userName"])){
@@ -140,14 +105,10 @@ session_start();
                 }
               ?>
             </span>
-=======
-            <span class="d-none d-md-block dropdown-toggle ps-2">K.Felix</span>
->>>>>>> refs/remotes/origin/main
           </a>
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-<<<<<<< HEAD
               <!-- <h6>Kibooli Felix</h6> -->
               <?php
                 if(isset(  $_SESSION["fullName"]))
@@ -157,9 +118,6 @@ session_start();
                   <?php
                 }
               ?>
-=======
-              <h6>Kibooli Felix</h6>
->>>>>>> refs/remotes/origin/main
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -167,13 +125,9 @@ session_start();
 
             <li>
               <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-<<<<<<< HEAD
               <span class="material-icons-sharp">
               person
               </span>
-=======
-                <i class="bi bi-person"></i>
->>>>>>> refs/remotes/origin/main
                 <span>My Profile</span>
               </a>
             </li>
@@ -198,11 +152,7 @@ session_start();
             </li>
 
             <li>
-<<<<<<< HEAD
               <a class="dropdown-item d-flex align-items-center" href="logout.php">
-=======
-              <a class="dropdown-item d-flex align-items-center" href="#">
->>>>>>> refs/remotes/origin/main
                 <span class="material-icons-sharp">
                   logout
                   </span>
@@ -224,11 +174,7 @@ session_start();
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-<<<<<<< HEAD
         <a class="nav-link " href="index.php">
-=======
-        <a class="nav-link " href="index.html">
->>>>>>> refs/remotes/origin/main
           <span class="material-icons-sharp">
             grid_view
             </span>
@@ -324,7 +270,6 @@ session_start();
               </ul> -->
             </div>
           </li>
-<<<<<<< HEAD
 
           <?php
              if(isset($_SESSION["Access"])||$_SESSION["Access2"])
@@ -345,9 +290,5 @@ session_start();
              }
           ?>
       </aside><!-- End Sidebar-->
-=======
-      </aside><!-- End Sidebar-->
-
->>>>>>> refs/remotes/origin/main
   <main id="main" class="main">
  

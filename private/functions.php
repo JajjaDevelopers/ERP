@@ -171,10 +171,7 @@ function  loginUser($username,$password)
     $_SESSION["Access"]=$privilege;
     $_SESSION["fullName"]=$full_name;
     $_SESSION["userName"]=$userExists["UserName"];
-<<<<<<< HEAD
     // $_SESSION["userEmail"]=$userExists["EmailAddress"];
-=======
->>>>>>> refs/remotes/origin/main
     header("location:../home/forms/index.php");
     exit();
     } 
@@ -275,78 +272,75 @@ function coffeeGrades(){
 }
 
 
-<<<<<<< HEAD
-=======
 // Getting next document number for front end
-function nextDocNumber($table, $columName, $prefix){
-  include "connlogin.php"; 
-  $nextNoSql = "SELECT max($columName) AS numbers FROM $table";
-  $nextNoQuery = $conn->query($nextNoSql);
-  $nextNoResult = mysqli_fetch_array($nextNoQuery);
-  $number = $nextNoResult['numbers'];
-  $nextNo = intval($number) +1;
-  $docNumber = "";
-  if ($number === 0){
-    $docNumber = $prefix."-0001";
-  }else{
-    if ($nextNo<10){
-        $docNumber = $prefix."-000".$nextNo;
-    }
-    elseif ($nextNo<100){
-        $docNumber = $prefix."-00".$nextNo;
-    }elseif ($nextNo<1000){
-        $docNumber = $prefix."-0".$nextNo;
-    }else{
-      $docNumber = $prefix."-".$nextNo;}
-    }
-  return $docNumber;
-}
+// function nextDocNumber($table, $columName, $prefix){
+//   include "connlogin.php"; 
+//   $nextNoSql = "SELECT max($columName) AS numbers FROM $table";
+//   $nextNoQuery = $conn->query($nextNoSql);
+//   $nextNoResult = mysqli_fetch_array($nextNoQuery);
+//   $number = $nextNoResult['numbers'];
+//   $nextNo = intval($number) +1;
+//   $docNumber = "";
+//   if ($number === 0){
+//     $docNumber = $prefix."-0001";
+//   }else{
+//     if ($nextNo<10){
+//         $docNumber = $prefix."-000".$nextNo;
+//     }
+//     elseif ($nextNo<100){
+//         $docNumber = $prefix."-00".$nextNo;
+//     }elseif ($nextNo<1000){
+//         $docNumber = $prefix."-0".$nextNo;
+//     }else{
+//       $docNumber = $prefix."-".$nextNo;}
+//     }
+//   return $docNumber;
+// }
 
 
 // database table document number
-function documentNumber($table, $columName){
-  include "connlogin.php"; 
-  $nextNoSql = "SELECT max($columName) AS numbers FROM $table";
-  $nextNoQuery = $conn->query($nextNoSql);
-  $nextNoResult = mysqli_fetch_array($nextNoQuery);
-  $number = $nextNoResult['numbers'];
-  return intval($number) +1;
-}
+// function documentNumber($table, $columName){
+//   include "connlogin.php"; 
+//   $nextNoSql = "SELECT max($columName) AS numbers FROM $table";
+//   $nextNoQuery = $conn->query($nextNoSql);
+//   $nextNoResult = mysqli_fetch_array($nextNoQuery);
+//   $number = $nextNoResult['numbers'];
+//   return intval($number) +1;
+// }
 
 
 // Customer List
-function GetCustomerList(){
-  include "connlogin.php"; 
-  $queryCustomer = "SELECT customer_id, customer_name FROM factory.customer";
-  if ($stmt = $conn->prepare($queryCustomer)) {
-  $stmt->execute();
-  $stmt->bind_result($customer_id, $customer_name);
-  echo '<option></option>';
-  while ($stmt->fetch()) {
-      echo '<option value="'.$customer_id.' '.$customer_name.'">'.$customer_id.' '.$customer_name.'</option>';
-  }
-  $stmt->close();
-}
-}
+// function GetCustomerList(){
+//   include "connlogin.php"; 
+//   $queryCustomer = "SELECT customer_id, customer_name FROM factory.customer";
+//   if ($stmt = $conn->prepare($queryCustomer)) {
+//   $stmt->execute();
+//   $stmt->bind_result($customer_id, $customer_name);
+//   echo '<option></option>';
+//   while ($stmt->fetch()) {
+//       echo '<option value="'.$customer_id.' '.$customer_name.'">'.$customer_id.' '.$customer_name.'</option>';
+//   }
+//   $stmt->close();
+// }
+// }
 
 
 // Coffee Grades
-function coffeeGrades(){
-  include "connlogin.php"; 
-  $query = "SELECT grade_id, grade_name FROM grades";
-  if ($stmt = $conn->prepare($query)) {
-      $stmt->execute();
-      $stmt->bind_result($field1, $field2);
-      echo '<option></option>';
-      while ($stmt->fetch()) {
-          echo "<option value='".$field1."--".$field2."'>$field2</option>";
-      }
-      $stmt->close();
-  }
-}
+// function coffeeGrades(){
+//   include "connlogin.php"; 
+//   $query = "SELECT grade_id, grade_name FROM grades";
+//   if ($stmt = $conn->prepare($query)) {
+//       $stmt->execute();
+//       $stmt->bind_result($field1, $field2);
+//       echo '<option></option>';
+//       while ($stmt->fetch()) {
+//           echo "<option value='".$field1."--".$field2."'>$field2</option>";
+//       }
+//       $stmt->close();
+//   }
+// }
 
 
->>>>>>> refs/remotes/origin/main
 // Valuation customer Picker
 function valuationCustomer(){
   include "connlogin.php"; 

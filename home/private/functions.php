@@ -1,9 +1,15 @@
 <?php
 // require_once "connlogin.php";
 //function that tests for empty fields
+<<<<<<< HEAD
 function emptyFieldSignUp($fullname,$username,$email,$tel,$password,$passwordRepeat,$access)
 {
   if(empty($fullname)||empty($username)||empty($email)||empty($tel)||empty($password)||empty($passwordRepeat)||empty($access))
+=======
+function emptyFieldSignUp($fullname,$username,$email,$tel,$password,$passwordRepeat)
+{
+  if(empty($fullname)||empty($username)||empty($email)||empty($tel)||empty($password)||empty($passwordRepeat))
+>>>>>>> refs/remotes/origin/main
   {
     $result=true;
   } else
@@ -68,7 +74,11 @@ function pwdMatch($password,$passwordRepeat){
   $stmt=$pdo->prepare($query);
   if(!$stmt)//checking for database connection failure;
   {
+<<<<<<< HEAD
     header("location:..forms/signup.php?error=stmtfailed");
+=======
+    header("location:../signup.php?error=stmtfailed");
+>>>>>>> refs/remotes/origin/main
     exit();
   }
   $stmt->bindParam(1,$username,PDO::PARAM_STR);//binding parameters
@@ -90,19 +100,31 @@ function pwdMatch($password,$passwordRepeat){
  }
  
  //function that signs up user;
+<<<<<<< HEAD
  function signUpUser($fullname,$username,$email,$tel,$password,$access)
+=======
+ function signUpUser($fullname,$username,$email,$tel,$password,$dateupload)
+>>>>>>> refs/remotes/origin/main
  {
   
 
  include "connlogin.php";
 
+<<<<<<< HEAD
   $query="INSERT INTO members(FullName,UserName,EmailAddress,Telephone,UserPassword,Access)
+=======
+  $query="INSERT INTO members(FullName,UserName,EmailAddress,Telephone,UserPassword,DateSignedUp)
+>>>>>>> refs/remotes/origin/main
   VALUES(?,?,?,?,?,?)";
   $stmt=$pdo->prepare($query);
   
   if(!$stmt)
   {
+<<<<<<< HEAD
     header("location:..forms/signup.php?error=stmtfailed");
+=======
+    header("location:../signup.php?error=stmtfailed");
+>>>>>>> refs/remotes/origin/main
     exit();
   }
 
@@ -112,6 +134,7 @@ function pwdMatch($password,$passwordRepeat){
   $stmt->bindParam(3,$email,PDO::PARAM_STR);
   $stmt->bindParam(4,$tel,PDO::PARAM_INT);
   $stmt->bindParam(5,$passwordHashed,PDO::PARAM_STR);
+<<<<<<< HEAD
   $stmt->bindParam(6,$access,PDO::PARAM_INT);
   $stmt->execute();
   $pdo=null;
@@ -119,6 +142,57 @@ function pwdMatch($password,$passwordRepeat){
   exit();
  }
  
+=======
+  $stmt->bindParam(6,$dateupload,PDO::PARAM_STR);
+  $stmt->execute();
+  $pdo=null;
+  header("location:..\login.php?error=successfully");
+  exit();
+ }
+ 
+ //login
+ 
+function loginInputEmpty($username,$password){
+
+  if(empty($username)||empty($password)){
+  $result=true;
+  } else{
+    $result=false;
+  }
+
+  return $result;
+}
+
+function  loginUser($username,$password)
+{
+  $userExists=validUsernameEmail($username,$username);
+
+  if($userExists===false)
+  {
+    header("location:../login.php?message=wrongdetails");
+    exit();
+  }
+
+  $hashedPwd=$userExists["UserPassword"];
+
+  $checkPwd=password_verify($password,$hashedPwd);
+
+  if($checkPwd===false)
+  {
+    header("location:../login.php?message=incorrectpassword");
+    exit();
+  }
+
+  else if($checkPwd===true)
+  {
+    session_start();
+
+    $_SESSION["userName"]=$userExists["UserName"];
+    header("location:../public/index.php");
+    exit();
+  }
+}
+>>>>>>> refs/remotes/origin/main
 
 
 // Getting next document number for front end

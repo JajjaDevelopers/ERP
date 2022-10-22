@@ -27,8 +27,6 @@ function sanitize_table($tabledata)
     return $tabledata;
 }
 
-
-
 $summarySql = $conn->prepare("INSERT INTO valuation_report_summary (valuation_no, valuation_date, batch_report_no, customer_id, exchange_rate, 
                             costs, prepared_by) VALUES (?, ?, ?, ?, ?, ?, ?)");
 $valuationNo = intval($number) +1;

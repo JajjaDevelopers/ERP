@@ -1,8 +1,14 @@
 <?php
 $server="localhost";
+<<<<<<< HEAD
 $db="jajjcrmv_factory";
 $user="root";
 $pwd="";
+=======
+$db="factory";
+$user="root";
+$pwd="root";
+>>>>>>> refs/remotes/origin/main
 $charset="utf8mb4";
 
 $options=[

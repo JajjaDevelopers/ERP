@@ -1,26 +1,41 @@
-var yieldIds = ['highGrade1Yield', 'highGrade2Yield', 'highGrade3Yield', 'highGrade4Yield', 'lowGrade1Yield', 
-                'lowGrade2Yield', 'lowGrade3Yield', 'lowGrade4Yield', 'lowGrade5Yield', 'lowGrade6Yield'];
+// var codeIds = ['', 'highGrade2Code', 'highGrade3Code', 'highGrade4Code', 'highGrade5Code'];
+var codeIds = [];
+var nameIds = [];
+var yieldIds = [];
+var qtyIds = [];
+var priceUsIds = [];
+var priceCtsIds = [];
+var priceUgxIds = [];
+var amountUsIds = [];
+var amountUgxIds = [];
+var itemSelections = [];
+for (var x=1; x<=10; x++){
+    codeIds.push("highGrade"+x+"Code");
+    nameIds.push("highGrade"+x+"Name");
+    yieldIds.push("highGrade"+x+"Yield");
+    qtyIds.push("highGrade"+x+"Qty");
+    priceUsIds.push("highGrade"+x+"PriceUs");
+    priceCtsIds.push("highGrade"+x+"PriceCts");
+    priceUgxIds.push("highGrade"+x+"PriceUgx");
+    amountUsIds.push("highGrade"+x+"AmountUs");
+    amountUgxIds.push("highGrade"+x+"AmountUgx");
+    itemSelections.push("highGrade"+x+"Select");
+    
+}
 
-var qtyIds = ['highGrade1Qty', 'highGrade2Qty', 'highGrade3Qty', 'highGrade4Qty', 'lowGrade1Qty', 
-                'lowGrade2Qty', 'lowGrade3Qty', 'lowGrade4Qty', 'lowGrade5Qty', 'lowGrade6Qty'];
-
-var priceUsIds = ['highGrade1PriceUs', 'highGrade2PriceUs', 'highGrade3PriceUs', 'highGrade4PriceUs', 'lowGrade1PriceUs', 
-                'lowGrade2PriceUs', 'lowGrade3PriceUs', 'lowGrade4PriceUs', 'lowGrade5PriceUs', 'lowGrade6PriceUs'];
-
-var priceCtsIds = ['highGrade1PriceCts', 'highGrade2PriceCts', 'highGrade3PriceCts', 'highGrade4PriceCts', 'lowGrade1PriceCts', 
-                'lowGrade2PriceCts', 'lowGrade3PriceCts', 'lowGrade4PriceCts', 'lowGrade5PriceCts', 'lowGrade6PriceCts'];
-
-var priceUgxIds = ['highGrade1PriceUgx', 'highGrade2PriceUgx', 'highGrade3PriceUgx', 'highGrade4PriceUgx', 'lowGrade1PriceUgx', 
-                'lowGrade2PriceUgx', 'lowGrade3PriceUgx', 'lowGrade4PriceUgx', 'lowGrade5PriceUgx', 'lowGrade6PriceUgx'];
-
-var amountUsIds = ['highGrade1AmountUs', 'highGrade2AmountUs', 'highGrade3AmountUs', 'highGrade4AmountUs', 'lowGrade1AmountUs', 
-                'lowGrade2AmountUs', 'lowGrade3AmountUs', 'lowGrade4AmountUs', 'lowGrade5AmountUs', 'lowGrade6AmountUs'];
-
-var amountUgxIds = ['highGrade1AmountUgx', 'highGrade2AmountUgx', 'highGrade3AmountUgx', 'highGrade4AmountUgx', 'lowGrade1AmountUgx', 
-                'lowGrade2AmountUgx', 'lowGrade3AmountUgx', 'lowGrade4AmountUgx', 'lowGrade5AmountUgx', 'lowGrade6AmountUgx'];
 
 
 var excRate = Number(document.getElementById('exchangeRate').value);
+
+// Getting grade list
+function valuationItemCodeAndName(selectId){
+    var selectedItem = document.getElementById(selectId).value;
+    var selectIndex = Number(itemSelections.indexOf(selectId));
+
+    document.getElementById(codeIds[selectIndex]).setAttribute("value", selectedItem.slice(0,6));
+    document.getElementById(nameIds[selectIndex]).setAttribute("value", selectedItem.substr(8));
+}
+
 
 
 function getListTotal(listName, totalId){ 
@@ -73,7 +88,7 @@ function captureUgxPrice(){
         }
         captureQty();
     }
-    document.getElementById(priceUsIds[x]).addEventListener("blonchange", captureUsdPrice);
+    
 }
 
 
@@ -88,8 +103,9 @@ function captureUsdPrice(){
         }
         captureQty();
     }
-    document.getElementById(priceUgxIds[x]).addEventListener("blur", captureUgxPrice);
+    
 }
+
 
 for (var x=0; x < qtyIds.length; x++){
     document.getElementById(qtyIds[x]).addEventListener("blur", captureQty);

@@ -41,8 +41,8 @@ require_once "header.php";
     <div class="col-md-12 justify-content-center">
 
       <div class="form-floating ">
-        <input type="text" name="username" class="form-control">
-        <label for="username">Email Address</label>
+        <input type="text" name="username" class="form-control" value="<?php include "loginsession.php";?>">
+        <label for="username">User Name or Email Address</label>
       </div>
       <div class="form-floating mt-3">
         <input type="password" name="password" class="form-control">

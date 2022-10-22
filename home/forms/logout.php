@@ -3,7 +3,5 @@ session_start();
 session_unset();
 session_destroy();
 
-header("location:../login.php");
-exit();
-
+include "redirect.php";//takes back user to the home page
 ?>

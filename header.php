@@ -22,43 +22,11 @@
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 </style>
+<style>
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+</style>
 <body>
-  <!-----Header section--->
-  <!-- <div class="row">
-    <div class="col-1" id="img" >
-      <img src="images\Logo.jpg" alt="NUCAFE LOGO" id="logo"/>
-    </div>
-    <div class="col-11">
-    <nav class="navbar navbar-expand-lg navbar-dark" id="nav" style="background-color: green;">
-    <div class="container-fluid">
-      <a class="navbar-brand h1 text-warning" href=".\index.php">NUCAFE</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>NUCAFE
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="header">
-          <li class="nav-item" >
-            <a class="nav-link active" aria-current="page" href="./index.php" class="navlist">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login.php" class="navlist">Login</a>
-          </li> -->
-          
-          <?php
-             if(isset(  $_SESSION["userName"]))
-             {
-                echo '<li class="nav-item"> <a class="nav-link " href="logout.php" 
-                class="navlist">Log Out</a></li>';
-             } else
-             {
-              echo'<li class="nav-item">
-                <a class="nav-link" href="signup.php" class="navlist">Signup</a>
-                </li>';
-             }
-          ?>
-        <!-- </ul>
-      </div>
-    </div>
-  </nav>
-    </div>
-  </div> -->
+

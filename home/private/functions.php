@@ -1,9 +1,9 @@
 <?php
 // require_once "connlogin.php";
 //function that tests for empty fields
-function emptyFieldSignUp($fullname,$username,$email,$tel,$password,$passwordRepeat)
+function emptyFieldSignUp($fullname,$username,$email,$tel,$password,$passwordRepeat,$access)
 {
-  if(empty($fullname)||empty($username)||empty($email)||empty($tel)||empty($password)||empty($passwordRepeat))
+  if(empty($fullname)||empty($username)||empty($email)||empty($tel)||empty($password)||empty($passwordRepeat)||empty($access))
   {
     $result=true;
   } else
@@ -68,7 +68,7 @@ function pwdMatch($password,$passwordRepeat){
   $stmt=$pdo->prepare($query);
   if(!$stmt)//checking for database connection failure;
   {
-    header("location:../signup.php?error=stmtfailed");
+    header("location:..forms/signup.php?error=stmtfailed");
     exit();
   }
   $stmt->bindParam(1,$username,PDO::PARAM_STR);//binding parameters
@@ -90,19 +90,19 @@ function pwdMatch($password,$passwordRepeat){
  }
  
  //function that signs up user;
- function signUpUser($fullname,$username,$email,$tel,$password,$dateupload)
+ function signUpUser($fullname,$username,$email,$tel,$password,$access)
  {
   
 
  include "connlogin.php";
 
-  $query="INSERT INTO members(FullName,UserName,EmailAddress,Telephone,UserPassword,DateSignedUp)
+  $query="INSERT INTO members(FullName,UserName,EmailAddress,Telephone,UserPassword,Access)
   VALUES(?,?,?,?,?,?)";
   $stmt=$pdo->prepare($query);
   
   if(!$stmt)
   {
-    header("location:../signup.php?error=stmtfailed");
+    header("location:..forms/signup.php?error=stmtfailed");
     exit();
   }
 
@@ -112,55 +112,13 @@ function pwdMatch($password,$passwordRepeat){
   $stmt->bindParam(3,$email,PDO::PARAM_STR);
   $stmt->bindParam(4,$tel,PDO::PARAM_INT);
   $stmt->bindParam(5,$passwordHashed,PDO::PARAM_STR);
-  $stmt->bindParam(6,$dateupload,PDO::PARAM_STR);
+  $stmt->bindParam(6,$access,PDO::PARAM_INT);
   $stmt->execute();
   $pdo=null;
-  header("location:..\login.php?error=successfully");
+  header("location:../forms/signup.php?error=successfully");
   exit();
  }
  
- //login
- 
-function loginInputEmpty($username,$password){
-
-  if(empty($username)||empty($password)){
-  $result=true;
-  } else{
-    $result=false;
-  }
-
-  return $result;
-}
-
-function  loginUser($username,$password)
-{
-  $userExists=validUsernameEmail($username,$username);
-
-  if($userExists===false)
-  {
-    header("location:../login.php?message=wrongdetails");
-    exit();
-  }
-
-  $hashedPwd=$userExists["UserPassword"];
-
-  $checkPwd=password_verify($password,$hashedPwd);
-
-  if($checkPwd===false)
-  {
-    header("location:../login.php?message=incorrectpassword");
-    exit();
-  }
-
-  else if($checkPwd===true)
-  {
-    session_start();
-
-    $_SESSION["userName"]=$userExists["UserName"];
-    header("location:../forms/index.php");
-    exit();
-  }
-}
 
 
 //Input Sanitizer

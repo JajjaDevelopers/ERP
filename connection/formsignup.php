@@ -11,11 +11,12 @@ if(isset($_POST["submit"]))//checking whether user has submited info
   $password=$_POST["pwd"];
   $passwordRepeat=$_POST["confpwd"];
   $dateupload=date("Y-m-d H:i:s");
+  $access=$_POST["access"];
 
   //error handling
   $error="";
   //empty fields
-  if(emptyFieldSignUp($fullname,$username,$email,$tel,$password,$passwordRepeat)!==false)
+  if(emptyFieldSignUp($fullname,$username,$email,$tel,$password,$passwordRepeat,$access)!==false)
   {
     header("location:../signup.php?error=emptyfield");
     exit();
@@ -51,6 +52,6 @@ if(isset($_POST["submit"]))//checking whether user has submited info
   header("location:../signup.php?error=invalidemail");
   exit();
  }
-  signUpUser($fullname,$username,$email,$tel,$password,$dateupload);
+  signUpUser($fullname,$username,$email,$tel,$password,$access);
 }
 ?>

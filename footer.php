@@ -1,11 +1,11 @@
-<footer class="bg-dark pt-5 pb-4 text-white mt-4">
+<!-- <footer class="bg-dark pt-5 pb-4 text-white mt-4">
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3  col-sm-12">
         <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Our Vision</h5>
         <p>
-          <!-- Coffee farmers profitably own their coffee along the coffee value chain for 
-          sustainable livelihoods, consumer satisfaction and societal transformation -->
+           Coffee farmers profitably own their coffee along the coffee value chain for 
+          sustainable livelihoods, consumer satisfaction and societal transformation
           To provide scalable technological solutions in form of web based applications
         </p>
       </div>
@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-</footer>
+</footer> -->
 <script src=".\ASSETS\bootsrap\js\bootstrap.bundle.min.js"></script>
   <!-- <script src=".\ASSETS\jquery-3.6.0.js"></script>
   <script src=".\ASSETS\owl.js">

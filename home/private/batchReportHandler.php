@@ -112,7 +112,7 @@ for ($x=0; $x < count($allGradeQty); $x++ ) {
 
 $conn->close();
 
-header("location:../public/batchReport.php");
+header("location:../forms/batchReport.php");
 exit();
 
 

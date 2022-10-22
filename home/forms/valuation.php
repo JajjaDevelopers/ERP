@@ -1,3 +1,4 @@
+<?php $pageTitle = "Valuation Report"; ?>
 <?php include_once('header.php'); ?>
 
 <?php include ("../connection/databaseConn.php"); ?>

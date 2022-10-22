@@ -1,5 +1,5 @@
 <?php include_once('header.php'); ?>
-
+<?php $pageTitle = "Valuation Report"; ?>
 <input type="submit" id="valuationNumber" name="valuationNumber" class="shortInput" form="previousValuations"
             style="width: 40px; text-align: center;" value="<<<" >
 <input type="submit" id="valuationNumber" name="valuationNumber" class="shortInput" form="nextValuations"

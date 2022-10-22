@@ -157,11 +157,20 @@ function  loginUser($username,$password)
     session_start();
 
     $_SESSION["userName"]=$userExists["UserName"];
-    header("location:../public/index.php");
+    header("location:../forms/index.php");
     exit();
   }
 }
 
+
+//Input Sanitizer
+function sanitize_table($tabledata)
+{
+    $tabledata=stripslashes($tabledata);
+    $tabledata=strip_tags($tabledata);
+    $tabledata=htmlentities($tabledata);
+    return $tabledata;
+}
 
 // Getting next document number for front end
 function nextDocNumber($table, $columName, $prefix){
@@ -295,6 +304,38 @@ function selectBatchReportCustomer(){
       }
   }
 }
+
+
+// Batch Order customer list
+function selectBatchOrderCustomer(){
+  include "connlogin.php"; 
+  $sql = "SELECT customer_id, customer_name, sum(grn_qty) AS total, count(customer_name) AS GRNs FROM customer
+          JOIN grn USING(customer_id)
+          WHERE (purpose='Processing' AND batch_order_no=0)
+          GROUP BY customer_id
+          ORDER BY grn_no";
+  $getList = $conn->query($sql);
+  $row = mysqli_fetch_all($getList);
+  if (count($row)==0){
+      echo "<option>  No GRN found!</option>";
+  }else{
+      echo "<option></option>";
+      for ($customer=0; $customer<count($row); $customer++){
+          
+          // echo '<option value="'.$row[$customer][0].'">'.$row[$customer][1]."--".$row[$customer][2].'</option>';
+          ?>
+          <option value="<?=$row[$customer][0]?>"><?=$row[$customer][1]."--".$row[$customer][2]?></option>
+          <?php
+      }
+  }
+}
+
+
+//Dynamic page Title
+function pageTitle($title){
+  echo $title;
+};
+
 
 
 

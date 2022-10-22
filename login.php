@@ -36,7 +36,7 @@ require_once "header.php";
       <h4>Account</h4>
     </div>
     <div class="card-body">
-    <form action="/home/connection/formlogin.php" method="post">
+    <form action="connection/formlogin.php" method="post">
   <div class="row">
     <div class="col-md-12 justify-content-center">
 

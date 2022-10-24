@@ -8,7 +8,7 @@
           <label for="grnNo" style="grid-column: 1; grid-row: 1; width:70px; margin-top: 5px">GRN No:</label>
           <input type="text" class="shortInput" id="grnNo" name="grnNo" value="<?php echo nextDocNumber('grn', 'grn_no', 'GRN-') ?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">
           <label for="date" class="" style="grid-column: 1; grid-row: 2; margin-top: 10px">Date:</label>
-          <input type="text" class="shortInput" id="date" placeholder="MM/DD/YYYY" name="grnDate" value="" style="grid-column: 2; grid-row: 2">
+          <input type="date" class="shortInput" id="grnDate" placeholder="MM/DD/YYYY" name="grnDate" value="" style="grid-column: 2; grid-row: 2">
           <label for="timeIn" class="" style="grid-column: 1; grid-row: 3; margin-top: 10px">Time In:</label>
           <input type="time" class="shortInput" id="timeIn" name="timein" value="" style="grid-column: 2; grid-row: 3">
       </div>
@@ -29,7 +29,7 @@
             <br>
             <label>Grade:</label>
             <select id="gradeId" name="coffeegrades" class="shortInput" style="width: 250px;">
-          
+
             </select>
             <br>
             <label for="weight" class="form-label">Weight:</label>

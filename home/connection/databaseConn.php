@@ -1,2 +1,5 @@
-<?php include_once("../private/functions.php"); ?>
-<?php include_once("../private/connlogin.php"); ?>
+<?php
+include_once("../private/connlogin.php");
+include_once("../private/functions.php");
+
+?>

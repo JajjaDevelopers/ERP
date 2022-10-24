@@ -1,16 +1,7 @@
-<?php $pageTitle = "Valuation Report"; ?>
-<?php include_once('header.php'); ?>
-
-<?php include ("../connection/databaseConn.php"); ?>
-<?php 
+<?php include_once('header.php'); 
+include ("../connection/databaseConn.php");
 $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VAL");
-$previousValuationNo = nextDocNumber("valuation_report_summary", "valuation_no", "");
 ?>
-
-<input type="submit" id="valuationNumber" name="valuationNumber" class="shortInput" value="Previous" form="previousValuations"
-            style="width: 100px; text-align: center;"><br>
-    
-
 <form id="valuationForm" name="valuationForm" class="regularForm" style="height: 930px;" method="POST" action="../connection/valuation.php">
     <h3 class="formHeading">VALUATION REPORT</h3>
     <div style="padding: 15px 5px 5px 70%;">
@@ -134,13 +125,6 @@ $previousValuationNo = nextDocNumber("valuation_report_summary", "valuation_no",
     </div>
     <?php include_once("../private/approvalDetails.php"); ?>
 </form>
-
-<form id="previousValuations" class="" method="POST" action="previousValuation.php" style="display: none;">
-    <input type="number" id="valuationNumber" name="valuationNumber" class="shortInput" value="<?php echo $previousValuationNo-1; ?>" form="previousValuations"
-    style="width: 100px; text-align: center; display:none;">
-            
-</form>
-
 <!-- summarizing valuation info -->
 <script>
     function updateOrder(str){
@@ -189,6 +173,11 @@ $previousValuationNo = nextDocNumber("valuation_report_summary", "valuation_no",
         xhttp.open("GET", "../ajax/valuationAjax.php?q="+str);
         xhttp.send();
         
+        // xhttp.onload = function() {
+        //     document.getElementById("customerName").value = this.responseText;
+        // }
+        // xhttp.open("GET", "ajax/batchReportAjax.php?q="+str);
+        // xhttp.send();
         
     }
     

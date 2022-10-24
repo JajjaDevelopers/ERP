@@ -1,11 +1,14 @@
-<?php session_start();?>
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  
-  <title><?php echo $pageTitle ;?></title>
+
+  <title>Home</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -16,6 +19,7 @@
   <!-- Material Icons-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
       rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -41,7 +45,6 @@
   <link rel="stylesheet" href="../assets/js/Jquery/jquery-ui/jquery-ui.theme.css">
   <script src="../assets/js/receivedgoods.js"></script>
   <link rel="stylesheet" href="../assets/css/main.css">
-  <!-- <script src="../assets/js/salesreport.js"></script> -->
 </head>
 
 <body>
@@ -51,8 +54,8 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="../images/logo.jpg" alt="Logo">
-        <span class="d-none d-lg-block">NGL</span>
+        <img src="assets/img/logo2.png" alt="Logo">
+        <span class="d-none d-lg-block">JAJJA</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -60,24 +63,32 @@
     <div class="search-bar">
       <form class="search-form d-flex align-items-center" method="POST" action="#">
         <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+        <button type="submit" title="Search"><span class="material-icons-sharp">search</span></button>
       </form>
     </div><!-- End Search Bar -->
+
+    <!--Current Time-->
+    <div class="mx-auto">
+      <h1 class="text-primary" id="current_time"></h1>
+    </div>
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
+          <span class="material-symbols-sharp">
+            <!-- search -->
+          </span>
           </a>
         </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown">
-
+        
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
-            <!-- <span class="badge bg-primary badge-number">4</span> -->
+          <span class="material-icons-sharp">
+          notifications
+          </span>
           </a><!-- End Notification Icon -->
 
     
@@ -87,12 +98,26 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
-            <span class="d-none d-md-block dropdown-toggle ps-2">K.Felix</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">
+            <?php
+                if(isset(  $_SESSION["userName"])){
+                  echo $_SESSION["userName"];
+                }
+              ?>
+            </span>
           </a>
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kibooli Felix</h6>
+              <!-- <h6>Kibooli Felix</h6> -->
+              <?php
+                if(isset(  $_SESSION["fullName"]))
+                {
+                  ?>
+                    <p class="text-info me-3"><?=$_SESSION["fullName"]?></p>
+                  <?php
+                }
+              ?>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -100,7 +125,9 @@
 
             <li>
               <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
+              <span class="material-icons-sharp">
+              person
+              </span>
                 <span>My Profile</span>
               </a>
             </li>
@@ -125,7 +152,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="logout.php">
                 <span class="material-icons-sharp">
                   logout
                   </span>
@@ -147,7 +174,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="index.php">
           <span class="material-icons-sharp">
             grid_view
             </span>
@@ -168,11 +195,11 @@
             </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><h6 class="dropdown-header">Processing Data Entry Forms</h6></li>
-                <li><a class="dropdown-item"  aria-current="true" href="Goods_Received_Note.php">Recieve Goods</a></li>
+                <li><a class="dropdown-item active"  aria-current="true" href="Goods_Received_Note.php">Recieve Goods</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item"aria-current="true" href="batchProcessingOrder.php">Batch Processing Order</a></li>
+                <li><a class="dropdown-item active"aria-current="true" href="batchProcessingOrder.php">Batch Processing Order</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item "aria-current="true" href="batchReport.php">Batch Report</a></li>
+                <li><a class="dropdown-item active"aria-current="true" href="batchReport.php">Batch Report</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="roasterydispatch.php">Dispatch</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -245,7 +272,25 @@
               </ul> -->
             </div>
           </li>
-      </aside><!-- End Sidebar-->
 
+          <?php
+             if(isset($_SESSION["Access"])||$_SESSION["Access2"])
+             {
+              if($_SESSION["Access"]==1||$_SESSION["Access2"]==1)
+              {
+                ?>
+                <li class="nav-item">
+                  <div class="nav-item">
+                    <span class="material-icons-sharp">
+                    person_add
+                    </span>
+                    <a class="nav-item" href="signup.php">Create New User</a>
+                  </div>
+                </li>
+              <?php
+              }
+             }
+          ?>
+      </aside><!-- End Sidebar-->
   <main id="main" class="main">
  

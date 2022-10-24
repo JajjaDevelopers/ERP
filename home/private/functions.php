@@ -1,9 +1,9 @@
 <?php
 // require_once "connlogin.php";
 //function that tests for empty fields
-function emptyFieldSignUp($fullname,$username,$email,$tel,$password,$passwordRepeat)
+function emptyFieldSignUp($fullname,$username,$email,$tel,$password,$passwordRepeat,$access)
 {
-  if(empty($fullname)||empty($username)||empty($email)||empty($tel)||empty($password)||empty($passwordRepeat))
+  if(empty($fullname)||empty($username)||empty($email)||empty($tel)||empty($password)||empty($passwordRepeat)||empty($access))
   {
     $result=true;
   } else
@@ -68,7 +68,7 @@ function pwdMatch($password,$passwordRepeat){
   $stmt=$pdo->prepare($query);
   if(!$stmt)//checking for database connection failure;
   {
-    header("location:../signup.php?error=stmtfailed");
+    header("location:..forms/signup.php?error=stmtfailed");
     exit();
   }
   $stmt->bindParam(1,$username,PDO::PARAM_STR);//binding parameters
@@ -90,19 +90,19 @@ function pwdMatch($password,$passwordRepeat){
  }
  
  //function that signs up user;
- function signUpUser($fullname,$username,$email,$tel,$password,$dateupload)
+ function signUpUser($fullname,$username,$email,$tel,$password,$access)
  {
   
 
  include "connlogin.php";
 
-  $query="INSERT INTO members(FullName,UserName,EmailAddress,Telephone,UserPassword,DateSignedUp)
+  $query="INSERT INTO members(FullName,UserName,EmailAddress,Telephone,UserPassword,Access)
   VALUES(?,?,?,?,?,?)";
   $stmt=$pdo->prepare($query);
   
   if(!$stmt)
   {
-    header("location:../signup.php?error=stmtfailed");
+    header("location:..forms/signup.php?error=stmtfailed");
     exit();
   }
 
@@ -112,65 +112,20 @@ function pwdMatch($password,$passwordRepeat){
   $stmt->bindParam(3,$email,PDO::PARAM_STR);
   $stmt->bindParam(4,$tel,PDO::PARAM_INT);
   $stmt->bindParam(5,$passwordHashed,PDO::PARAM_STR);
-  $stmt->bindParam(6,$dateupload,PDO::PARAM_STR);
+  $stmt->bindParam(6,$access,PDO::PARAM_INT);
   $stmt->execute();
   $pdo=null;
-  header("location:..\login.php?error=successfully");
+  header("location:../forms/signup.php?error=successfully");
   exit();
  }
  
- //login
- 
-function loginInputEmpty($username,$password){
-
-  if(empty($username)||empty($password)){
-  $result=true;
-  } else{
-    $result=false;
-  }
-
-  return $result;
-}
-
-function  loginUser($username,$password)
-{
-  $userExists=validUsernameEmail($username,$username);
-
-  if($userExists===false)
-  {
-    header("location:../login.php?message=wrongdetails");
-    exit();
-  }
-
-  $hashedPwd=$userExists["UserPassword"];
-
-  $checkPwd=password_verify($password,$hashedPwd);
-
-  if($checkPwd===false)
-  {
-    header("location:../login.php?message=incorrectpassword");
-    exit();
-  }
-
-  else if($checkPwd===true)
-  {
-    session_start();
-
-    $_SESSION["userName"]=$userExists["UserName"];
-    header("location:../forms/index.php");
-    exit();
-  }
-}
-
-
-//Input Sanitizer
-function sanitize_table($tabledata)
-{
-    $tabledata=stripslashes($tabledata);
-    $tabledata=strip_tags($tabledata);
-    $tabledata=htmlentities($tabledata);
-    return $tabledata;
-}
+ function sanitize_table($tabledata)
+ {
+     $tabledata=stripslashes($tabledata);
+     $tabledata=strip_tags($tabledata);
+     $tabledata=htmlentities($tabledata);
+     return $tabledata;
+ }
 
 // Getting next document number for front end
 function nextDocNumber($table, $columName, $prefix){
@@ -182,17 +137,17 @@ function nextDocNumber($table, $columName, $prefix){
   $nextNo = intval($number) +1;
   $docNumber = "";
   if ($number === 0){
-    $docNumber = $prefix."0001";
+    $docNumber = $prefix."-0001";
   }else{
     if ($nextNo<10){
-        $docNumber = $prefix."000".$nextNo;
+        $docNumber = $prefix."-000".$nextNo;
     }
     elseif ($nextNo<100){
-        $docNumber = $prefix."00".$nextNo;
+        $docNumber = $prefix."-00".$nextNo;
     }elseif ($nextNo<1000){
-        $docNumber = $prefix."0".$nextNo;
+        $docNumber = $prefix."-0".$nextNo;
     }else{
-      $docNumber = $prefix.$nextNo;}
+      $docNumber = $prefix."-".$nextNo;}
     }
   return $docNumber;
 }
@@ -212,7 +167,7 @@ function documentNumber($table, $columName){
 // Customer List
 function GetCustomerList(){
   include "connlogin.php"; 
-  $queryCustomer = "SELECT customer_id, customer_name FROM factory.customer";
+  $queryCustomer = "SELECT customer_id, customer_name FROM customer";
   if ($stmt = $conn->prepare($queryCustomer)) {
   $stmt->execute();
   $stmt->bind_result($customer_id, $customer_name);
@@ -262,25 +217,25 @@ function valuationCustomer(){
 // Generating Valuation Row
 function valuationItemRow($itemNo){
 
-  echo '<tr>
-      <td>
-          <div id="item'.$itemNo.'Field" style="display: grid;" class="itemName">';
-              echo '<input type="text" value="" id="highGrade'.$itemNo.'Code" readonly name="highGrade'.$itemNo.'Code" class="itmNameInput" style="grid-column: 1; display:none">';
-              echo '<input type="text" value="" id="highGrade'.$itemNo.'Name" readonly name="highGrade'.$itemNo.'Name" class="itmNameInput" style="grid-column: 2; width: 250px">';
-              echo '<select id="highGrade'.$itemNo.'Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="valuationItemCodeAndName(this.id)">';
-                  CoffeeGrades();
-              echo '</select>
-          </div>
-          
-      </td>';
-      echo '<td><input type="number" value="" id="highGrade'.$itemNo.'Yield" readonly name="highGrade'.$itemNo.'Yield" class="tableInput"></td>';
-      echo '<td><input type="number" value="" id="highGrade'.$itemNo.'Qty" name="highGrade'.$itemNo.'Qty" class="tableInput"></td>';
-      echo '<td><input type="number" value="" id="highGrade'.$itemNo.'PriceUs" name="highGrade'.$itemNo.'PriceUs" class="tableInput"></td>';
-      echo '<td><input type="number" value="" id="highGrade'.$itemNo.'PriceCts" name="highGrade'.$itemNo.'PriceCts" class="tableInput"></td>';
-      echo '<td><input type="number" value="" id="highGrade'.$itemNo.'PriceUgx" name="highGrade'.$itemNo.'PriceUgx" class="tableInput"></td>';
-      echo '<td><input type="number" value="" id="highGrade'.$itemNo.'AmountUs" readonly name="highGrade'.$itemNo.'AmountUs" class="tableInput"></td>';
-      echo '<td><input type="number" value="" id="highGrade'.$itemNo.'AmountUgx" readonly name="highGrade'.$itemNo.'AmountUgx" class="tableInput"></td>
-      </tr>';
+echo '<tr>
+    <td>
+        <div id="item'.$itemNo.'Field" style="display: grid;" class="itemName">';
+            echo '<input type="text" value="" id="highGrade'.$itemNo.'Code" readonly name="highGrade'.$itemNo.'Code" class="itmNameInput" style="grid-column: 1; display:none">';
+            echo '<input type="text" value="" id="highGrade'.$itemNo.'Name" readonly name="highGrade'.$itemNo.'Name" class="itmNameInput" style="grid-column: 2; width: 250px">';
+            echo '<select id="highGrade'.$itemNo.'Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="valuationItemCodeAndName(this.id)">';
+                CoffeeGrades();
+            echo '</select>
+        </div>
+        
+    </td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'Yield" readonly name="highGrade'.$itemNo.'Yield" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'Qty" name="highGrade'.$itemNo.'Qty" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'PriceUs" name="highGrade'.$itemNo.'PriceUs" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'PriceCts" name="highGrade'.$itemNo.'PriceCts" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'PriceUgx" name="highGrade'.$itemNo.'PriceUgx" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'AmountUs" readonly name="highGrade'.$itemNo.'AmountUs" class="tableInput"></td>';
+    echo '<td><input type="number" value="" id="highGrade'.$itemNo.'AmountUgx" readonly name="highGrade'.$itemNo.'AmountUgx" class="tableInput"></td>
+    </tr>';
 }
 
 
@@ -306,46 +261,28 @@ function selectBatchReportCustomer(){
 }
 
 
-// Batch Order customer list
-function selectBatchOrderCustomer(){
+//Batch Order Customer Selector
+function batchOrderCustomer(){
   include "connlogin.php"; 
-  $sql = "SELECT customer_id, customer_name, sum(grn_qty) AS total, count(customer_name) AS GRNs FROM customer
-          JOIN grn USING(customer_id)
+  $stmt = "SELECT grn_no, grn.customer_id, customer_name, grade_name, grn_qty FROM grn
+          JOIN customer USING(customer_id)
+          JOIN grades USING(grade_id)
           WHERE (purpose='Processing' AND batch_order_no=0)
-          GROUP BY customer_id
-          ORDER BY grn_no";
-  $getList = $conn->query($sql);
-  $row = mysqli_fetch_all($getList);
-  if (count($row)==0){
-      echo "<option>  No GRN found!</option>";
-  }else{
-      echo "<option></option>";
-      for ($customer=0; $customer<count($row); $customer++){
-          
-          // echo '<option value="'.$row[$customer][0].'">'.$row[$customer][1]."--".$row[$customer][2].'</option>';
-          ?>
-          <option value="<?=$row[$customer][0]?>"><?=$row[$customer][1]."--".$row[$customer][2]?></option>
-          <?php
-      }
+          GROUP BY customer_id";
+  $custQuery = $conn->prepare($stmt);
+  $custQuery->execute();
+  $custQuery->bind_result($grn_no, $customer_id, $customer_name, $grade_name, $grn_qty);
+  $rows = mysqli_affected_rows($conn);
+  echo '<option></option>';
+  while ($custQuery->fetch()){
+ 
+    ?>
+    <option value="<?=$customer_id?>"><?=$customer_name?></option>
+    <?php
   }
+
+
 }
-
-
-//Dynamic page Title
-function pageTitle($title){
-  echo $title;
-};
-
-
-
-
-
-
-
-
-
-
-
 
 
 

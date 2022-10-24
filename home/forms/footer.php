@@ -10,6 +10,18 @@
     &copy; Copyright <strong><span>JAJJA DEV<span></strong>. All Rights Reserved
   </div>
 </footer><!-- End Footer -->
+<script>
+
+setInterval(localTime,1000)
+function localTime()
+{
+  const time=new Date();
+  var currentTime=time.toLocaleTimeString();
+  const element=document.getElementById("current_time")
+  element.innerHTML=currentTime;
+}
+
+</script>
 <!-- Vendor JS Files -->
 <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
 <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -22,9 +34,9 @@
 
 <!-- <script src=".\ASSETS\CSS\bootsrap/js/bootstrap.bundle.min.js"></script> -->
   <!-- <script src=".\ASSETS\SCRIPTS\mainscript.js"></script> -->
-<!-- <script src="../assets/js/valuationJavaScript.js"></script> -->
+<!-- <script src="../assets/js/valuationJavaScript.js"></script>
 <script src="../assets/js/goodsreceived.js"></script> 
-<!-- <script src="../assets/js/batchReport.js"></script> -->
+<script src="../assets/js/batchReport.js"></script> -->
 <!-- Template Main JS File -->
 <!-- <script src="../assets/js/main.js"></script> -->
 

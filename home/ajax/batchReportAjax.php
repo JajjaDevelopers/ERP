@@ -1,7 +1,7 @@
 
-<?php
-$mysqli = new mysqli("localhost", "root", "root", "factory");
-if($mysqli->connect_error) {
+<?php include "../private/database.php";
+// $mysqli = new mysqli("localhost", "root", "root", "factory");
+if($conn->connect_error) {
   exit('Could not connect');
 }
 
@@ -13,7 +13,7 @@ $sql = "SELECT batch_order_no, customer_id, customer_name, batch_order_input_qty
         JOIN customer USING (customer_id) 
         WHERE batch_order_no=? ";
 
-$stmt = $mysqli->prepare($sql);
+$stmt = $conn->prepare($sql);
 $orderNo = intval($_GET['q']) ;
 $stmt->bind_param("s", $orderNo );
 $stmt->execute();

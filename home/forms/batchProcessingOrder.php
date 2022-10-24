@@ -11,7 +11,7 @@
         <label for="date" class="" style="grid-column: 1; grid-row: 2; margin-top: 10px">Date:</label>
         <input type="date" class="shortInput" id="date" name="grnDate" value="" style="grid-column: 2; grid-row: 2">
     </div>
-    <?php require("customerSelector.php"); ?>
+    <?php require "../connection/batchOrderCustomerPicker.php" ?>
 
 
 

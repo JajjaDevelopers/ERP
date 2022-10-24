@@ -1,11 +1,7 @@
-<?php
-
+<?php 
 session_start();
-$servername = $_SESSION["servername"];
-$username = $_SESSION["username"];
-$password = $_SESSION["password"];
-$dbname = $_SESSION["dbname"];
-$conn = new mysqli($servername, $username, $password, $dbname);
+$username = $_SESSION["userName"];
+include ("database.php");
 
 
 // Generating grades
@@ -21,15 +17,6 @@ $priceList = array();
         // $price =  ;
         array_push($priceList, "item".$x."UgxPx");
     }
-
-
-function sanitize_table($tabledata)
-{
-    $tabledata=stripslashes($tabledata);
-    $tabledata=strip_tags($tabledata);
-    $tabledata=htmlentities($tabledata);
-    return $tabledata;
-}
 
 
 
@@ -108,5 +95,5 @@ CaptureDetails();
 
 
 
-header("location:../public/SalesReport.php") ;
+header("location:../forms/SalesReport.php") ;
 ?>

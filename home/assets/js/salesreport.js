@@ -57,7 +57,7 @@
             var ajaxTel = document.getElementById("tel").value;
             document.getElementById("salesReportTel").setAttribute('value', ajaxTel);
         }
-        xhttp.open("GET", "ajax/salesReportAjax.php?q="+buyer);
+        xhttp.open("GET", "../ajax/salesReportAjax.php?q="+buyer);
         xhttp.send();
     }
 

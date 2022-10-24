@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$username = $_SESSION["username"];
+$username = $_SESSION["userName"];
 include ("connlogin.php");
 
 $allGradeName = array();
@@ -63,5 +63,5 @@ for ($x=0; $x < count($allGradeQty); $x++ ) {
     
 }
 
-header("location:../public/valuation.php") ;
+header("location:../forms/valuation.php") ;
 ?>

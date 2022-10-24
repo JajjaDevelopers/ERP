@@ -119,7 +119,13 @@ function pwdMatch($password,$passwordRepeat){
   exit();
  }
  
-
+ function sanitize_table($tabledata)
+ {
+     $tabledata=stripslashes($tabledata);
+     $tabledata=strip_tags($tabledata);
+     $tabledata=htmlentities($tabledata);
+     return $tabledata;
+ }
 
 // Getting next document number for front end
 function nextDocNumber($table, $columName, $prefix){
@@ -161,7 +167,7 @@ function documentNumber($table, $columName){
 // Customer List
 function GetCustomerList(){
   include "connlogin.php"; 
-  $queryCustomer = "SELECT customer_id, customer_name FROM factory.customer";
+  $queryCustomer = "SELECT customer_id, customer_name FROM customer";
   if ($stmt = $conn->prepare($queryCustomer)) {
   $stmt->execute();
   $stmt->bind_result($customer_id, $customer_name);
@@ -253,4 +259,42 @@ function selectBatchReportCustomer(){
       }
   }
 }
+
+
+//Batch Order Customer Selector
+function batchOrderCustomer(){
+  include "connlogin.php"; 
+  $stmt = "SELECT grn_no, grn.customer_id, customer_name, grade_name, grn_qty FROM grn
+          JOIN customer USING(customer_id)
+          JOIN grades USING(grade_id)
+          WHERE (purpose='Processing' AND batch_order_no=0)
+          GROUP BY customer_id";
+  $custQuery = $conn->prepare($stmt);
+  $custQuery->execute();
+  $custQuery->bind_result($grn_no, $customer_id, $customer_name, $grade_name, $grn_qty);
+  $rows = mysqli_affected_rows($conn);
+  echo '<option></option>';
+  while ($custQuery->fetch()){
+ 
+    ?>
+    <option value="<?=$customer_id?>"><?=$customer_name?></option>
+    <?php
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>

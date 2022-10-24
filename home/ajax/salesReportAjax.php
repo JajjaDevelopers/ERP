@@ -1,6 +1,8 @@
+<?php require ("../private/database.php"); ?>
+
 <?php
-$conn = new mysqli("localhost", "root", "root", "factory");
-$query = "SELECT customer_id, customer_name, contact_person, telephone FROM factory.customer WHERE (customer_id=?) ";
+// $conn = new mysqli("localhost", "root", "root", "factory");
+$query = "SELECT customer_id, customer_name, contact_person, telephone FROM customer WHERE (customer_id=?) ";
 
 
 $stmt = $conn->prepare($query);

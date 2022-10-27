@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include "../connection/databaseConn.php"; ?>
 
 <?php
@@ -16,9 +17,10 @@ for ($gradeNo=1; $gradeNo <= $rows; $gradeNo++){
     $gradeRow = $allGrns -> fetch_assoc();
     $id = $gradeRow['grn_no'];
     // $gradeName = $gradeRow['grade_name'];
+?>
 
-    echo '<option value="'.$id.'">'.$id.'</option>';
-   
+    <option value="<?= $id ?>"><?= $id ?></option>;
+   <?php
 }
 
 

@@ -2,7 +2,9 @@
 
 <?php
 
-$grnSql = $conn->prepare("SELECT grn_date, grade_id, grn_qty, grn_mc FROM grn WHERE grn_no=?");
+$grnSql = $conn->prepare("SELECT grn_date, grade_id, grade_name, grn_qty, grn_mc FROM grn 
+                        JOIN grades USING(grade_id)
+                        WHERE grn_no=?");
 
 $grnNo = ($_GET['q']);
 
@@ -12,7 +14,8 @@ $allGrades = $grnSql -> get_result();
 
 $gradeRow = $allGrades -> fetch_assoc();
 $grn_date = $gradeRow['grn_date'];
-$grade_name = $gradeRow['grade_id'];
+$grade_id = $gradeRow['grade_id'];
+$grade_name = $gradeRow['grade_name'];
 $grn_qty = $gradeRow['grn_qty'];
 $grn_mc = $gradeRow['grn_mc'];
 ?>

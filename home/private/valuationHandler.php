@@ -18,7 +18,6 @@ $nextNoQuery = $conn->query($nextNoSql);
 $nextNoResult = mysqli_fetch_array($nextNoQuery);
 $number = $nextNoResult['numbers'];
 
-
 function sanitize_table($tabledata)
 {
     $tabledata=stripslashes($tabledata);

@@ -121,7 +121,7 @@ window.onload = function(){
             }
             
         }
-        UpdateQty()
+        UpdateQty();
     }  
 
     for (var x=0; x<itemCodes.length; x++){

@@ -8,7 +8,7 @@
         <div style="margin-top: 50px; grid-column:1 ">
             <label for="preparedBy">Prepared By:</label><br>
             <?php
-                echo'<input type="text" id="preparedBy" name="preparedBy" class="shortInput" value="'.$_SESSION["userName"].
+                echo'<input type="text" id="preparedBy" readonly name="preparedBy" class="shortInput" value="'.$_SESSION["userName"].
                     '"style="width: 100px; text-align: center;"><br>'
             ?>
         </div>

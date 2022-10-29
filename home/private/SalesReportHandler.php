@@ -1,49 +1,26 @@
-<?php 
-session_start();
-$username = $_SESSION["userName"];
-include ("database.php");
-
-
+<?php session_start(); ?>
+<?php $username = $_SESSION["userName"]; ?>
+<?php include ("database.php"); ?>
+<?php
 // Generating grades
-$gradeIdList = array();
+$salesReportGradeList = array();
 $qtyOutList = array();
 $priceList = array();
 
-    for ($x=0; $x<10; $x++){
-        // $gradeId = ;
-        array_push($gradeIdList, "item".$x."Code");
-        // $qty = 
-        array_push($qtyOutList, "item".$x."Qty");
-        // $price =  ;
-        array_push($priceList, "item".$x."UgxPx");
-    }
-
-
-
-    
-// }
-// GenerateGrades();
+for ($x=1; $x<=10; $x++){
+    array_push($salesReportGradeList, "item".$x."Code"); 
+    array_push($qtyOutList, "item".$x."Qty"); 
+    array_push($priceList, "item".$x."UgxPx");
+}
 
 //Sales Report Number
-$query = "SELECT max(sales_report_no) FROM sales_reports_summary";
-if ($stmt = $conn->prepare($query)) {
-    $stmt->execute();
-    $stmt->bind_result($sales_report_no);
-    $stmt->fetch();
-    $stmt->close();
-}
-$newNo = $sales_report_no + 1;
-if ($newNo < 10){
-    $zeros = '000';
-} elseif ($newNo < 100){
-    $zeros = '00';
-} elseif ($newNo < 1000){
-    $zeros = '0';
-}else {
-    $zeros='';
-}
-$nextSalesNo = $zeros.$newNo;
-$conn->rollback();
+$query1 = "SELECT max(sales_report_no) AS numbers FROM sales_reports_summary"; 
+$stmt = $conn->query($query1);
+$result = mysqli_fetch_array($stmt);
+$number = $result['numbers'];
+$newNo = intval($number) + 1;
+
+// $conn->rollback();
 
 //capturing summary
 $summarySql = $conn->prepare("INSERT INTO sales_reports_summary (sales_report_no, customer_id, sales_report_date, sale_category, sales_report_value, 
@@ -58,40 +35,40 @@ $salesReportCurrency = sanitize_table($_POST["salesReportCurrency"]);
 $preparedBy = $username;
 $salesReportNotes = sanitize_table($_POST["salesReportNotes"]);
 
-$summarySql->bind_param("isssisiss",$nextSalesNo, $BuyerId, $salesReportDate, $salesReportCategory, $ugxGrandTotal, $salesReportCurrency, 
+$summarySql->bind_param("isssisiss",$newNo, $BuyerId, $salesReportDate, $salesReportCategory, $ugxGrandTotal, $salesReportCurrency, 
                         $exchangeRate, $preparedBy, $salesReportNotes);
 $summarySql->execute();
 $conn->rollback();
 
 
 //capturing details
-function CaptureDetails(){
-    
-    global $conn, $qtyOutList, $gradeIdList, $priceList, $nextSalesNo;
-    $detailSql = $conn->prepare("INSERT INTO nucafe_inventory (document_type, document_no, grade_id, qty_out, price_ugx) 
-    VALUES (?, ?, ?, ?, ?)");
 
-
+    $qtyOutSql = $conn->prepare("INSERT INTO nucafe_inventory (document_type, document_no, grade_id, qty_out, price_ugx) 
+                                VALUES (?, ?, ?, ?, ?)");
+    $qtyInSql = $conn->prepare("INSERT INTO inventory (inventory_reference, document_number, grade_id, qty_in) 
+                                VALUES (?, ?, ?, ?)");   
+                                
+    $docType = "Sales Report";
     for ($p=0; $p < count($qtyOutList); $p++){
-        $qtyOut = intval(sanitize_table($_POST[$qtyOutList[$p]])) ;
-        if ($qtyOut>0){
-            $docType = "Sales Report";
-            $gradeID = sanitize_table($_POST[$gradeIdList[$p]]);
-            $itemPx = sanitize_table($_POST[$priceList[$p]]);
-            $detailSql->bind_param("sisii", $docType, $nextSalesNo, $gradeID, $qtyOut, $itemPx);
-            $detailSql->execute();
+        $qtyOut = ($_POST[$qtyOutList[$p]]) ;
+        
+        $gradeID = ($_POST[$salesReportGradeList[$p]]);
+        $itemPx = ($_POST[$priceList[$p]]);
+        if ($qtyOut > 0){
+            
+            $qtyOutSql->bind_param("sisii", $docType, $newNo, $gradeID, $qtyOut, $itemPx);
+            $qtyOutSql->execute();
+            $conn->rollback();
+            
+           
+            
         }
-            // $docType = "Sales Report";
-            // $gradeID = sanitize_table($_POST[$gradeIdList[$p]]);
-            // $itemPx = sanitize_table($_POST[$priceList[$p]]);
-            // $detailSql->bind_param("sisii", $docType, $nextSalesNo, $gradeID, $qtyOut, $itemPx);
-            // $detailSql->execute();
-
-
+        if ($qtyOut > 0){
+            $qtyInSql->bind_param("sisi", $docType, $newNo, $gradeID, $qtyOut);
+            $qtyInSql->execute();
+            $conn->rollback();
+        }
     }  
-}
-CaptureDetails();
-
 
 
 

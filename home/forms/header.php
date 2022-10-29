@@ -43,7 +43,7 @@ session_start();
   <link rel="stylesheet" href="../assets/js/Jquery/jquery-ui/jquery-ui.css">
   <link rel="stylesheet" href="../assets/js/Jquery/jquery-ui/jquery-ui.structure.css">
   <link rel="stylesheet" href="../assets/js/Jquery/jquery-ui/jquery-ui.theme.css">
-  <script src="../assets/js/receivedgoods.js"></script>
+  <!-- <script src="../assets/js/receivedgoods.js"></script> -->
   <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 

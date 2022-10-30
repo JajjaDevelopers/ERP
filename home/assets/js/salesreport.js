@@ -66,17 +66,19 @@ window.onload = function(){
 //updating qty
     function UpdateQty(){
         var exchangeRate = Number(document.getElementById("exchangeRate").value);
+        var totalQty = 0;
         var totalUsdAmounts = 0;
         var totalUgxAMounts = 0;
 
         for (var x=0; x<itemQtys.length; x++){
             var qty = Number(document.getElementById(itemQtys[x]).value);
             if (qty != 0){
+                totalQty += qty;
+                document.getElementById("totalQty").setAttribute("value", totalQty);
                 var ugxPx = Number(document.getElementById(itemUgxPrices[x]).value);
                 var totalUgx = qty * ugxPx;
                 document.getElementById(itemUgxAmounts[x]).setAttribute("value", totalUgx);
                 totalUgxAMounts += totalUgx;
-
                 var usdPx = ugxPx/exchangeRate;
                 document.getElementById(itemUsdPrices[x]).setAttribute("value", usdPx);
                 var totalUsd = qty * usdPx;
@@ -119,7 +121,6 @@ window.onload = function(){
                 document.getElementById(itemUsdAmounts[x]).setAttribute("value", (ugxPx * qty)/exchangeRate);
                 document.getElementById(itemUsdPrices[x]).setAttribute("value", (ugxPx/exchangeRate));
             }
-            
         }
         UpdateQty();
     }  

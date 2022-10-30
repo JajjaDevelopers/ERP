@@ -1,7 +1,6 @@
 <?php include_once('header.php');?>
 <?php include ("../connection/databaseConn.php");
 $nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");
-
 ?>
 
 <form id="salesReportForm" name="salesReportForm" class="regularForm" style="height: 800px; width:900px" method="POST" action="../connection/salesreport.php">
@@ -16,8 +15,7 @@ $nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");
 
         <label for="exchangeRate" class="salesReportLabel" >Exchange Rate:</label>
         <input type="number" id="exchangeRate" name="exchangeRate" class="longInputField" placeholder="Ex.Rate" style="width: 90px; margin-right: 0px;">
-        <!-- <label for="batchNo" id="batchNoLabel" class="salesReportLabel" >Batch No:</label>
-        <input type="number" id="batchNo" name="batchNo" class="shortInput" value="" style="width: 100px; text-align: center;"> -->
+      
     </div>
     <div id="ajaxDiv" style="display: none;"> </div>
     <div>
@@ -46,7 +44,6 @@ $nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
         </select>
-        
     </div>
     <div>
         <table>
@@ -85,7 +82,7 @@ $nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");
            
             <tr>
                 <th>Total</th>
-                <th><input type="number" value="" id="totalQty" name="totalQty" class="tableInput"></th>
+                <th><input type="number" value="" id="totalQty" readonly name="totalQty" class="tableInput"></th>
                 <th></th>
                 <th></th>
                 <th></th>

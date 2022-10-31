@@ -3,23 +3,28 @@ include ("../connection/databaseConn.php");
 ?>
 <form id="batchReportForm" class="regularForm"action="../connection/batchReport.php" method="POST" style="width: 900px;">
     <h3 id="batchReportHeading" class="formHeading">Production Report</h3>
+    <div id="ajaxDiv" style="display: none;"></div>
+    <!-- <div id="ajaxDiv1" ></div> -->
     <div style="display: grid;">
         <div style="grid-row: 1; grid-column: 1; padding-top: 50px; margin-bottom: 5px; ">
-            <label for="batchReportClient">Client</label>
+            <!-- <label for="batchReportClient">Client</label>
             <input type="text" id="customerId" name="customerId" class="shortInput" readonly value="" style="margin: 0px; width: 70px">
             <input type="text" id="customerName" name="customerName" class="longInputField" readonly value="" style="margin: 0px; width: 300px">
             <select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
-            onchange="updateOrder(this.value)">
-            <?php selectBatchReportCustomer();?>
-            </select><br>
+            onchange="updateOrder(this.value)"> -->
+            <!-- <?php //selectBatchReportCustomer();?> -->
+            <!-- </select><br> -->
+            <?php require("../connection/batchReportCustomer.php"); ?>
             
-            <div id="ajaxDiv" style="display: none;" ></div>
         
-            
             <label for="batchReportOfftaker">Offtaker</label>
             <select id="batchReportOfftaker" class="shortInput" name="batchReportOfftaker">
                 <option>Self</option>
                 <option>Nucafe</option>
+            </select>
+            <label for="batchOrderNumber">Order No.:</label>
+            <select type="text" id="batchOrderNumber" class="shortInput" name="batchOrderNumber">
+
             </select>
         </div>
         <div style="grid-row: 1; grid-column: 2;">
@@ -28,12 +33,12 @@ include ("../connection/databaseConn.php");
             $newBatchNo = nextDocNumber("batch_reports_summary", "batch_report_no", "BR");
             echo '<label id="batchReportNumber" class="shortInput" name="batchReportNumber">'.$newBatchNo .'</label>'.'<br>';
             ?>
-            
-            <label for="batchOrderNumber">Order No.:</label>
-            <input type="text" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" readonly onchange="updateClient(this.value)">
-            <br>
             <label for="batchReportDate">Date:</label>
             <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate">
+            <br>
+            
+            
+            
         </div>
 
     </div>
@@ -282,50 +287,54 @@ include ("../connection/databaseConn.php");
     <button type="submit" class="btn btn-primary btn-lg">Record</button>
 </form>
 <script>
-    function updateOrder(str){
-        
-        
-        var selectedClient = document.getElementById('batchReportClient').value;
-        var orderNo = selectedClient.slice(0,4);
-        var batchOrderNumber =  document.getElementById('batchOrderNumber')
-        var x = Number(orderNo);
-        batchOrderNumber.setAttribute('value', (orderNo));
-        
-        
+    //pick available customer orders
+    document.getElementById("salesReportBuyer").addEventListener('change', checkCustomerOrders);
+    
+    function checkCustomerOrders(){
+        var customerId = document.getElementById("customerId").value;
+        if (customerId == "") {
+            document.getElementById("batchOrderNumber").setAttribute('value', '');
+            return;
+        } 
+        const xhttp = new XMLHttpRequest();
+        // Changing customer namne
+        xhttp.onload = function() {
+            document.getElementById("batchOrderNumber").innerHTML = this.responseText;
+        }
+        xhttp.open("GET", "../ajax/batchReportOrdersAjax.php?q="+customerId);
+        xhttp.send();
+    }
+    
+
+
+    // Get oder input details
+    document.getElementById("batchOrderNumber").addEventListener('change', updateOrder);
+    function updateOrder(){
+        var str = document.getElementById("batchOrderNumber").value;
         if (str == "") {
-            document.getElementById("customerId").setAttribute('value', '');
-            document.getElementById("customerName").setAttribute('value', '');
+            document.getElementById("inputQty").setAttribute('value', '');
+            document.getElementById("batchReportMcIn").setAttribute('value', '');
             return;
         } 
         const xhttp = new XMLHttpRequest();
         // Changing customer namne
         xhttp.onload = function() {
             document.getElementById("ajaxDiv").innerHTML = this.responseText;
-
-            var ajaxCustomerName = document.getElementById("ajaxCustomerName").value;
-            document.getElementById("customerName").setAttribute('value', ajaxCustomerName);
-
-            var ajaxCustomerId = document.getElementById("ajaxCustomerId").value;
-            document.getElementById("customerId").setAttribute('value', ajaxCustomerId);
-            
+                    
             // set input qty
-            var ajaxInputQty = document.getElementById("ajaxInputQty").value;
+            var ajaxInputQty = document.getElementById("orderAjaxQty").value;
             document.getElementById("inputQty").setAttribute('value', ajaxInputQty);
             var inputQty = Number(document.getElementById("inputQty").value);
             var addSpill = Number(document.getElementById("addSpillQty").value);
             var lessSpill = Number(document.getElementById("lessSpillQty").value);
             document.getElementById("netInputQty").setAttribute('value', (inputQty + addSpill - lessSpill));
             
-
-            var ajaxMcIn = document.getElementById("ajaxMcIn").value;
+            var ajaxMcIn = document.getElementById("orderAjaxMc").value;
             document.getElementById("batchReportMcIn").setAttribute('value', ajaxMcIn);
             document.getElementById("batchReportMcOut").setAttribute('value', ajaxMcIn);
 
-            var ajaxInputGrade = document.getElementById("ajaxInputGrade").value;
-            document.getElementById("inputGrade").setAttribute('value', ajaxInputGrade);
-
         }
-        xhttp.open("GET", "../ajax/batchReportAjax.php?q="+str);
+        xhttp.open("GET", "../ajax/batchReportInputAjax.php?q="+str);
         xhttp.send();
         
     }

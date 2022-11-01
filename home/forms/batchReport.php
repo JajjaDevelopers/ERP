@@ -3,8 +3,11 @@ include ("../connection/databaseConn.php");
 ?>
 <form id="batchReportForm" class="regularForm"action="../connection/batchReport.php" method="POST" style="width: 900px;">
     <h3 id="batchReportHeading" class="formHeading">Production Report</h3>
-    <div id="ajaxDiv" style="display: none;"></div>
-    <!-- <div id="ajaxDiv1" ></div> -->
+    <div id="ajaxDiv1" style="display: none">
+        
+    </div>
+    <!-- <input type="text" id="batchReportCoffeeType" value="" onchange="getBatchReturns(this.value)"> -->
+
     <div style="display: grid;">
         <div style="grid-row: 1; grid-column: 1; padding-top: 50px; margin-bottom: 5px; ">
             <!-- <label for="batchReportClient">Client</label>
@@ -75,6 +78,28 @@ include ("../connection/databaseConn.php");
         </div>
         
         <h4 style="margin-top: 20px;">RETURNS</h4>
+        <div id="batchReturnsAjax">
+        
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <h5 style="margin-top: 10px;">High Grades</h5>
         <table id="highGradeReturnsTable">
             <tr>
@@ -319,7 +344,7 @@ include ("../connection/databaseConn.php");
         const xhttp = new XMLHttpRequest();
         // Changing customer namne
         xhttp.onload = function() {
-            document.getElementById("ajaxDiv").innerHTML = this.responseText;
+            document.getElementById("ajaxDiv1").innerHTML = this.responseText;
                     
             // set input qty
             var ajaxInputQty = document.getElementById("orderAjaxQty").value;
@@ -333,10 +358,27 @@ include ("../connection/databaseConn.php");
             document.getElementById("batchReportMcIn").setAttribute('value', ajaxMcIn);
             document.getElementById("batchReportMcOut").setAttribute('value', ajaxMcIn);
 
+            var ajaxCoffeeType = document.getElementById("orderAjaxCoffeeType").value;
+            document.getElementById("batchReportCoffeeType").setAttribute('value', ajaxCoffeeType);
+
         }
         xhttp.open("GET", "../ajax/batchReportInputAjax.php?q="+str);
         xhttp.send();
+        getBatchReturns(str);
+    }
+
+
+    //Batch returns
+    function getBatchReturns(no){
         
+        const xhttp = new XMLHttpRequest();
+        // Changing customer namne
+        xhttp.onload = function() {
+            document.getElementById("batchReturnsAjax").innerHTML = this.responseText;
+               
+        }
+        xhttp.open("GET", "../ajax/batchReportReturnsAjax.php?q="+no);
+        xhttp.send();
     }
     
 </script>

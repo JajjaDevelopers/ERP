@@ -100,7 +100,7 @@ include ("../connection/databaseConn.php");
 
 
 
-        <h5 style="margin-top: 10px;">High Grades</h5>
+        <!-- <h5 style="margin-top: 10px;">High Grades</h5>
         <table id="highGradeReturnsTable">
             <tr>
                 <th class="batchItemLabel">GRADE</th>
@@ -138,8 +138,8 @@ include ("../connection/databaseConn.php");
                 <td><input type="number" id="highGradeSubtotalQty" readonly name="highGradeSubtotalQty" class="tableInput"></td>
                 <td><input type="number" id="highGradeSubtotalPer" readonly name="highGradeSubtotalPer" class="tableInput"></td>
             </tr>
-        </table>
-        <h5 style="margin-top: 10px;">Low Grades</h5>
+        </table> -->
+        <!-- <h5 style="margin-top: 10px;">Low Grades</h5>
         <table id="lowGradeReturnsTable">
             <tr>
                 <th class="batchItemLabel">GRADE</th>
@@ -183,8 +183,8 @@ include ("../connection/databaseConn.php");
                 <td><input type="number" id="lowGradeSubtotalQty" readonly name="lowGradeSubtotalQty" class="tableInput"></td>
                 <td><input type="number" id="lowGradeSubtotalPer" readonly name="lowGradeSubtotalPer" class="tableInput"></td>
             </tr>
-        </table>
-        <table id="colorSorterRejectsTable" style="margin-top: 10px;">
+        </table> -->
+        <!-- <table id="colorSorterRejectsTable" style="margin-top: 10px;">
             <tr>
                 <th class="batchItemLabel">Color Sorter Rejects</th>
                 <th class="batchItemBags">BAGS</th>
@@ -221,8 +221,8 @@ include ("../connection/databaseConn.php");
                 <td><input type="number" id="rejectsSubtotalQty" readonly name="rejectsSubtotalQty" class="tableInput"></td>
                 <td><input type="number" id="rejectsSubtotalPer" readonly name="rejectsSubtotalPer" class="tableInput"></td>
             </tr>
-        </table>
-        <h5 style="margin-top: 10px;">Wastes</h5>
+        </table> -->
+        <!-- <h5 style="margin-top: 10px;">Wastes</h5>
         <table id="wastesTable" style="margin-top: 10px;">
             <tr>
                 <th class="batchItemLabel">Grade</th>
@@ -254,8 +254,8 @@ include ("../connection/databaseConn.php");
                 <td><input type="number" id="wastesSubtotalQty" readonly name="wastesSubtotalQty" class="tableInput"></td>
                 <td><input type="number" id="wastesSubtotalPer" readonly name="wastesSubtotalPer" class="tableInput"></td>
             </tr>
-        </table>
-        <table id="otherLossesTable" style="margin-top: 10px;">
+        </table> -->
+        <!-- <table id="otherLossesTable" style="margin-top: 10px;">
             <tr>
                 <th class="batchItemLabel">Other Losses (Estimated)</th>
                 <th class="batchItemBags"></th>
@@ -280,7 +280,7 @@ include ("../connection/databaseConn.php");
                 <td><input type="number" id="otherLossSubtotalQty" readonly name="otherLossSubtotalQty" class="tableInput"></td>
                 <td><input type="number" id="otherLossSubtotalPer" readonly name="otherLossSubtotalPer" class="tableInput"></td>
             </tr>
-        </table>
+        </table> -->
         <table style="margin-top: 10px;">
             <tr>
                 <th class="batchItemLabel">OVERALL OUT-TURN</th>
@@ -309,7 +309,7 @@ include ("../connection/databaseConn.php");
             </tr>
         </table>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg">Record</button>
+    <?php include_once("../private/approvalDetails.php"); ?>
 </form>
 <script>
     //pick available customer orders

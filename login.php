@@ -42,7 +42,7 @@ require_once "header.php";
 
       <div class="form-floating ">
         <input type="text" name="username" class="form-control" value="<?php include "loginsession.php";?>">
-        <label for="username">User Name or Email Address</label>
+        <label for="username">Username or Email</label>
       </div>
       <div class="form-floating mt-3">
         <input type="password" name="password" class="form-control">
@@ -54,7 +54,7 @@ require_once "header.php";
           include "alerts/errorlogin.php";
           ?>
         </div>
-        <input type="submit" name="submit" class="btn btn-primary my-3 btn-lg " id="loginbtn" value="Login">
+        <input type="submit" name="submit" class="btn btn-primary my-3 btn-lg " id="loginbtn" value="Sign In">
       </div>
     </div>
   </div>

@@ -33,20 +33,17 @@ session_start();
   <!-- <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet"> -->
   <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="../assets/css/style.css" rel="stylesheet">
-  <!--Other files--->
      
-  <!-- <link rel="stylesheet" href=".\ASSETS\CSS\bootsrap/css/bootstrap.css"> -->
+  <link rel="stylesheet" href=".\ASSETS\CSS\bootsrap/css/bootstrap.css">
   <script src="../assets/js/Jquery/jquery-3.6.0.js"></script>
   <script src="../assets/js/Jquery/jquery-ui/jquery-ui.js"></script>
   <link rel="stylesheet" href="../assets/js/Jquery/jquery-ui/jquery-ui.css">
   <link rel="stylesheet" href="../assets/js/Jquery/jquery-ui/jquery-ui.structure.css">
   <link rel="stylesheet" href="../assets/js/Jquery/jquery-ui/jquery-ui.theme.css">
-  <!-- <script src="../assets/js/receivedgoods.js"></script> -->
+  <!--CSS FILES-->
+  <link href="../assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/main.css">
 </head>
-
 <body>
 
   <!-- ======= Header ======= -->
@@ -136,7 +133,7 @@ session_start();
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="settings.php">
                 <span class="material-icons-sharp">
                   settings
                   </span>
@@ -169,7 +166,7 @@ session_start();
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar" >
 
     <ul class="sidebar-nav" id="sidebar-nav">
 

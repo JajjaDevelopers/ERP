@@ -6,20 +6,9 @@ include ("../connection/databaseConn.php");
     <div id="ajaxDiv1" style="display: none">
         
     </div>
-    <!-- <input type="text" id="batchReportCoffeeType" value="" onchange="getBatchReturns(this.value)"> -->
-
     <div style="display: grid;">
         <div style="grid-row: 1; grid-column: 1; padding-top: 50px; margin-bottom: 5px; ">
-            <!-- <label for="batchReportClient">Client</label>
-            <input type="text" id="customerId" name="customerId" class="shortInput" readonly value="" style="margin: 0px; width: 70px">
-            <input type="text" id="customerName" name="customerName" class="longInputField" readonly value="" style="margin: 0px; width: 300px">
-            <select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
-            onchange="updateOrder(this.value)"> -->
-            <!-- <?php //selectBatchReportCustomer();?> -->
-            <!-- </select><br> -->
             <?php require("../connection/batchReportCustomer.php"); ?>
-            
-        
             <label for="batchReportOfftaker">Offtaker</label>
             <select id="batchReportOfftaker" class="shortInput" name="batchReportOfftaker">
                 <option>Self</option>
@@ -33,15 +22,12 @@ include ("../connection/databaseConn.php");
         <div style="grid-row: 1; grid-column: 2;">
             <label for="batchReportNumber">Batch No.:</label>
             <?php
-            $newBatchNo = nextDocNumber("batch_reports_summary", "batch_report_no", "BR");
-            echo '<label id="batchReportNumber" class="shortInput" name="batchReportNumber">'.$newBatchNo .'</label>'.'<br>';
+                $newBatchNo = nextDocNumber("batch_reports_summary", "batch_report_no", "BR");
+                echo '<label id="batchReportNumber" class="shortInput" name="batchReportNumber">'.$newBatchNo .'</label>'.'<br>';
             ?>
             <label for="batchReportDate">Date:</label>
             <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate">
             <br>
-            
-            
-            
         </div>
 
     </div>
@@ -84,19 +70,6 @@ include ("../connection/databaseConn.php");
 
 
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

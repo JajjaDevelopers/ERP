@@ -21,7 +21,9 @@ $typ1 = $type;
 
 //Generate grades
 $gradeSql = $conn->prepare("SELECT grade_id, grade_name FROM grades WHERE (coffee_type=? AND grade_type=?) ORDER BY grade_rank");
-function getGrades($offeeType, $gradeType, $gradeNamePrefix, $tableHeader){
+
+
+function getGrades($offeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $tableHeader){
     global $conn, $gradeSql;
     $gradeSql->bind_param("ss", $offeeType, $gradeType);
     $gradeSql->execute();
@@ -41,28 +43,30 @@ function getGrades($offeeType, $gradeType, $gradeNamePrefix, $tableHeader){
         $gradeRow = $allGrades -> fetch_assoc();
         $grade_id = $gradeRow ['grade_id'];
         $grade_name = $gradeNamePrefix.' '.$gradeRow ['grade_name'];
+        $prefix = $gradeIdPrefix.'Grade'.$gradeNo;
         ?>
         <tr>
-            <td id="highGrade1Name" name="highGrade1Name" ><?= $grade_name?></td>
-            <td><input type="number" id="highGrade1Bags" readonly name="highGrade1Bags" class="tableInput"></td>
-            <td><input type="number" id="highGrade1Qty" name="highGrade1Qty" class="tableInput"></td>
-            <td><input type="number" id="highGrade1Per" readonly name="highGrade1Per" class="tableInput"></td>
+            <input type="text" id="<?= $prefix.'Id'?>" readonly name="<?= $prefix.'Id'?>" value="<?= $grade_id?>" class="tableInput" style="display:none">
+            <td><input name="<?= $gradeIdPrefix?>" style="display:none"><?= $grade_name?></td>
+            <td><input type="number" id="<?= $prefix.'Bags'?>" readonly name="<?= $prefix.'Bags'?>" class="tableInput"></td>
+            <td><input type="number" id="<?= $prefix.'Qty'?>" name="<?= $prefix.'Qty'?>" class="tableInput"></td>
+            <td><input type="number" id="<?= $prefix.'Per'?>" readonly name="<?= $prefix.'Per'?>" class="tableInput"></td>
         </tr>
         <?php
     }
         ?>
         <tr>
             <th>SUB TOTAL</th>
-            <td><input type="number" id="highGradeSubtotalBags" readonly name="highGradeSubtotalBags" class="tableInput"></td>
-            <td><input type="number" id="highGradeSubtotalQty" readonly name="highGradeSubtotalQty" class="tableInput"></td>
-            <td><input type="number" id="highGradeSubtotalPer" readonly name="highGradeSubtotalPer" class="tableInput"></td>
+            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalBags'?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalBags'?>" class="tableInput"></td>
+            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalQty'?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalQty'?>" class="tableInput"></td>
+            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalPer'?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalPer'?>" class="tableInput"></td>
         </tr>
     </table>
 <?php
 }
-getGrades($typ1, "HIGH", "", "High Grades");
-getGrades($typ1, "LOW", "", "Low Grades");
-getGrades($typ1, "HIGH", "Blacks", "Color Sorter Rejects");
-getGrades("NONE", "WASTES", "", "Wastes");
-getGrades("NONE", "OTHER LOSSES", "", "Other Losses");
+getGrades($typ1, "HIGH", "", "high", "High Grades");
+getGrades($typ1, "LOW", "", "low", "Low Grades");
+getGrades($typ1, "HIGH", "Blacks", "blacks", "Color Sorter Rejects");
+getGrades("NONE", "WASTES", "", "wastes", "Wastes");
+getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses");
 ?>

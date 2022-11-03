@@ -242,11 +242,11 @@ echo '<tr>
 // Batch Report customer list
 function selectBatchReportCustomer(){
   include "connlogin.php"; 
-  $sql = "SELECT batch_order_no, customer_name, grade_name, batch_order_input_qty, batch_order_mc
-          FROM batch_processing_order
+  $sql = "SELECT customer_id, customer_name FROM batch_processing_order
           JOIN grn USING (batch_order_no) 
           JOIN customer USING (customer_id) 
-          WHERE (processed=0)";
+          WHERE (processed=0)
+          GROUP BY customer_id";
   $getList = $conn->query($sql);
   $row = mysqli_fetch_all($getList);
   if (count($row)==0){
@@ -254,8 +254,9 @@ function selectBatchReportCustomer(){
   }else{
       echo "<option>Select Processing Order</option>";
       for ($customer=0; $customer<count($row); $customer++){
-          
-          echo "<option>".$row[$customer][0]."--".$row[$customer][1]."--".$row[$customer][2]."--".$row[$customer][3]." Kg"."</option>";
+          ?>
+          <option value="<?= $row[$customer][0] ?>"><?= $row[$customer][1] ?></option>
+          <?php
       }
   }
 }

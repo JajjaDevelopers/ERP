@@ -1,17 +1,14 @@
 
 <?php include "../private/database.php";
-// $mysqli = new mysqli("localhost", "root", "root", "factory");
 if($conn->connect_error) {
   exit('Could not connect');
 }
 
-// $sql = "SELECT customerid, companyname, contactname, address, city, postalcode, country
-// FROM customers WHERE customerid = ?";
 
 $sql = "SELECT batch_order_no, customer_id, customer_name, batch_order_input_qty, batch_order_mc, grade_name FROM batch_processing_order
         JOIN grn USING (batch_order_no) 
         JOIN customer USING (customer_id) 
-        WHERE batch_order_no=? ";
+        WHERE batch_order_no=0 ";
 
 $stmt = $conn->prepare($sql);
 $orderNo = intval($_GET['q']) ;

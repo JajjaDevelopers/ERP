@@ -3,11 +3,13 @@
 
 <?php
 
-$gradeSql = $conn->prepare("SELECT grn_no FROM grn WHERE (customer_id=? AND purpose='Processing' AND batch_order_no=0 )");
+$gradeSql = $conn->prepare("SELECT grn_no FROM grn WHERE (customer_id=? AND grade_id=? AND purpose='Processing' AND batch_order_no=0 )");
 
-$customer_id = ($_GET['q']);
+$gradeAndCustomer = str_split($_GET['q'], 6);
+$grade_id = $gradeAndCustomer[0];
+$customer_id = $gradeAndCustomer[1];
 
-$gradeSql->bind_param("s", $customer_id);
+$gradeSql->bind_param("ss", $customer_id, $grade_id);
 $gradeSql->execute();
 $allGrns = $gradeSql -> get_result();
 $rows = $conn -> affected_rows;

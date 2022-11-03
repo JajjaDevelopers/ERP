@@ -1,11 +1,8 @@
-<?php
-$server="localhost";
-$db="factory";
-$user="root";
-$pwd="root";
-$charset="utf8mb4";
+<?php session_start(); ?>
+<?php $username = $_SESSION["userName"]; ?>
+<?php include ("database.php"); ?>
 
-$conn = new mysqli($server, $user, $pwd, $db);
+<?php
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

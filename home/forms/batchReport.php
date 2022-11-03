@@ -3,37 +3,31 @@ include ("../connection/databaseConn.php");
 ?>
 <form id="batchReportForm" class="regularForm"action="../connection/batchReport.php" method="POST" style="width: 900px;">
     <h3 id="batchReportHeading" class="formHeading">Production Report</h3>
+    <div id="ajaxDiv1" style="display: none">
+        
+    </div>
     <div style="display: grid;">
         <div style="grid-row: 1; grid-column: 1; padding-top: 50px; margin-bottom: 5px; ">
-            <label for="batchReportClient">Client</label>
-            <input type="text" id="customerId" name="customerId" class="shortInput" readonly value="" style="margin: 0px; width: 70px">
-            <input type="text" id="customerName" name="customerName" class="longInputField" readonly value="" style="margin: 0px; width: 300px">
-            <select id="batchReportClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
-            onchange="updateOrder(this.value)">
-            <?php selectBatchReportCustomer();?>
-            </select><br>
-            
-            <div id="ajaxDiv" style="display: none;" ></div>
-        
-            
+            <?php require("../connection/batchReportCustomer.php"); ?>
             <label for="batchReportOfftaker">Offtaker</label>
             <select id="batchReportOfftaker" class="shortInput" name="batchReportOfftaker">
                 <option>Self</option>
                 <option>Nucafe</option>
             </select>
+            <label for="batchOrderNumber">Order No.:</label>
+            <select type="text" id="batchOrderNumber" class="shortInput" name="batchOrderNumber">
+
+            </select>
         </div>
         <div style="grid-row: 1; grid-column: 2;">
             <label for="batchReportNumber">Batch No.:</label>
             <?php
-            $newBatchNo = nextDocNumber("batch_reports_summary", "batch_report_no", "BR");
-            echo '<label id="batchReportNumber" class="shortInput" name="batchReportNumber">'.$newBatchNo .'</label>'.'<br>';
+                $newBatchNo = nextDocNumber("batch_reports_summary", "batch_report_no", "BR");
+                echo '<label id="batchReportNumber" class="shortInput" name="batchReportNumber">'.$newBatchNo .'</label>'.'<br>';
             ?>
-            
-            <label for="batchOrderNumber">Order No.:</label>
-            <input type="text" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" readonly onchange="updateClient(this.value)">
-            <br>
             <label for="batchReportDate">Date:</label>
             <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate">
+            <br>
         </div>
 
     </div>
@@ -70,7 +64,16 @@ include ("../connection/databaseConn.php");
         </div>
         
         <h4 style="margin-top: 20px;">RETURNS</h4>
-        <h5 style="margin-top: 10px;">High Grades</h5>
+        <div id="batchReturnsAjax">
+        
+
+
+
+        </div>
+
+
+
+        <!-- <h5 style="margin-top: 10px;">High Grades</h5>
         <table id="highGradeReturnsTable">
             <tr>
                 <th class="batchItemLabel">GRADE</th>
@@ -108,8 +111,8 @@ include ("../connection/databaseConn.php");
                 <td><input type="number" id="highGradeSubtotalQty" readonly name="highGradeSubtotalQty" class="tableInput"></td>
                 <td><input type="number" id="highGradeSubtotalPer" readonly name="highGradeSubtotalPer" class="tableInput"></td>
             </tr>
-        </table>
-        <h5 style="margin-top: 10px;">Low Grades</h5>
+        </table> -->
+        <!-- <h5 style="margin-top: 10px;">Low Grades</h5>
         <table id="lowGradeReturnsTable">
             <tr>
                 <th class="batchItemLabel">GRADE</th>
@@ -153,8 +156,8 @@ include ("../connection/databaseConn.php");
                 <td><input type="number" id="lowGradeSubtotalQty" readonly name="lowGradeSubtotalQty" class="tableInput"></td>
                 <td><input type="number" id="lowGradeSubtotalPer" readonly name="lowGradeSubtotalPer" class="tableInput"></td>
             </tr>
-        </table>
-        <table id="colorSorterRejectsTable" style="margin-top: 10px;">
+        </table> -->
+        <!-- <table id="colorSorterRejectsTable" style="margin-top: 10px;">
             <tr>
                 <th class="batchItemLabel">Color Sorter Rejects</th>
                 <th class="batchItemBags">BAGS</th>
@@ -191,8 +194,8 @@ include ("../connection/databaseConn.php");
                 <td><input type="number" id="rejectsSubtotalQty" readonly name="rejectsSubtotalQty" class="tableInput"></td>
                 <td><input type="number" id="rejectsSubtotalPer" readonly name="rejectsSubtotalPer" class="tableInput"></td>
             </tr>
-        </table>
-        <h5 style="margin-top: 10px;">Wastes</h5>
+        </table> -->
+        <!-- <h5 style="margin-top: 10px;">Wastes</h5>
         <table id="wastesTable" style="margin-top: 10px;">
             <tr>
                 <th class="batchItemLabel">Grade</th>
@@ -224,8 +227,8 @@ include ("../connection/databaseConn.php");
                 <td><input type="number" id="wastesSubtotalQty" readonly name="wastesSubtotalQty" class="tableInput"></td>
                 <td><input type="number" id="wastesSubtotalPer" readonly name="wastesSubtotalPer" class="tableInput"></td>
             </tr>
-        </table>
-        <table id="otherLossesTable" style="margin-top: 10px;">
+        </table> -->
+        <!-- <table id="otherLossesTable" style="margin-top: 10px;">
             <tr>
                 <th class="batchItemLabel">Other Losses (Estimated)</th>
                 <th class="batchItemBags"></th>
@@ -250,7 +253,7 @@ include ("../connection/databaseConn.php");
                 <td><input type="number" id="otherLossSubtotalQty" readonly name="otherLossSubtotalQty" class="tableInput"></td>
                 <td><input type="number" id="otherLossSubtotalPer" readonly name="otherLossSubtotalPer" class="tableInput"></td>
             </tr>
-        </table>
+        </table> -->
         <table style="margin-top: 10px;">
             <tr>
                 <th class="batchItemLabel">OVERALL OUT-TURN</th>
@@ -279,55 +282,76 @@ include ("../connection/databaseConn.php");
             </tr>
         </table>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg">Record</button>
+    <?php include_once("../private/approvalDetails.php"); ?>
 </form>
 <script>
-    function updateOrder(str){
-        
-        
-        var selectedClient = document.getElementById('batchReportClient').value;
-        var orderNo = selectedClient.slice(0,4);
-        var batchOrderNumber =  document.getElementById('batchOrderNumber')
-        var x = Number(orderNo);
-        batchOrderNumber.setAttribute('value', (orderNo));
-        
-        
-        if (str == "") {
-            document.getElementById("customerId").setAttribute('value', '');
-            document.getElementById("customerName").setAttribute('value', '');
+    //pick available customer orders
+    document.getElementById("salesReportBuyer").addEventListener('change', checkCustomerOrders);
+    
+    function checkCustomerOrders(){
+        var customerId = document.getElementById("customerId").value;
+        if (customerId == "") {
+            document.getElementById("batchOrderNumber").setAttribute('value', '');
             return;
         } 
         const xhttp = new XMLHttpRequest();
         // Changing customer namne
         xhttp.onload = function() {
-            document.getElementById("ajaxDiv").innerHTML = this.responseText;
+            document.getElementById("batchOrderNumber").innerHTML = this.responseText;
+        }
+        xhttp.open("GET", "../ajax/batchReportOrdersAjax.php?q="+customerId);
+        xhttp.send();
+    }
+    
 
-            var ajaxCustomerName = document.getElementById("ajaxCustomerName").value;
-            document.getElementById("customerName").setAttribute('value', ajaxCustomerName);
 
-            var ajaxCustomerId = document.getElementById("ajaxCustomerId").value;
-            document.getElementById("customerId").setAttribute('value', ajaxCustomerId);
-            
+    // Get oder input details
+    document.getElementById("batchOrderNumber").addEventListener('change', updateOrder);
+    function updateOrder(){
+        var str = document.getElementById("batchOrderNumber").value;
+        if (str == "") {
+            document.getElementById("inputQty").setAttribute('value', '');
+            document.getElementById("batchReportMcIn").setAttribute('value', '');
+            return;
+        } 
+        const xhttp = new XMLHttpRequest();
+        // Changing customer namne
+        xhttp.onload = function() {
+            document.getElementById("ajaxDiv1").innerHTML = this.responseText;
+                    
             // set input qty
-            var ajaxInputQty = document.getElementById("ajaxInputQty").value;
+            var ajaxInputQty = document.getElementById("orderAjaxQty").value;
             document.getElementById("inputQty").setAttribute('value', ajaxInputQty);
             var inputQty = Number(document.getElementById("inputQty").value);
             var addSpill = Number(document.getElementById("addSpillQty").value);
             var lessSpill = Number(document.getElementById("lessSpillQty").value);
             document.getElementById("netInputQty").setAttribute('value', (inputQty + addSpill - lessSpill));
             
-
-            var ajaxMcIn = document.getElementById("ajaxMcIn").value;
+            var ajaxMcIn = document.getElementById("orderAjaxMc").value;
             document.getElementById("batchReportMcIn").setAttribute('value', ajaxMcIn);
             document.getElementById("batchReportMcOut").setAttribute('value', ajaxMcIn);
 
-            var ajaxInputGrade = document.getElementById("ajaxInputGrade").value;
-            document.getElementById("inputGrade").setAttribute('value', ajaxInputGrade);
+            var ajaxCoffeeType = document.getElementById("orderAjaxCoffeeType").value;
+            document.getElementById("batchReportCoffeeType").setAttribute('value', ajaxCoffeeType);
 
         }
-        xhttp.open("GET", "../ajax/batchReportAjax.php?q="+str);
+        xhttp.open("GET", "../ajax/batchReportInputAjax.php?q="+str);
         xhttp.send();
+        getBatchReturns(str);
+    }
+
+
+    //Batch returns
+    function getBatchReturns(no){
         
+        const xhttp = new XMLHttpRequest();
+        // Changing customer namne
+        xhttp.onload = function() {
+            document.getElementById("batchReturnsAjax").innerHTML = this.responseText;
+               
+        }
+        xhttp.open("GET", "../ajax/batchReportReturnsAjax.php?q="+no);
+        xhttp.send();
     }
     
 </script>

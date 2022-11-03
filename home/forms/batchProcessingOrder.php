@@ -7,13 +7,15 @@
     <legend class="formHeading">Batch Processing Order</legend>
     <div style="display: grid; width:fit-content; margin-left: 70%;">
         <label for="grnNo" style="grid-column: 1; grid-row: 1; width:70px; margin-top: 5px">Order No:</label>
-        <input type="text" class="shortInput" id="grnNo" name="grnNo" value="<?php echo nextDocNumber('batch_processing_order', 'batch_order_no', 'BPO-'); ?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">
+        <input type="text" class="shortInput" id="orderNo" name="orderNo" value="<?php echo nextDocNumber('batch_processing_order', 'batch_order_no', 'BPO-'); ?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">
         <label for="date" class="" style="grid-column: 1; grid-row: 2; margin-top: 10px">Date:</label>
-        <input type="date" class="shortInput" id="grnDate" name="grnDate" value="" style="grid-column: 2; grid-row: 2">
+        <input type="date" class="shortInput" id="orderDate" name="orderDate" value="" style="grid-column: 2; grid-row: 2">
     </div>
     <?php require "../connection/batchOrderCustomerPicker.php" ?>
 
     <div>
+      <label for="gradeLimit" style="grid-row: 1; width:70px; margin-top: 5px">Input Grade</label>
+      <select type="text" id="gradeLimit" name="gradeLimit" class="shortInput" style="width: 200px" onchange="getGrns(this.value)"></select>
       <table>
         <tr>
           <th style="width: 100px;">GRN No.</th>
@@ -61,7 +63,7 @@
 <script>
   // document.getElementById("salesReportBuyer").addEventListener("onchange", getGrades(this.value))
   
-  function SelectCustomer(buyer){
+  function SelectCustomer(customer){
     
 
     //update custmer list
@@ -71,7 +73,7 @@
       document.getElementById("customerId").setAttribute("value", selectedBuyer.slice(0,6));
       document.getElementById("customerName").setAttribute("value", selectedBuyer.substr(7));
 
-      if (buyer == "") {
+      if (customer == "") {
           document.getElementById("customerId").setAttribute('value', '');
           document.getElementById("customerName").setAttribute('value', '');
           document.getElementById("salesReportContact").setAttribute('value','');
@@ -94,28 +96,43 @@
           var ajaxTel = document.getElementById("tel").value;
           document.getElementById("salesReportTel").setAttribute('value', ajaxTel);
       }
-      xhttp.open("GET", "../ajax/salesReportAjax.php?q="+buyer);
+      xhttp.open("GET", "../ajax/salesReportAjax.php?q="+customer);
       xhttp.send();
     }
 
 
     // Getting grns
-    function getGrades(){
-      if (buyer == " ") {
+    // function getGrades(){
+    //   if (buyer == " ") {
+    //       return;
+    //   } 
+    //   const xhttp = new XMLHttpRequest();
+    //   // Updating grades based on coffee type
+    //   xhttp.onload = function() {
+    //     for (var grn=1; grn<=5; grn++){
+    //       document.getElementById("grn"+grn+"Id").innerHTML = this.responseText;
+    //     }
+    //   }
+    //   xhttp.open("GET", "../ajax/batchOrderAjax.php?q="+buyer);
+    //   xhttp.send();
+    // } 
+
+    function getBatchGrade(){
+      if (customer == " ") {
           return;
       } 
       const xhttp = new XMLHttpRequest();
       // Updating grades based on coffee type
       xhttp.onload = function() {
         for (var grn=1; grn<=5; grn++){
-          document.getElementById("grn"+grn+"Id").innerHTML = this.responseText;
+          document.getElementById("gradeLimit").innerHTML = this.responseText;
         }
       }
-      xhttp.open("GET", "../ajax/batchOrderAjax.php?q="+buyer);
+      xhttp.open("GET", "../ajax/batchOrderGradeAjax.php?q="+customer);
       xhttp.send();
     } 
     cust();
-    getGrades();
+    getBatchGrade();
   }
 
   //get grn details
@@ -189,9 +206,21 @@
     xhttp.open("GET", "../ajax/grnDetails.php?q="+currentGrn);
     xhttp.send();
 
-    
-    
     }
-
-    
+    // Getting GRNs based on selected grade
+    function getGrns(grade){
+      if (grade == " ") {
+          return;
+      }
+      var customer = document.getElementById("salesReportBuyer").value;
+      var gradeAndCustomer = grade+customer;
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        for (var grn=1; grn<=5; grn++){
+          document.getElementById("grn"+grn+"Id").innerHTML = this.responseText;
+        }
+      }
+      xhttp.open("GET", "../ajax/batchOrderAjax.php?q="+gradeAndCustomer);
+      xhttp.send();
+    }
   </script>

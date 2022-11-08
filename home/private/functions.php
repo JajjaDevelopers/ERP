@@ -186,10 +186,10 @@ function coffeeGrades(){
   $query = "SELECT grade_id, grade_name FROM grades";
   if ($stmt = $conn->prepare($query)) {
       $stmt->execute();
-      $stmt->bind_result($field1, $field2);
+      $stmt->bind_result($grade_id, $grade_name);
       echo '<option></option>';
       while ($stmt->fetch()) {
-          echo "<option value='".$field1."--".$field2."'>$field2</option>";
+          echo "<option value='".$grade_id."--".$grade_name."'>$grade_name</option>";
       }
       $stmt->close();
   }
@@ -202,6 +202,7 @@ function valuationCustomer(){
   $sql = "SELECT batch_report_no, customer_name, grade_name, batch_order_input_qty FROM batch_reports_summary
           JOIN batch_processing_order USING (batch_order_no)
           JOIN grn USING (batch_order_no)
+          JOIN grades USING(grade_id)
           JOIN customer USING (customer_id)
           WHERE (valuation_status=0 AND offtaker='NUCAFE')";
   $getList = $conn->query($sql);
@@ -276,17 +277,57 @@ function batchOrderCustomer(){
   $rows = mysqli_affected_rows($conn);
   echo '<option></option>';
   while ($custQuery->fetch()){
- 
     ?>
     <option value="<?=$customer_id?>"><?=$customer_name?></option>
     <?php
   }
+}
 
-
+function hullingCustomer(){
+  include "connlogin.php"; 
+  $stmt = "SELECT grade_name, grn.customer_id, customer_name, grade_name, grn_qty FROM grades
+          JOIN customer USING(customer_id)
+          JOIN grades USING(grade_id)
+          WHERE (purpose='Processing' AND batch_order_no=0)
+          GROUP BY customer_id";
+  $custQuery = $conn->prepare($stmt);
+  $custQuery->execute();
+  $custQuery->bind_result($grn_no, $customer_id, $customer_name, $grade_name, $grn_qty);
+  $rows = mysqli_affected_rows($conn);
+  echo '<option></option>';
+  while ($custQuery->fetch()){
+    ?>
+    <option value="<?=$customer_id?>"><?=$customer_name?></option>
+    <?php
+  }
 }
 
 
+//include gradePicker.js for this function for pages that call it
+function gradePicker($itemId){
+  include "connlogin.php"; 
+  ?>
+  <input type="text" value="" id="<?= $itemId.'Code' ?>" readonly name="<?= $itemId.'Code' ?>" class="itmNameInput" style="grid-column: 1; display:none">
+  <input type="text" value="" id="<?= $itemId.'Name' ?>" readonly name="<?= $itemId.'Name' ?>" class="itmNameInput" style="grid-column: 2; width: 250px">
+              
+  <select id="<?= $itemId ?>" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="valuationItemCodeAndName(this.id)">
+   <?php CoffeeGrades(); ?>
+  </select>
+  
+  <?php
+  }
 
+
+  //document notes
+  function documentNotes($width){
+    ?>
+    <div style="margin-top: 10px; max-height: 50px; width: <?= $width?>">
+            <label for="notes">Notes:</label><br>
+            <textarea id="notes" name="notes" class="remarks" rows="3" maxlength="100"
+            style="resize: vertical; max-height: 50px; min-height: 30px; padding: 5px 10px;"></textarea>
+        </div>
+        <?php
+  }
 
 
 

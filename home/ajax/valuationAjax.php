@@ -1,9 +1,10 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "root", "factory");
+include ("../private/database.php");
 if($mysqli->connect_error) {
   exit('Could not connect');
 }
-
+?>
+<?php
 
 
 // $sql = "SELECT customer_id, customer_name, contact_person, telephone, grn_no, grade_name, batch_order_input_qty 

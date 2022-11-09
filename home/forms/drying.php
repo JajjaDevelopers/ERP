@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <link rel="stylesheet" href="styles.css">
-    
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRYING FORM</title>
-    <style>
-      
+<?php include("header.php") ?>
 
-        </style>
-        </head>
-        <body>
-   <h1>DRYING FORM</h1>
+<form class="regularForm">
+   <h3 class="formHeading">DRYING FORM</h3>
    <h2>CUSTOMER DETAILS: <input></h2>
    CUSTOMER ID: <INput>
    <div> Date:<input type="date">
-    <br>MC IN:<input>
-    <br>MC OUT:<input>
-    <br>Reference:<input>
+    <br>MC IN:<input class="shortInput">
+    <br>MC OUT:<input class="shortInput">
+    <br>Reference:<input class="shortInput">
   </div container>
     <br>
    CUSTOMER NAME: <INput>
@@ -55,6 +43,8 @@
     <div class="input2"><input></div>
     <div class="div6"><input></div>
 </p>
-</body>
 
-</html>
+
+</form>
+
+<?php include("footer.php") ?>

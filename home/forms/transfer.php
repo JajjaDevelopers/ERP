@@ -22,33 +22,42 @@ $transferNo = nextDocNumber("transfers", "transfer_no", "GTN-");
         <tr>
             <td>Client</td>
             <td>
-                <input id="fromClientName" class="tableInput" style="width: <?= $cellWidth?>;">
-                <select id="fromClientSelect" name="fromClientSelect" class="dropdown"><?php GetCustomerList(); ?></select>
+                <input id="fromClientName" class="itmNameInput" style="width: <?= $cellWidth?>;" readonly>
+                <select id="fromClientSelect" name="fromClientSelect" class="dropdown" onchange="setCustomer(this.id)" >
+                    <?php GetCustomerList(); ?>
+                </select>
             </td>
             <td>
-                <input id="toClientName" class="tableInput" style="width: <?= $cellWidth?>;">
-                <select id="toClientSelect" name="toClientSelect" class="dropdown"><?php GetCustomerList(); ?></select>
+                <input id="toClientName" class="itmNameInput" style="width: <?= $cellWidth?>;" readonly>
+                <select id="toClientSelect" name="toClientSelect" class="dropdown" onchange="setCustomer(this.id)">
+                    <?php GetCustomerList(); ?>
+                </select>
             </td>
         </tr>
         <tr>
             <td>Warehouse Section</Section></td>
             <td>
-                <input id="fromSectionName" class="tableInput" style="width: <?= $cellWidth?>;">
-                <select id="fromStoreSelect" name="toStoreSelect" class="dropdown"></select>
+                <!-- <input id="fromSectionName" class="itmNameInput" style="width: ;"> -->
+                <select id="fromBlock" name="fromBlock" class="shortInput" onchange="getWareHouseSection(this.id)" >
+                    <?php selectWarehouseBlock(); ?>
+                </select>
+                <select id="fromSection" name="fromSection" class="shortInput"></select>
             </td>
             <td>
-                <input id="toSectionName" class="tableInput" style="width: <?= $cellWidth?>;">
-                <select id="toStoreSelect" name="toStoreSelect" class="dropdown"></select>
+                <select id="toBlock" name="toBlock" class="shortInput" onchange="getWareHouseSection(this.id)">
+                    <?php selectWarehouseBlock(); ?>
+                </select>
+                <select id="toSection" name="toSection" class="shortInput"></select>
             </td>
         </tr>
         <tr>
             <td>Witnessed</Section></td>
             <td>
-                <input id="fromWitnessName" class="tableInput">
+                <input id="fromWitnessName" class="itmNameInput">
                 
             </td>
             <td>
-                <input id="toWitnessName" class="tableInput">
+                <input id="toWitnessName" class="itmNameInput">
                 
             </td>
         </tr>
@@ -71,7 +80,7 @@ $transferNo = nextDocNumber("transfers", "transfer_no", "GTN-");
         <tr>
             <td><?= $i ?></td>
             <td>
-                <input id="<?= 'item'.$i.'Name'?>" class="itmNameInput" style="width: 300px;">
+                <input id="<?= 'item'.$i.'Name'?>" class="itmNameInput" style="width: 300px;" readonly>
                 <select id="<?= 'item'.$i.'Select'?>" name="<?= 'item'.$i.'Select'?>" class="dropdown" onchange="selectItem(this.id, 5)" >
                 <?php coffeeGrades(); ?></select>
             </td>
@@ -94,3 +103,38 @@ $transferNo = nextDocNumber("transfers", "transfer_no", "GTN-");
 </form>
 <?php include_once('footer.php');?>
 <script src="../assets/js/itemSelector.js" ></script>
+<script>
+    function setCustomer(selectId){
+        var selectIdList = ["fromClientSelect", "toClientSelect"];
+        var nameIdList = ["fromClientName", "toClientName"];
+
+        var selected = document.getElementById(selectId).value;
+        var index = selectIdList.indexOf(selectId);
+        document.getElementById(nameIdList[index]).setAttribute("value", selected.substr(7))
+    }
+
+
+    function getWareHouseSection(blockId){
+        var blockNo = document.getElementById(blockId).value;
+        const xhttp = new XMLHttpRequest();
+      // Changing customer namne
+        xhttp.onload = function() {
+        let blockList = ["fromBlock", "toBlock"];
+        let sectionList = ["fromSection", "toSection"];
+        var index = blockList.indexOf(blockId);
+
+        document.getElementById(sectionList[index]).innerHTML = this.responseText;
+
+        // var ajaxCustomerName = document.getElementById("name").value;
+        // document.getElementById("customerName").setAttribute('value', ajaxCustomerName);
+
+        // var ajaxCustomerContact = document.getElementById("contactPerson").value;
+        // document.getElementById("salesReportContact").setAttribute('value', ajaxCustomerContact);
+
+        // var ajaxTel = document.getElementById("tel").value;
+        // document.getElementById("salesReportTel").setAttribute('value', ajaxTel);
+      }
+      xhttp.open("GET", "../ajax/getWareHouseSection.php?q="+blockNo);
+      xhttp.send();
+    }
+</script>

@@ -330,6 +330,22 @@ function gradePicker($itemId){
   }
 
 
+  //select block
+  function selectWarehouseBlock(){
+    ?>
+        <option>Block</option>
+        <?php
+        for ($block=1; $block<=6; $block++) {
+          ?>
+            <option value="<?= $block ?>"><?= 'Block '.$block ?></option>
+            <?php
+        }
+    }
+  
+
+
+  //warehouse selection
+  
 
 
 

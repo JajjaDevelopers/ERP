@@ -13,33 +13,79 @@ $transferNo = nextDocNumber("transfers", "transfer_no", "GTN-");
 <div>
     <label>Summary</label>
     <table>
+        <?php $cellWidth="200px"?>
         <tr>
             <th>Details</th>
-            <th style="width: 400px;">From</th>
+            <th >From</th>
             <th>To</th>
         </tr>
         <tr>
             <td>Client</td>
-            <td><select id="fromClient"></select></td>
-            <td><select id="toClient"></select></td>
+            <td>
+                <input id="fromClientName" class="tableInput" style="width: <?= $cellWidth?>;">
+                <select id="fromClientSelect" name="fromClientSelect" class="dropdown"><?php GetCustomerList(); ?></select>
+            </td>
+            <td>
+                <input id="toClientName" class="tableInput" style="width: <?= $cellWidth?>;">
+                <select id="toClientSelect" name="toClientSelect" class="dropdown"><?php GetCustomerList(); ?></select>
+            </td>
         </tr>
         <tr>
             <td>Warehouse Section</Section></td>
-            <td><select id="fromWh" class="itemSelect"></select></td>
-            <td><select id="toWh"></select></td>
+            <td>
+                <input id="fromSectionName" class="tableInput" style="width: <?= $cellWidth?>;">
+                <select id="fromStoreSelect" name="toStoreSelect" class="dropdown"></select>
+            </td>
+            <td>
+                <input id="toSectionName" class="tableInput" style="width: <?= $cellWidth?>;">
+                <select id="toStoreSelect" name="toStoreSelect" class="dropdown"></select>
+            </td>
         </tr>
         <tr>
             <td>Witnessed</Section></td>
-            <td><select id="fromWitness"></select></td>
-            <td><select id="toWitness"></select></td>
+            <td>
+                <input id="fromWitnessName" class="tableInput">
+                
+            </td>
+            <td>
+                <input id="toWitnessName" class="tableInput">
+                
+            </td>
         </tr>
     </table>
+
+    <label style="margin-top: 20px;">Transfer Items</label>
+    <table style="margin-top: 5px;">
+        <tr>
+            <th style="width: 40px;">No.</th>
+            <th>Grade</th>
+            <th>Moisture</th>
+            <th>Bags</th>
+            <th>Quantity</th>
+        </tr>
+        <?php
+        for ($i=1; $i<=5; $i++){
+
+        
+         ?>
+        <tr>
+            <td><?= $i ?></td>
+            <td>
+                <input id="<?= 'item'.$i.'Name'?>" class="itmNameInput" style="width: 300px;">
+                <select id="<?= 'item'.$i.'Select'?>" name="<?= 'item'.$i.'Select'?>" class="dropdown" onchange="selectItem(this.id, 5)" >
+                <?php coffeeGrades(); ?></select>
+            </td>
+            <td><input type="number" id="<?= 'item'.$i.'Mc'?>" name="<?= 'item'.$i.'Mc'?>" class="tableInput" style="width: 60px;" step="0.01"></td>
+            <td><input type="number" id="<?= 'item'.$i.'Bags'?>" name="<?= 'item'.$i.'Bags'?>" class="tableInput" style="width: 60px;" step="0.1"></td>
+            <td><input type="number" id="<?= 'item'.$i.'Qty'?>" name="<?= 'item'.$i.'Qty'?>" class="tableInput" style="width: 100px;" step="0.01"></td>
+        </tr>
+        <?php
+        }
+        ?>
+    </table>
+
+
 </div>
-
-
-
-
-
 
 
 
@@ -47,3 +93,4 @@ $transferNo = nextDocNumber("transfers", "transfer_no", "GTN-");
     <?php include_once("../private/approvalDetails.php"); ?>
 </form>
 <?php include_once('footer.php');?>
+<script src="../assets/js/itemSelector.js" ></script>

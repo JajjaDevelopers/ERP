@@ -346,8 +346,37 @@ function gradePicker($itemId){
 
   //warehouse selection
   
-
-
+function itemsTable($itemsNo, $tableHeading){
+  ?>
+  <label style="margin-top: 20px;"><?= $tableHeading?></label>
+  <table style="margin-top: 5px;">
+    <tr>
+      <th style="width: 40px;">No.</th>
+      <th>Grade</th>
+      <th>Moisture</th>
+      <th>Bags</th>
+      <th>Quantity</th>
+    </tr> 
+  <?php 
+  for ($i=1; $i<=$itemsNo; $i++){
+    ?>
+    <tr>
+      <td><?= $i ?></td>
+      <td>
+        <input id="<?= 'item'.$i.'Name'?>" class="itmNameInput" style="width: 300px;" readonly>
+        <select id="<?= 'item'.$i.'Select'?>" name="<?= 'item'.$i.'Select'?>" class="dropdown" onchange="selectItem(this.id, <?= $itemsNo?>)" >
+        <?php coffeeGrades(); ?></select>
+      </td>
+      <td><input type="number" id="<?= 'item'.$i.'Mc'?>" name="<?= 'item'.$i.'Mc'?>" class="tableInput" style="width: 60px;" step="0.01"></td>
+      <td><input type="number" id="<?= 'item'.$i.'Bags'?>" name="<?= 'item'.$i.'Bags'?>" class="tableInput" style="width: 60px;" step="0.1"></td>
+      <td><input type="number" id="<?= 'item'.$i.'Qty'?>" name="<?= 'item'.$i.'Qty'?>" class="tableInput" style="width: 100px;" step="0.01"></td>
+    </tr>
+  <?php
+  }
+  ?> 
+  </table> 
+  <?php 
+}
 
 
 

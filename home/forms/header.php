@@ -199,7 +199,7 @@ session_start();
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="batchReport.php">Batch Report</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="roasterydispatch.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="dispatch.php">Dispatch</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="transfer.php">Transfer</a></li>
                  <li><hr class="dropdown-divider"></li>
@@ -244,7 +244,7 @@ session_start();
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="activtySheet.php">Services</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="roasterydispatch.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="dispatch.php">Dispatch</a></li>
               </ul>
             </div>
           </li>

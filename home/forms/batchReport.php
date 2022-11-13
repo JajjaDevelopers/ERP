@@ -348,6 +348,11 @@ include ("../connection/databaseConn.php");
         // Changing customer namne
         xhttp.onload = function() {
             document.getElementById("batchReturnsAjax").innerHTML = this.responseText;
+
+            var receivedJson = document.getElementById("allIdsJson").innerHTML;
+            var gradeLists = JSON.parse(receivedJson);
+            document.getElementById("checkDiv").innerHTML = gradeLists[0][0];
+            
                
         }
         xhttp.open("GET", "../ajax/batchReportReturnsAjax.php?q="+no);

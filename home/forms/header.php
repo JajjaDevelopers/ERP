@@ -201,11 +201,11 @@ session_start();
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="roasterydispatch.php">Dispatch</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Transfer</a></li>
+                <li><a class="dropdown-item" href="transfer.php">Transfer</a></li>
                  <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Reprocessing</a></li>
+                <li><a class="dropdown-item" href="drying.php">Drying</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Hulling</a></li> 
+                <li><a class="dropdown-item" href="hulling.php">Hulling</a></li> 
               </ul>
             </div>
           </li>

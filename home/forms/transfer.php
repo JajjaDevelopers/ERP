@@ -1,12 +1,12 @@
 <?php include_once('header.php'); 
 include ("../connection/databaseConn.php");
-$transferNo = nextDocNumber("transfers", "transfer_no", "GTN-");
+$transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN-');
 ?>
 <form action="../connection/grn.php" class="regularForm" method="POST" style="height: 800px;">
     <legend class="formHeading">Goods Transfer Note</legend>
     <div style="display: grid; width:fit-content; margin-left: 70%;">
         <label for="transfer" style="grid-column: 1; grid-row: 1; width:90px; margin-top: 5px">Transfer No:</label>
-        <input type="text" class="shortInput" id="transfer" name="transfer" value="<?= $transferNo?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">
+        <input type="text" class="shortInput" id="transfer" name="transfer" value="<?= $transferNo ?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">
         <label for="date" class="" style="grid-column: 1; grid-row: 2; margin-top: 10px">Date:</label>
         <input type="date" class="shortInput" id="transferDate" name="transferDate" value="" style="grid-column: 2; grid-row: 2">
     </div>
@@ -41,13 +41,17 @@ $transferNo = nextDocNumber("transfers", "transfer_no", "GTN-");
                 <select id="fromBlock" name="fromBlock" class="shortInput" onchange="getWareHouseSection(this.id)" >
                     <?php selectWarehouseBlock(); ?>
                 </select>
-                <select id="fromSection" name="fromSection" class="shortInput"></select>
+                <select id="fromSection" name="fromSection" class="shortInput">
+                    <option>Section</option>
+                </select>
             </td>
             <td>
                 <select id="toBlock" name="toBlock" class="shortInput" onchange="getWareHouseSection(this.id)">
                     <?php selectWarehouseBlock(); ?>
                 </select>
-                <select id="toSection" name="toSection" class="shortInput"></select>
+                <select id="toSection" name="toSection" class="shortInput">
+                    <option>Section</option>
+                </select>
             </td>
         </tr>
         <tr>
@@ -103,4 +107,5 @@ $transferNo = nextDocNumber("transfers", "transfer_no", "GTN-");
       xhttp.open("GET", "../ajax/getWareHouseSection.php?q="+blockNo);
       xhttp.send();
     }
+    
 </script>

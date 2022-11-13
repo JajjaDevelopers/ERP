@@ -180,7 +180,7 @@ session_start();
         </div>
       </li><!-- End Dashboard Nav -->
 
-      <li class="nav-heading">Data Input Forms</li>
+      <li class="nav-heading">OPERATIONS</li>
 
       <li class="nav-item">
         <div class="dropdown">

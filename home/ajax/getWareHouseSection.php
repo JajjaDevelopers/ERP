@@ -6,7 +6,7 @@ if ($stmt = $conn->prepare($query)) {
     $stmt->bind_param("i", $block); 
     $stmt->execute();
     $stmt->bind_result($section);
-    echo '<option></option>';
+    echo '<option>Section</option>';
     while ($stmt->fetch()) {
         ?>
         <option value="<?= $section?>"><?= $section?></option>

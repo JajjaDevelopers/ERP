@@ -662,7 +662,8 @@ td{
     max-height: 50px;
     min-height: 30px;
     padding: 5px 10px;
-    
-
 }
-  }
+
+.dropdown{
+    width: 20px;
+}

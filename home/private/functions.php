@@ -127,6 +127,7 @@ function pwdMatch($password,$passwordRepeat){
      return $tabledata;
  }
 
+ 
 // Getting next document number for front end
 function nextDocNumber($table, $columName, $prefix){
   include "connlogin.php"; 
@@ -347,6 +348,7 @@ function gradePicker($itemId){
   //warehouse selection
   
 function itemsTable($itemsNo, $tableHeading){
+  
   ?>
   <label style="margin-top: 20px;"><?= $tableHeading?></label>
   <table style="margin-top: 5px;">
@@ -367,13 +369,22 @@ function itemsTable($itemsNo, $tableHeading){
         <select id="<?= 'item'.$i.'Select'?>" name="<?= 'item'.$i.'Select'?>" class="dropdown" onchange="selectItem(this.id, <?= $itemsNo?>)" >
         <?php coffeeGrades(); ?></select>
       </td>
-      <td><input type="number" id="<?= 'item'.$i.'Mc'?>" name="<?= 'item'.$i.'Mc'?>" class="tableInput" style="width: 60px;" step="0.01"></td>
-      <td><input type="number" id="<?= 'item'.$i.'Bags'?>" name="<?= 'item'.$i.'Bags'?>" class="tableInput" style="width: 60px;" step="0.1"></td>
-      <td><input type="number" id="<?= 'item'.$i.'Qty'?>" name="<?= 'item'.$i.'Qty'?>" class="tableInput" style="width: 100px;" step="0.01"></td>
+      <td><input type="number" id="<?= 'item'.$i.'Mc'?>" name="<?= 'item'.$i.'Mc'?>" class="tableInput" style="width: 60px;" 
+      step="0.01" onchange = "updateItemMc(<?= $itemsNo ?>)" ></td>
+      <td><input type="number" id="<?= 'item'.$i.'Bags'?>" name="<?= 'item'.$i.'Bags'?>" class="tableInput" style="width: 60px;" 
+      step="0.1" onchange="updateItemBags(<?= $itemsNo ?>)" ></td>
+      <td><input type="number" id="<?= 'item'.$i.'Qty'?>" name="<?= 'item'.$i.'Qty'?>" class="tableInput" style="width: 100px;" 
+      step="0.01" onchange="updateItemQty(<?= $itemsNo ?>)" ></td>
     </tr>
   <?php
   }
-  ?> 
+  ?>
+  <tr>
+    <th colspan="2">Total</th>
+    <th><input readonly type="number" id="avgMc" name="avgMc" class="tableInput" style="width: 60px;" step="0.01"></th>
+    <th><input readonly type="number" id="totalBags" name="totalBags" class="tableInput" style="width: 60px;" step="0.1"></th>
+    <th><input readonly type="number" id="totalQty" name="totalQty" class="tableInput" style="width: 100px;" step="0.01"></th>
+  </tr>
   </table> 
   <?php 
 }

@@ -4,9 +4,11 @@ $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VA
 ?>
 <form id="valuationForm" name="valuationForm" class="regularForm" style="height: 930px;" method="POST" action="../connection/valuation.php">
     <h3 class="formHeading">VALUATION REPORT</h3>
+    <?php
+     include "../alerts/message.php";
+    ?>
     <div style="padding: 15px 5px 5px 70%;">
         <label for="valuationNumber" id="valuationNumberLabel" class="valuationLabel" >Valuation No.:</label>
-
 
         <?php
             

@@ -109,8 +109,10 @@ for ($x=0; $x < count($allGradeQty); $x++ ) {
 
 $conn->close();
 
-header("location:../public/batchReport.php");
-exit();
+if(isset($_POST["btnsubmit"]))
+{
+    header("location:../forms/batchReport.php?formmsg=success");
+}
 
 
 ?>

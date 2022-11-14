@@ -1,7 +1,7 @@
 <div id="activityApprovalDIv" style="margin-top: 10px; width:auto ">
         <div id="activityPrepareDiv">
             <input type="submit" id="activityConfirmButton" value="Cancel" class="controlButtons">
-            <input type="submit" id="activityCancelButton" value="Submit" class="controlButtons">
+            <input type="submit" id="activityCancelButton" value="Submit" class="controlButtons" name="btnsubmit">
         </div>
     </div>
     <div style="display: grid;">

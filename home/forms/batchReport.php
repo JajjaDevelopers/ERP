@@ -3,6 +3,9 @@ include ("../connection/databaseConn.php");
 ?>
 <form id="batchReportForm" class="regularForm"action="../connection/batchReport.php" method="POST" style="width: 900px;">
     <h3 id="batchReportHeading" class="formHeading">Production Report</h3>
+    <?php
+        include "../alerts/message.php";
+     ?>
     <div id="ajaxDiv1" style="display: none">
         
     </div>

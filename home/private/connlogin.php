@@ -2,7 +2,7 @@
 $server="localhost";
 $db="factory";
 $user="root";
-$pwd="root";
+$pwd="";
 $charset="utf8mb4";
 
 $options=[

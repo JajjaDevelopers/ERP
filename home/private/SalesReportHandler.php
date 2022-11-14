@@ -70,7 +70,11 @@ $conn->rollback();
         }
     }  
 
+    //message 
+    if(isset($_POST["btnsubmit"]))
+    {
+        header("location:../forms/SalesReport.php?formmsg=success");
+    }
 
 
-header("location:../forms/SalesReport.php") ;
 ?>

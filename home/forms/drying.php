@@ -28,8 +28,8 @@
     </tr>
     <tr>
         <td>OUTPUT</td>
-        <td><input></td>
-        <td><input></td>
+        <td><input class="tableInput"></td>
+        <td><input class="tableInput"></td>
     </tr>
     <tr>
       <td>LOSS</td>

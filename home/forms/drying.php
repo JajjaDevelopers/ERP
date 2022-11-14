@@ -2,6 +2,9 @@
 
 <form class="regularForm">
    <h3 class="formHeading">DRYING FORM</h3>
+   <?php
+      include "../alerts/message.php";
+    ?>
    <h2>CUSTOMER DETAILS: <input></h2>
    CUSTOMER ID: <INput>
    <div> Date:<input type="date">

@@ -13,6 +13,9 @@
     
     <form id="deliveryNoteForm" class="regularForm">
         <h3 id="deliveryNoteHeading" class="formHeading">Roastery Delivery Note</h3>
+        <?php
+            include "../alerts/message.php";
+        ?>
         <!--Date div --> 
         <div id="deliveryNoteDiv1" class="formSectionDiv">
             <div id="deliveryNoteNumberDiv" class="innerDiv">

@@ -62,5 +62,9 @@ for ($x=0; $x < count($allGradeQty); $x++ ) {
     
 }
 
-header("location:../forms/valuation.php") ;
+if(isset($_POST["btnsubmit"]))
+{
+    header("location:../forms/valuation.php?formmsg=success");
+}
+
 ?>

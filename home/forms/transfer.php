@@ -4,6 +4,9 @@ $transferNo = nextDocNumber("transfers", "transfer_no", "GTN-");
 ?>
 <form action="../connection/grn.php" class="regularForm" method="POST" style="height: 800px;">
     <legend class="formHeading">Goods Transfer Note</legend>
+    <?php
+        include "../alerts/message.php";
+    ?>
     <div style="display: grid; width:fit-content; margin-left: 70%;">
         <label for="transfer" style="grid-column: 1; grid-row: 1; width:90px; margin-top: 5px">Transfer No:</label>
         <input type="text" class="shortInput" id="transfer" name="transfer" value="<?= $transferNo?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">

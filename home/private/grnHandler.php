@@ -36,6 +36,9 @@ $ref = "GRN";
 $grnDetails -> bind_param("sisi", $ref, $grnNo, $coffeeGrade, $gradeweight);
 $grnDetails -> execute();
 
-
-header("location:../forms/Goods_Received_Note.php")
+if(isset($_POST["btnsubmit"]))
+{
+    header("location:../forms/Goods_Received_Note.php?formmsg=success");
+}
+// header("location:../forms/Goods_Received_Note.php")
 ?>

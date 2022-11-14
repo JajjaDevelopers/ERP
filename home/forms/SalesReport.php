@@ -5,6 +5,9 @@ $nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");
 
 <form id="salesReportForm" name="salesReportForm" class="regularForm" style="height: 800px; width:900px" method="POST" action="../connection/salesreport.php">
     <h2 class="formHeading">SALES REPORT</h2>
+        <?php
+            include "../alerts/message.php";
+        ?>
     <div style="margin-left: 70%;">
         <label for="salesReportNumber" id="salesReportNumberLabel" class="salesReportLabel" >Sales No.:</label>
         <input type="text" id="salesReportNumber" readonly class="shortInput" style="width: 100px; text-align: center;"

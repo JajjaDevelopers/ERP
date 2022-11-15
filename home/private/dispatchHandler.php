@@ -19,14 +19,15 @@ $dispatch_no = documentNumber("dispatch", "dispatch_no");
 $dispatch_date = $_POST["hullingDate"];
 $dispatch_time = $_POST["timeOut"];
 $customer_id = $_POST["customerId"];
+$dispatch_qty = $_POST["totalQty"];
 $truck_no = $_POST["truckNo"];
 $driver = $_POST["driver"];
 $destination = $_POST["destination"];
 $comment = $_POST["remarks"];
 //Summary 
-$summarySql = $conn->prepare("INSERT INTO dispatch (dispatch_no, dispatch_date, dispatch_time, customer_id, destination, 
-                            truck_no, driver, prepared_by, comment) VALUES (?,?,?,?,?,?,?,?,?) ");
-$summarySql -> bind_param("issssssss", $dispatch_no, $dispatch_date, $dispatch_time, $customer_id, $destination, 
+$summarySql = $conn->prepare("INSERT INTO dispatch (dispatch_no, dispatch_date, dispatch_time, customer_id, dispatch_qty, destination, 
+                            truck_no, driver, prepared_by, comment) VALUES (?,?,?,?,?,?,?,?,?,?) ");
+$summarySql -> bind_param("isssdsssss", $dispatch_no, $dispatch_date, $dispatch_time, $customer_id, $dispatch_qty, $destination, 
 $truck_no, $driver, $prepared_by, $comment);
 $summarySql->execute();
 $conn->rollback();   

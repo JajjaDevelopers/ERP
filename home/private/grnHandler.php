@@ -29,13 +29,17 @@ $grnSql -> bind_param("issssdiisssssss", $grnNo, $grnDate, $timein, $customerId,
                     $purpose, $origin, $deliveryPerson, $truckNumber, $driverName, $remarks, $username);
 $grnSql -> execute();
 
-$grnDetailStmt = "INSERT INTO inventory (inventory_reference, document_number, grade_id, qty_in)
-                VALUES (?, ?, ?, ?)";
+$grnDetailStmt = "INSERT INTO inventory (inventory_reference, document_number, customer_id, item_no, grade_id, qty_in)
+                VALUES (?, ?, ?, ?, ?, ?)";
 $grnDetails = $conn-> prepare($grnDetailStmt);
 $ref = "GRN";
-$grnDetails -> bind_param("sisi", $ref, $grnNo, $coffeeGrade, $gradeweight);
+$itemNo = 1;
+$grnDetails -> bind_param("sisisd", $ref, $grnNo, $customerId, $itemNo, $coffeeGrade, $gradeweight);
 $grnDetails -> execute();
 
-
-header("location:../forms/Goods_Received_Note.php")
+if(isset($_POST["btnsubmit"]))
+{
+    header("location:../forms/Goods_Received_Note.php?formmsg=success");
+}
+// header("location:../forms/Goods_Received_Note.php")
 ?>

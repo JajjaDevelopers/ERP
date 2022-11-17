@@ -4,6 +4,9 @@
   <!-- <div class="container"> -->
     <form action="../connection/grn.php" class="regularForm" method="POST" style="height: 800px;">
       <legend class="formHeading">Goods Received Note</legend>
+      <?php
+            include "../alerts/message.php";
+      ?>
       <div style="display: grid; width:fit-content; margin-left: 70%;">
           <label for="grnNo" style="grid-column: 1; grid-row: 1; width:70px; margin-top: 5px">GRN No:</label>
           <input type="text" class="shortInput" id="grnNo" name="grnNo" value="<?php echo nextDocNumber('grn', 'grn_no', 'GRN-') ?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">

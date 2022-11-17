@@ -4,6 +4,9 @@ $hullingNo = nextDocNumber("hulling", "hulling_no", "HLP");
 ?>
 <form id="hullingForm" name="hullingForm" class="regularForm" style="height: 930px;" method="POST" action="../connection/valuation.php">
     <h3 class="formHeading">HULLING REPORT</h3>
+    <?php
+    include "../alerts/message.php";
+    ?>
     <div style="display: grid; width:fit-content; margin-left: 70%;">
         <label for="hullingNo" style="grid-column: 1; grid-row: 1; width:70px; margin-top: 5px">Hulling No:</label>
         <input type="text" class="shortInput" id="hullingNo" name="hullingNo" value="<?= $hullingNo?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">

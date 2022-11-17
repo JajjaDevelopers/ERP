@@ -169,36 +169,37 @@ session_start();
   <aside id="sidebar" class="sidebar" >
 
     <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link " href="index.php">
-          <span class="material-icons-sharp">
-            grid_view
+    <li class="nav-item">
+       <div class="nav-item">
+          <a href="index.php" class="btn" role="button">
+            <span class="material-icons-sharp">
+                grid_view
             </span>
-          <span>Dashboard</span>
-        </a>
+            <span>Dashboard</span>
+          </a>
+        </div>
       </li><!-- End Dashboard Nav -->
 
-      <li class="nav-heading">Data Input Forms</li>
+      <li class="nav-heading">OPERATIONS</li>
 
       <li class="nav-item">
         <div class="dropdown">
-          <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#FFFFFF;border:none;">
+          <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="material-icons-sharp">
-            folder
+            factory
             </span>
-           <span>Processing</span>
-            
+           <span style="margin-bottom:10px;">Processing</span>
             </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><h6 class="dropdown-header">Processing Data Entry Forms</h6></li>
-                <li><a class="dropdown-item active"  aria-current="true" href="Goods_Received_Note.php">Recieve Goods</a></li>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="listdata">
+                <li><h6 class="dropdown-header text-dark"> Processing Entry Forms</h6></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item active"aria-current="true" href="batchProcessingOrder.php">Batch Processing Order</a></li>
+                <li><a class="dropdown-item " href="Goods_Received_Note.php">Recieve Goods</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item active"aria-current="true" href="batchReport.php">Batch Report</a></li>
+                <li><a class="dropdown-item" href="batchProcessingOrder.php">Batch Processing Order</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="roasterydispatch.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="batchReport.php">Batch Report</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="dispatch.php">Dispatch</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="transfer.php">Transfer</a></li>
                  <li><hr class="dropdown-divider"></li>
@@ -211,14 +212,15 @@ session_start();
 
           <li class="nav-item">
             <div class="dropdown">
-              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#FFFFFF;border:none;">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="material-icons-sharp">
-                folder
+                currency_pound
                 </span>
                 <span>Marketing</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><h6 class="dropdown-header">Marketing Data Entry Forms</h6></li>
+              <li><h6 class="dropdown-header text-dark">Marketing  Entry Forms</h6></li>
+              <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="valuation.php">Valuation</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="SalesReport.php">Sales Report</a></li>
@@ -230,9 +232,9 @@ session_start();
 
           <li class="nav-item">
             <div class="dropdown">
-              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#FFFFFF;border:none;">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="material-icons-sharp">
-                folder
+                coffee_maker
                 </span>
                 <span>Roast &#38; Ground</span>
               </button>
@@ -242,7 +244,7 @@ session_start();
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="activtySheet.php">Services</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="roasterydispatch.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="dispatch.php">Dispatch</a></li>
               </ul>
             </div>
           </li>
@@ -252,8 +254,8 @@ session_start();
           <li class="nav-heading">Analytics</li>
 
           <li class="nav-item">
-            <div class="dropdown">
-              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#FFFFFF;border:none;">
+            <div class="dropdown" >
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
               <span class="material-icons-sharp">
                 analytics
                 </span>
@@ -269,7 +271,6 @@ session_start();
               </ul> -->
             </div>
           </li>
-
           <?php
              if(isset($_SESSION["Access"])||$_SESSION["Access2"])
              {
@@ -278,10 +279,12 @@ session_start();
                 ?>
                 <li class="nav-item">
                   <div class="nav-item">
+                    <a href="signup.php" class="btn" role="button">
                     <span class="material-icons-sharp">
-                    person_add
-                    </span>
-                    <a class="nav-item" href="signup.php">Create New User</a>
+                      person_add
+                      </span>
+                      <span>Create New User</span>
+                    </a>
                   </div>
                 </li>
               <?php

@@ -1,4 +1,4 @@
-
+<?php $pageTitle="Activity Sheet"; ?>
 <?php include_once('header.php'); ?>
     <div>
     <form id="activitySheetForm" name="activitySheetForm" class="regularForm" action="../private/activitySheetHandler.php" method="POST">

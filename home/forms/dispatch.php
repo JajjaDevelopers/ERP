@@ -1,9 +1,10 @@
+<?php $pageTitle="Goods Dispatch"; ?>
 <?php include("header.php");?>
 <?php include ("../connection/databaseConn.php");
 $hullingNo = nextDocNumber("dispatch", "dispatch_no", "DIS"); 
 ?>
     
-<form id="deliveryNoteForm" class="regularForm" method="POST" style="height: 800px;" action="../connection/dispatch.php">
+<form id="deliveryNoteForm" class="regularForm" method="POST" style="height: 900px;" action="../connection/dispatch.php">
     <h3 id="deliveryNoteHeading" class="formHeading">Delivery Note</h3>
     <div style="display: grid; width:fit-content; margin-left: 70%;">
         <label for="hullingNo" style="grid-column: 1; grid-row: 1; width:80px; margin-top: 5px">Dispatch No:</label>

@@ -1,3 +1,4 @@
+<?php $pageTitle="Hulling"; ?>
 <?php require ("header.php") ?>
 <?php include ("../connection/databaseConn.php");
 $hullingNo = nextDocNumber("hulling", "hulling_no", "HLP"); 

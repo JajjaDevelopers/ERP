@@ -1,3 +1,4 @@
+<?php $pageTitle="Sign up New User"; ?>
 <?php
   session_start();
 

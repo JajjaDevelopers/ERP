@@ -64,7 +64,8 @@ getDailyOut();
 $dates = json_encode($daysList);
 $dailyReceived = json_encode($dailyReceivedList);
 $dailyDispatched = json_encode($dailyDispatchedList);
-
+$data=json_encode(array($daysList,$dailyReceivedList,$dailyDispatchedList));
+echo $data;
 ?>
 
 

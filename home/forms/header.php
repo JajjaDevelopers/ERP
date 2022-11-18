@@ -43,6 +43,7 @@ session_start();
   <!--CSS FILES-->
   <link href="../assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/main.css">
+  <script src="../assets/plotly/plotly-2.16.1.min.js"></script>
 </head>
 <body>
 

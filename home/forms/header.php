@@ -8,7 +8,7 @@ session_start();
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Home</title>
+  <title><?= $pageTitle ?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -43,6 +43,7 @@ session_start();
   <!--CSS FILES-->
   <link href="../assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/main.css">
+  <script src="../assets/plotly/plotly-2.16.1.min.js"></script>
 </head>
 <body>
 

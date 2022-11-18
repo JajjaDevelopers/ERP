@@ -1,3 +1,4 @@
+<?php $pageTitle="Sales Report"; ?>
 <?php include_once('header.php');?>
 <?php include ("../connection/databaseConn.php");
 $nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");

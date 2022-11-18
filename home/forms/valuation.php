@@ -1,3 +1,4 @@
+<?php $pageTitle="Valuation Report"; ?>
 <?php include_once('header.php'); 
 include ("../connection/databaseConn.php");
 $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VAL");

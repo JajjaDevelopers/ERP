@@ -1,3 +1,4 @@
+<?php $pageTitle="Batch Report"; ?>
 <?php include_once ("header.php");
 include ("../connection/databaseConn.php");
 ?>

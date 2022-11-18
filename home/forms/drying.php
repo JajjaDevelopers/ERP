@@ -1,3 +1,4 @@
+<?php $pageTitle="Coffee Drying"; ?>
 <?php include("header.php") ?>
 
 <form class="regularForm">

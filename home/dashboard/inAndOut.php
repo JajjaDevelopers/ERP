@@ -63,37 +63,6 @@ getDailyOut();
 $dates = json_encode($daysList);
 $dailyReceived = json_encode($dailyReceivedList);
 $dailyDispatched = json_encode($dailyDispatchedList);
-
+$data=json_encode(array($daysList,$dailyReceivedList,$dailyDispatchedList));
+echo $data;
 ?>
-
-
-<!-- The html below tests response of this data generated here to the index.php page -->
-<select>
-    <?php
-    for ($p=0; $p<count($dailyReceivedList); $p++){
-        ?>
-        <option><?= $dailyReceivedList[$p] ?></option>
-        <?php
-    }
-    ?>
-</select>
-<select>
-    <?php
-    for ($p=0; $p<count($dailyDispatchedList); $p++){
-        ?>
-        <option><?= $dailyDispatchedList[$p] ?></option>
-        <?php
-    }
-    ?>
-</select>
-First Date: <?= date_format($currentDate, "Y-m-d")  ?>
-
-<select>
-    <?php
-    for ($p=0; $p<count($daysList); $p++){
-        ?>
-        <option><?= $daysList[$p] ?></option>
-        <?php
-    }
-    ?>
-</select>

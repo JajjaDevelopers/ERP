@@ -1,3 +1,4 @@
+<?php $pageTitle="Transfer"; ?>
 <?php include_once('header.php'); 
 include ("../connection/databaseConn.php");
 $transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN-');

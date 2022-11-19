@@ -29,6 +29,7 @@
     var dateData=data[0];
     var receivedCoffee=data[1];
     var dispatchedCoffee=data[2];
+    console.log(data)
 
     plotGraph(dateData,receivedCoffee,dispatchedCoffee);
   }
@@ -104,7 +105,34 @@
     Plotly.newPlot("coffeeInAndOut",dataPlot,layout,config);
   }
 
-  
+  //picking monthly movement data;
+  var request2= new XMLHttpRequest();
+  request2.open("GET","monthlyMovement.php");
+  request2.onload=function(){
+    if(this.status ==200)
+    {
+      var ourData=JSON.parse(this.responseText);
+      // extractData(ourData);
+      console.log(ourData);
+    }
+
+  }
+  request2.send();
+
+   //picking quarterly movement data;
+   var request3= new XMLHttpRequest();
+  request3.open("GET","quarterlyMovement.php");
+  request3.onload=function(){
+    if(this.status ==200)
+    {
+      var ourData=JSON.parse(this.responseText);
+      // extractData(ourData);
+      console.log(ourData);
+    }
+
+  }
+  request3.send();
+
 </script>
 <!-- </body>
 </html> -->

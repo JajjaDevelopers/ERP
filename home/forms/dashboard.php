@@ -15,7 +15,7 @@
   <table class="table table-bordered table-hover" id="tableReceived">
         <thead>
           <tr>
-            <th scope="col" colspan="2" class="text-center">Coffee Received in Kg</th>
+            <th scope="col" colspan="2" class="text-center">Coffee Received(Kg)</th>
           </tr>
         </thead>
         <tbody>
@@ -35,7 +35,7 @@
     <table class="table table-bordered table-hover" id="tableMovedOut">
         <thead>
           <tr>
-            <th scope="col" colspan="2" class="text-center">Coffee Moved Out in Kg</th>
+            <th scope="col" colspan="2" class="text-center">Coffee Moved Out(kg)</th>
           </tr>
         </thead>
         <tbody>

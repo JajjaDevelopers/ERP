@@ -143,6 +143,7 @@
         x:x1Data,
         y:y1Data,
         type:"scatter",
+        mode:"lines",
         name:"Received"
     }
   
@@ -162,33 +163,35 @@
       title:"Weigh Bridge Coffee In and Out",
       xaxis: {
         tickangle: -45,
-        title:'Date',
-        showgrid:true,
-        zeroline:true,
+        type:"date",
+        title:{text:'Date',standoff:20},
+        showgrid:false,
+        zeroline:false,
         showline:true,
-        mirror:'ticks',
+        // mirror:'ticks',
         gridcolor:'#bdbdbd',
         gridwidth:2,
         zerolinecolor:'#969696',
-        zerolinewidth:4,
+        zerolinewidth:1,
         linecolor:'#636363',
-        linewidth:6
+        linewidth:2,
+        showdividers:true
       },
       // width:1000,
       // height:500,
       yaxis:{
         title:"Daily Volume (MT)",
-        type: 'linear',
+        // type: 'linear',
         showgrid:true,
         zeroline:true,
         showline:true,
-        mirror:'ticks',
+        // mirror:'ticks',
         gridcolor:'#bdbdbd',
         gridwidth:2,
         zerolinecolor:'#969696',
-        zerolinewidth:4,
+        zerolinewidth:1,
         linecolor:'#636363',
-        linewidth:6
+        linewidth:2
       },
       showlegend:true,
       legend:{"orientation":"v"}

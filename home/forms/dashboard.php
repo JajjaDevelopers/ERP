@@ -9,7 +9,7 @@
 </head>
 <body>-->
 <section id="dashboard">
-<div class="row" style="background-color:white;">
+<div class="row" style="background-color:red;">
   <div class="col-2">
     
   <table class="table table-bordered table-hover" id="tableReceived">
@@ -75,11 +75,76 @@
   <div class="col-6" id="coffeeInAndOut">
   </div>
 </div>
+
+<div class="row bg-warning">
+<div class="col-2">
+    
+    <table class="table table-bordered table-hover" id="tableQReceived">
+          <thead>
+            <tr>
+              <th scope="col" colspan="2" class="text-center">Coffee Received(Kg)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  
+    <div class="col-2">    
+      <table class="table table-bordered table-hover" id="tableQMovedOut">
+          <thead>
+            <tr>
+              <th scope="col" colspan="2" class="text-center">Coffee Moved Out(kg)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+    <div class="col-2">
+      <table class="table table-bordered table-hover" id="quarterlyVariance">
+            <thead>
+            <tr>
+              <th scope="col" colspan="2" class="text-center">Quarterly Variance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Received</td>
+              <td>Moved Out</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 </section>
 <script>
-  //getting table elements for coffee received
-  var headR=document.getElementById("tableReceived").getElementsByTagName("thead")[0];
-  var theadRrow=headR.getElementsByTagName("tr")[0];
+  // var svg=document.getElementsByClassName("main-svg");
+  // console.log(svg);
+  //getting table elements for monthly coffee received
+  // var headR=document.getElementById("tableReceived").getElementsByTagName("thead")[0];
+  // var theadRrow=headR.getElementsByTagName("tr")[0];
   var bodyR=document.getElementById("tableReceived").getElementsByTagName("tbody")[0];
   var bodyRrow1=bodyR.getElementsByTagName("tr")[0];//first row
   var bodyRrow1Cell1=bodyRrow1.getElementsByTagName("td")[0];
@@ -89,9 +154,7 @@
   var bodyRrow2Cell2=bodyRrow2.getElementsByTagName("td")[1];
   // console.log(bodyRrow2Cell2);
 
-  //getting table elements for coffee moved out
-  // var headM=document.getElementById("tableMovedOut").getElementsByTagName("thead")[0];
-  // var theadMrow=headM.getElementsByTagName("tr")[0];
+  //getting table elements for monthly coffee moved out
   var bodyM=document.getElementById("tableMovedOut").getElementsByTagName("tbody")[0];
   var bodyMrow1=bodyM.getElementsByTagName("tr")[0];//first row
   var bodyMrow1Cell1=bodyMrow1.getElementsByTagName("td")[0];
@@ -105,7 +168,32 @@
   var bodyVrow2=bodyV.getElementsByTagName("tr")[1];//second row
   var bodyVrow2Cell1=bodyVrow2.getElementsByTagName("td")[0];
   var bodyVrow2Cell2=bodyVrow2.getElementsByTagName("td")[1];
-  
+
+  //getting table elements for quarterly coffee received
+  var bodyQ=document.getElementById("tableQReceived").getElementsByTagName("tbody")[0];
+  var bodyQrow1=bodyQ.getElementsByTagName("tr")[0];//first row
+  var bodyQrow1Cell1=bodyQrow1.getElementsByTagName("td")[0];
+  var bodyQrow1Cell2=bodyQrow1.getElementsByTagName("td")[1];
+  var bodyQrow2=bodyQ.getElementsByTagName("tr")[1];//second row
+  var bodyQrow2Cell1=bodyQrow2.getElementsByTagName("td")[0];
+  var bodyQrow2Cell2=bodyQrow2.getElementsByTagName("td")[1];
+
+  //getting table elements for quarterly coffee moved out
+  var bodyQM=document.getElementById("tableQMovedOut").getElementsByTagName("tbody")[0];
+  var bodyQMrow1=bodyQM.getElementsByTagName("tr")[0];//first row
+  var bodyQMrow1Cell1=bodyQMrow1.getElementsByTagName("td")[0];
+  var bodyQMrow1Cell2=bodyQMrow1.getElementsByTagName("td")[1];
+  var bodyQMrow2=bodyQM.getElementsByTagName("tr")[1];//second row
+  var bodyQMrow2Cell1=bodyQMrow2.getElementsByTagName("td")[0];
+  var bodyQMrow2Cell2=bodyQMrow2.getElementsByTagName("td")[1];
+
+  //getting table elemnts for quarterly variance
+  var bodyQV=document.getElementById("quarterlyVariance").getElementsByTagName("tbody")[0];
+  var bodyQVrow2=bodyQV.getElementsByTagName("tr")[1];//second row
+  var bodyQVrow2Cell1=bodyQVrow2.getElementsByTagName("td")[0];
+  var bodyQVrow2Cell2=bodyQVrow2.getElementsByTagName("td")[1];
+
+  // function to handle coffee received vs coffee moved out graph
   function plotInAndOut()
   {
     var request= new XMLHttpRequest();
@@ -144,6 +232,7 @@
         y:y1Data,
         type:"scatter",
         mode:"lines",
+        line:{shape:"spline"},
         name:"Received"
     }
   
@@ -152,6 +241,8 @@
         x:x1Data,
         y:y2Data,
         type:"scatter",
+        mode:"lines",
+        line:{shape:"spline"},
         name:"Moved Out",
         // line:{
         //   color:'rgb(0,255,0)',
@@ -170,15 +261,15 @@
         showline:true,
         // mirror:'ticks',
         gridcolor:'#bdbdbd',
-        gridwidth:2,
+        gridwidth:1,
         zerolinecolor:'#969696',
         zerolinewidth:1,
         linecolor:'#636363',
-        linewidth:2,
+        linewidth:1,
         showdividers:true
       },
-      // width:1000,
-      // height:500,
+      // width:500,
+      height:300,
       yaxis:{
         title:"Daily Volume (MT)",
         // type: 'linear',
@@ -187,11 +278,11 @@
         showline:true,
         // mirror:'ticks',
         gridcolor:'#bdbdbd',
-        gridwidth:2,
+        gridwidth:1,
         zerolinecolor:'#969696',
         zerolinewidth:1,
         linecolor:'#636363',
-        linewidth:2
+        linewidth:1
       },
       showlegend:true,
       legend:{"orientation":"v"}
@@ -200,12 +291,12 @@
 
     var dataPlot=[trace1,trace2];
     var config={responsive:true};
-    Plotly.newPlot("coffeeInAndOut",dataPlot,layout,config);
+    Plotly.newPlot("coffeeInAndOut",dataPlot,layout,config,{scrollZoom:true});
   }
-
+  
   }
   plotInAndOut();
-  
+ 
   //picking monthly movement data;
   function monthlyMovementData()
   {
@@ -262,24 +353,74 @@
       bodyVrow2Cell2.innerText=movedOutVariance;
       console.log(receivedVariance);
     }
+
   }
 
   monthlyMovementData();
 
-  //picking quarterly movement data;
+  //function to handle quarterly movement
+  function quarterlyMovementData()
+  {
+     //picking quarterly movement data;
   var request3= new XMLHttpRequest();
   request3.open("GET","quarterlyMovement.php");
   request3.onload=function(){
     if(this.status ==200)
     {
       var ourData=JSON.parse(this.responseText);
-      // extractData(ourData);
-      console.log(ourData);
+      for(i in ourData)
+        {
+          var quarters=ourData[0];
+          var quantityReceived=ourData[1];
+          var quantityMovedOut=ourData[2];
+          var quantityVariance=ourData[3];
+        }
+
+        coffeeReceived(quarters,quantityReceived);
+        coffeeMovedOut(quarters,quantityMovedOut);
+        quarterlyVariance(quantityVariance,quantityReceived,quantityMovedOut);
+        console.log(ourData);
+      
     }
 
   }
   request3.send();
 
+  //function for quarterly coffee received
+  function coffeeReceived(receivedQuarters,receivedQuantity)
+    {
+  
+      bodyQrow1Cell1.innerText=receivedQuarters[0];
+      bodyQrow1Cell2.innerText=receivedQuarters[1];
+      bodyQrow2Cell1.innerText=receivedQuantity[0];
+      bodyQrow2Cell2.innerText=receivedQuantity[1];
+    }
+
+    //function for coffee moved out
+    function coffeeMovedOut(movedOutQuarters,movedOutQuantity)
+    {
+      bodyQMrow1Cell1.innerText=movedOutQuarters[0];
+      bodyQMrow1Cell2.innerText=movedOutQuarters[1];
+      bodyQMrow2Cell1.innerText=movedOutQuantity[0];
+      bodyQMrow2Cell2.innerText=movedOutQuantity[1];
+      // console.log(movedOutQuantity)
+    }
+
+    //function for variance
+    function quarterlyVariance(varianceQuantity,receivedQuantity,movedOutQuantity)
+    {
+      var receivedVariance=(((varianceQuantity[0]/receivedQuantity[1])*100)).toFixed(1);
+      var movedOutVariance=((varianceQuantity[1]/movedOutQuantity[1])*100).toFixed(1);
+
+      bodyQVrow2Cell1.innerText=receivedVariance;
+      bodyQVrow2Cell2.innerText=movedOutVariance;
+      console.log(receivedVariance);
+    }
+
+  }
+
+  quarterlyMovementData()
+ 
 </script>
 <!-- </body>
 </html> -->

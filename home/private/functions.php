@@ -390,8 +390,30 @@ function itemsTable($itemsNo, $tableHeading){
 }
 
 
+//Next button
+function insertNextButton(){
+  ?>
+  <div id="activityPrepareDiv">
+    <input type="submit" id="nextButton" value="Next" class="controlButtons btn btn-primary" name="btnsubmit">
+  </div>
+  <?php
+}
 
-
+function customerFill(){
+  global $customerId, $customerName, $contactPerson, $customerTel;
+  ?>
+  
+  <div id="customerDetailsDiv">
+    <label for="customerId" class="salesReportLabel" >Client:</label>
+    <input type="text" id="customerId" name="customerId" readonly class="longInputField" value="<?= $customerId?>" style="width: 70px; margin-right: 0px;" >
+    <input type="text" id="customerName" name="customerName" readonly class="longInputField" value="<?= $customerName?>" style="margin-left: 0px; margin-right: 0px;"><br>
+    <label for="customerContact" id="salesReportBuyerLabel"  class="salesReportLabel" >Contact:</label>
+    <input type="text" id="contactPerson" name="contactPerson" readonly class="longInputField" value="<?= $contactPerson?>" style="margin-right: 0px; width:150px">
+    <label for="customerTel" class="salesReportLabel" >Tel:</label>
+    <input type="text" id="customerTel" name="customerTel" readonly class="longInputField" value="<?= $customerTel?>" style="margin-right: 0px; width:120px">
+  </div>
+  <?php
+}
 
 
 

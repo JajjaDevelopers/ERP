@@ -3,6 +3,23 @@
 include ("../connection/databaseConn.php");
 include ("../ajax/batchReportReturnsAjax.php");
 ?>
+<?php 
+$customerId = $_POST["customerId"];
+$customerName = $_POST["customerName"];
+$customerTel = $_POST["customerTel"];
+$contactPerson = $_POST["contactPerson"];
+$batchOrderNumber = $_POST["batchOrderNumber"];
+$coffeeType = $_POST["coffeeType"];
+$inputMc = $_POST["batchMc"];
+$netInputQty = $_POST["inputQty"];
+$inputGradeName = $_POST["coffeeGrade"];
+
+
+
+
+
+
+?>
 <form id="batchReportForm" class="regularForm"action="../connection/batchReport.php" method="POST" style="width: 900px;">
     <h3 id="batchReportHeading" class="formHeading">Production Report</h3>
     <?php
@@ -11,36 +28,28 @@ include ("../ajax/batchReportReturnsAjax.php");
     <div id="ajaxDiv1" style="display: none">
         
     </div>
-    <div style="display: grid;">
-        <div style="grid-row: 1; grid-column: 1; padding-top: 50px; margin-bottom: 5px; ">
-            <?php require("../connection/batchReportCustomer.php"); ?>
-            <label for="batchReportOfftaker">Offtaker</label>
-            <select id="batchReportOfftaker" class="shortInput" name="batchReportOfftaker">
-                <option>Self</option>
-                <option>Nucafe</option>
-            </select>
-            <label for="batchOrderNumber">Order No.:</label>
-            <select type="text" id="batchOrderNumber" class="shortInput" name="batchOrderNumber">
-
-            </select>
-        </div>
-        <div style="grid-row: 1; grid-column: 2;">
+    <div>
+        <div style="margin-left: 70%">
             <label for="batchReportNumber">Batch No.:</label>
             <?php
                 $newBatchNo = nextDocNumber("batch_reports_summary", "batch_report_no", "BR");
                 echo '<label id="batchReportNumber" class="shortInput" name="batchReportNumber">'.$newBatchNo .'</label>'.'<br>';
             ?>
+            <label for="batchOrderNumber">Order No.:</label>
+            <input type="number" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" value="<?= '00'.$batchOrderNumber ?>"><br>
             <label for="batchReportDate">Date:</label>
             <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate">
             <br>
-            <label for="coffeeType">Type:</label>
-            <select type="text" id="coffeeTypeSelector" class="shortInput" name="batchReportDate" onchange="returnCoffeeTypeTemplate()" >
-                <option>Select Type</option>
-                <option value="Robusta">Robusta</option>
-                <option value="Arabica">Arabica</option>
-            </select>
-            <br>
         </div>
+        <div style="padding-top: 50px; margin-bottom: 5px; ">
+            <?php customerFill(); ?>
+            <label for="batchReportOfftaker">Offtaker</label>
+            <select id="batchReportOfftaker" class="shortInput" name="batchReportOfftaker">
+                <option>Self</option>
+                <option>Nucafe</option>
+            </select>
+        </div>
+        
     </div>
     <div>
         
@@ -51,8 +60,8 @@ include ("../ajax/batchReportReturnsAjax.php");
                     <th style="width: 100px;">KGs</th>
                 </tr>
                 <tr>
-                    <td>INPUT FAQ</td>
-                    <td><input type="number" id="inputQty" name="inputQty" class="tableInput" value="0"></td>
+                    <td>INPUT <?= $inputGradeName?></td>
+                    <td><input type="number" id="inputQty" name="inputQty" class="tableInput" value="<?= $netInputQty ?>"></td>
                 </tr>
                 <tr>
                     <td>Add Spill.Priv.Batch</td>
@@ -64,31 +73,24 @@ include ("../ajax/batchReportReturnsAjax.php");
                 </tr>
                 <tr>
                     <td>NET INPUT</td>
-                    <td><input type="number" id="netInputQty" readonly name="netInputQty" class="tableInput"></td>
+                    <td><input type="number" id="netInputQty" readonly name="netInputQty" class="tableInput" value="<?= $netInputQty ?>"></td>
                 </tr>
             </table>
             <div style="display: inline-block; grid-row: 1; grid-column: 2;">
-                Avg. MC In: <input type="number" id="batchReportMcIn" class="shortInput" name="batchReportMcIn" style="width: 60px;">
-                Avg. MC Out: <input type="doubleval" id="batchReportMcIn" class="shortInput" name="batchReportMcOut" style="width: 60px;"><br>
+                Avg. MC In: <input type="number" id="batchReportMcIn" class="shortInput" name="batchReportMcIn" style="width: 60px;"
+                readonly value="<?= $inputMc ?>">
+                Avg. MC Out: <input type="doubleval" id="batchReportMcIn" class="shortInput" name="batchReportMcOut" style="width: 60px;"
+                value="<?= $inputMc ?>"><br>
                 Remarks:<br><textarea name="remarks" style="width: 300px; padding: 3px " placeholder="Any comment or remarks"></textarea>
             </div>
         </div>
         
         <h4 style="margin-top: 20px;">RETURNS</h4>
-        <div id="arabicaBatchReturnsAjax" style="display: none;">
+        <div id="arabicaBatchReturnsAjax">
             <?php 
-                getGrades("Arabica", "HIGH", "", "high", "High Grades"); //HIgh grades
-                getGrades("Arabica", "LOW", "", "low", "Low Grades"); //Low grades
-                getGrades("Arabica", "HIGH", "Blacks", "blacks", "Color Sorter Rejects"); //Blacks beans
-                getGrades("NONE", "WASTES", "", "wastes", "Wastes"); //Wastes
-                getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses"); //Other Losses 
-            ?>
-        </div>
-        <div id="robustaBatchReturnsAjax" style="display: none;">
-            <?php 
-                getGrades("Robusta", "HIGH", "", "high", "High Grades"); //HIgh grades
-                getGrades("Robusta", "LOW", "", "low", "Low Grades"); //Low grades
-                getGrades("Robusta", "HIGH", "Blacks", "blacks", "Color Sorter Rejects"); //Blacks beans
+                getGrades($coffeeType, "HIGH", "", "high", "High Grades"); //HIgh grades
+                getGrades($coffeeType, "LOW", "", "low", "Low Grades"); //Low grades
+                getGrades($coffeeType, "HIGH", "Blacks", "blacks", "Color Sorter Rejects"); //Blacks beans
                 getGrades("NONE", "WASTES", "", "wastes", "Wastes"); //Wastes
                 getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses"); //Other Losses 
             ?>

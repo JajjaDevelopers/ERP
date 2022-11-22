@@ -24,7 +24,7 @@ $typeSql = $conn->prepare("SELECT coffee_type FROM grades
 //Generate grades
 
 
-function getGrades($offeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $tableHeader){
+function getGrades($coffeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $tableHeader){
     include "../private/connlogin.php";
     $gradeSql = $conn->prepare("SELECT grade_id, grade_name FROM grades WHERE (coffee_type=? AND grade_type=?) ORDER BY grade_rank");
   
@@ -36,7 +36,7 @@ function getGrades($offeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $ta
     $allLists = array($highGradeList, $lowGradeList, $blacksGradeList, $wastesGradeList, $lossesGradeList);
     $listsIdentifier = array("high", "low", "blacks", "wastes", "losses");
     //global $conn, $gradeSql, $listsIdentifier, $allLists, $highGradeList, $lowGradeList, $blacksGradeList, $wastesGradeList, $lossesGradeList;
-    $gradeSql->bind_param("ss", $offeeType, $gradeType);
+    $gradeSql->bind_param("ss", $coffeeType, $gradeType);
     $gradeSql->execute();
     $allGrades = $gradeSql -> get_result();
     $rows = $conn -> affected_rows;
@@ -45,7 +45,6 @@ function getGrades($offeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $ta
   
     ?>
     <h5 style="margin-top: 10px;"><?= $tableHeader?></h5>
-    <input id="<?= $gradeIdPrefix ?>">
     <table id="highGradeReturnsTable">
         <tr>
             <th class="batchItemLabel">GRADE</th>

@@ -1,23 +1,60 @@
-var highGradeBagsList = ["highGrade1Bags", "highGrade2Bags", "highGrade3Bags", "highGrade4Bags"];
-var lowGradeBagsList = ["lowGrade1Bags", "lowGrade2Bags", "lowGrade3Bags", "lowGrade4Bags", "lowGrade5Bags"];
-var rejectsBagsList = ["blacks18Bags",  "blacks17Bags", "blacks15Bags", "blacks12Bags"];
-var wastesBagsList = ["stonesBags", "preCleanerBags", "husksBags"];
-var otherLossBagsList = ["handlingLossBags", "dryingLossBags"];
+var highGradeBagsList = []; 
+var lowGradeBagsList = []; 
+var rejectsBagsList = []; 
+var wastesBagsList = []; 
+var otherLossBagsList = []; 
+var gradeBagsList = [highGradeBagsList, lowGradeBagsList, rejectsBagsList, wastesBagsList, otherLossBagsList];
 let allBagsList = highGradeBagsList.concat(lowGradeBagsList, rejectsBagsList, wastesBagsList, otherLossBagsList);
 
-var highGradeQtyList = ["highGrade1Qty", "highGrade2Qty", "highGrade3Qty", "highGrade4Qty"];
-var lowGradeQtyList = ["lowGrade1Qty", "lowGrade2Qty", "lowGrade3Qty", "lowGrade4Qty", "lowGrade5Qty"];
-var rejectsQtyList = ["blacks18Qty",  "blacks17Qty", "blacks15Qty", "blacks12Qty"];
-var wastesQtyList = ["stonesQty", "preCleanerQty", "husksQty"];
-var otherLossQtyList = ["handlingLossQty", "dryingLossQty"];
+var highGradeQtyList = []; 
+var lowGradeQtyList = []; 
+var rejectsQtyList = []; 
+var wastesQtyList = []; 
+var otherLossQtyList = []; 
+var gradesQtyList = [highGradeQtyList, lowGradeQtyList, rejectsQtyList, wastesQtyList, otherLossQtyList];
 let allQtyList = highGradeQtyList.concat(lowGradeQtyList, rejectsQtyList, wastesQtyList, otherLossQtyList);
 
-var highGradePerList = ["highGrade1Per", "highGrade2Per", "highGrade3Per", "highGrade4Per"];
-var lowGradePerList = ["lowGrade1Per", "lowGrade2Per", "lowGrade3Per", "lowGrade4Per", "lowGrade5Per"];
-var rejectsPerList = ["blacks18Per",  "blacks17Per", "blacks15Per", "blacks12Per"];
-var wastesPerList = ["stonesPer", "preCleanerPer", "husksPer"];
-var otherLossPerList = ["handlingLossPer", "dryingLossPer"];
+var highGradePerList = []; 
+var lowGradePerList =  []; 
+var rejectsPerList = []; 
+var wastesPerList = []; 
+var otherLossPerList = []; 
+var gradePerList = [highGradePerList, lowGradePerList, rejectsPerList, wastesPerList, otherLossPerList];
 let allPerList = highGradePerList.concat(lowGradePerList, rejectsPerList, wastesPerList, otherLossPerList);
+
+
+// Get Grade grade category length
+var highGradeNumbers = document.getElementById("highNumber").value;
+var lowGradeNumbers = document.getElementById("lowNumbers").value;
+var blacksGradeNumbers = document.getElementById("blacksNumbers").value;
+var wastesGradeNumbers = document.getElementById("wastesNumbers").value;
+var lossesGradeNumbers = document.getElementById("lossesNumbers").value;
+var gradeNumbersList = [highGradeNumbers, lowGradeNumbers, blacksGradeNumbers, wastesGradeNumbers, lossesGradeNumbers];
+
+var idPrefix = ["high", "low", "blacks", "wastes", "losses"];
+
+for (var x=0; x<gradeNumbersList.length; x++){
+    for (var i=1; i<=gradeNumbersList[x]; i++){
+        gradePerList[x].push(idPrefix[0]+"Grade"+i+"Per");
+        gradesQtyList[x].push(idPrefix[0]+"Grade"+i+"Qty");
+        gradeBagsList[x].push(idPrefix[0]+"Grade"+i+"Bags");
+    }
+}
+
+function getBatchReturns(no){
+        
+    const xhttp = new XMLHttpRequest();
+    // Changing customer namne
+    xhttp.onload = function() {
+        document.getElementById("batchReturnsAjax").innerHTML = this.responseText;
+
+        var receivedJson = document.getElementById("allIdsJson").innerHTML;
+        var gradeLists = JSON.parse(receivedJson);
+        document.getElementById("checkDiv").innerHTML = gradeLists[0][0];
+    }
+    xhttp.open("GET", "../ajax/batchReportReturnsAjax.php?q="+no);
+    xhttp.send();
+}
 
 function updateBagsAndPer(){
     var inputQty = Number(document.getElementById("inputQty").value);

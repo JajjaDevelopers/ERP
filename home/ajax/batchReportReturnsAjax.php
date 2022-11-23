@@ -45,6 +45,7 @@ function getGrades($coffeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $t
   
     ?>
     <h5 style="margin-top: 10px;"><?= $tableHeader?></h5>
+    <input id="<?= $gradeIdPrefix.'Number' ?>" value="<?= $rows ?>">
     <table id="highGradeReturnsTable">
         <tr>
             <th class="batchItemLabel">GRADE</th>

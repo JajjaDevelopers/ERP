@@ -83,20 +83,7 @@ include ("../ajax/batchReportReturnsAjax.php");
             document.getElementById("batchMc").setAttribute("value", batchData[3]);
             document.getElementById("orderDate").setAttribute("value", batchData[4]);
             document.getElementById("gradeId").setAttribute("value", batchData[1]);
-            // set input qty
-            // var ajaxInputQty = document.getElementById("orderAjaxQty").value;
-            // document.getElementById("inputQty").setAttribute('value', ajaxInputQty);
-            // var inputQty = Number(document.getElementById("inputQty").value);
-            // var addSpill = Number(document.getElementById("addSpillQty").value);
-            // var lessSpill = Number(document.getElementById("lessSpillQty").value);
-            // document.getElementById("netInputQty").setAttribute('value', (inputQty + addSpill - lessSpill));
             
-            // var ajaxMcIn = document.getElementById("orderAjaxMc").value;
-            // document.getElementById("batchReportMcIn").setAttribute('value', ajaxMcIn);
-            // document.getElementById("batchReportMcOut").setAttribute('value', ajaxMcIn);
-
-            // var ajaxCoffeeType = document.getElementById("orderAjaxCoffeeType").value;
-            // document.getElementById("batchReportCoffeeType").setAttribute('value', ajaxCoffeeType);
 
         }
         xhttp.open("GET", "../ajax/batchCoffeeTypeAjax.php?q="+str);
@@ -121,22 +108,6 @@ include ("../ajax/batchReportReturnsAjax.php");
         xhttp.send();
     }
 
-    function returnCoffeeTypeTemplate(){
-        var selectedCoffeeType = document.getElementById("coffeeTypeSelector").value;
-        var arabicaDiv = document.getElementById("arabicaBatchReturnsAjax");
-        var robustaDiv = document.getElementById("robustaBatchReturnsAjax");
-        if (selectedCoffeeType == "Robusta"){
-            robustaDiv.style.display = "block";
-            arabicaDiv.style.display = "none";
-        }else if (selectedCoffeeType == "Arabica"){
-            arabicaDiv.style.display = "block";
-            robustaDiv.style.display = "none";
-        }else{
-            arabicaDiv.style.display = "none";
-            robustaDiv.style.display = "none";
-        }
-
-    }
     
 </script>
 

@@ -198,9 +198,9 @@ session_start();
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="batchProcessingOrder.php">Batch Processing Order</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="batchReport.php">Batch Report</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="BatchOrderSelection.php">New Batch Report</a></li>
+                <!-- <li><a class="dropdown-item" href="batchReport.php">Batch Report</a></li>
+                <li><hr class="dropdown-divider"></li> -->
+                <li><a class="dropdown-item" href="BatchOrderSelection.php">Batch Report</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="dispatch.php">Dispatch</a></li>
                 <li><hr class="dropdown-divider"></li>

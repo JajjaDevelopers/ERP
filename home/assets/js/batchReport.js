@@ -25,20 +25,20 @@ let allPerList = highGradePerList.concat(lowGradePerList, rejectsPerList, wastes
 
 // Get Grade grade category length
 var highGradeNumbers = document.getElementById("highNumber").value;
-var lowGradeNumbers = document.getElementById("lowNumbers").value;
-var blacksGradeNumbers = document.getElementById("blacksNumbers").value;
-var wastesGradeNumbers = document.getElementById("wastesNumbers").value;
-var lossesGradeNumbers = document.getElementById("lossesNumbers").value;
+var lowGradeNumbers = document.getElementById("lowNumber").value;
+var blacksGradeNumbers = document.getElementById("blacksNumber").value;
+var wastesGradeNumbers = document.getElementById("wastesNumber").value;
+var lossesGradeNumbers = document.getElementById("lossesNumber").value;
 var gradeNumbersList = [highGradeNumbers, lowGradeNumbers, blacksGradeNumbers, wastesGradeNumbers, lossesGradeNumbers];
 
 var idPrefix = ["high", "low", "blacks", "wastes", "losses"];
 
-for (var x=0; x<gradeNumbersList.length; x++){
+for (var x=0; x<Number(gradeNumbersList.length); x++){
     for (var i=1; i<=gradeNumbersList[x]; i++){
-        gradePerList[x].push(idPrefix[0]+"Grade"+i+"Per");
-        gradesQtyList[x].push(idPrefix[0]+"Grade"+i+"Qty");
-        gradeBagsList[x].push(idPrefix[0]+"Grade"+i+"Bags");
-    }
+        gradePerList[x].push(idPrefix[x]+"Grade"+i+"Per");
+        gradesQtyList[x].push(idPrefix[x]+"Grade"+i+"Qty");
+        gradeBagsList[x].push(idPrefix[x]+"Grade"+i+"Bags");
+    } 
 }
 
 function getBatchReturns(no){
@@ -64,41 +64,46 @@ function updateBagsAndPer(){
     var netInput = document.getElementById("netInputQty").value;
 
     var overallQty = 0;
-    for (var i=0; i < allQtyList.length; i++){
-        var qty = Number(document.getElementById(allQtyList[i]).value);
-        var bags = qty/60;
-        var percent = (qty/netInput)*100;
-        document.getElementById(allBagsList[i]).setAttribute('value', bags);
-        document.getElementById(allPerList[i]).setAttribute('value', percent);
-        overallQty += Number(qty)
+    for (var x=0; x<gradesQtyList.length; x++){
+        for (var i=0; i < gradesQtyList[x].length; i++){
+            var qty = Number(document.getElementById(gradesQtyList[x][i]).value);
+            var bags = qty/60;
+            var percent = (qty/netInput)*100;
+            document.getElementById(gradeBagsList[x][i]).setAttribute('value', bags);
+            document.getElementById(gradePerList[x][i]).setAttribute('value', percent);
+            overallQty += Number(qty)
+        }
     }
 
     function setTotals(subTotalId, itemsList, totalBagsId, totalPerId){
         var subTotalIdVar = document.getElementById(subTotalId);
         var totalHighGradeKgs = [];
-        var highGradeTotalKgs = 0;
+        var catSubtotalKgs = 0;
         for (var i=0; i < itemsList.length; i++){
             var highGradeQty = document.getElementById(itemsList[i]).value;
             totalHighGradeKgs.push(highGradeQty);
-            highGradeTotalKgs = highGradeTotalKgs + Number(highGradeQty);
+            catSubtotalKgs = catSubtotalKgs + Number(highGradeQty);
         }
-        subTotalIdVar.setAttribute('value', highGradeTotalKgs);
-        document.getElementById(totalBagsId).setAttribute('value', highGradeTotalKgs / 60);
-        document.getElementById(totalPerId).setAttribute('value', (highGradeTotalKgs / netInput)*100);
+        subTotalIdVar.setAttribute('value', catSubtotalKgs);
+        document.getElementById(totalBagsId).setAttribute('value', catSubtotalKgs / 60);
+        document.getElementById(totalPerId).setAttribute('value', (catSubtotalKgs / netInput)*100);
     }
     setTotals("highGradeSubtotalQty", highGradeQtyList, "highGradeSubtotalBags", "highGradeSubtotalPer");
     setTotals("lowGradeSubtotalQty", lowGradeQtyList, "lowGradeSubtotalBags", "lowGradeSubtotalPer");
-    setTotals("rejectsSubtotalQty", rejectsQtyList, "rejectsSubtotalBags", "rejectsSubtotalPer");
-    setTotals("wastesSubtotalQty", wastesQtyList, "wastesSubtotalBags", "wastesSubtotalPer");
-    setTotals("otherLossSubtotalQty", otherLossQtyList, "otherLossSubtotalBags", "otherLossSubtotalPer");
-
+    setTotals("blacksGradeSubtotalQty", rejectsQtyList, "blacksGradeSubtotalBags", "blacksGradeSubtotalPer");
+    setTotals("wastesGradeSubtotalQty", wastesQtyList, "wastesGradeSubtotalBags", "wastesGradeSubtotalPer");
+    setTotals("lossesGradeSubtotalQty", otherLossQtyList, "lossesGradeSubtotalBags", "lossesGradeSubtotalPer");
+    
     document.getElementById("overallTotalQty").setAttribute('value', overallQty);
     document.getElementById("overallTotalBags").setAttribute('value', (overallQty / 60));
     document.getElementById("overallTotalPer").setAttribute('value', (overallQty / netInput)*100);
 }
 
-for (i=0; i < allQtyList.length; i++){
-    document.getElementById(allQtyList[i]).addEventListener("blur", updateBagsAndPer);
+// document.getElementById(gradesQtyList[0][0]).addEventListener("blur", updateBagsAndPer);
+for (var x=0; x<gradesQtyList.length; x++){
+    for (var i=0; i < gradesQtyList[x].length; i++){
+        document.getElementById(gradesQtyList[x][i]).addEventListener("blur", updateBagsAndPer);
+    }
 }
 
 document.getElementById("inputQty").addEventListener("blur", updateBagsAndPer);

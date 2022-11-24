@@ -45,7 +45,7 @@ function getGrades($coffeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $t
   
     ?>
     <h5 style="margin-top: 10px;"><?= $tableHeader?></h5>
-    <input id="<?= $gradeIdPrefix.'Number' ?>" value="<?= $rows ?>">
+    <input id="<?= $gradeIdPrefix.'Number' ?>" value="<?= $rows ?> " readonly style="display: none;">
     <table id="highGradeReturnsTable">
         <tr>
             <th class="batchItemLabel">GRADE</th>
@@ -74,9 +74,9 @@ function getGrades($coffeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $t
         ?>
         <tr>
             <th>SUB TOTAL</th>
-            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalBags'?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalBags'?>" class="tableInput"></td>
-            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalQty'?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalQty'?>" class="tableInput"></td>
-            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalPer'?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalPer'?>" class="tableInput"></td>
+            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalBags' ?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalBags'?>" class="tableInput"></td>
+            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalQty' ?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalQty'?>" class="tableInput"></td>
+            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalPer' ?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalPer'?>" class="tableInput"></td>
         </tr>
     </table>
   <?php

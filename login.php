@@ -27,12 +27,14 @@ require_once "header.php";
  }
 ?>
 </div>
-<div class="container mt-5 border  rounded-3 " id="divlogin">
+<div> </div>
+<div class="container mt-5 border  rounded-3 " id="divlogin" style="background-color: green;">
   <div class="card my-4 shadow-lg p-3 mb-5 bg-body rounded">
     <div class="card-header text-center">
-      <span class="material-icons-sharp " style="font-size:48px;">
+    <img src="ASSETS/images/logo2.jpg" width="100" height="100" >
+      <!-- <span class="material-icons-sharp " style="font-size:48px;">
       account_circle
-      </span>
+      </span> -->
       <h4>Account</h4>
     </div>
     <div class="card-body">

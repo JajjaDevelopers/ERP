@@ -4,21 +4,7 @@ include ("../connection/databaseConn.php");
 include ("../ajax/batchReportReturnsAjax.php");
 ?>
 <?php 
-$customerId = $_POST["customerId"];
-$customerName = $_POST["customerName"];
-$customerTel = $_POST["customerTel"];
-$contactPerson = $_POST["contactPerson"];
-$batchOrderNumber = $_POST["batchOrderNumber"];
-$coffeeType = $_POST["coffeeType"];
-$inputMc = $_POST["batchMc"];
-$netInputQty = $_POST["inputQty"];
-$inputGradeName = $_POST["coffeeGrade"];
-
-
-
-
-
-
+require_once ("../connection/batchReportVariables.php");
 ?>
 <form id="batchReportForm" class="regularForm"action="../connection/batchReport.php" method="POST" style="width: 900px;">
     <h3 id="batchReportHeading" class="formHeading">Production Report</h3>
@@ -127,21 +113,16 @@ $inputGradeName = $_POST["coffeeGrade"];
     <?php include_once("../private/approvalDetails.php"); ?>
 </form>
 <script>
-    //pick available customer orders
-    document.getElementById("salesReportBuyer").addEventListener('change', checkCustomerOrders);
-    
-    function checkCustomerOrders(){
-        var customerId = document.getElementById("customerId").value;
-        if (customerId == "") {
-            document.getElementById("batchOrderNumber").setAttribute('value', '');
-            return;
-        } 
+    // get grade Ids    
+    function categoryItemsFreq(){
+        var coffeeType = "<?= $coffeeType?>";
+        
         const xhttp = new XMLHttpRequest();
-        // Changing customer namne
+        
         xhttp.onload = function() {
-            document.getElementById("batchOrderNumber").innerHTML = this.responseText;
+            var itemFrequency = JSON.parse(this.responseText);
         }
-        xhttp.open("GET", "../ajax/batchReportOrdersAjax.php?q="+customerId);
+        xhttp.open("GET", "../ajax/batchReportOrdersAjax.php?q="+coffeeType);
         xhttp.send();
     }
     
@@ -199,25 +180,25 @@ $inputGradeName = $_POST["coffeeGrade"];
         xhttp.send();
     }
 
-    function returnCoffeeTypeTemplate(){
-        var selectedCoffeeType = document.getElementById("coffeeTypeSelector").value;
-        var arabicaDiv = document.getElementById("arabicaBatchReturnsAjax");
-        var robustaDiv = document.getElementById("robustaBatchReturnsAjax");
-        if (selectedCoffeeType == "Robusta"){
-            robustaDiv.style.display = "block";
-            arabicaDiv.style.display = "none";
-        }else if (selectedCoffeeType == "Arabica"){
-            arabicaDiv.style.display = "block";
-            robustaDiv.style.display = "none";
-        }else{
-            arabicaDiv.style.display = "none";
-            robustaDiv.style.display = "none";
-        }
+    // function returnCoffeeTypeTemplate(){
+    //     var selectedCoffeeType = document.getElementById("coffeeTypeSelector").value;
+    //     var arabicaDiv = document.getElementById("arabicaBatchReturnsAjax");
+    //     var robustaDiv = document.getElementById("robustaBatchReturnsAjax");
+    //     if (selectedCoffeeType == "Robusta"){
+    //         robustaDiv.style.display = "block";
+    //         arabicaDiv.style.display = "none";
+    //     }else if (selectedCoffeeType == "Arabica"){
+    //         arabicaDiv.style.display = "block";
+    //         robustaDiv.style.display = "none";
+    //     }else{
+    //         arabicaDiv.style.display = "none";
+    //         robustaDiv.style.display = "none";
+    //     }
 
-    }
+    // }
     
 </script>
 
-<!-- <script src="../assets/js/batchReport.js"></script> -->
+<script src="../assets/js/batchReport.js"></script>
 <?php include_once ("footer.php")?>
 

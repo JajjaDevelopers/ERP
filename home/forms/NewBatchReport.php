@@ -4,6 +4,7 @@ include ("../connection/databaseConn.php");
 include ("../ajax/batchReportReturnsAjax.php");
 ?>
 <?php 
+
 require_once ("../connection/batchReportVariables.php");
 ?>
 <form id="batchReportForm" class="regularForm"action="../connection/batchReport.php" method="POST" style="width: 900px;">

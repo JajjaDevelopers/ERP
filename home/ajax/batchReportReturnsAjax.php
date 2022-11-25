@@ -45,7 +45,7 @@ function getGrades($coffeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $t
   
     ?>
     <h5 style="margin-top: 10px;"><?= $tableHeader?></h5>
-    <input id="<?= $gradeIdPrefix.'Number' ?>" value="<?= $rows ?> " readonly style="display: none;">
+    <input id="<?= $gradeIdPrefix.'Number' ?>" name="<?= $gradeIdPrefix.'Number' ?>" value="<?= $rows ?> " readonly style="display: none;">
     <table id="highGradeReturnsTable">
         <tr>
             <th class="batchItemLabel">GRADE</th>
@@ -56,7 +56,11 @@ function getGrades($coffeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $t
     <?php
     for ($gradeNo=1; $gradeNo <= $rows; $gradeNo++){
         $gradeRow = $allGrades -> fetch_assoc();
-        $grade_id = $gradeRow ['grade_id'];
+        if ($gradeIdPrefix == "blacks"){
+            $grade_id = "BLACKS";
+        }else{
+            $grade_id = $gradeRow ['grade_id'];
+        }
         $grade_name = $gradeNamePrefix.' '.$gradeRow ['grade_name'];
         $prefix = $gradeIdPrefix.'Grade'.$gradeNo;
   

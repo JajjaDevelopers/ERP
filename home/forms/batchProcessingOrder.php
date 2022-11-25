@@ -6,11 +6,11 @@
 <form class="regularForm" method="POST" style="height: 800px;" action="../connection/batchProcessingOrder.php">
     <legend class="formHeading">Batch Processing Order</legend>
     <?php
-        include "../alerts/message.php";
+        // include "../alerts/message.php";
     ?>
     <div style="display: grid; width:fit-content; margin-left: 70%;">
         <label for="grnNo" style="grid-column: 1; grid-row: 1; width:70px; margin-top: 5px">Order No:</label>
-        <input type="text" class="shortInput" id="orderNo" name="orderNo" value="<?php echo nextDocNumber('batch_processing_order', 'batch_order_no', 'BPO-'); ?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">
+        <input type="text" class="shortInput" id="orderNo" name="batchOrderNumber" value="<?php echo nextDocNumber('batch_processing_order', 'batch_order_no', 'BPO-'); ?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">
         <label for="date" class="" style="grid-column: 1; grid-row: 2; margin-top: 10px">Date:</label>
         <input type="date" class="shortInput" id="orderDate" name="orderDate" value="" style="grid-column: 2; grid-row: 2">
     </div>

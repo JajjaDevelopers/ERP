@@ -26,12 +26,11 @@ for ($i=0; $i<count($grnList); $i++){
         $updateGrnSql->bind_param("ii", $batch_order_no, $grnNo);
         $updateGrnSql->execute();
     }
-    
 }
-if(isset($_POST["btnsubmit"]))
-{
-    header("location:../forms/batchProcessingOrder.php?formmsg=success");
-}
+// if(isset($_POST["btnsubmit"]))
+// {
+//     header("location:../forms/batchProcessingOrder.php?formmsg=success");
+// }
 
-// header("location:../forms/batchProcessingOrder.php") ;
+header("location:../forms/batchProcessingOrder.php");
 ?>

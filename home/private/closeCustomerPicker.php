@@ -4,9 +4,9 @@
 </select><br>
 
         <label for="salesReportContact" id="salesReportBuyerLabel"  class="salesReportLabel" >Contact:</label>
-        <input type="text" id="salesReportContact" readonly class="longInputField" placeholder="Contact Person" style="margin-right: 0px; width:150px">
-        <label for="salesReportContact" id="salesReportBuyerLabel" class="salesReportLabel" >Tel:</label>
-        <input type="text" id="salesReportTel" readonly class="longInputField" placeholder="Telephone" style="margin-right: 0px; width:120px">
+        <input type="text" id="salesReportContact" name="contactPerson" readonly class="longInputField" placeholder="Contact Person" style="margin-right: 0px; width:150px">
+        <label for="salesReportContact" id="salesReportBuyerLabel" name="contactPerson" class="salesReportLabel" >Tel:</label>
+        <input type="text" id="salesReportTel" name="customerTel" readonly class="longInputField" placeholder="Telephone" style="margin-right: 0px; width:120px">
   </div>
   <script>
     function SelectCustomer(buyer){

@@ -10,37 +10,42 @@ $typeSql = $conn->prepare("SELECT coffee_type FROM grades
                             JOIN grn USING (grade_id)
                             JOIN batch_processing_order USING (batch_order_no)
                             WHERE batch_order_no=?");
-$batch_order_no = $_GET['q'];
-$typeSql->bind_param("i", $batch_order_no);
-$typeSql->execute();
-$typeSql->bind_result($type);
-$typeSql->fetch();
-$typeSql->close();
-$typ1 = $type;
+// $batch_order_no = $_GET['q'];
+// $typeSql->bind_param("i", $batch_order_no);
+// $typeSql->execute();
+// $typeSql->bind_result($type);
+// $typeSql->fetch();
+// $typeSql->close();
+// $typ1 = "Robusta";//$type;
 
 
 //Generate grades
-$gradeSql = $conn->prepare("SELECT grade_id, grade_name FROM grades WHERE (coffee_type=? AND grade_type=?) ORDER BY grade_rank");
+//Batch returns based on coffee type
+//Generate grades
 
-$highGradeList = array();
-$lowGradeList = array();
-$blacksGradeList = array();
-$wastesGradeList = array();
-$lossesGradeList = array();
-$allLists = array($highGradeList, $lowGradeList, $blacksGradeList, $wastesGradeList, $lossesGradeList);
-$listsIdentifier = array("high", "low", "blacks", "wastes", "losses");
 
-function getGrades($offeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $tableHeader){
-    global $conn, $gradeSql, $listsIdentifier, $allLists, $highGradeList, $lowGradeList, $blacksGradeList, $wastesGradeList, $lossesGradeList;
-    $gradeSql->bind_param("ss", $offeeType, $gradeType);
+function getGrades($coffeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $tableHeader){
+    include "../private/connlogin.php";
+    $gradeSql = $conn->prepare("SELECT grade_id, grade_name FROM grades WHERE (coffee_type=? AND grade_type=?) ORDER BY grade_rank");
+  
+    $highGradeList = array();
+    $lowGradeList = array();
+    $blacksGradeList = array();
+    $wastesGradeList = array();
+    $lossesGradeList = array();
+    $allLists = array($highGradeList, $lowGradeList, $blacksGradeList, $wastesGradeList, $lossesGradeList);
+    $listsIdentifier = array("high", "low", "blacks", "wastes", "losses");
+    //global $conn, $gradeSql, $listsIdentifier, $allLists, $highGradeList, $lowGradeList, $blacksGradeList, $wastesGradeList, $lossesGradeList;
+    $gradeSql->bind_param("ss", $coffeeType, $gradeType);
     $gradeSql->execute();
     $allGrades = $gradeSql -> get_result();
     $rows = $conn -> affected_rows;
-
+  
     $index = array_search($gradeIdPrefix, $listsIdentifier);
-
+  
     ?>
     <h5 style="margin-top: 10px;"><?= $tableHeader?></h5>
+    <input id="<?= $gradeIdPrefix.'Number' ?>" name="<?= $gradeIdPrefix.'Number' ?>" value="<?= $rows ?> " readonly style="display: none;">
     <table id="highGradeReturnsTable">
         <tr>
             <th class="batchItemLabel">GRADE</th>
@@ -51,10 +56,14 @@ function getGrades($offeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $ta
     <?php
     for ($gradeNo=1; $gradeNo <= $rows; $gradeNo++){
         $gradeRow = $allGrades -> fetch_assoc();
-        $grade_id = $gradeRow ['grade_id'];
+        if ($gradeIdPrefix == "blacks"){
+            $grade_id = "BLACKS";
+        }else{
+            $grade_id = $gradeRow ['grade_id'];
+        }
         $grade_name = $gradeNamePrefix.' '.$gradeRow ['grade_name'];
         $prefix = $gradeIdPrefix.'Grade'.$gradeNo;
-
+  
         array_push($allLists[$index], $prefix.'Id');
         ?>
         <tr>
@@ -69,26 +78,15 @@ function getGrades($offeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $ta
         ?>
         <tr>
             <th>SUB TOTAL</th>
-            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalBags'?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalBags'?>" class="tableInput"></td>
-            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalQty'?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalQty'?>" class="tableInput"></td>
-            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalPer'?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalPer'?>" class="tableInput"></td>
+            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalBags' ?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalBags'?>" class="tableInput"></td>
+            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalQty' ?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalQty'?>" class="tableInput"></td>
+            <td><input type="number" id="<?= $gradeIdPrefix.'GradeSubtotalPer' ?>" readonly name="<?= $gradeIdPrefix.'GradeSubtotalPer'?>" class="tableInput"></td>
         </tr>
     </table>
-<?php
-}
-getGrades($typ1, "HIGH", "", "high", "High Grades"); //HIgh grades
-getGrades($typ1, "LOW", "", "low", "Low Grades"); //Low grades
-getGrades($typ1, "HIGH", "Blacks", "blacks", "Color Sorter Rejects"); //Blacks beans
-getGrades("NONE", "WASTES", "", "wastes", "Wastes"); //Wastes
-getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses"); //Other Losses
-
-$allIdsJson = json_encode($allLists);
-
-// echo $allIdsJson;
-?>
-<div id="allIdsJson" s>
-    <?= $allIdsJson ?>
-</div>
-<div id="checkDiv" >
-    
-</div>
+  <?php
+  }
+  // getGrades($typ1, "HIGH", "", "high", "High Grades"); //HIgh grades
+  // getGrades($typ1, "LOW", "", "low", "Low Grades"); //Low grades
+  // getGrades($typ1, "HIGH", "Blacks", "blacks", "Color Sorter Rejects"); //Blacks beans
+  // getGrades("NONE", "WASTES", "", "wastes", "Wastes"); //Wastes
+  // getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses"); //Other Losses

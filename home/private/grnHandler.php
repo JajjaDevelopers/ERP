@@ -2,7 +2,7 @@
 session_start();
 $username = $_SESSION["userName"];
 ?>
-<?php include("../private/database.php");?>
+<?php include("../private/database.php"); ?>
 
 <?php
 $grnNo = documentNumber("grn", "grn_no");

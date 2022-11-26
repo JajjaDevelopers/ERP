@@ -11,6 +11,9 @@ if(isset($_GET["message"]))
   if($_SESSION["message"]==="incorrectpassword")
   {
     echo "Password is incorrect!";
+  }else if($_SESSION["message"]==="emptyinput")
+  {
+    echo "Password Field is empty!";
   }
 }
 ?>

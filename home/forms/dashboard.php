@@ -1,14 +1,15 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Received and Dispatched Graph</title>
+  <link href="..\assets\css\bootsrap\css\bootstrap.css" rel="stylesheet">
   <script src="../assets/plotly/plotly-2.16.1.min.js"></script>
 </head>
-<body>-->
-<section id="dashboard">
+<body>
+<section id="dashboard" class="container" style="background-color:green;">
 <div class="row" style="background-color:red;">
   <div class="col-2">
     
@@ -139,6 +140,7 @@
   </div>
 </div>
 </section>
+<script src="..\assets\css\bootsrap\js\bootstrap.min.js"></script>
 <script>
   // var svg=document.getElementsByClassName("main-svg");
   // console.log(svg);
@@ -290,8 +292,8 @@
     };
 
     var dataPlot=[trace1,trace2];
-    var config={responsive:true};
-    Plotly.newPlot("coffeeInAndOut",dataPlot,layout,config,{scrollZoom:true});
+    var config={responsive:true, displaylogo:false};
+    Plotly.newPlot("coffeeInAndOut",dataPlot,layout,config);
   }
   
   }
@@ -422,5 +424,5 @@
   quarterlyMovementData()
  
 </script>
-<!-- </body>
-</html> -->
+</body>
+</html>

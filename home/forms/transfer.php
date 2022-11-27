@@ -1,12 +1,12 @@
 <?php $pageTitle="Transfer"; ?>
 <?php include_once('header.php'); 
 include ("../connection/databaseConn.php");
-$transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN-');
+$transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN');
 ?>
-<form action="../connection/grn.php" class="regularForm" method="POST" style="height: 800px;">
+<form action="../connection/transfer.php" class="regularForm" method="POST" style="height: 800px;">
     <legend class="formHeading">Goods Transfer Note</legend>
     <?php
-        include "../alerts/message.php";
+        // include "../alerts/message.php";
     ?>
     <div style="display: grid; width:fit-content; margin-left: 70%;">
         <label for="transfer" style="grid-column: 1; grid-row: 1; width:90px; margin-top: 5px">Transfer No:</label>
@@ -26,12 +26,14 @@ $transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN-');
         <tr>
             <td>Client</td>
             <td>
+                <input id="fromClientId" name="fromClientId" class="itmNameInput" style="width: <?= $cellWidth?>; display: none;" readonly>
                 <input id="fromClientName" name="fromClientName" class="itmNameInput" style="width: <?= $cellWidth?>;" readonly>
                 <select id="fromClientSelect" name="fromClientSelect" class="dropdown" onchange="setCustomer(this.id)" >
                     <?php GetCustomerList(); ?>
                 </select>
             </td>
             <td>
+                <input id="toClientId" name="toClientId" class="itmNameInput" style="width: <?= $cellWidth?>; display: none;" readonly>
                 <input id="toClientName" name="toClientName" class="itmNameInput" style="width: <?= $cellWidth?>;" readonly>
                 <select id="toClientSelect" name="toClientSelect" class="dropdown" onchange="setCustomer(this.id)">
                     <?php GetCustomerList(); ?>
@@ -61,11 +63,11 @@ $transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN-');
         <tr>
             <td>Witnessed</Section></td>
             <td>
-                <input id="fromWitnessName" class="itmNameInput">
+                <input id="fromWitnessName" name="fromWitnessName" class="itmNameInput">
                 
             </td>
             <td>
-                <input id="toWitnessName" class="itmNameInput">
+                <input id="toWitnessName" name="toWitnessName" class="itmNameInput">
                 
             </td>
         </tr>
@@ -81,10 +83,12 @@ $transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN-');
     function setCustomer(selectId){
         var selectIdList = ["fromClientSelect", "toClientSelect"];
         var nameIdList = ["fromClientName", "toClientName"];
+        var clientIdList = ["fromClientId", "toClientId"];
 
         var selected = document.getElementById(selectId).value;
         var index = selectIdList.indexOf(selectId);
         document.getElementById(nameIdList[index]).setAttribute("value", selected.substr(7))
+        document.getElementById(clientIdList[index]).setAttribute("value", selected.substr(0,6));
     }
 
 

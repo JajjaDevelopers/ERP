@@ -1,1 +1,1 @@
-<?php include("../private/transferHandler.php") ?>
+<?php include("../private/transferHandler.php"); ?>

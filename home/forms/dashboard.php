@@ -8,137 +8,196 @@
   <link href="..\assets\css\bootsrap\css\bootstrap.css" rel="stylesheet">
   <script src="../assets/plotly/plotly-2.16.1.min.js"></script>
 </head>
+<style>
+  body{
+    background-color:#4a2c2a;
+    margin:0;
+    padding:0;
+  }
+  table thead tr{
+    color:white;
+  }
+
+  table#tableReceived thead tr,table#tableQReceived thead tr{
+    background-color:rgba(0,0,255,0.4);
+  }
+
+  table#tableMovedOut thead tr,table#tableQMovedOut thead tr{
+    background-color:#008631;
+  }
+
+  table#monthlyVariance thead tr,table#quarterlyVariance thead tr{
+    background-color:rgba(255,0,0.9);
+  }
+
+  table#tableReceived tbody tr,table#tableQReceived tbody tr{
+    background-color:rgba(173,216,230);
+  }
+
+  table#tableMovedOut tbody tr,table#tableQMovedOut tbody tr{
+    background-color:#83f28f;
+  }
+
+  table#monthlyVariance tbody tr,table#quarterlyVariance tbody tr{
+    background-color:#faa19b;
+  }
+
+  table thead tr th{
+    /* font-family: Tahoma,Verdana, Geneva, sans-serif; */
+    font-weight: bold;
+  }
+</style>
 <body>
-<section id="dashboard" class="container" style="background-color:green;">
-<div class="row" style="background-color:red;">
-  <div class="col-2">
-    
-  <table class="table table-bordered table-hover" id="tableReceived">
+<section id="dashboard" class="container-fluid" style="border:2px solid blue;background-color:#39e75f;">
+<div class="row" style="border:2px solid yellow">
+  <div class="col-6" style="border:2px solid red">
+  <div class="row">
+    <div class="col">
+    <table class="table table-bordered table-hover" id="tableReceived">
         <thead>
           <tr>
-            <th scope="col" colspan="2" class="text-center">Coffee Received(Kg)</th>
+            <th scope="col" colspan="2">Coffee&nbsp;Received(Kg)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td></td>
-            <td></td>
+            <td style="color:blue;"></td>
+            <td style="color:blue;"></td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
+            <td style="color:#090489; font-weight:bolder;font-size:medium;"></td>
+            <td style="color:#090489; font-weight:bolder;font-size:medium;"></td>
           </tr>
         </tbody>
       </table>
-  </div>
+    </div>
 
-  <div class="col-2">    
+    <div class="col">
     <table class="table table-bordered table-hover" id="tableMovedOut">
         <thead>
           <tr>
-            <th scope="col" colspan="2" class="text-center">Coffee Moved Out(kg)</th>
+            <th scope="col" colspan="2">Coffee&nbsp;Moved&nbsp;Out(kg)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td></td>
-            <td></td>
+            <td style="color:#658354;"></td>
+            <td style="color:#658354;"></td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
+            <td style="color:#4b6043; font-weight:bolder; font-size:medium;"></td>
+            <td style="color:#4b6043; font-weight:bolder; font-size:medium;"></td>
           </tr>
         </tbody>
     </table>
-  </div>
-  <div class="col-2">
+    </div>
+
+    <div class="col">
     <table class="table table-bordered table-hover" id="monthlyVariance">
           <thead>
           <tr>
-            <th scope="col" colspan="2" class="text-center">Monthly Variance</th>
+            <th scope="col" colspan="2">Monthly&nbsp;Variance</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Received</td>
-            <td>Moved Out</td>
+            <td style="color:#f44336;">Received</td>
+            <td style="color:#f44336;">Moved Out</td>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
+            <td style="color:#992a22; font-weight:bolder; font-size:medium;"></td>
+            <td style="color:#992a22; font-weight:bolder; font-size:medium;"></td>
           </tr>
         </tbody>
     </table>
-  </div>
-</div>
+    </div>
 
-<div class="row" style="background-color:pink">
-  <div class="col-6" id="coffeeInAndOut">
-  </div>
-</div>
-
-<div class="row bg-warning">
-<div class="col-2">
+  </div><!--End of row-->
     
-    <table class="table table-bordered table-hover" id="tableQReceived">
+    <div class="row" style="border:2px solid black">
+    <div class="col overflow-hidden p-2 pl-4" id="coffeeInAndOut">
+    </div>
+    </div>
+
+  </div><!--end of first column-->
+    
+  <!--second column-->
+  <div class="col-6">
+    <h1>Waiting For Data</h1>
+  </div>
+</div><!--End of First Row-->
+
+<div class="row">
+ <div class="col-6">
+    <div class="row" style="border:1px solid purple">
+      <div class="col">
+      <table class="table table-bordered table-hover" id="tableQReceived">
           <thead>
             <tr>
-              <th scope="col" colspan="2" class="text-center">Coffee Received(Kg)</th>
+              <th scope="col" colspan="2">Coffee&nbsp;Received(Kg)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td></td>
-              <td></td>
+              <td style="color:blue;"></td>
+              <td style="color:blue;"></td>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
+              <td style="color:#090489; font-weight:bolder;font-size:medium;"></td>
+              <td style="color:#090489; font-weight:bolder;font-size:medium;"></td>
             </tr>
           </tbody>
-        </table>
-    </div>
-  
-    <div class="col-2">    
-      <table class="table table-bordered table-hover" id="tableQMovedOut">
+        </table>   
+      </div>
+
+      <div class="col">
+    <table class="table table-bordered table-hover" id="tableQMovedOut">
           <thead>
             <tr>
-              <th scope="col" colspan="2" class="text-center">Coffee Moved Out(kg)</th>
+              <th scope="col" colspan="2">Coffee&nbsp;Moved&nbsp;Out(kg)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td></td>
-              <td></td>
+              <td style="color:#658354;"></td>
+              <td style="color:#658354;"></td>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
+              <td style="color:#4b6043; font-weight:bolder; font-size:medium;"></td>
+              <td style="color:#4b6043; font-weight:bolder; font-size:medium;"></td>
             </tr>
           </tbody>
       </table>
     </div>
-    <div class="col-2">
-      <table class="table table-bordered table-hover" id="quarterlyVariance">
+    <div class="col">
+    <table class="table table-bordered table-hover" id="quarterlyVariance">
             <thead>
             <tr>
-              <th scope="col" colspan="2" class="text-center">Quarterly Variance</th>
+              <th scope="col" colspan="2">Quarterly&nbsp;Variance</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Received</td>
-              <td>Moved Out</td>
+              <td style="color:#f44336;">Received</td>
+              <td style="color:#f44336;">Moved Out</td>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
+              <td style="color:#992a22; font-weight:bolder; font-size:medium;"></td>
+              <td style="color:#992a22; font-weight:bolder; font-size:medium;"></td>
             </tr>
           </tbody>
       </table>
     </div>
+    </div>
+    <div class="row">
+      <h1>Waiting For Data</h1>
+    </div>
+  </div><!---End of First Row-->
+
+  <div class="col-6">
+    <h1>Waiting For Data</h1>
   </div>
-</div>
+</div><!--End Of Second Row-->
 </section>
 <script src="..\assets\css\bootsrap\js\bootstrap.min.js"></script>
 <script>
@@ -270,7 +329,7 @@
         linewidth:1,
         showdividers:true
       },
-      // width:500,
+      // width:300,
       height:300,
       yaxis:{
         title:"Daily Volume (MT)",
@@ -348,12 +407,27 @@
     //function for variance
     function monthlyVariance(varianceQuantity,receivedQuantity,movedOutQuantity)
     {
-      var receivedVariance=(((varianceQuantity[0]/receivedQuantity[1])*100)).toFixed(1);
-      var movedOutVariance=((varianceQuantity[1]/movedOutQuantity[1])*100).toFixed(1);
+      var receivedVariance;
+      var movedOutVariance;
+
+      if(receivedQuantity[1]===0)
+      {
+        receivedVariance=100;
+      }else{
+        receivedVariance=(((varianceQuantity[0]/receivedQuantity[1])*100)).toFixed(1);
+      }
+
+
+      if(movedOutQuantity[1]===0)
+      {
+        movedOutVariance=100;
+      }else{
+        movedOutVariance=((varianceQuantity[1]/movedOutQuantity[1])*100).toFixed(1);
+      }
 
       bodyVrow2Cell1.innerText=receivedVariance;
       bodyVrow2Cell2.innerText=movedOutVariance;
-      console.log(receivedVariance);
+      
     }
 
   }
@@ -411,11 +485,25 @@
     //function for variance
     function quarterlyVariance(varianceQuantity,receivedQuantity,movedOutQuantity)
     {
-      var receivedVariance=(((varianceQuantity[0]/receivedQuantity[1])*100)).toFixed(1);
-      var movedOutVariance=((varianceQuantity[1]/movedOutQuantity[1])*100).toFixed(1);
+      var receivedVariance;
+      var movedOutVariance;
+      
+      if(receivedQuantity[1]===0)
+      {
+        receivedVariance=100;
+      }else{
+        receivedVariance=(((varianceQuantity[0]/receivedQuantity[1])*100)).toFixed(1);
+      }
 
-      bodyQVrow2Cell1.innerText=receivedVariance;
-      bodyQVrow2Cell2.innerText=movedOutVariance;
+      if(movedOutQuantity[1]===0)
+      {
+        movedOutVariance=100;
+      }else{
+        movedOutVariance=((varianceQuantity[1]/movedOutQuantity[1])*100).toFixed(1);
+      }
+
+      bodyQVrow2Cell1.innerText=receivedVariance+"%";
+      bodyQVrow2Cell2.innerText=movedOutVariance+"%";
       console.log(receivedVariance);
     }
 

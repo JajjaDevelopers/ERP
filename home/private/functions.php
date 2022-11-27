@@ -181,7 +181,7 @@ function GetCustomerList(){
 }
 
 
-// Coffee Grades
+// All Coffee Grades
 function coffeeGrades(){
   include "connlogin.php"; 
   $query = "SELECT grade_id, grade_name FROM grades";
@@ -195,6 +195,21 @@ function coffeeGrades(){
       $stmt->close();
   }
 }
+
+
+// Coffee Grades according to coffee type
+function coffeeTypeGrades($type){
+  include "connlogin.php"; 
+  $sql = $conn->prepare("SELECT grade_id, grade_name FROM grades WHERE coffee_type=?");
+  $sql->bind_param("s", $type);
+  $sql->execute();
+  $sql->bind_result($grade_id, $grade_name);
+  echo '<option></option>';
+  while ($sql->fetch()) {
+      echo "<option value='".$grade_id."--".$grade_name."'>$grade_name</option>";
+  }
+  $sql->close();
+  }
 
 
 // Valuation customer Picker
@@ -305,14 +320,23 @@ function hullingCustomer(){
 
 
 //include gradePicker.js for this function for pages that call it
-function gradePicker($itemId){
+function gradePicker($itemId, $gradeOption){
   include "connlogin.php"; 
   ?>
   <input type="text" value="" id="<?= $itemId.'Code' ?>" readonly name="<?= $itemId.'Code' ?>" class="itmNameInput" style="grid-column: 1; display:none">
   <input type="text" value="" id="<?= $itemId.'Name' ?>" readonly name="<?= $itemId.'Name' ?>" class="itmNameInput" style="grid-column: 2; width: 250px">
               
   <select id="<?= $itemId ?>" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="valuationItemCodeAndName(this.id)">
-   <?php CoffeeGrades(); ?>
+   <?php
+   if ($gradeOption == "husks"){
+    coffeeTypeGrades("NONE");
+   }elseif($gradeOption == "otherLoss"){
+    coffeeTypeGrades("NONE");
+   }else{
+    coffeeGrades();
+  }
+   
+   ?>
   </select>
   
   <?php

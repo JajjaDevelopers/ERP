@@ -26,13 +26,13 @@ $transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN-');
         <tr>
             <td>Client</td>
             <td>
-                <input id="fromClientName" class="itmNameInput" style="width: <?= $cellWidth?>;" readonly>
+                <input id="fromClientName" name="fromClientName" class="itmNameInput" style="width: <?= $cellWidth?>;" readonly>
                 <select id="fromClientSelect" name="fromClientSelect" class="dropdown" onchange="setCustomer(this.id)" >
                     <?php GetCustomerList(); ?>
                 </select>
             </td>
             <td>
-                <input id="toClientName" class="itmNameInput" style="width: <?= $cellWidth?>;" readonly>
+                <input id="toClientName" name="toClientName" class="itmNameInput" style="width: <?= $cellWidth?>;" readonly>
                 <select id="toClientSelect" name="toClientSelect" class="dropdown" onchange="setCustomer(this.id)">
                     <?php GetCustomerList(); ?>
                 </select>

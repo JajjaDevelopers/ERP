@@ -228,7 +228,7 @@ session_start();
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="SalesReport.php">Sales Report</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="CoffeeRelease.php">Coffee Release</a></li>
+                <li><a class="dropdown-item" href="dispatch.php">Dispatch</a></li>
               </ul>
             </div>
           </li>

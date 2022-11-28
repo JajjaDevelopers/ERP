@@ -91,6 +91,9 @@ $transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN');
         document.getElementById(clientIdList[index]).setAttribute("value", selected.substr(0,6));
     }
 
+    // //Setting item ids
+    // function setItemId()
+
 
     function getWareHouseSection(blockId){
         var blockNo = document.getElementById(blockId).value;

@@ -1,18 +1,21 @@
 <?php $pageTitle="Coffee Drying"; ?>
-<?php include("header.php") ?>
+<?php
+include("../private/database.php");
+include("header.php");
+$dryingNo = nextDocNumber("drying", "drying_no", "DRY");
+?>
 
 <form class="regularForm" style="height: 700px ;">
-   <h3 class="formHeading">DRYING FORM</h3>
-   <?php
-      include "../alerts/message.php";
-    ?>
-   
-   <div id="container1" class="container1"  style="padding-left: 520px;"> 
-    <label for="DateInput" style="margin-left: 28px;">Date:<input type="date" id="date" class="shortInput;"></label>
-  <br><label for="McOut" style="margin-left: 20px;"> MC IN:<input class="shortInput"></label>
-    <br><label for="McIn" style="margin-left: 10px;">MC OUT:<input class="shortInput"></label>
-
-    <br>Reference:<input class="shortInput">
+  <h3 class="formHeading">DRYING FORM</h3>
+  <?php
+    include "../alerts/message.php";
+  ?>
+  
+  <div style="display: grid; width:fit-content; margin-left: 70%; margin-bottom:20px">
+    <label for="hullingNo" style="grid-column: 1; grid-row: 1; width:70px; margin-top: 5px">Drying No:</label>
+    <input type="text" class="shortInput" id="hullingNo" name="hullingNo" value="<?= $dryingNo ?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">
+    <label for="hullingDate" class="" style="grid-column: 1; grid-row: 2; margin-top: 10px">Date:</label>
+    <input type="date" class="shortInput" id="hullingDate" name="hullingDate" value="" style="grid-column: 2; grid-row: 2">
   </div>
  
 
@@ -21,27 +24,21 @@
       GetCustomerList();
     include("../private/closeCustomerPicker.php")  
   ?>
-
-
-   <h2>DESCRIPTIONS</h2>
+<label>Drying Details</label>
   <table >
-    <tr><th style="width: 250px;">DETAILS</th>
-        <th style="width: 250px;">GRADE</th>
-        <th style="width: 250px;">QUANTITY (Kgs)</th>
+    <tr><th style="width: 320px;">DETAILS</th>
+      <th style="width: 100px;">Qty</th>
     </tr>
     <tr>
-     <td>INPUT</td>
-<td><input class="tableInput"></td>
-<td><input class="tableInput"></td>
+      <td>Input: <?= gradePicker("item", ""); ?></td>
+      <td><input type="number" class="tableInput"></td>
     </tr>
     <tr>
-        <td>OUTPUT</td>
-        <td><input class="tableInput"></td>
-        <td><input class="tableInput"></td>
+        <td>Drying Loss</td>
+        <td><input type="number" class="tableInput"></td>
     </tr>
     <tr>
       <td>LOSS</td>
-      <td><input class="tableInput"></td>
       <td><input class="tableInput"></td>
     </tr>
   </table>
@@ -50,5 +47,5 @@
 
 
 </form>
-
+<script src="../assets/js/gradePicker.js"></script>
 <?php include("footer.php") ?>

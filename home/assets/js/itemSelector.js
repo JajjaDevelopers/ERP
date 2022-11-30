@@ -1,20 +1,18 @@
 
 function selectItem(selectId, noOfItems){
     var selectIdList = [];
-    var nameIdList = [];
-    
-    
-
+    var nameList = [];
+    var itmIdList = [];
     for (var x=1; x<=noOfItems; x++){
         selectIdList.push('item'+x+'Select');
-        nameIdList.push('item'+x+'Name');
-        
-        
-        
+        nameList.push('item'+x+'Name');
+        itmIdList.push('item'+x+'Id');
     }
+
     var selected = document.getElementById(selectId).value;
     var index = selectIdList.indexOf(selectId);
-    document.getElementById(nameIdList[index]).setAttribute("value", selected.substr(8))
+    document.getElementById(nameList[index]).setAttribute("value", selected.substr(8));
+    document.getElementById(itmIdList[index]).setAttribute("value", selected.substr(0,6));
 }
 
 

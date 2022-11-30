@@ -2,7 +2,7 @@
 session_start();
 $username = $_SESSION["userName"];
 ?>
-<?php include("../private/database.php");?>
+<?php include("../private/database.php"); ?>
 
 <?php
 $grnNo = documentNumber("grn", "grn_no");
@@ -28,6 +28,7 @@ $grnSql = $conn -> prepare($grnStmt);
 $grnSql -> bind_param("issssdiisssssss", $grnNo, $grnDate, $timein, $customerId, $coffeeGrade, $mc, $bags, $gradeweight, 
                     $purpose, $origin, $deliveryPerson, $truckNumber, $driverName, $remarks, $username);
 $grnSql -> execute();
+$conn->rollback();
 
 $grnDetailStmt = "INSERT INTO inventory (inventory_reference, document_number, customer_id, item_no, grade_id, qty_in)
                 VALUES (?, ?, ?, ?, ?, ?)";

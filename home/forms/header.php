@@ -67,19 +67,11 @@ session_start();
 
     <!--Current Time-->
     <div class="mx-auto">
-      <h1 class="text-primary" id="current_time"></h1>
+      <h1 class="" id="current_time" style="color:green"></h1>
     </div>
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-          <span class="material-symbols-sharp">
-            <!-- search -->
-          </span>
-          </a>
-        </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown">
         
@@ -107,12 +99,11 @@ session_start();
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <!-- <h6>Kibooli Felix</h6> -->
               <?php
-                if(isset(  $_SESSION["fullName"]))
+                if(isset(  $_SESSION["userName"]))
                 {
                   ?>
-                    <p class="text-info me-3"><?=$_SESSION["fullName"]?></p>
+                    <h6 class="text-info me-3"><?=$_SESSION["userName"]?></h6>
                   <?php
                 }
               ?>
@@ -121,14 +112,14 @@ session_start();
               <hr class="dropdown-divider">
             </li>
 
-            <li>
+            <!-- <li>
               <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
               <span class="material-icons-sharp">
               person
               </span>
                 <span>My Profile</span>
               </a>
-            </li>
+            </li> -->
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -308,9 +299,9 @@ session_start();
             </div>
           </li>
           <?php
-             if(isset($_SESSION["Access"])||$_SESSION["Access2"])
+             if(isset($_SESSION["Access"]))
              {
-              if($_SESSION["Access"]==1||$_SESSION["Access2"]==1)
+              if($_SESSION["Access"]==1)
               {
                 ?>
                 <li class="nav-item">

@@ -13,6 +13,12 @@
           width:525px;
           background-color:white;
         }
+          #signupbtn:hover{
+              background-color:green;
+          }
+          #signupbtn:focus{
+              background-color:#765341;
+          }
       </style>
       <div class="container mt-5 text-info" id="divsignup">
         <div class="card  my-4 shadow-lg p-3 mb-5 bg-body rounded">
@@ -26,7 +32,7 @@
           <div>
               <!-- <h3 class="text-center text-primary" >Sign Up</h3> -->
                 <!---Displaying errors--->
-                <div class="container text-center text-danger bg-light">
+                <div class="container text-center" style="color:red">
                 <?php
                 include "../alerts/errorsignup.php";
                 ?>

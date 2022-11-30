@@ -9,13 +9,9 @@
         <div class="row">
           <div class="col-md-12 justify-content-center" >
           <div>
-              <!-- <h3 class="text-center text-primary" >Sign Up</h3> -->
-                <!---Displaying errors--->
-                <div class="container text-center text-danger bg-light">
-                <?php
+            <?php
                 include "./alerts/errorsignup.php";
-                ?>
-                </div>
+            ?>  
           </div>
             <div class="form-floating">
               <input type="text" name="fullname" class="form-control" >

@@ -389,6 +389,7 @@ function itemsTable($itemsNo, $tableHeading){
     <tr>
       <td><?= $i ?></td>
       <td>
+        <input id="<?= 'item'.$i.'Id'?>" name="<?= 'item'.$i.'Id'?>" class="itmNameInput" readonly style="display: none;">
         <input id="<?= 'item'.$i.'Name'?>" class="itmNameInput" style="width: 300px;" readonly>
         <select id="<?= 'item'.$i.'Select'?>" name="<?= 'item'.$i.'Select'?>" class="dropdown" onchange="selectItem(this.id, <?= $itemsNo?>)" >
         <?php coffeeGrades(); ?></select>

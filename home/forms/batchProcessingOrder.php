@@ -6,7 +6,7 @@
 <form class="regularForm" method="POST" style="height: 800px;" action="../connection/batchProcessingOrder.php">
     <legend class="formHeading">Batch Processing Order</legend>
     <?php
-        // include "../alerts/message.php";
+        include "../alerts/message.php";
     ?>
     <div style="display: grid; width:fit-content; margin-left: 70%;">
         <label for="grnNo" style="grid-column: 1; grid-row: 1; width:70px; margin-top: 5px">Order No:</label>

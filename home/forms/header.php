@@ -219,7 +219,7 @@ session_start();
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="SalesReport.php">Sales Report</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="CoffeeRelease.php">Coffee Release</a></li>
+                <li><a class="dropdown-item" href="dispatch.php">Dispatch</a></li>
               </ul>
             </div>
           </li>
@@ -242,7 +242,40 @@ session_start();
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="material-icons-sharp">
+                currency_pound
+                </span>
+                <span>Administration</span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><h6 class="dropdown-header text-dark">Payment Request</h6></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="pettyCash.php">Petty Cash Request</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="fundsRequisition.php">Funds Requisition</a></li>
+                
+              </ul>
+            </div>
+          </li>
 
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="material-icons-sharp">
+                currency_pound
+                </span>
+                <span>Membership $ Production</span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><h6 class="dropdown-header text-dark">Membership</h6></li>
+              <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="newClient.php">New Client</a></li>
+              </ul>
+            </div>
+          </li>
           
           <!---Analytics--->
           <li class="nav-heading">Analytics</li>

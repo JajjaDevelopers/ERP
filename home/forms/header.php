@@ -134,7 +134,7 @@ session_start();
            <span style="margin-bottom:10px;">Processing</span>
             </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="listdata">
-                <li><h6 class="dropdown-header text-dark"> Processing Entry Forms</h6></li>
+                <li><h6 class="dropdown-header text-dark"> Processing Activities</h6></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item " href="Goods_Received_Note.php">Recieve Goods</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -164,7 +164,7 @@ session_start();
                 <span>Marketing</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><h6 class="dropdown-header text-dark">Marketing  Entry Forms</h6></li>
+              <li><h6 class="dropdown-header text-dark">Marketing Activities</h6></li>
               <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="valuation.php">Valuation</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -184,7 +184,7 @@ session_start();
                 <span>Roast &#38; Ground</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><h6 class="dropdown-header">Roast &#38; Data Entry Forms</h6></li>
+              <li><h6 class="dropdown-header">Roast &#38; Ground Activities</h6></li>
                 <li><a class="dropdown-item" href="Goods_Received_Note.php">Recieve Goods</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="activtySheet.php">Services</a></li>
@@ -202,7 +202,7 @@ session_start();
                 <span>Administration</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><h6 class="dropdown-header text-dark">Payment Request</h6></li>
+                <li><h6 class="dropdown-header text-dark">Administration Support</h6></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="pettyCash.php">Petty Cash Request</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -218,7 +218,7 @@ session_start();
                 <span class="material-icons-sharp">
                 currency_pound
                 </span>
-                <span>Membership $ Production</span>
+                <span>Membership & Production</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><h6 class="dropdown-header text-dark">Membership</h6></li>
@@ -269,5 +269,22 @@ session_start();
               }
              }
           ?>
+          <li class="nav-heading">Settings</li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="material-icons-sharp">
+                currency_pound
+                </span>
+                <span>Inventory</span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><h6 class="dropdown-header text-dark">Inventory Settings</h6></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="NewItem.php">Add New Item</a></li>
+                
+              </ul>
+            </div>
+          </li>
       </aside><!-- End Sidebar-->
   <main id="main" class="main">

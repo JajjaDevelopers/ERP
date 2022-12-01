@@ -73,16 +73,21 @@ require_once ("../connection/batchReportVariables.php");
         </div>
         
         <h4 style="margin-top: 20px;">RETURNS</h4>
-        <div id="arabicaBatchReturnsAjax">
-            <?php 
-                getGrades($coffeeType, "HIGH", "", "high", "High Grades"); //HIgh grades
-                getGrades($coffeeType, "LOW", "", "low", "Low Grades"); //Low grades
-                getGrades($coffeeType, "HIGH", "Blacks", "blacks", "Color Sorter Rejects"); //Blacks beans
-                getGrades("NONE", "WASTES", "", "wastes", "Wastes"); //Wastes
-                getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses"); //Other Losses 
-            ?>
+        <div style="display: grid;">
+            <div style="grid-column:1; grid-row:1">
+                <?php 
+                    getGrades($coffeeType, "HIGH", "", "high", "High Grades"); //HIgh grades
+                    getGrades($coffeeType, "LOW", "", "low", "Low Grades"); //Low grades
+                    getGrades($coffeeType, "HIGH", "Blacks", "blacks", "Color Sorter Rejects"); //Blacks beans
+                    getGrades("NONE", "WASTES", "", "wastes", "Wastes"); //Wastes
+                    getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses"); //Other Losses 
+                ?>
+            </div>
+            <div style="grid-column:2; grid-row:1">
+                <label>Color Sorted</label><br>
+                <input type="number" id="colorSortedInput" name="colorSortedInput" class="shortInput" placeholder="color sorted" step="0.01">
+            </div>
         </div>
-
         <table style="margin-top: 10px;">
             <tr>
                 <th class="batchItemLabel">OVERALL OUT-TURN</th>

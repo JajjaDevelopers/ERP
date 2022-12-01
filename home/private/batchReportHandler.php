@@ -8,19 +8,20 @@ $username = $_SESSION["userName"];
 $batch_report_no = documentNumber("batch_reports_summary", "batch_report_no");
 
 $sql = $conn->prepare("INSERT INTO batch_reports_summary (batch_report_no, batch_order_no, batch_report_date, 
-                        customer_id, offtaker, net_input, mc_out, valuation_status, comment, prepared_by) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    customer_id, offtaker, net_input, mc_out, color_sorted, valuation_status, comment, prepared_by) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 $batch_order_no = ($_POST['batchOrderNumber']);
 $batch_report_date = $_POST['batchReportDate'];
 $customer_id = ($_POST['customerId']);
 $offtaker = ($_POST['batchReportOfftaker']);
 $net_input = ($_POST['netInputQty']);
 $mc_out = ($_POST['batchReportMcOut']);
+$colorSorted = $_POST['colorSortedInput'];
 $valuation_status = 0;
 $comment = ($_POST['remarks']);
 
-$sql->bind_param("iisssddiss", $batch_report_no, $batch_order_no, $batch_report_date, $customer_id, $offtaker,
-                $net_input, $mc_out, $valuation_status, $comment, $username);
+$sql->bind_param("iisssdddiss", $batch_report_no, $batch_order_no, $batch_report_date, $customer_id, $offtaker,
+                $net_input, $mc_out, $colorSorted, $valuation_status, $comment, $username);
 $sql->execute();
 $conn->rollback();
 
@@ -50,7 +51,7 @@ $allLists = array($highGradeList, $lowGradeList, $blacksGradeList, $wastesGradeL
 $listsIdentifier = array("high", "low", "blacks", "wastes", "losses");
 
 $returnSql = $conn->prepare("INSERT INTO inventory (inventory_reference, document_number, customer_id, item_no, 
-                            grade_id, mc, qty_in) VALUE (?, ?, ?, ?, ?, ?, ?)");
+                            grade_id, qty_in) VALUE (?, ?, ?, ?, ?, ?)");
 $itmNo = 1;
 $inventory_reference = "Batch Report";
 
@@ -59,8 +60,8 @@ for ($x=0; $x<count($allLists); $x++){
         $grdId = $_POST[($listsIdentifier[$x].'Grade'.$i.'Id')];
         $grdQty = $_POST[($listsIdentifier[$x].'Grade'.$i.'Qty')];
         if ($grdQty != 0){
-            $returnSql->bind_param("sisisdd", $inventory_reference, $batch_report_no, $customer_id, $itmNo, $grdId,
-                                $mc_out, $grdQty);
+            $returnSql->bind_param("sisisd", $inventory_reference, $batch_report_no, $customer_id, $itmNo, $grdId,
+                                $grdQty);
             $returnSql->execute();
             $conn->rollback();
             $itmNo += 1;

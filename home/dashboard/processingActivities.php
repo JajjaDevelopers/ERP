@@ -88,7 +88,14 @@ $driedSql->close();
 
 
 
+
 $data = json_encode(array($daysList, $dailyGradedList, $dailycolorSorted, $dailyHulledList, $dailyDriedList));
 echo 'daily data: days, grading, colorsorting, hulling, drying = '.$data;
+=======
+//$data = json_encode(array($daysList, $dailyGradedList, $dailyHulledList, $dailyDriedList));
+// echo $data;
+
+var_dump($data);
+
 
 ?>

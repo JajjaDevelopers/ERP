@@ -154,16 +154,18 @@ function  loginUser($username,$password)
 
   else if($checkPwd===true)
   {
-    session_start();
+    // session_start();
     error_reporting(1);
 
     include "connlogin.php";
-    $query="SELECT * FROM members WHERE UserName=?";
+    $query="SELECT * FROM members WHERE UserName=? OR EmailAddress=?";
     $stmt=$pdo->prepare($query);
 
     $stmt->bindParam(1,$username,PDO::PARAM_STR);
+    $stmt->bindParam(2,$username,PDO::PARAM_STR);
     $stmt->execute();
     $row=$stmt->fetch(PDO::FETCH_ASSOC);
+    var_dump($row);
     $privilege=$row["Access"];//getting access privilege
     $full_name=$row["FullName"];
 
@@ -171,9 +173,11 @@ function  loginUser($username,$password)
     $_SESSION["Access"]=$privilege;
     $_SESSION["fullName"]=$full_name;
     $_SESSION["userName"]=$userExists["UserName"];
-    // $_SESSION["userEmail"]=$userExists["EmailAddress"];
+    $_SESSION["userEmail"]=$userExists["EmailAddress"];
+    // echo  $_SESSION["userEmail"];
     header("location:../home/forms/index.php");
     exit();
+  
     } 
     // if($userExists["UserName"])
     // {

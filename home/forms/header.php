@@ -45,6 +45,18 @@ session_start();
   <link rel="stylesheet" href="../assets/css/main.css">
   <script src="../assets/plotly/plotly-2.16.1.min.js"></script>
 </head>
+<style>
+  #settingslist{
+    background-color:green;
+  }
+  #settingslist li a{
+    color:goldenrod;
+  }
+  #settingslist li a:hover{
+    color:white;
+    background-color: brown;
+  }
+</style>
 <body>
 
   <!-- ======= Header ======= -->
@@ -55,7 +67,8 @@ session_start();
         <img src="../assets/img/logo2.jpg" alt="Logo">
         <span class="d-none d-lg-block">NGL</span>
       </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
+      <button class="btn btn-primary" id="openbtn" style="display:none;">&#9776;Open Sidebar</button>
+      <button class="btn btn-primary" id="closebtn">&#9776; Close Sidebar</button>
     </div><!-- End Logo -->
 
     <div class="search-bar">
@@ -67,107 +80,36 @@ session_start();
 
     <!--Current Time-->
     <div class="mx-auto">
-      <h1 class="text-primary" id="current_time"></h1>
+      <button class="btn text-white" id="current_time" style="background-color:green">Time</button>
     </div>
 
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-          <span class="material-symbols-sharp">
-            <!-- search -->
-          </span>
-          </a>
-        </li><!-- End Search Icon-->
-
-        <li class="nav-item dropdown">
-        
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-          <span class="material-icons-sharp">
-          notifications
-          </span>
-          </a><!-- End Notification Icon -->
-
-    
-        </li><!-- End Messages Nav -->
-
-        <li class="nav-item dropdown pe-3">
-
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
-            <span class="d-none d-md-block dropdown-toggle ps-2">
-            <?php
-                if(isset(  $_SESSION["userName"])){
-                  echo $_SESSION["userName"];
-                }
-              ?>
-            </span>
-          </a>
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <!-- <h6>Kibooli Felix</h6> -->
-              <?php
-                if(isset(  $_SESSION["fullName"]))
-                {
-                  ?>
-                    <p class="text-info me-3"><?=$_SESSION["fullName"]?></p>
-                  <?php
-                }
-              ?>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-              <span class="material-icons-sharp">
-              person
-              </span>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="settings.php">
+    <div class=" drop down mx-auto">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropDownMenueButton1" data-bs-toggle="dropdown" aria-expanded="false">
+       <?=$_SESSION["userName"];?>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="settingslist">
+        <li> <a class="dropdown-item d-flex align-items-center" href="settings.php">
                 <span class="material-icons-sharp">
                   settings
                   </span>
                 <span> Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="logout.php">
-                <span class="material-icons-sharp">
+            </a>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item d-flex align-items-center" href="logout.php">
+              <span class="material-icons-sharp">
                   logout
-                  </span>
-                <span>Log Out</span>
-              </a>
-            </li>
-
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
-
+              </span>
+              <span>Log Out</span>
+            </a>
+        </li>
+        <li><hr class="dropdown-divider"></li>
       </ul>
-    </nav><!-- End Icons Navigation -->
-
+    </div>
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar" >
+  <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
@@ -308,9 +250,9 @@ session_start();
             </div>
           </li>
           <?php
-             if(isset($_SESSION["Access"])||$_SESSION["Access2"])
+             if(isset($_SESSION["Access"]))
              {
-              if($_SESSION["Access"]==1||$_SESSION["Access2"]==1)
+              if($_SESSION["Access"]==1)
               {
                 ?>
                 <li class="nav-item">
@@ -329,4 +271,3 @@ session_start();
           ?>
       </aside><!-- End Sidebar-->
   <main id="main" class="main">
- 

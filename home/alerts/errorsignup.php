@@ -27,5 +27,4 @@
         echo "Your email is invalid";
       }
     }
-  // echo"God is good";
   ?>

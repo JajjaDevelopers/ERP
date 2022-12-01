@@ -6,8 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<style>
+     #changepwdbtn:hover{
+           background-color:green;
+      }
+      #changepwdbtn:focus{
+          background-color:#765341;
+      }
+  </style>
 <body>
-  <div class="container text-center" style="border:2px solid blue">
+  <div class="container text-center">
     <form action="../connection/changepassword.php" method="POST" style="border:none;">
       <div class="form-floating">
         <input type="password" name="newPassword" class="form-control">
@@ -17,7 +25,7 @@
         <input type="password" name="newPasswordConf" class="form-control">
         <label for="newpassword">Confirm New Password</label>
       </div>
-      <input type="submit" name="changebtn" class="btn btn-primary my-3 btn-lg" value="Change Password">
+      <input type="submit" id="changepwdbtn" name="changebtn" class="btn btn-primary my-3 btn-lg" value="Change Password">
     </form>
   </div>
 </body>

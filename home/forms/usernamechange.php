@@ -7,7 +7,15 @@
   <title>Document</title>
 </head>
 <body>
-<div class=" text-center">
+  <style>
+     #changenamebtn:hover{
+    background-color:green;
+      }
+      #changenamebtn:focus{
+          background-color:#765341;
+      }
+  </style>
+<div class=" container text-center">
     <form action="../connection/changeusername.php" method="POST">
       <div class="form-floating">
         <input type="text" name="newName" class="form-control">
@@ -17,7 +25,7 @@
         <input type="password" name="pass" class="form-control">
         <label for="username">Enter your password to change name</label>
       </div>
-      <input type="submit" name="changeName" class="btn btn-primary my-3 btn-lg text-center" value="Change Username">
+      <input type="submit" id="changenamebtn" name="changeName" class="btn btn-primary my-3 btn-lg text-center" value="Change Username">
     </form>
   </div>
 </body>

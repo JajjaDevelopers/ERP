@@ -49,9 +49,9 @@
 </style>
 <body>
 <section id="dashboard" class="container-fluid" style="border:2px solid blue;background-color:#39e75f;">
-<div class="row" style="border:2px solid yellow">
+<div class="row " style="border:2px solid yellow">
   <div class="col-6" style="border:2px solid red">
-  <div class="row">
+  <div class="row g-0">
     <div class="col">
     <table class="table table-bordered table-hover" id="tableReceived">
         <thead>
@@ -101,8 +101,8 @@
         </thead>
         <tbody>
           <tr>
-            <td style="color:#f44336;">Received</td>
-            <td style="color:#f44336;">Moved Out</td>
+            <td class="" style="color:#f44336;">Received</td>
+            <td style="color:#f44336;">Moved&nbsp;Out</td>
           </tr>
           <tr>
             <td style="color:#992a22; font-weight:bolder; font-size:medium;"></td>
@@ -125,8 +125,7 @@
   <div class="col-6">
     <h1>Waiting For Data</h1>
     <div id="dailyProceeingActivityDiv">
-      <?php include("../dashboard/processingActivities.php") ?>
-
+   
     </div>
   </div>
 </div><!--End of First Row-->

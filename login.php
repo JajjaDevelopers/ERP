@@ -27,7 +27,16 @@ require_once "header.php";
  }
 ?>
 </div>
-<div> </div>
+
+<style>
+   #loginbtn:hover{
+        background-color:green;
+    }
+    #loginbtn:focus{
+        background-color:#765341;
+    }
+</style>
+
 <div class="container mt-5 border  rounded-3 " id="divlogin" style="background-color: green;">
   <div class="card my-4 shadow-lg p-3 mb-5 bg-body rounded">
     <div class="card-header text-center">

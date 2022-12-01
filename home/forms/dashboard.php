@@ -125,8 +125,7 @@
   <div class="col-6">
     <h1>Waiting For Data</h1>
     <div id="dailyProceeingActivityDiv">
-      <?php include("../dashboard/processingActivities.php") ?>
-
+   
     </div>
   </div>
 </div><!--End of First Row-->

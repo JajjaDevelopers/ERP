@@ -14,8 +14,8 @@
       </div>
       <div class="card-body" id="settingsDiv">
         <ol style="list-style-type: none;">
-          <li><a href="#" id="passwordchange" class="link">Change Password</a></li>
-          <li><a href="#" id="usernamechange" class="link">Change username</a></li>
+          <li><a href="javascript:void(0)" id="passwordchange" class="link">Change Password</a></li>
+          <li><a href="javascript:void(0)" id="usernamechange" class="link">Change username</a></li>
         </ol>
         <!-- <div id="displayform" class="justify-content-center text-success" style="border:none;">
         </div> -->

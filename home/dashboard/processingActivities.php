@@ -73,7 +73,9 @@ $driedSql->close();
 
 
 $data = json_encode(array($daysList, $dailyGradedList, $dailyHulledList, $dailyDriedList));
-echo $data;
+// echo $data;
+
+var_dump($data);
 
 
 

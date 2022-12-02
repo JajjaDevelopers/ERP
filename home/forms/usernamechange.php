@@ -14,9 +14,21 @@
       #changenamebtn:focus{
           background-color:#765341;
       }
+      #changenamebtn:hover{
+          background-color:green;
+      }
+      #changenamebtn:focus{
+          background-color:#765341;
+      }
+      #changenameform{
+          border:none;
+          background-color: white;
+          font-size:medium;
+          color:green;
+      }
   </style>
 <div class=" container text-center">
-    <form action="../connection/changeusername.php" method="POST">
+    <form action="../connection/changeusername.php" method="POST" id="changenameform">
       <div class="form-floating">
         <input type="text" name="newName" class="form-control">
         <label for="username">Enter New Username</label>

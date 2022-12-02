@@ -13,10 +13,22 @@
       #changepwdbtn:focus{
           background-color:#765341;
       }
+      #changepwdbtn:hover{
+          background-color:green;
+      }
+      #changepwdbtn:focus{
+          background-color:#765341;
+      }
+      #changepwdform{
+          border:none;
+          background-color: white;
+          font-size:medium;
+          color:green;
+      }
   </style>
 <body>
   <div class="container text-center">
-    <form action="../connection/changepassword.php" method="POST" style="border:none;">
+    <form action="../connection/changepassword.php" method="POST" id="changepwdform">
       <div class="form-floating">
         <input type="password" name="newPassword" class="form-control">
         <label for="newpassword">Enter New Password</label>

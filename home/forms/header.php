@@ -49,12 +49,30 @@ session_start();
   #settingslist{
     background-color:green;
   }
-  #settingslist li a{
-    color:goldenrod;
+  #settingslist li a,#searchbtn{
+    color:#EAC117;
   }
   #settingslist li a:hover{
     color:white;
     background-color: brown;
+  }
+  #searchbtn:hover{
+    color:green;
+  }
+  #searchbtn:focus{
+    color:blue;
+  }
+  #searchform{
+    border:none;
+  }
+ 
+  #openbtn,#closebtn,#current_time,#username{
+    background-color: green;
+    color:#EAC117;
+  }
+  #openbtn:hover,#closebtn:hover,#current_time:hover,#username:hover{
+    background-color:#765341;
+    color:white;
   }
 </style>
 <body>
@@ -67,24 +85,24 @@ session_start();
         <img src="../assets/img/logo2.jpg" alt="Logo">
         <span class="d-none d-lg-block">NGL</span>
       </a>
-      <button class="btn btn-primary" id="openbtn" style="display:none;">&#9776;Open Sidebar</button>
-      <button class="btn btn-primary" id="closebtn">&#9776; Close Sidebar</button>
+      <button class="btn" id="openbtn" style="display:none;">&#9776;Open Sidebar</button>
+      <button class="btn" id="closebtn">&#9776; Close Sidebar</button>
     </div><!-- End Logo -->
 
     <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <form class="search-form d-flex align-items-center" method="POST" id="searchform" action="#">
         <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><span class="material-icons-sharp">search</span></button>
+        <button type="submit" id="searchbtn" title="Search"><span class="material-icons-sharp">search</span></button>
       </form>
     </div><!-- End Search Bar -->
 
     <!--Current Time-->
     <div class="mx-auto">
-      <button class="btn text-white" id="current_time" style="background-color:green">Time</button>
+      <button class="btn" id="current_time">Time</button>
     </div>
 
     <div class=" drop down mx-auto">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropDownMenueButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <button class="btn dropdown-toggle" id="username" type="button" id="dropDownMenueButton1" data-bs-toggle="dropdown" aria-expanded="false">
        <?=$_SESSION["userName"];?>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="settingslist">
@@ -218,7 +236,7 @@ session_start();
                 <span class="material-icons-sharp">
                 currency_pound
                 </span>
-                <span>Membership $ Production</span>
+                <span>Membership &#38; Production</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><h6 class="dropdown-header text-dark">Membership</h6></li>

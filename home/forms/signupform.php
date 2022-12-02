@@ -1,13 +1,4 @@
-<?php $pageTitle="Sign up New User"; ?>
-<?php
-  session_start();
-
-  error_reporting(1);
-  if(isset($_SESSION["userName"]) or isset($_SESSION["userEmail"]))
-  {
-    ?>
-      <?php include_once('header.php'); ?>
-      <style>
+<style>
           #divsignup{
           border:2px solid gray;
           width:525px;
@@ -95,11 +86,3 @@
         </div>
 
       </div>
-      <?php include_once('footer.php'); ?>
-      
-    <?php
-  } else
-  {
-    include "redirect.php";
-  }
-?>

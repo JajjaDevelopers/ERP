@@ -90,18 +90,8 @@ $driedSql->close();
 
 
 $data = json_encode(array($daysList, $dailyGradedList, $dailycolorSorted, $dailyHulledList, $dailyDriedList));
-<<<<<<< Updated upstream
 // echo 'daily data: days, grading, colorsorting, hulling, drying = '.$data;
 echo $data;
 // var_dump($data);
-=======
-echo 'daily data: days, grading, colorsorting, hulling, drying = '.$data;
-
-//$data = json_encode(array($daysList, $dailyGradedList, $dailyHulledList, $dailyDriedList));
-// echo $data;
-
-// var_dump($data);
-
->>>>>>> Stashed changes
 
 ?>

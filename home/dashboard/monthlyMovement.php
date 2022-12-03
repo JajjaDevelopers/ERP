@@ -78,8 +78,8 @@ if ($previousMonthQtyOut == ""){
 
 ?>
 <?php
-$currentMonthLabel = $currentMonthName.' '.$currentYearValue;
-$previousMonthLabel = $previousMonthName.' '.$year;
+$currentMonthLabel = substr($currentMonthName, 0, 3) .' '.$currentYearValue;
+$previousMonthLabel = substr($previousMonthName, 0, 3).' '.$year;
 $qtyReceivedVariance = $currentMonthQtyIn - $previousMonthQtyIn;
 $qtyOutVariance = $currentMonthQtyOut - $previousMonthQtyOut;
 

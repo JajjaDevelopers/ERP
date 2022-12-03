@@ -215,7 +215,7 @@ session_start();
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="material-icons-sharp">
-                currency_pound
+                work
                 </span>
                 <span>Administration</span>
               </button>
@@ -234,7 +234,7 @@ session_start();
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="material-icons-sharp">
-                currency_pound
+                groups_2
                 </span>
                 <span>Membership &#38; Production</span>
               </button>
@@ -292,7 +292,7 @@ session_start();
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="material-icons-sharp">
-                currency_pound
+                storefront
                 </span>
                 <span>Inventory</span>
               </button>

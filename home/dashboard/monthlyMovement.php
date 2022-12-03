@@ -1,4 +1,3 @@
-
 <?php
 include "../private/database.php";
 $currentMonthQtyInSql = $conn->prepare("SELECT sum(grn_qty) AS grnQty FROM grn WHERE (MONTH(grn_date)=MONTH(now()) 

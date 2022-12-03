@@ -93,6 +93,7 @@ include ("../ajax/batchReportReturnsAjax.php");
                 getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses"); //Other Losses 
             ?>
         </div>
+        
 
         <table style="margin-top: 10px;">
             <tr>
@@ -219,3 +220,4 @@ include ("../ajax/batchReportReturnsAjax.php");
 <!-- <script src="../assets/js/batchReport.js"></script> -->
 <?php include_once ("footer.php")?>
 
+//color

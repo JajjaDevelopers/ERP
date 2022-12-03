@@ -85,8 +85,4 @@ function getGrades($coffeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $t
     </table>
   <?php
   }
-  // getGrades($typ1, "HIGH", "", "high", "High Grades"); //HIgh grades
-  // getGrades($typ1, "LOW", "", "low", "Low Grades"); //Low grades
-  // getGrades($typ1, "HIGH", "Blacks", "blacks", "Color Sorter Rejects"); //Blacks beans
-  // getGrades("NONE", "WASTES", "", "wastes", "Wastes"); //Wastes
-  // getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses"); //Other Losses
+ 

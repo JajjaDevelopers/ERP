@@ -10,22 +10,23 @@ function newLabel($gridColumnNo, $gridRowNo, $labelText){
 }
 
 // Item Input
-function newInput($inputType, $inputId, $gridColumnNo, $gridRowNo, $placeHolder){
+function newInput($inputType, $inputId, $gridColumnNo, $gridRowNo, $placeHolder, $width){
     ?>
     <input type="<?= $inputType ?>" id="<?= $inputId ?>" name="<?= $inputId ?>" class="shortInput" 
-    style="grid-column:<?= $gridColumnNo ?>; grid-row:<?= $gridRowNo ?>" placeholder="<?= $placeHolder ?>">
+    style="grid-column:<?= $gridColumnNo ?>; grid-row:<?= $gridRowNo ?>; width:<?= $width ?>" 
+    placeholder="<?= $placeHolder ?>";>
     <?php
 }
 ?>
 <form id="hullingForm" name="hullingForm" class="regularForm" style="height:auto;" method="POST" action="../connection/hulling.php">
     <h3 class="formHeading">New Item</h3>
-    <div style="display: grid; margin:auto">
+    <div style="display: grid; margin:auto; width: 500px">
         <?php
         newLabel(1, 1, "Item ID:");
-        newInput("text", "itemId", 2, 1, "ID");
+        newInput("text", "itemId", 2, 1, "ID", "70px");
 
         newLabel(1, 2, "Item Name:");
-        newInput("text", "ItemName", 2, 2, "Item Name");
+        newInput("text", "ItemName", 2, 2, "Item Name", "200px");
 
         newLabel(1, 3, "Coffee Type:");
         ?>
@@ -59,10 +60,10 @@ function newInput($inputType, $inputId, $gridColumnNo, $gridRowNo, $placeHolder)
         </select>
         <?php
         newLabel(1, 6, "Unit Symbol:");
-        newInput("text", "unitSymbol", 2, 6, "Unit");
+        newInput("text", "unitSymbol", 2, 6, "Unit", "70px");
 
         newLabel(1, 7, "Grade Rank:");
-        newInput("number", "gradeRank", 2, 7, "Rank");
+        newInput("number", "gradeRank", 2, 7, "Rank", "70px");
         ?>
 
 

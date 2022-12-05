@@ -87,8 +87,6 @@ for ($i=0; $i<count($daysList); $i++){
 $driedSql->close();
 
 
-
-
 $data = json_encode(array($daysList, $dailyGradedList, $dailycolorSorted, $dailyHulledList, $dailyDriedList));
 // echo 'daily data: days, grading, colorsorting, hulling, drying = '.$data;
 echo $data;

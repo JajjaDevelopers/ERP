@@ -34,7 +34,7 @@ session_start();
   <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
      
-  <link rel="stylesheet" href=".\ASSETS\CSS\bootsrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/bootsrap/css/bootstrap.min.css">
   <script src="../assets/js/Jquery/jquery-3.6.0.js"></script>
   <script src="../assets/js/Jquery/jquery-ui/jquery-ui.js"></script>
   <link rel="stylesheet" href="../assets/js/Jquery/jquery-ui/jquery-ui.css">

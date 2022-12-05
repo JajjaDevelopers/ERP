@@ -126,8 +126,83 @@
   <div class="row" style="border:2px solid black">
     <div class="col overflow-hidden p-2 pl-4" id="dailyCoffeeProcessing">
     </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered table-hover" id="currentMonth">
+        <thead>
+          <tr>
+            <th scope="col">Monthly&nbsp;Processing</th>
+          </tr>
+          <tbody>
+            <tr>
+              <td>Date</td>
+            </tr>
+          </tbody>
+        </thead>
+      </table>
     </div>
 
+    <div class="col">
+      <table class="table table-bordered table-hover" id="hulled">
+        <thead>
+          <tr>
+            <th scope="col">Hulled</th>
+          </tr>
+          <tbody>
+            <tr>
+              <td>Hulled</td>
+            </tr>
+          </tbody>
+        </thead>
+      </table>
+    </div>
+
+    <div class="col">
+      <table class="table table-bordered table-hover" id="graded">
+        <thead>
+          <tr>
+            <th scope="col">Graded</th>
+          </tr>
+          <tbody>
+            <tr>
+              <td>Graded</td>
+            </tr>
+          </tbody>
+        </thead>
+      </table>
+    </div>
+
+    <div class="col">
+      <table class="table table-bordered table-hover" id="colorSorted">
+        <thead>
+          <tr>
+            <th scope="col">Color&nbsp;Sorted</th>
+          </tr>
+          <tbody>
+            <tr>
+              <td>ColorS</td>
+            </tr>
+          </tbody>
+        </thead>
+      </table>
+    </div>
+
+    <div class="col">
+      <table class="table table-bordered table-hover" id="dried">
+        <thead>
+          <tr>
+            <th scope="col">Dried</th>
+          </tr>
+          <tbody>
+            <tr>
+              <td>Dried</td>
+            </tr>
+          </tbody>
+        </thead>
+      </table>
+    </div>
+  </div>
   </div>
 </div><!--End of First Row-->
 
@@ -207,5 +282,6 @@
 <script src="../assets/js/tabledata.js"></script>
 <script src="../assets/js/graph1.js"></script>
 <script src="../assets/js/graph2.js"></script>
+<script src="../assets/js/currMonthPro.js"></script>
 </body>
 </html>

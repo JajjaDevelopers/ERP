@@ -14,16 +14,22 @@ function newInput($inputType, $inputId, $gridColumnNo, $gridRowNo, $placeHolder,
     ?>
     <input type="<?= $inputType ?>" id="<?= $inputId ?>" name="<?= $inputId ?>" class="shortInput" 
     style="grid-column:<?= $gridColumnNo ?>; grid-row:<?= $gridRowNo ?>; width:<?= $width ?>" 
-    placeholder="<?= $placeHolder ?>";>
+    placeholder="<?= $placeHolder ?>">
     <?php
 }
 ?>
-<form id="hullingForm" name="hullingForm" class="regularForm" style="height:auto;" method="POST" action="../connection/hulling.php">
+<form id="hullingForm" name="hullingForm" class="regularForm" style="height:auto;" method="POST" action="../connection/newItem.php">
     <h3 class="formHeading">New Item</h3>
     <div style="display: grid; margin:auto; width: 500px">
+    
         <?php
+        
         newLabel(1, 1, "Item ID:");
         newInput("text", "itemId", 2, 1, "ID", "70px");
+        ?>
+        <input type="text" id="itemId" name="itemId" class="shortInput" style="grid-column:2; grid-row:1; width:70px" 
+        placeholder="ID" maxlength="6" minlength="6">
+        <?php
 
         newLabel(1, 2, "Item Name:");
         newInput("text", "ItemName", 2, 2, "Item Name", "200px");
@@ -54,9 +60,12 @@ function newInput($inputType, $inputId, $gridColumnNo, $gridRowNo, $placeHolder,
         ?>
         <select id="gradeCategory" name="gradeCategory" class="shortInput" style="grid-column: 2; grid-row: 5;">
             <option></option>
-            <option value="Robusta">Robusta</option>
-            <option value="Arabica">Arabica</option>
-            <option value="NONE">NONE</option>
+            <option value="HIGH">HIGH</option>
+            <option value="LOW">LOW</option>
+            <option value="UNPROCESSED">UNPROCESSED</option>
+            <option value="OTHER LOSSES">OTHER LOSS</option>
+            <option value="WASTES">WASTES</option>
+            <option value="ROASTED">ROASTED</option>
         </select>
         <?php
         newLabel(1, 6, "Unit Symbol:");
@@ -78,4 +87,8 @@ function newInput($inputType, $inputId, $gridColumnNo, $gridRowNo, $placeHolder,
     </div>
     <?php include "../forms/submitButton.php" ?>
 </form>
+<script>
+    document.onload = function(){document.getElementById("itemId").style.maxLength = "4";}
+    
+</script>
 <?php include "footer.php" ?>

@@ -57,10 +57,10 @@ if ($dryingQty == ""){
     $dryingQty = 0;
 }
 
+$currentMonth = $month." ".$year;
 
 
-
-$data = json_encode(array($grdedQty, $colorSortedQty, $HullingQty, $dryingQty));
+$data = json_encode(array($currentMonth, $grdedQty, $colorSortedQty, $HullingQty, $dryingQty));
 echo 'current month processing: graded, colorsorted, hulling, drying = '.$data;
 
 ?>

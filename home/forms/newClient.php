@@ -7,12 +7,13 @@ include_once ('header.php');
         <h3 class="formHeading" >New Client</h3>
         <div style="display: grid; width: 400px">
             <div style="grid-column: 1; grid-row: 1; margin-right: 10px">
-                <label for="customerName">Customer ID</label><br>
-                <input type="text" id="customerId" name="customerId" class="shortInput" readonly maxlength="6"><br>
+                <label >Customer ID</label><br>
+                <input type="text" id="newClientId" name="newClientId" class="shortInput"  maxlength="6"><br>
             </div>
             <div style="grid-column: 2; grid-row: 1; margin-left: 10px">
                 <label for="customerName">Customer Name:</label><br>
-                <input type="text" id="customerName" name="customerName" class="shortInput" maxlength="200" style="width: 400px;"><br>
+                <input type="text" id="customerName" name="customerName" class="shortInput" maxlength="200" 
+                style="width: 400px;" onkeyup="createId(this.id)"><br>
             </div>
         </div>
         <div style="display: grid; width: 400px">
@@ -56,4 +57,20 @@ include_once ('header.php');
         
         <?php include "submitButton.php" ?>
     </form>
+
+    <script>
+        function createId(nameInputId){
+            var nameInput = document.getElementById("customerName").value;
+            if (nameInput.length <= 3){
+                document.getElementById("newClientId").setAttribute("value", nameInput.toUpperCase());
+            }else if (nameInput.length == 3){
+                const idRequest = new XMLHttpRequest();
+                idRequest.onload = function(){
+
+                }
+                // idRequest.open("GET", "../ajax/batchReportInputAjax.php?q="+nameInputId);
+                // idRequest.send();
+            }
+        }
+    </script>
 <?php include_once ('footer.php'); ?>

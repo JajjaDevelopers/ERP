@@ -1,3 +1,12 @@
+<?php 
+ session_start();
+
+ error_reporting(1);
+ 
+ if(isset($_SESSION["userName"]))
+ {
+?>
+
 <?php
 session_start();
 ?>
@@ -306,3 +315,8 @@ session_start();
           </li>
       </aside><!-- End Sidebar-->
   <main id="main" class="main">
+<?php
+}else{
+  include "redirect.php";
+ }
+ ?>

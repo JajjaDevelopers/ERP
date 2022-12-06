@@ -149,6 +149,16 @@ session_start();
           </a>
         </div>
       </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+       <div class="nav-item">
+          <a href="../verification/pendingVerification.php" class="btn" role="button">
+            <span class="material-icons-sharp">
+                verified
+            </span>
+            <span>Verification &#38; Approval </span>
+          </a>
+        </div>
+      </li>
 
       <li class="nav-heading">OPERATIONS</li>
 

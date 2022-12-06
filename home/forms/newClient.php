@@ -3,12 +3,12 @@ $pageTitle = "New Client";
 include_once ('header.php');
 ?>
 <body>
-    <form class="regularForm" method="POST" action="addNewCustomer.php">
+    <form class="regularForm" method="POST" action="../connection/newClient.php">
         <h3 class="formHeading" >New Client</h3>
         <div style="display: grid; width: 400px">
             <div style="grid-column: 1; grid-row: 1; margin-right: 10px">
                 <label >Customer ID</label><br>
-                <input type="text" id="newClientId" name="newClientId" class="shortInput"  maxlength="6"><br>
+                <input type="text" id="newClientId" name="newClientId" class="shortInput" readonly maxlength="6"><br>
             </div>
             <div style="grid-column: 2; grid-row: 1; margin-left: 10px">
                 <label for="customerName">Customer Name:</label><br>
@@ -25,7 +25,7 @@ include_once ('header.php');
                 <label for="email">Email</label><br>
                 <input type="email" id="email" name="email" class="longInputField"><br>
                 <label for="region">Region</label><br>
-                <select type="text" id="region" name="region" class="longInputField">
+                <select type="text" id="region" name="region" class="longInputField" onchange="getRegionDistricts(this.id)">
                     <option>Region</option>
                     <option value="EAST">EAST</option>
                     <option value="CENTRAL">CENTRAL</option>
@@ -50,6 +50,8 @@ include_once ('header.php');
                     <option value="1">Nucafe Member</option>
                     <option value="0">Third Party</option>
                 </select><br>
+                <label for="city">City</label><br>
+                <input type="text" id="city" name="city" class="longInputField"><br>
             </div>
             
         </div>
@@ -61,16 +63,39 @@ include_once ('header.php');
     <script>
         function createId(nameInputId){
             var nameInput = document.getElementById("customerName").value;
-            if (nameInput.length <= 3){
-                document.getElementById("newClientId").setAttribute("value", nameInput.toUpperCase());
-            }else if (nameInput.length == 3){
-                const idRequest = new XMLHttpRequest();
-                idRequest.onload = function(){
-
+            var characters = "";
+            for (var x=0; x<nameInput.length; x++){
+                var c = nameInput[x];
+                if (c != " "){
+                    characters += c;
+                    if (characters.length < 3){
+                        document.getElementById("newClientId").setAttribute("value", nameInput.toUpperCase());
+                    }else if (characters.length == 3){
+                        var idCode =  document.getElementById("newClientId").value;
+                        const idRequest = new XMLHttpRequest();
+                        idRequest.onload = function(){
+                            document.getElementById("newClientId").setAttribute("value", this.responseText);
+                        }
+                        idRequest.open("GET", "../ajax/clientIdAjax.php?q="+characters.toUpperCase());
+                        idRequest.send();
+                    }
                 }
-                // idRequest.open("GET", "../ajax/batchReportInputAjax.php?q="+nameInputId);
-                // idRequest.send();
             }
+            if (characters.length == 0){
+                document.getElementById("newClientId").setAttribute("value", "");
+            }
+        }
+
+        //Getting districts
+        function getRegionDistricts(regionInputId){
+            var region = document.getElementById(regionInputId).value;
+            const districtRequest = new XMLHttpRequest();
+            districtRequest.onload = function(){
+                document.getElementById("district").innerHTML = this.responseText;
+                // document.getElementById("newClientId").setAttribute("value", this.responseText);
+            }
+            districtRequest.open("GET", "../ajax/districtsAjax.php?q="+region);
+            districtRequest.send();
         }
     </script>
 <?php include_once ('footer.php'); ?>

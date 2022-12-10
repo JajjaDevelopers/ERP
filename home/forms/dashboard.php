@@ -5,48 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Received and Dispatched Graph</title>
-  <link href="..\assets\css\bootsrap\css\bootstrap.css" rel="stylesheet">
+  <link href="../assets/css/bootsrap/css/bootstrap.css" rel="stylesheet">
+  <link href="../assets/css/dasnboard.css" rel="stylesheet">
   <script src="../assets/plotly/plotly-2.16.1.min.js"></script>
 </head>
-<style>
-  body{
-    background-color:#4a2c2a;
-    margin:0;
-    padding:0;
-  }
-  table thead tr{
-    color:white;
-  }
-
-  table#tableReceived thead tr,table#tableQReceived thead tr{
-    background-color:rgba(0,0,255,0.4);
-  }
-
-  table#tableMovedOut thead tr,table#tableQMovedOut thead tr{
-    background-color:#008631;
-  }
-
-  table#monthlyVariance thead tr,table#quarterlyVariance thead tr{
-    background-color:rgba(255,0,0.9);
-  }
-
-  table#tableReceived tbody tr,table#tableQReceived tbody tr{
-    background-color:rgba(173,216,230);
-  }
-
-  table#tableMovedOut tbody tr,table#tableQMovedOut tbody tr{
-    background-color:#83f28f;
-  }
-
-  table#monthlyVariance tbody tr,table#quarterlyVariance tbody tr{
-    background-color:#faa19b;
-  }
-
-  table thead tr th{
-    /* font-family: Tahoma,Verdana, Geneva, sans-serif; */
-    font-weight: bold;
-  }
-</style>
 <body>
 <section id="dashboard" class="container-fluid" style="border:2px solid blue;background-color:#39e75f;">
 <div class="row " style="border:2px solid yellow">
@@ -127,19 +89,19 @@
     <div class="col overflow-hidden p-2 pl-4" id="dailyCoffeeProcessing">
     </div>
   </div>
-  <div class="row">
+  <div class="row g-0">
     <div class="col">
       <table class="table table-bordered table-hover" id="currentMonth">
         <thead>
           <tr>
             <th scope="col">Monthly&nbsp;Processing</th>
           </tr>
+          </thead>
           <tbody>
             <tr>
-              <td>Date</td>
+              <td></td>
             </tr>
           </tbody>
-        </thead>
       </table>
     </div>
 
@@ -149,12 +111,12 @@
           <tr>
             <th scope="col">Hulled</th>
           </tr>
+        </thead>
           <tbody>
             <tr>
               <td>Hulled</td>
             </tr>
           </tbody>
-        </thead>
       </table>
     </div>
 
@@ -164,12 +126,12 @@
           <tr>
             <th scope="col">Graded</th>
           </tr>
+          </thead>
           <tbody>
             <tr>
               <td>Graded</td>
             </tr>
           </tbody>
-        </thead>
       </table>
     </div>
 
@@ -179,36 +141,34 @@
           <tr>
             <th scope="col">Color&nbsp;Sorted</th>
           </tr>
+        </thead>
           <tbody>
             <tr>
-              <td>ColorS</td>
+              <td >ColorSorter</td>
             </tr>
           </tbody>
-        </thead>
       </table>
     </div>
-
     <div class="col">
       <table class="table table-bordered table-hover" id="dried">
         <thead>
           <tr>
             <th scope="col">Dried</th>
           </tr>
+          </thead>
           <tbody>
             <tr>
               <td>Dried</td>
             </tr>
           </tbody>
-        </thead>
       </table>
     </div>
-  </div>
   </div>
 </div><!--End of First Row-->
 
 <div class="row">
  <div class="col-6">
-    <div class="row" style="border:1px solid purple">
+    <div class="row g-0" style="border:1px solid purple">
       <div class="col">
       <table class="table table-bordered table-hover" id="tableQReceived">
           <thead>

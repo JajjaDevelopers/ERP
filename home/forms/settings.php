@@ -1,35 +1,31 @@
 <?php $pageTitle="Settings"; ?>
 <?php include "header.php";?>
-<div class="container" style="background-color:green; width:80%; border:1px solid green; border-radius:15px;">
+<div class="container" style="background-color:green; width:500px; border:1px solid green; border-radius:15px;">
   <div class="row">
-    <div class="col-6">
+    <div class="col" id="cardcontent">
       <div class="card mt-4">
       <div class="card-header">
         <h1>Settings</h1>
-        <div class="container" style="color:red" id="errors">
-        <?php
-          include "../alerts/settingerrors.php";
-        ?>
-        </div>
       </div>
       <div class="card-body" id="settingsDiv">
         <ol style="list-style-type: none;">
           <li><a href="javascript:void(0)" id="passwordchange" class="link">Change Password</a></li>
           <li><a href="javascript:void(0)" id="usernamechange" class="link">Change username</a></li>
         </ol>
-        <!-- <div id="displayform" class="justify-content-center text-success" style="border:none;">
-        </div> -->
       </div>
     </div>
 
     </div>
   </div>
   <div class="row">
-    <div class="col-6" id="passwordform" class="justify-content-center text-success">
-
-    </div>
-    <div class="col-6" id="changenameform" class="justify-content-center text-success">
-
+    <div>
+      <div class="container text-center text-danger bg-white"  id="errors">
+        <?php
+          include "../alerts/settingerrors.php";
+        ?>
+      </div>
+      <div class="col" id="displayform" class="justify-content-center text-success">
+      </div>
     </div>
   </div>
 </div>
@@ -39,10 +35,13 @@
   var divEl=document.getElementById("settingsDiv").getElementsByTagName("ol")[0];
   var elLink1=divEl.getElementsByTagName("li")[0].getElementsByTagName("a")[0];
   var elLink2=divEl.getElementsByTagName("li")[1].getElementsByTagName("a")[0];
+  const elCard=document.getElementById("cardcontent");
+  console.log(elCard);
   // console.log(elLink2);
   // var userName=document.getElementById("usernamechange");
-  var passwordForm=document.getElementById("passwordform");
-  var changenameForm=document.getElementById("changenameform");
+  // var passwordForm=document.getElementById("passwordform");
+  // var changenameForm=document.getElementById("changenameform");
+  const elDisplay=document.getElementById("displayform")
   var link=document.querySelectorAll(".link");
   let linkId;
   link.forEach(linkClick=>linkClick.addEventListener("click",(event)=>{
@@ -60,15 +59,8 @@
       request.open("GET",file+".php",true);
       request.onload=()=>{
       var data=request.responseText;
-      if(linkId=="passwordchange")
-      {
-        passwordForm.innerHTML=data;
-        elLink2.style.display="none";
-
-      }else{
-        changenameForm.innerHTML=data;
-        elLink1.style.display="none";
-      }
+      elDisplay.innerHTML=data;
+      elCard.style.display="none";
     }
     request.send();
   }));

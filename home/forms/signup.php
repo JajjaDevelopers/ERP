@@ -19,24 +19,31 @@
           #signupbtn:focus{
               background-color:#765341;
           }
+          #signupform{
+            border:none;
+            background-color: white;
+            font-size:medium;
+            color:green;
+          }
       </style>
-      <div class="container mt-5 text-info" id="divsignup">
+      <div class="container mt-5" id="divsignup" style="background-color:green;border-radius:15px;">
         <div class="card  my-4 shadow-lg p-3 mb-5 bg-body rounded">
           <div class="card-header">
             <h3 class="text-center text-primary" >User Sign Up Form</h3>
           </div>
           <div class="card-body" style="background-color:white">
-          <form action="../connection/formsignup.php" method="post">
+          <form action="../connection/formsignup.php" method="post" id="signupform">
         <div class="row">
           <div class="col-md-12 justify-content-center" >
           <div>
               <!-- <h3 class="text-center text-primary" >Sign Up</h3> -->
                 <!---Displaying errors--->
-                <div class="container text-center" style="color:red">
+              <div class="container text-center" style="color:red" id="signupclear">
                 <?php
                 include "../alerts/errorsignup.php";
                 ?>
-                </div>
+              </div>
+              <script src="../assets/js/signupclear.js"></script>
           </div>
             <div class="form-floating">
               <input type="text" name="fullname" class="form-control" value="<?=$_SESSION["fname"]?>">

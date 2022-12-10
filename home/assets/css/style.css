@@ -649,7 +649,9 @@ h6 {
 
   #main,
   #footer {
-    margin-left: 300px;
+    /* margin-left: 300px; */
+    margin:60px 0px 0px;
+    padding:20px 30px;
   }
 }
 

@@ -18,9 +18,9 @@ for ($x=1; $x<=30; $x++){
 }
 
 $dailyGradedList = array();
-$dailyColorSortedList = array();
 $dailyHulledList = array();
 $dailyDriedList = array();
+$dailycolorSorted = array();
 
 //Getting daily graded
 $gradedSql = $conn->prepare("SELECT sum(net_input) AS qty FROM batch_reports_summary WHERE batch_report_date=?");
@@ -37,6 +37,22 @@ for ($i=0; $i<count($daysList); $i++){
     array_push($dailyGradedList, $dailyQty);
 }
 $gradedSql->close();
+
+//Getting daily colorsorted
+$colorSortedSql = $conn->prepare("SELECT sum(color_sorted) AS qty FROM batch_reports_summary WHERE batch_report_date=?");
+
+for ($i=0; $i<count($daysList); $i++){
+    $date = $daysList[$i];
+    $colorSortedSql->bind_param("s", $date);
+    $colorSortedSql->execute();
+    $colorSortedSql->bind_result($dailyQty);
+    $colorSortedSql->fetch();
+    if ($dailyQty == ""){
+        $dailyQty = 0;
+    }
+    array_push($dailycolorSorted, $dailyQty);
+}
+$colorSortedSql->close();
 
 //Getting daily hulled
 $hulledSql = $conn->prepare("SELECT sum(output_qty) AS qty FROM hulling WHERE hulling_date=?");
@@ -71,12 +87,9 @@ for ($i=0; $i<count($daysList); $i++){
 $driedSql->close();
 
 
-
-$data = json_encode(array($daysList, $dailyGradedList, $dailyHulledList, $dailyDriedList));
-// echo $data;
-
-var_dump($data);
-
-
+$data = json_encode(array($daysList, $dailyGradedList, $dailycolorSorted, $dailyHulledList, $dailyDriedList));
+// echo 'daily data: days, grading, colorsorting, hulling, drying = '.$data;
+echo $data;
+// var_dump($data);
 
 ?>

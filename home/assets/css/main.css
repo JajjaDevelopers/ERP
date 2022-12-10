@@ -640,6 +640,17 @@ td{
     background-color: white;
     padding: 1px 5px;
   }
+  .dottedInput{
+    width: 300px;
+    margin-top: 0px;
+    border-style: dotted;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border: 0px 0px 1px 0px;
+    background-color: white;
+    padding: 1px 5px;
+  }
   #batchReportForm{
     height: auto;
     width: 700px;

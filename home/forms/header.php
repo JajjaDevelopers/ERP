@@ -1,3 +1,12 @@
+<?php 
+ session_start();
+
+ error_reporting(1);
+ 
+ if(isset($_SESSION["userName"]))
+ {
+?>
+
 <?php
 session_start();
 ?>
@@ -34,7 +43,7 @@ session_start();
   <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
      
-  <link rel="stylesheet" href=".\ASSETS\CSS\bootsrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/css/bootsrap/css/bootstrap.min.css">
   <script src="../assets/js/Jquery/jquery-3.6.0.js"></script>
   <script src="../assets/js/Jquery/jquery-ui/jquery-ui.js"></script>
   <link rel="stylesheet" href="../assets/js/Jquery/jquery-ui/jquery-ui.css">
@@ -43,48 +52,37 @@ session_start();
   <!--CSS FILES-->
   <link href="../assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/newstyles.css">
   <script src="../assets/plotly/plotly-2.16.1.min.js"></script>
 </head>
-<style>
-  #settingslist{
-    background-color:green;
-  }
-  #settingslist li a{
-    color:goldenrod;
-  }
-  #settingslist li a:hover{
-    color:white;
-    background-color: brown;
-  }
-</style>
 <body>
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.php" class="logo d-flex align-items-center">
         <img src="../assets/img/logo2.jpg" alt="Logo">
         <span class="d-none d-lg-block">NGL</span>
       </a>
-      <button class="btn btn-primary" id="openbtn" style="display:none;">&#9776;Open Sidebar</button>
-      <button class="btn btn-primary" id="closebtn">&#9776; Close Sidebar</button>
+      <button class="btn" id="openbtn">&#9776;Open Sidebar</button>
+      <button class="btn" id="closebtn" style="display:none;">&#9776; Close Sidebar</button>
     </div><!-- End Logo -->
 
     <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <form class="search-form d-flex align-items-center" method="POST" id="searchform" action="#">
         <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><span class="material-icons-sharp">search</span></button>
+        <button type="submit" id="searchbtn" title="Search"><span class="material-icons-sharp">search</span></button>
       </form>
     </div><!-- End Search Bar -->
 
     <!--Current Time-->
     <div class="mx-auto">
-      <button class="btn text-white" id="current_time" style="background-color:green">Time</button>
+      <button class="btn" id="current_time">Time</button>
     </div>
 
     <div class=" drop down mx-auto">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropDownMenueButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <button class="btn dropdown-toggle" id="username" type="button" id="dropDownMenueButton1" data-bs-toggle="dropdown" aria-expanded="false">
        <?=$_SESSION["userName"];?>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="settingslist">
@@ -109,7 +107,7 @@ session_start();
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar" style="display:none;">
 
     <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
@@ -122,6 +120,16 @@ session_start();
           </a>
         </div>
       </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+       <div class="nav-item">
+          <a href="../verification/pendingVerification.php" class="btn" role="button">
+            <span class="material-icons-sharp">
+                verified
+            </span>
+            <span>Verification &#38; Approval </span>
+          </a>
+        </div>
+      </li>
 
       <li class="nav-heading">OPERATIONS</li>
 
@@ -134,7 +142,7 @@ session_start();
            <span style="margin-bottom:10px;">Processing</span>
             </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="listdata">
-                <li><h6 class="dropdown-header text-dark"> Processing Entry Forms</h6></li>
+                <li><h6 class="dropdown-header text-dark"> Processing Activities</h6></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item " href="Goods_Received_Note.php">Recieve Goods</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -164,7 +172,7 @@ session_start();
                 <span>Marketing</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><h6 class="dropdown-header text-dark">Marketing  Entry Forms</h6></li>
+              <li><h6 class="dropdown-header text-dark">Marketing Activities</h6></li>
               <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="valuation.php">Valuation</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -184,7 +192,7 @@ session_start();
                 <span>Roast &#38; Ground</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><h6 class="dropdown-header">Roast &#38; Data Entry Forms</h6></li>
+              <li><h6 class="dropdown-header">Roast &#38; Ground Activities</h6></li>
                 <li><a class="dropdown-item" href="Goods_Received_Note.php">Recieve Goods</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="activtySheet.php">Services</a></li>
@@ -197,12 +205,12 @@ session_start();
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="material-icons-sharp">
-                currency_pound
+                work
                 </span>
                 <span>Administration</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><h6 class="dropdown-header text-dark">Payment Request</h6></li>
+                <li><h6 class="dropdown-header text-dark">Administration Support</h6></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="pettyCash.php">Petty Cash Request</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -216,9 +224,9 @@ session_start();
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="material-icons-sharp">
-                currency_pound
+                groups_2
                 </span>
-                <span>Membership $ Production</span>
+                <span>Membership &#38; Production</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><h6 class="dropdown-header text-dark">Membership</h6></li>
@@ -269,5 +277,27 @@ session_start();
               }
              }
           ?>
+          <li class="nav-heading">Settings</li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="material-icons-sharp">
+                storefront
+                </span>
+                <span>Inventory</span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><h6 class="dropdown-header text-dark">Inventory Settings</h6></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="NewItem.php">Add New Item</a></li>
+                
+              </ul>
+            </div>
+          </li>
       </aside><!-- End Sidebar-->
   <main id="main" class="main">
+<?php
+}else{
+  include "redirect.php";
+ }
+ ?>

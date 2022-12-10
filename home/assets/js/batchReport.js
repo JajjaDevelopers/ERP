@@ -41,6 +41,20 @@ for (var x=0; x<Number(gradeNumbersList.length); x++){
     } 
 }
 
+//Color sorted qty
+function getColorSortedQty(){
+    var colorSorterQty = 0;
+    for (var x=0; x<rejectsQtyList.length; x++){
+        var blacksQty = Number(document.getElementById(rejectsQtyList[x]).value);
+        if (blacksQty > 0){
+            var highGradeQty = document.getElementById(highGradeQtyList[x]).value;
+            colorSorterQty += Number(highGradeQty);
+        }
+    }
+    document.getElementById("colorSortedInput").setAttribute("value", colorSorterQty);
+}
+
+// batch returns
 function getBatchReturns(no){
         
     const xhttp = new XMLHttpRequest();
@@ -97,6 +111,9 @@ function updateBagsAndPer(){
     document.getElementById("overallTotalQty").setAttribute('value', overallQty);
     document.getElementById("overallTotalBags").setAttribute('value', (overallQty / 60));
     document.getElementById("overallTotalPer").setAttribute('value', (overallQty / netInput)*100);
+    getColorSortedQty();
+
+    
 }
 
 // document.getElementById(gradesQtyList[0][0]).addEventListener("blur", updateBagsAndPer);

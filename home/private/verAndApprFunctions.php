@@ -45,7 +45,17 @@ function grnVerificationList(){
 }
 
 
+//Retrieve grn details
+function getGrnDetails($grnNo){
+    include "connlogin.php";
+    $grnSql = $conn->prepare("SELECT * FROM grn WHERE grn_no=$grnNo");
+    $grnSql->execute();
+    $grnSql->bind_result($grn_no, $grn_date, $grn_time_in, $customer_id, $grade_id, $grn_mc, $no_of_bags, $grn_qty, 
+                        $grn_status, $batch_order_no, $purpose, $origin, $delivery_person, $truck_no, $driver, 
+                        $quality_remarks, $prepared_by, $verified_by, $approved_by);
+$grnSql->fetch();
 
+}
 
 
 ?>

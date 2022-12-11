@@ -31,7 +31,7 @@ function grnVerificationList(){
         while ($getList->fetch()){
             ?>
             <tr>
-                <td><?= $grn_no.$rows ?></td>
+                <td><a href="verifyGrn.php?grnNo=<?= $grn_no.$rows ?>" ><?= $grn_no.$rows ?></a></td>
                 <td><?= $grn_date ?></td>
                 <td><?= $customer_name ?></td>
                 <td><?= $grade_name ?></td>
@@ -56,6 +56,32 @@ function getGrnDetails($grnNo){
 $grnSql->fetch();
 
 }
+
+//Document number formatter
+function formatDocNo($docNo, $prefix){
+    $docNumber = "";
+  if ($docNo === 0){
+    $docNumber = $prefix."-0001";
+  }else{
+    if ($docNo<10){
+        $docNumber = $prefix."-000".$docNo;
+    }
+    elseif ($docNo<100){
+        $docNumber = $prefix."-00".$docNo;
+    }elseif ($docNo<1000){
+        $docNumber = $prefix."-0".$docNo;
+    }else{
+      $docNumber = $prefix."-".$docNo;}
+    }
+  return $docNumber;
+
+}
+
+
+
+
+
+
 
 
 ?>

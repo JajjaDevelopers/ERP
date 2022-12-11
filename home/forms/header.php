@@ -52,38 +52,9 @@ session_start();
   <!--CSS FILES-->
   <link href="../assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/newstyles.css">
   <script src="../assets/plotly/plotly-2.16.1.min.js"></script>
 </head>
-<style>
-  #settingslist{
-    background-color:green;
-  }
-  #settingslist li a,#searchbtn{
-    color:#EAC117;
-  }
-  #settingslist li a:hover{
-    color:white;
-    background-color: brown;
-  }
-  #searchbtn:hover{
-    color:green;
-  }
-  #searchbtn:focus{
-    color:blue;
-  }
-  #searchform{
-    border:none;
-  }
- 
-  #openbtn,#closebtn,#current_time,#username{
-    background-color: green;
-    color:#EAC117;
-  }
-  #openbtn:hover,#closebtn:hover,#current_time:hover,#username:hover{
-    background-color:#765341;
-    color:white;
-  }
-</style>
 <body>
 
   <!-- ======= Header ======= -->
@@ -94,8 +65,8 @@ session_start();
         <img src="../assets/img/logo2.jpg" alt="Logo">
         <span class="d-none d-lg-block">NGL</span>
       </a>
-      <button class="btn" id="openbtn" style="display:none;">&#9776;Open Sidebar</button>
-      <button class="btn" id="closebtn">&#9776; Close Sidebar</button>
+      <button class="btn" id="openbtn">&#9776;Open Sidebar</button>
+      <button class="btn" id="closebtn" style="display:none;">&#9776; Close Sidebar</button>
     </div><!-- End Logo -->
 
     <div class="search-bar">
@@ -136,7 +107,7 @@ session_start();
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar" style="display:none;">
 
     <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">

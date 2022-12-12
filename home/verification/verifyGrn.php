@@ -8,12 +8,13 @@ include "../connection/verifyGrn.php";
 <?php
 $grnNo = formatDocNo($grn_no, "GRN");
 ?>
-<form class="regularForm">
+<form class="regularForm" action="../connection/grnVerifyFinal.php" method="POST">
     <legend class="formHeading">Goods Received Note</legend>
       <?php
             include "../alerts/message.php";
       ?>
       <div style="display: grid; width:fit-content; margin-left: 70%;">
+          <input name="grnKeyId" readonly value="<?= $grn_no?>" style="display: none;" >
           <label for="grnNo" style="grid-column: 1; grid-row: 1; width:70px; margin-top: 5px">GRN No:</label>
           <input type="text" class="shortInput" id="grnNo" name="grnNo" readonly value="<?= $grnNo ?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">
           <label for="date" class="" style="grid-column: 1; grid-row: 2; margin-top: 10px">Date:</label>
@@ -65,10 +66,13 @@ $grnNo = formatDocNo($grn_no, "GRN");
 
       <div style="margin-top: 20px;">
           <label for="customer" class="form-label">Quality Remarks:</label>
-          <input class="form-control" id="remarks" name="remarks" value="<?=$quality_remarks?>" placeholder="quality remarks" rows="3">
+          <input class="form-control" id="remarks" name="remarks" readonly value="<?=$quality_remarks?>" placeholder="quality remarks" rows="3">
       </div>
       
-    <?php include_once("../forms/submitButton.php"); ?>
+    <?php 
+    submitButton("Verify");
+    // include_once("../forms/submitButton.php"); 
+    ?>
 </form>
 
 <?php include "../forms/footer.php" ?>

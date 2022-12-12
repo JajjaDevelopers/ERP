@@ -77,11 +77,22 @@ function formatDocNo($docNo, $prefix){
 
 }
 
+//Single submit button
+function submitButton($value){
+    ?>
+    <div id="activityPrepareDiv">
+    <input type="submit" id="activityCancelButton" value="<?=$value?>" class="btn  btn-primary my-3 btn-lg text-white" name="btnsubmit">
+    </div>
 
+<?php
+}
 
+// Verify function
+function verifyActivity($table, $keyColName, $keyVariable, $verifyUser){
+    include "connlogin.php";
+    $verifySql = $conn->prepare("UPDATE $table SET verified_by = ? WHERE ($keyColName=?)");
+    $verifySql->bind_param("ss", $verifyUser, $keyVariable);
+    $verifySql->execute();
 
-
-
-
-
+}
 ?>

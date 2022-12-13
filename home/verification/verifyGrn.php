@@ -6,7 +6,7 @@ include "../connection/verifyGrn.php";
 ?>
 <?php include ("../connection/databaseConn.php"); ?>
 <?php
-$grnNo = formatDocNo($grn_no, "GRN");
+$grnNo = formatDocNo($grn_no, "GRN-");
 ?>
 <form class="regularForm" action="../connection/grnVerifyFinal.php" method="POST">
     <legend class="formHeading">Goods Received Note</legend>

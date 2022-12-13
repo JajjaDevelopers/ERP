@@ -173,21 +173,21 @@ session_start();
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="listdata">
                 <li><h6 class="dropdown-header text-dark"> Processing Activities</h6></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item " href="Goods_Received_Note.php">Recieve Goods</a></li>
+                <li><a class="dropdown-item " href="../forms/Goods_Received_Note.php">Recieve Goods</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="batchProcessingOrder.php">Batch Processing Order</a></li>
+                <li><a class="dropdown-item" href="../forms/batchProcessingOrder.php">Batch Processing Order</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <!-- <li><a class="dropdown-item" href="batchReport.php">Batch Report</a></li>
                 <li><hr class="dropdown-divider"></li> -->
-                <li><a class="dropdown-item" href="BatchOrderSelection.php">Batch Report</a></li>
+                <li><a class="dropdown-item" href="../forms/BatchOrderSelection.php">Batch Report</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="dispatch.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="../forms/dispatch.php">Dispatch</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="transfer.php">Transfer</a></li>
+                <li><a class="dropdown-item" href="../forms/transfer.php">Transfer</a></li>
                  <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="drying.php">Drying</a></li>
+                <li><a class="dropdown-item" href="../forms/drying.php">Drying</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="hulling.php">Hulling</a></li> 
+                <li><a class="dropdown-item" href="../forms/hulling.php">Hulling</a></li> 
               </ul>
             </div>
           </li>
@@ -203,11 +203,11 @@ session_start();
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><h6 class="dropdown-header text-dark">Marketing Activities</h6></li>
               <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="valuation.php">Valuation</a></li>
+                <li><a class="dropdown-item" href="../forms/valuation.php">Valuation</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="SalesReport.php">Sales Report</a></li>
+                <li><a class="dropdown-item" href="../forms/SalesReport.php">Sales Report</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="dispatch.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="../forms/dispatch.php">Dispatch</a></li>
               </ul>
             </div>
           </li>
@@ -222,11 +222,11 @@ session_start();
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><h6 class="dropdown-header">Roast &#38; Ground Activities</h6></li>
-                <li><a class="dropdown-item" href="Goods_Received_Note.php">Recieve Goods</a></li>
+                <li><a class="dropdown-item" href="../forms/Goods_Received_Note.php">Recieve Goods</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="activtySheet.php">Services</a></li>
+                <li><a class="dropdown-item" href="../forms/activtySheet.php">Services</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="dispatch.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="../forms/dispatch.php">Dispatch</a></li>
               </ul>
             </div>
           </li>
@@ -241,9 +241,9 @@ session_start();
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><h6 class="dropdown-header text-dark">Administration Support</h6></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="pettyCash.php">Petty Cash Request</a></li>
+                <li><a class="dropdown-item" href="../forms/pettyCash.php">Petty Cash Request</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="fundsRequisition.php">Funds Requisition</a></li>
+                <li><a class="dropdown-item" href="../forms/fundsRequisition.php">Funds Requisition</a></li>
                 
               </ul>
             </div>
@@ -260,7 +260,7 @@ session_start();
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><h6 class="dropdown-header text-dark">Membership</h6></li>
               <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="newClient.php">New Client</a></li>
+                <li><a class="dropdown-item" href="../forms/newClient.php">New Client</a></li>
               </ul>
             </div>
           </li>
@@ -294,7 +294,7 @@ session_start();
                 ?>
                 <li class="nav-item">
                   <div class="nav-item">
-                    <a href="signup.php" class="btn" role="button">
+                    <a href="../forms/signup.php" class="btn" role="button">
                     <span class="material-icons-sharp">
                       person_add
                       </span>
@@ -318,7 +318,7 @@ session_start();
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><h6 class="dropdown-header text-dark">Inventory Settings</h6></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="NewItem.php">Add New Item</a></li>
+                <li><a class="dropdown-item" href="../forms/NewItem.php">Add New Item</a></li>
                 
               </ul>
             </div>

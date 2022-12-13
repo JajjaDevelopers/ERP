@@ -42,15 +42,17 @@ function currentMonthProcessing(){
   //function to publish data on the dashboard
   function currentMonthProData(data1,data2,data3,data4,data5)
   {
-    bodyMo.innerHTML=data1;
-    bodyGrad.innerHTML=data2;
-    bodySort.innerHTML=data3;
-    bodyHul.innerHTML=data4;
-    bodyDry.innerHTML=data5;
+    bodyMorow1Cell1.innerText=data1;
+    bodyGradrow1Cell1.innerText=data2;
+    bodySortrow1Cell1.innerText=data3;
+    bodyHulrow1Cell1.innerText=data4;
+    bodyDryrow1Cell1.innerText=data5;
   }
 
 }
 
 currentMonthProcessing();
+
+
 
 

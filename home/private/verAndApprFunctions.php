@@ -1,14 +1,18 @@
 <?php
-function countPendVerifications($table){
+function countPendVerifications($table, $column){
     include "connlogin.php";
-    $coutnSql = $conn->query("SELECT count(verified_by) as num FROM $table WHERE verified_by='0'");
+    $coutnSql = $conn->query("SELECT count($column) as num FROM $table WHERE $column='0'");
     $result = mysqli_fetch_array($coutnSql);
     $number = $result['num'];
+    $conn->rollback();
     return $number;
 }
 
-$grnNum = countPendVerifications("grn");
+$grnVerNum = countPendVerifications("grn", "verified_by");
+$grnApprNum = countPendVerifications("grn", "approved_by");
 
+
+//Getting verification list
 function grnVerificationList(){
     include "connlogin.php"; 
     $sql = "SELECT grn_no, grn_date, customer_name, grade_name, grn_qty, purpose, FullName 
@@ -31,11 +35,48 @@ function grnVerificationList(){
         while ($getList->fetch()){
             ?>
             <tr>
-                <td><a href="verifyGrn.php?grnNo=<?= $grn_no.$rows ?>" ><?= $grn_no.$rows ?></a></td>
+                <td><a href="verifyGrn.php?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
                 <td><?= $grn_date ?></td>
                 <td><?= $customer_name ?></td>
                 <td><?= $grade_name ?></td>
-                <td><?= $grn_qty ?></td>
+                <td style="text-align: right;" ><?= $grn_qty ?></td>
+                <td><?= $purpose ?></td>
+                <td><?= $FullName ?></td>
+            </tr>
+        <?php
+        }
+    }
+}
+
+
+//Getting verification list
+function grnApprovalList(){
+    include "connlogin.php"; 
+    $sql = "SELECT grn_no, grn_date, customer_name, grade_name, grn_qty, purpose, FullName 
+            FROM grn
+            JOIN customer USING (customer_id)
+            JOIN grades USING (grade_id)
+            JOIN members WHERE members.UserName=grn.prepared_by AND
+            (verified_by!='0') AND (approved_by='0')";
+    $getList = $conn->prepare($sql);
+    $getList->execute();
+    $getList->bind_result($grn_no, $grn_date, $customer_name, $grade_name, $grn_qty, $purpose, $FullName);
+    $rows = $conn->mysqli_affected_rows;
+    if ($rows<0){
+        ?>
+        <tr>
+            <td>There are no unverified GRNs currently!</td>
+        </tr>
+        <?php
+    }else{
+        while ($getList->fetch()){
+            ?>
+            <tr>
+                <td><a href="verifyGrn.php?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
+                <td><?= $grn_date ?></td>
+                <td><?= $customer_name ?></td>
+                <td><?= $grade_name ?></td>
+                <td style="text-align: right;" ><?= $grn_qty ?></td>
                 <td><?= $purpose ?></td>
                 <td><?= $FullName ?></td>
             </tr>
@@ -64,14 +105,14 @@ function formatDocNo($docNo, $prefix){
     $docNumber = $prefix."-0001";
   }else{
     if ($docNo<10){
-        $docNumber = $prefix."-000".$docNo;
+        $docNumber = $prefix."000".$docNo;
     }
     elseif ($docNo<100){
-        $docNumber = $prefix."-00".$docNo;
+        $docNumber = $prefix."00".$docNo;
     }elseif ($docNo<1000){
-        $docNumber = $prefix."-0".$docNo;
+        $docNumber = $prefix."0".$docNo;
     }else{
-      $docNumber = $prefix."-".$docNo;}
+      $docNumber = $prefix."".$docNo;}
     }
   return $docNumber;
 

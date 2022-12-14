@@ -94,7 +94,7 @@ session_start();
             </a>
         </li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item d-flex align-items-center" href="logout.php">
+        <li><a class="dropdown-item d-flex align-items-center" href="../forms/logout.php">
               <span class="material-icons-sharp">
                   logout
               </span>
@@ -120,7 +120,7 @@ session_start();
           </a>
         </div>
       </li><!-- End Dashboard Nav -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
        <div class="nav-item">
           <a href="../verification/pendingVerification.php" class="btn" role="button">
             <span class="material-icons-sharp">
@@ -129,39 +129,56 @@ session_start();
             <span>Verification &#38; Approval </span>
           </a>
         </div>
+      </li> -->
+      <li class="nav-item">
+        <div class="dropdown">
+          <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="material-icons-sharp">
+              verified
+            </span>
+            <span style="margin-bottom:10px;">Verification &#38; Approval</span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="listdata">
+            <li><h6 class="dropdown-header text-dark">Pending...</h6></li>
+            <!-- <li><hr class="dropdown-divider"></li> -->
+            <li><a class="dropdown-item " href="../verification/pendingVerification.php">Verification</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../approval/pendingApproval.php">Approval</a></li>
+          </ul>
+        </div>
       </li>
-
+      
       <li class="nav-heading">OPERATIONS</li>
 
       <li class="nav-item">
         <div class="dropdown">
           <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="material-icons-sharp">
-            factory
+              factory
             </span>
-           <span style="margin-bottom:10px;">Processing</span>
-            </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="listdata">
-                <li><h6 class="dropdown-header text-dark"> Processing Activities</h6></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item " href="../forms/Goods_Received_Note.php">Recieve Goods</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../forms/batchProcessingOrder.php">Batch Processing Order</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <!-- <li><a class="dropdown-item" href="batchReport.php">Batch Report</a></li>
-                <li><hr class="dropdown-divider"></li> -->
-                <li><a class="dropdown-item" href="../forms/BatchOrderSelection.php">Batch Report</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../forms/dispatch.php">Dispatch</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../forms/transfer.php">Transfer</a></li>
-                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../forms/drying.php">Drying</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../forms/hulling.php">Hulling</a></li> 
-              </ul>
-            </div>
-          </li>
+            <span style="margin-bottom:10px;">Processing</span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="listdata">
+            <li><h6 class="dropdown-header text-dark"> Processing Activities</h6></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item " href="../forms/Goods_Received_Note.php">Recieve Goods</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../forms/batchProcessingOrder.php">Batch Processing Order</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <!-- <li><a class="dropdown-item" href="batchReport.php">Batch Report</a></li>
+            <li><hr class="dropdown-divider"></li> -->
+            <li><a class="dropdown-item" href="../forms/BatchOrderSelection.php">Batch Report</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../forms/dispatch.php">Dispatch</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../forms/transfer.php">Transfer</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../forms/drying.php">Drying</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../forms/hulling.php">Hulling</a></li> 
+          </ul>
+        </div>
+      </li>
 
           <li class="nav-item">
             <div class="dropdown">
@@ -265,7 +282,7 @@ session_start();
                 ?>
                 <li class="nav-item">
                   <div class="nav-item">
-                    <a href="signup.php" class="btn" role="button">
+                    <a href="../forms/signup.php" class="btn" role="button">
                     <span class="material-icons-sharp">
                       person_add
                       </span>

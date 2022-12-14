@@ -1,10 +1,10 @@
 <?php
-$pageTitle = "GRN Pending Verifications";
+$pageTitle = "GRN Pending Approval";
 include_once ('../forms/header.php');
 include "../private/verAndApprFunctions.php";
 ?>
 <form class="regularForm" style="width: 1000px;">
-    <h2 class="formHeading">GRNs Pending Verification</h2>
+    <h2 class="formHeading">GRNs Pending Approval</h2>
     <div>
         <table>
             <tr>
@@ -16,7 +16,7 @@ include "../private/verAndApprFunctions.php";
                 <th style="width: 100px;">Purpose</th>
                 <th style="width: 150px;">Captured By</th>
             </tr>
-            <?php grnVerificationList(); ?>
+            <?php grnApprovalList(); ?>
         </table>
 
 

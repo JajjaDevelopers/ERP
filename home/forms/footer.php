@@ -9,6 +9,6 @@
 <!--Script files-->
 <script src="../assets/css/bootsrap/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/time.js"></script>
-<script src="../assets/js/sidebar.js"></script>
+<script src="../assets/js/sidebar.js" type="module"></script>
 </body>
 </html>

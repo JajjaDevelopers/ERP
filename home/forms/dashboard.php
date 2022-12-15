@@ -241,8 +241,8 @@
 </section>
 <script src="../assets/css/bootsrap/js/bootstrap.min.js"></script>
 <script src="../assets/js/tabledata.js"></script>
-<script src="../assets/js/graph1.js"></script>
-<script src="../assets/js/graph2.js"></script>
+<script src="../assets/js/graph1.js" type="module"></script>
+<script src="../assets/js/graph2.js" type="module"></script>
 <script src="../assets/js/currMonthPro.js"></script>
 </body>
 </html>

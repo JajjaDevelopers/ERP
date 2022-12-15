@@ -18,35 +18,6 @@ include "../private/verAndApprFunctions.php";
             </tr>
             <?php grnVerificationList(); ?>
         </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</form>
 <?php include("../forms/footer.php") ?>

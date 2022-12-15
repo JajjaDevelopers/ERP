@@ -11,9 +11,9 @@
 </head>
 <body>
 <section id="dashboard" class="container-fluid" style="border:2px solid blue;background-color:#39e75f;">
-<div class="row " style="border:2px solid yellow">
-  <div class="col-6" style="border:2px solid red">
-  <div class="row g-0">
+<div class="row">
+  <div class="col-6">
+  <div class="row">
     <div class="col">
     <table class="table table-bordered table-hover" id="tableReceived">
         <thead>
@@ -76,8 +76,8 @@
 
   </div><!--End of row-->
     
-    <div class="row" style="border:2px solid black">
-    <div class="col overflow-hidden p-2 pl-4" id="coffeeInAndOut">
+    <div class="row">
+    <div class="col overflow-hidden" id="coffeeInAndOut" style="padding:2px; border:2px solid green;">
     </div>
     </div>
 
@@ -85,11 +85,11 @@
     
   <!--second column-->
   <div class="col-6">
-  <div class="row" style="border:2px solid black">
-    <div class="col overflow-hidden p-2 pl-4" id="dailyCoffeeProcessing">
+  <div class="row">
+    <div class="col overflow-hidden" id="dailyCoffeeProcessing" style="padding:2px; border:2px solid gray;">
     </div>
   </div>
-  <div class="row g-0">
+  <div class="row">
     <div class="col">
       <table class="table table-bordered table-hover" id="currentMonth">
         <thead>
@@ -164,11 +164,12 @@
       </table>
     </div>
   </div>
+  </div>
 </div><!--End of First Row-->
 
 <div class="row">
  <div class="col-6">
-    <div class="row g-0" style="border:1px solid purple">
+    <div class="row">
       <div class="col">
       <table class="table table-bordered table-hover" id="tableQReceived">
           <thead>

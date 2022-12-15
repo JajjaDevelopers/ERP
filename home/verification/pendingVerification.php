@@ -17,21 +17,6 @@ include "../private/verAndApprFunctions.php";
                 <td><a href="../verification/VerifyGrn.php"><?= $grnNum ?></a></td>
             </tr>
         </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 </form>
 <?php include("../forms/footer.php") ?>

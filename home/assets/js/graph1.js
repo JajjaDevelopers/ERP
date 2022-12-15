@@ -99,3 +99,5 @@
   
   }
   plotInAndOut();
+  // var eleGrap=document.getElementById("coffeeInAndOut").getElementsByTagName("svg").getElementsByTagName("main-svg");
+  // console.log(eleGrap);

@@ -4,9 +4,13 @@
     margin:0;
     padding:0;
   }
-  table thead tr{
+
+  table thead tr th{
     color:white;
+    text-align: center;
+    font-size:16px;
   }
+  
 
   table#tableReceived thead tr,table#tableQReceived thead tr{
     background-color:rgba(0,0,255,0.4);
@@ -80,3 +84,14 @@
   table#dried{
     background-color:#e69b00;
   }
+  .col{
+    padding:0px;
+  }
+
+  .table{
+    padding:0px;
+  }
+
+  /* table tbody tr td:hover{
+    background-color: #794028;
+  } */

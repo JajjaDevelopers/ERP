@@ -80,8 +80,16 @@ function formatDocNo($docNo, $prefix){
 //Single submit button
 function submitButton($value){
     ?>
+    <style>
+         #verifyBtn:hover{
+            background-color:green;
+        }
+        #verifyBtn:focus{
+            background-color:#765341;
+        }
+    </style>
     <div id="activityPrepareDiv">
-    <input type="submit" id="activityCancelButton" value="<?=$value?>" class="btn  btn-primary my-3 btn-lg text-white" name="btnsubmit">
+    <input type="submit" id="verifyBtn" value="<?=$value?>" class="btn  btn-primary btn-sm text-white" name="btnsubmit">
     </div>
 
 <?php

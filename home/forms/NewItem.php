@@ -20,10 +20,15 @@ function newInput($inputType, $inputId, $gridColumnNo, $gridRowNo, $placeHolder,
 ?>
 <form id="hullingForm" name="hullingForm" class="regularForm" style="height:auto;" method="POST" action="../connection/newItem.php">
     <h3 class="formHeading">New Item</h3>
+    <div style="width: 50%; margin: auto;">
+        <label class="radio-inline"><input type="radio" name="invType" value="ITEM">ITEM</label>
+        <label class="radio-inline" style="margin-left: 50px;"><input type="radio" name="invType" value="SERVICE">SERVICE</label>
+    </div>
+
     <div style="display: grid; margin:auto; width: 500px">
+
     
         <?php
-        
         newLabel(1, 1, "Item ID:");
         newInput("text", "itemId", 2, 1, "ID", "70px");
         ?>
@@ -54,6 +59,7 @@ function newInput($inputType, $inputId, $gridColumnNo, $gridRowNo, $placeHolder,
             <option value="Drugar">Drugar</option>
             <option value="Roasted Beans">Roasted Beans</option>
             <option value="Roast and Ground">Roast and Ground</option>
+            <option value="NONE">NONE</option>
         </select>
         <?php
         newLabel(1, 5, "Grade Category:");
@@ -66,6 +72,7 @@ function newInput($inputType, $inputId, $gridColumnNo, $gridRowNo, $placeHolder,
             <option value="OTHER LOSSES">OTHER LOSS</option>
             <option value="WASTES">WASTES</option>
             <option value="ROASTED">ROASTED</option>
+            <option value="NONE">NONE</option>
         </select>
         <?php
         newLabel(1, 6, "Unit Symbol:");

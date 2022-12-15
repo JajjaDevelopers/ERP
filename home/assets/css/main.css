@@ -406,6 +406,8 @@ th{
     padding: 0px;
 }
 td{
+    margin: 0px;
+    padding: 0px;
     background-color: inherit;
 }
 
@@ -431,7 +433,7 @@ td{
     padding: 0px;
     background-color: inherit;
     border: none;
-    width: 95%;
+    width: 100%;
     
 }
 .itmQtyInput{

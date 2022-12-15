@@ -262,18 +262,49 @@ function activitySheetItems($itemNo){
   <tr>
     <td>
       <input type="text" value="" id="highGrade<?=$itemNo?>Code" readonly name="highGrade<?=$itemNo?>Code" class="itmNameInput" style="grid-column: 1; display:none">
-      <input type="text" value="" id="highGrade<?=$itemNo?>Name" readonly name="highGrade<?=$itemNo?>Name" class="itmNameInput" style="grid-column: 2; width: 320px">
+      <input type="text" value="" id="highGrade<?=$itemNo?>Name" readonly name="highGrade<?=$itemNo?>Name" class="itmNameInput" style="grid-column: 2; width: 360px">
       <select id="highGrade<?=$itemNo?>Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="valuationItemCodeAndName(this.id)">
         <?php CoffeeGrades(); ?>
       </select>
     </td>
-    <td ><input type="number" value="0" id="roastingQty" name="roastingQty" class="tableInput"></td>
+    <td ><input type="number" value="0" id="roastingQty" name="roastingQty" class="tableInput" style="height: 100%;" ></td>
+    <td ><input type="number" value="0" id="roastingRate" name="roastingRate" class="tableInput"></td>
+    <td><input type="text" value="0" id="roastingAmount" name="roastingAmount" class="tableInput" readonly></td>
+  <?php
+}
+
+//Item services
+function activityServices($itemNo){
+  ?>
+  <tr>
+    <td>
+      <input type="text" value="" id="highGrade<?=$itemNo?>Code" readonly name="highGrade<?=$itemNo?>Code" class="itmNameInput" style="grid-column: 1; display:none">
+      <input type="text" value="" id="highGrade<?=$itemNo?>Name" readonly name="highGrade<?=$itemNo?>Name" class="itmNameInput" style="grid-column: 2; width: 360px">
+      <select id="highGrade<?=$itemNo?>Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="valuationItemCodeAndName(this.id)">
+        <?php getServices(); ?>
+      </select>
+    </td>
+    <td ><input type="number" value="0" id="roastingQty" name="roastingQty" class="tableInput" style="height: 100%;" ></td>
     <td ><input type="number" value="0" id="roastingRate" name="roastingRate" class="tableInput"></td>
     <td><input type="text" value="0" id="roastingAmount" name="roastingAmount" class="tableInput" readonly></td>
   <?php
 }
 
 
+// Getting services
+function getServices(){
+  include "connlogin.php"; 
+  $query = "SELECT grade_id, grade_name FROM grades WHERE inventory_type='SERVICE'";
+  if ($svcSql = $conn->prepare($query)) {
+    $svcSql->execute();
+    $svcSql->bind_result($grade_id, $grade_name);
+    echo '<option></option>';
+    while ($svcSql->fetch()) {
+        echo "<option value='".$grade_id."--".$grade_name."'>$grade_name</option>";
+    }
+    $svcSql->close();
+}
+}
 
 
 // Batch Report customer list

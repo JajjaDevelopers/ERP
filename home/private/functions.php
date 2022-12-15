@@ -256,6 +256,26 @@ echo '<tr>
 }
 
 
+// Activity Sheet Item Row
+function activitySheetItems($itemNo){
+  ?>
+  <tr>
+    <td>
+      <input type="text" value="" id="highGrade<?=$itemNo?>Code" readonly name="highGrade<?=$itemNo?>Code" class="itmNameInput" style="grid-column: 1; display:none">
+      <input type="text" value="" id="highGrade<?=$itemNo?>Name" readonly name="highGrade<?=$itemNo?>Name" class="itmNameInput" style="grid-column: 2; width: 320px">
+      <select id="highGrade<?=$itemNo?>Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="valuationItemCodeAndName(this.id)">
+        <?php CoffeeGrades(); ?>
+      </select>
+    </td>
+    <td ><input type="number" value="0" id="roastingQty" name="roastingQty" class="tableInput"></td>
+    <td ><input type="number" value="0" id="roastingRate" name="roastingRate" class="tableInput"></td>
+    <td><input type="text" value="0" id="roastingAmount" name="roastingAmount" class="tableInput" readonly></td>
+  <?php
+}
+
+
+
+
 // Batch Report customer list
 function selectBatchReportCustomer(){
   include "connlogin.php"; 

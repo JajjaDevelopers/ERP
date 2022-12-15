@@ -394,19 +394,19 @@ form{
     background-color: white;
     border-width: 1px;
 }
-table, th, td{
+/* table, th, td{
     border: 1px solid #0f0f0f;
     border-collapse: collapse;
     font-size: 12px;
-}
-th, td{
+} */
+/* th, td{
     padding: 2px
-}
+} */
 th{
     padding: 0px;
 }
 td{
-    background-color: white;
+    background-color: inherit;
 }
 
 .itmNoInput{
@@ -563,16 +563,18 @@ td{
     width: 250px;
 
 }
-#roastingActivitiesTable{
+/* #roastingActivitiesTable{
     margin: 20px 0px;
     height: 150px;
     background-color: inherit;
-}
+} */
 .tableInput{
+    margin: 0px;
     text-align: right;
     border: none;
     width: 100%;
-    height: 20px;
+    height: 100%;
+    background-color: inherit;
 }
 
 .emptyCell{

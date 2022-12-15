@@ -18,36 +18,45 @@ $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "R
     
     <div id="servicesTable" >
         <label>Activities and Services</label>
-        <table >
-            <tr>
-                <th style="width: 350px;">Activity Name</th>
-                <th style="width: 100px;">Quantity</th>
-                <th style="width: 100px;">Rate</th>
-                <th style="width: 150px;">Amount</th>
-            </tr>
-            <?php 
-                for ($row = 1; $row <= 10; $row ++){
-                    activitySheetItems($row);
-                }
-            ?>
-            <tr id="totalRow">
-                <td class="emptyCell"></td>
-                <td class="emptyCell"></td>
-                <th>Total</th>
-                <th><input type="text" id="totalAmount" name="totalAmount" class="tableInput" readonly></th>
-            </tr>
+        
+        <table class="table table-striped table-hover table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 350px;">Activity Name</th>
+                    <th style="width: 100px;">Quantity</th>
+                    <th style="width: 100px;">Rate</th>
+                    <th style="width: 150px;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                    for ($row = 1; $row <= 10; $row ++){
+                        activitySheetItems($row);
+                    }
+                ?>
+            
+                <tr id="totalRow">
+                    <td class="emptyCell"></td>
+                    <td class="emptyCell"></td>
+                    <th>Total</th>
+                    <th><input type="text" id="totalAmount" name="totalAmount" class="tableInput" readonly></th>
+                </tr>
+            </tbody>
         </table>
     </div>
 
     <div  id="inventoryTable" style="display: none;">
         <label>Stock Changes</label>
-        <table>
-            <tr>
-                <th style="width: 350px;">Item Name</th>
-                <th style="width: 100px;">Input Quantity</th>
-                <th style="width: 100px;">Output Quantity</th>
-                <th style="width: 150px;"></th>
-            </tr>
+        <table class="table table-striped table-hover table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 350px;">Item Name</th>
+                    <th style="width: 100px;">Input Quantity</th>
+                    <th style="width: 100px;">Output Quantity</th>
+                    <th style="width: 150px;"></th>
+                </tr>
+            </thead>
+            <tbody>
             <?php 
                 for ($row = 1; $row <= 10; $row ++){
                     activitySheetItems($row);
@@ -59,6 +68,7 @@ $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "R
                 <th>Total</th>
                 <th><input type="text" id="totalAmount" name="totalAmount" class="tableInput" readonly></th>
             </tr>
+            </tbody>
         </table>
     </div>
 

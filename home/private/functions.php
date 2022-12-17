@@ -261,15 +261,16 @@ function activitySheetItems($itemNo){
   ?>
   <tr>
     <td>
-      <input type="text" value="" id="highGrade<?=$itemNo?>Code" readonly name="highGrade<?=$itemNo?>Code" class="itmNameInput" style="grid-column: 1; display:none">
-      <input type="text" value="" id="highGrade<?=$itemNo?>Name" readonly name="highGrade<?=$itemNo?>Name" class="itmNameInput" style="grid-column: 2; width: 360px">
-      <select id="highGrade<?=$itemNo?>Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="valuationItemCodeAndName(this.id)">
+      <input type="text" value="" id="itm<?=$itemNo?>Code" readonly name="itm<?=$itemNo?>Code" class="itmNameInput" style="grid-column: 1; display:none">
+      <input type="text" value="" id="itm<?=$itemNo?>Name" readonly name="itm<?=$itemNo?>Name" class="itmNameInput" style="grid-column: 2; width: 360px">
+      <select id="itm<?=$itemNo?>Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect"
+      onchange="selectItemx(this.id)">
         <?php CoffeeGrades(); ?>
       </select>
     </td>
-    <td ><input type="number" value="0" id="roastingQty" name="roastingQty" class="tableInput" style="height: 100%;" ></td>
-    <td ><input type="number" value="0" id="roastingRate" name="roastingRate" class="tableInput"></td>
-    <td><input type="text" value="0" id="roastingAmount" name="roastingAmount" class="tableInput" readonly></td>
+    <td ><input type="number" value="0" id="itm<?=$itemNo?>Qty" name="itm<?=$itemNo?>Qty" class="tableInput" style="height: 100%;" ></td>
+    <td ><input type="number" value="0" id="itm<?=$itemNo?>Rate" name="itm<?=$itemNo?>Rate" class="tableInput"></td>
+    <td><input type="text" value="0" id="itm<?=$itemNo?>Amount" name="itm<?=$itemNo?>Amount" class="tableInput" readonly></td>
   <?php
 }
 
@@ -278,15 +279,15 @@ function activityServices($itemNo){
   ?>
   <tr>
     <td>
-      <input type="text" value="" id="highGrade<?=$itemNo?>Code" readonly name="highGrade<?=$itemNo?>Code" class="itmNameInput" style="grid-column: 1; display:none">
-      <input type="text" value="" id="highGrade<?=$itemNo?>Name" readonly name="highGrade<?=$itemNo?>Name" class="itmNameInput" style="grid-column: 2; width: 360px">
-      <select id="highGrade<?=$itemNo?>Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect" onchange="valuationItemCodeAndName(this.id)">
+      <input type="text" value="" id="svc<?=$itemNo?>Code" readonly name="svc<?=$itemNo?>Code" class="tableInput" style="grid-column: 1; display:none">
+      <input type="text" value="" id="svc<?=$itemNo?>Name" readonly name="svc<?=$itemNo?>Name" class="tableInput" style="grid-column: 2; width: 360px">
+      <select id="svc<?=$itemNo?>Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="tableInput">
         <?php getServices(); ?>
       </select>
     </td>
-    <td ><input type="number" value="0" id="roastingQty" name="roastingQty" class="tableInput" style="height: 100%;" ></td>
-    <td ><input type="number" value="0" id="roastingRate" name="roastingRate" class="tableInput"></td>
-    <td><input type="text" value="0" id="roastingAmount" name="roastingAmount" class="tableInput" readonly></td>
+    <td ><input type="number" value="0" id="svc<?=$itemNo?>Qty" name="svc<?=$itemNo?>Qty" class="tableInput" style="height: 100%;" ></td>
+    <td ><input type="number" value="0" id="svc<?=$itemNo?>Rate" name="svc<?=$itemNo?>Rate" class="tableInput"></td>
+    <td><input type="text" value="0" id="svc<?=$itemNo?>Amount" name="svc<?=$itemNo?>Amount" class="tableInput" readonly></td>
   <?php
 }
 

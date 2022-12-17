@@ -31,7 +31,7 @@ $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "R
             <tbody>
                 <?php 
                     for ($row = 1; $row <= 10; $row ++){
-                        activitySheetItems($row);
+                        activityServices($row);
                     }
                 ?>
             
@@ -58,7 +58,7 @@ $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "R
             </thead>
             <tbody>
             <?php 
-                for ($row = 1; $row <= 10; $row ++){
+                for ($row = 1; $row <= 10; $row ++){ //script for creating items should be adjusted to match $row value
                     activitySheetItems($row);
                 }
             ?>
@@ -98,48 +98,52 @@ $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "R
 </form>
 <?php include_once('footer.php'); ?>
 <script>
-//     var qtyList = ['roastingQty', 'grindingQty', 'sortingQty', 'packaging250Qty', 'packaging500Qty', 'packaging1KgQty', 'packagingOtherQty'];
-// var rateList = ['roastingRate', 'grindingRate', 'sortingRate', 'packaging250Rate', 'packaging500Rate', 'packaging1KgRate', 'packagingOtherRate'];
-// var amountList = ['roastingAmount', 'grindingAmount', 'sortingAmount', 'packaging250Amount', 'packaging500Amount', 'packaging1KgAmount', 'packagingOtherAmount'];
-// let responders = qtyList.concat(rateList);
+    //create item ids
+    var itmCodeList = [];
+    var itmNameList = [];
+    var itmSelectList = [];
+    var itmQtyList = [];
+    var itmRateList = [];
+    var itmAmountList = [];
+    // let responders = qtyList.concat(rateList);
 
-// function convertString(strNum){
-//     var myStr = "";
-//     if (typeof strNum === 'string'){
-//         myStr = strNum.replace(/,/g, '');
-//         return myStr;
-//     }else {
-//         return strNum;
-//     }
-// }
+    for (var x=1; x<=10; x++){ 
+        itmCodeList.push("itm"+x+"Code");
+        itmNameList.push("itm"+x+"Name");
+        itmSelectList.push("itm"+x+"Select");
+        itmQtyList.push("itm"+x+"Qty");
+        itmRateList.push("itm"+x+"Rate");
+        itmAmountList.push("itm"+x+"Amount");
+    }
 
-// function updateAmount(){
-//     var amountValues = [];
-//     var grandTotal = 0;
-//     for (var i=0; i<qtyList.length; i++){
-//         var qty = document.getElementById(qtyList[i]).value;
-//         var qtyNum = Number(qty);
-//         var rate = document.getElementById(rateList[i]).value;
-//         var rateNum = Number(rate);
 
-//         var amount = qtyNum * rateNum;
-//         if (amount !== 0){
-//             document.getElementById(amountList[i]).setAttribute('value', amount.toLocaleString());
-//         }
+    //Create service ids
+    function selectItemx(itmSelectId){
         
-//         // amountValues.push(amount);
-//         grandTotal += amount;
-       
-//     }
+        var selectedItem = document.getElementById(itmSelectId).value;
+        var selectedIndex = itmSelectList.indexOf(itmSelectId);
+
+        document.getElementById(itmCodeList[selectedIndex]).setAttribute("value", selectedItem.slice(0,6));
+        document.getElementById(itmNameList[selectedIndex]).setAttribute("value", selectedItem.substr(8));
+    }
     
-//     document.getElementById('totalAmount').setAttribute('value', grandTotal.toLocaleString());
-   
-//     }
+    // for (var x=0; x<itmSelectList.length;x++){
+        // var idf = itmSelectList[0];
+        // document.getElementById("itm1Select").addEventListener("change", selectItemx("itm1Select"));
+    // }
+    // function selectItem(selectId, selectIdList, codeIdList, nameIdList){
+        
+    //     var selectedItem = document.getElementById(selectId).value;
+    //     var selectIndex = Number(selectIdList.indexOf(selectId));
 
-//     for (var r=0; r<responders.length; r++){
-//         document.getElementById(responders[r]).addEventListener("blur", updateAmount);
-//     }
-
+    //     document.getElementById(codeIdList[selectIndex]).setAttribute("value", selectedItem.slice(0,6));
+    //     document.getElementById(nameIdList[selectIndex]).setAttribute("value", selectedItem.substr(8));
+    // }
+    
+    // for (var x=0; x<itmSelectList.length;x++){
+    //     document.getElementById(itmSelectList[x]).addEventListener("change", selectItem(itmSelectList[x], itmSelectList, 
+    //     itmCodeList, itmNameList));
+    // }
     //toggle between tables
     var nextBtn = document.getElementById("nextButton");
     var nextTbl = document.getElementById("inventoryTable");
@@ -169,3 +173,9 @@ $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "R
     document.getElementById("nextButton").addEventListener("click", switchToInventory);
     document.getElementById("previousButton").addEventListener("click", switchToServices);
 </script>
+
+//45M
+3rd Party app 20M
+farmers 25M
+Transfer 50M for payment
+contact David and Deus for approval

@@ -9,6 +9,7 @@
 
 <?php
 session_start();
+include "../private/verAndApprFunctions.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,13 +120,24 @@ session_start();
               verified
             </span>
             <span style="margin-bottom:10px;">Verification &#38; Approval</span>
+            
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="listdata">
             <li><h6 class="dropdown-header text-dark">Pending...</h6></li>
             <!-- <li><hr class="dropdown-divider"></li> -->
-            <li><a class="dropdown-item " href="../verification/pendingVerification.php">Verification</a></li>
+            <li>
+              <a class="dropdown-item " href="../verification/pendingVerification.php">
+                Verification
+                <span><?php getAllPendingVerifications($totalPendVer); ?></span>
+              </a>
+            </li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../approval/pendingApproval.php">Approval</a></li>
+            <li>
+              <a class="dropdown-item" href="../approval/pendingApproval.php">
+                Approval
+                <span><?php getAllPendingApprovals($totalPendAppr); ?></span>
+              </a>
+            </li>
           </ul>
         </div>
       </li>

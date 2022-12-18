@@ -1,7 +1,7 @@
 <?php
 $pageTitle = "GRN Verification";
 include_once ('../forms/header.php');
-include "../private/verAndApprFunctions.php";
+// include "../private/verAndApprFunctions.php";
 include "../connection/verifyGrn.php";
 ?>
 <?php include ("../connection/databaseConn.php"); ?>

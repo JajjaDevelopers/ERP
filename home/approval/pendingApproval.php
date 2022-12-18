@@ -1,7 +1,7 @@
 <?php
 $pageTitle = "Pending Approval";
 include_once ('../forms/header.php');
-include "../private/verAndApprFunctions.php";
+// include "../private/verAndApprFunctions.php";
 
 ?>
 <form class="regularForm">

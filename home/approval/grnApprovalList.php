@@ -1,7 +1,7 @@
 <?php
 $pageTitle = "GRN Pending Approval";
 include_once ('../forms/header.php');
-include "../private/verAndApprFunctions.php";
+// include "../private/verAndApprFunctions.php";
 ?>
 <form class="regularForm" style="width: 1000px;">
     <h2 class="formHeading">GRNs Pending Approval</h2>

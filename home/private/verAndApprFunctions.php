@@ -8,9 +8,38 @@ function countPendVerifications($table, $column){
     return $number;
 }
 
-$grnVerNum = countPendVerifications("grn", "verified_by");
-$grnApprNum = countPendVerifications("grn", "approved_by");
+//Counting pending approvals
+function countPendApprovals($table, $column){
+    include "connlogin.php";
+    $coutnSql = $conn->query("SELECT count($column) as num FROM $table WHERE  ($column='0' AND verified_by !='0')");
+    $result = mysqli_fetch_array($coutnSql);
+    $number = $result['num'];
+    $conn->rollback();
+    return $number;
+}
 
+$grnVerNum = countPendVerifications("grn", "verified_by");
+$grnApprNum = countPendApprovals("grn", "approved_by");
+
+$totalPendVer= $grnVerNum+0; //to be added to other forms
+$totalPendAppr= $grnApprNum+0; //to be added to other forms
+function getAllPendingVerifications(){
+    global $totalPendVer;
+    if ($totalPendVer > 0){
+        ?>
+        <span class="badge"><?=$totalPendVer?></span>
+        <?php
+    }
+}
+
+function getAllPendingApprovals(){
+    global $totalPendAppr;
+    if ($totalPendAppr > 0){
+        ?>
+        <span class="badge"><?=$totalPendAppr?></span>
+        <?php
+    }
+}
 
 //Getting verification list
 function grnVerificationList(){

@@ -6,17 +6,21 @@ include "../private/verAndApprFunctions.php";
 <form class="regularForm" style="width: 1000px;">
     <h2 class="formHeading">GRNs Pending Approval</h2>
     <div>
-        <table>
-            <tr>
-                <th style="width: 60px;">GRN No.</th>
-                <th style="width: 80px;">Date</th>
-                <th style="width: 250px;">Client</th>
-                <th style="width: 250px;">Grade</th>
-                <th style="width: 70px;">Qty (Kgs)</th>
-                <th style="width: 100px;">Purpose</th>
-                <th style="width: 150px;">Captured By</th>
-            </tr>
-            <?php grnApprovalList(); ?>
+        <table class="table table-striped table-hover table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 60px;">GRN No.</th>
+                    <th style="width: 100px;">Date</th>
+                    <th style="width: 250px;">Client</th>
+                    <th style="width: 250px;">Grade</th>
+                    <th style="width: 70px;">Qty (Kgs)</th>
+                    <th style="width: 100px;">Purpose</th>
+                    <th style="width: 150px;">Captured By</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php grnApprovalList(); ?>
+            </tbody>
         </table>
 
 

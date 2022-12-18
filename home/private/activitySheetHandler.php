@@ -1,67 +1,108 @@
-<?php 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "factory";
+<?php session_start(); ?>
+<?php $preparedBy = $_SESSION["userName"]; ?>
+<?php include ("database.php"); ?>
+<?php
+//create item ids
+$itmCodeList = [];
+$itmNameList = [];
+$itmSelectList = [];
+$itmQtyList = [];
+$itmRateList = [];
+$itmAmountList = [];
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+for ($x=1; $x<=10; $x++){ 
+    array_push($itmCodeList, "itm".$x."Code");
+    array_push($itmNameList, "itm".$x."Name");
+    array_push($itmQtyList, "itm".$x."Qty");
+    array_push($itmRateList, "itm".$x."Rate");
+    array_push($itmAmountList, "itm".$x."Amount");
 }
 
-function sanitize_table($tabledata)
-{
-    $tabledata=stripslashes($tabledata);
-    $tabledata=strip_tags($tabledata);
-    $tabledata=htmlentities($tabledata);
-    return $tabledata;
+//create service ids
+$svcCodeList = [];
+$svcNameList = [];
+$svcSelectList = [];
+$svcQtyList = [];
+$svcRateList = [];
+$svcAmountList = [];
+
+for ($x=1; $x<=10; $x++){ 
+    array_push($svcCodeList, "svc".$x."Code");
+    array_push($svcNameList, "svc".$x."Name");
+    array_push($svcSelectList, "svc".$x."Select");
+    array_push($svcQtyList, "svc".$x."Qty");
+    array_push($svcRateList, "svc".$x."Rate");
+    array_push($svcAmountList, "svc".$x."Amount");
 }
 
+//capturing summary
+$actNo = documentNumber("roastery_activity_summary", "activity_sheet_no");
+$actDate = $_POST["rostingDate"];
+$customer = sanitize_table($_POST["customerId"]);
+$inputGrade = sanitize_table(substr($_POST["inputGrade"],0,6));
+$inputQty = sanitize_table($_POST["inputQty"]);
+$profile = sanitize_table($_POST["roastProfile"]);
+$specRequest = sanitize_table($_POST["specialRequest"]);
 
-function activitySummary(){
-    global $conn, $username;
+$summarySql = $conn->prepare("INSERT INTO roastery_activity_summary (activity_sheet_no, activity_date, customer_id, 
+                            grade_id, qty, roast_profile, special_request, prepared_by) VALUES (?,?,?,?,?,?,?,?)");
+$summarySql->bind_param("isssdsss", $actNo, $actDate, $customer, $inputGrade, $inputQty, $profile, $specRequest,
+                        $preparedBy);
+$summarySql->execute();
+$conn->rollback();
+
+$actvitiesSql = $conn->prepare("INSERT INTO roastery_activity_details (item_no, activity_sheet_no, grade_id, qty, 
+                            rate) VALUES (?,?,?,?,?)");
+$svcNo = 1;
+for ($i=0; $i<count($svcCodeList); $i++){
     
-    $summarySql = $conn->prepare("INSERT INTO roastery_activity_summary (activity_sheet_no, customer_id, activity_date, roast_profile,
-                                special_request, prepared_by) VALUES (?, ?, ?, ?, ?, ?)");
-    
-
-    $activityNo = $_POST['activityNumber'];
-    $customerId = $_POST['activityCustomer'];
-    $activityDate = $_POST['activityDate'];
-    $roastProfile = $_POST['roastProfile'];
-    $specialRequest = $_POST['specialRequest'];
-    $preparedBy = $username;
-    $summarySql->bind_param("ssssss", $activityNo, $customerId, $activityDate, $roastProfile, $specialRequest, $preparedBy);
-    $summarySql->execute();
-    $conn->rollback();
-
-    $serviceCodes = array('roastingCode', 'grindingCode', 'sortingCode', 'packaging250Code', 'packaging500Code', 'packaging1KgCode', 'packagingOtherCode');
-    $serviceQtys = array('roastingQty', 'grindingQty', 'sortingQty', 'packaging250Qty', 'packaging500Qty', 'packaging1KgQty', 'packagingOtherQty');
-    $serviceNames = array('roastingName', 'grindingName', 'sortingName', 'packaging250Name', 'packaging500Name', 'packaging1KgName', 'packagingOtherName');
-    $serviceRates = array('roastingRate', 'grindingRate', 'sortingRate', 'packaging250Rate', 'packaging500Rate', 'packaging1KgRate', 'packagingOtherRate');
-
-    $detailsSql = $conn->prepare("INSERT INTO roastery_activity_details (activity_sheet_no, service_id, service_name, service_qty,
-                                service_price) VALUES (?, ?, ?, ?, ?)");
-    $activityNo = $_POST['activityNumber'];
-    for ($i=0; $i < count($serviceQtys); $i++){
-        $serviceCode = $_POST[$serviceCodes[$i]];
-        $serviceName = $_POST[$serviceNames[$i]];
-        $serviceQty = $_POST[$serviceQtys[$i]];
-        $serviceRate = $_POST[$serviceRates[$i]];
-        if ($serviceQty > 0){
-            $detailsSql->bind_param("sssdd", $activityNo, $serviceCode, $serviceName, $serviceQty, $serviceRate);
-            $detailsSql->execute();
-        }
-        
+    $grade_id = $_POST[$svcCodeList[$i]];
+    $qty = $_POST[$svcQtyList[$i]];
+    $rate = $_POST[$svcRateList[$i]];
+    if ($qty != 0){
+        $actvitiesSql->bind_param("iisdd", $svcNo, $actNo, $grade_id, $qty, $rate);
+        $actvitiesSql->execute();
         $conn->rollback();
+        $svcNo += 1;
     }
-      
 }
-activitySummary();
+
+//Capturing stock balances
+$itmSql = $conn->prepare("INSERT INTO inventory (inventory_reference, document_number, customer_id, item_no, 
+                        grade_id, qty_in, block_id, section) VALUES (?,?,?,?,?,?,?,?)");
+$ref = "Roasting";
+$itmNo = 1;
+for ($i=0; $i<count($itmCodeList); $i++){
+    $grade_id = sanitize_table($_POST[$itmCodeList[$i]]);
+    $qty_in = sanitize_table($_POST[$itmQtyList[$i]]);
+    $block_id = "";
+    $section = "";
+    if ($qty_in != 0){
+        $itmSql->bind_param("sisisdss", $ref, $actNo, $customer, $itmNo, $grade_id, $qty_in, $block_id, $section);
+        $itmSql->execute();
+        $conn->rollback();
+        $itmNo += 1;
+    }
+}
+
+//adjusting stock out
+$itmOutSql = $conn->prepare("INSERT INTO inventory (inventory_reference, document_number, customer_id, item_no, 
+                        grade_id, qty_out, block_id, section) VALUES (?,?,?,?,?,?,?,?)");
+// $itmOutNo = 1;
+$block_id = "";
+$section = "";
+$itmOutSql->bind_param("sisisdss", $ref, $actNo, $customer, $itmNo, $inputGrade, $inputQty, $block_id, 
+                        $section);
+$itmOutSql->execute();
+$conn->rollback();
 
 
 
-header("location:activtySheet.php");
+
+
+
+
+
+header("location:../forms/activtySheet.php");
 exit();
 ?>

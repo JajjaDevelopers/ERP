@@ -5,20 +5,34 @@ include ("../connection/databaseConn.php");
 $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "RST");
 ?>
 
-<form class="regularForm" action="../private/activitySheetHandler.php" method="POST" style="height: fit-content;">
+<form class="regularForm" action="../connection/activitySheet.php" method="POST" style="height: fit-content;">
    
     <h3 id="activitySheetHeading" class="formHeading">Roasting Order Form</h3>
     <div style="display: grid; width:fit-content; margin-left: 70%; margin-bottom:20px">
-        <label for="hullingNo" style="grid-column: 1; grid-row: 1; width:70px; margin-top: 5px">Hulling No:</label>
-        <input type="text" class="shortInput" id="hullingNo" name="hullingNo" value="<?= $activityNo?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">
-        <label for="hullingDate" class="" style="grid-column: 1; grid-row: 2; margin-top: 10px">Date:</label>
-        <input type="date" class="shortInput" id="hullingDate" name="hullingDate" value="" style="grid-column: 2; grid-row: 2">
+        <label for="rostingNo" style="grid-column: 1; grid-row: 1; width:70px; margin-top: 5px">Activity No:</label>
+        <input type="text" class="shortInput" id="rostingNo" name="rostingNo" value="<?= $activityNo?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;">
+        <label for="rostingDate" class="" style="grid-column: 1; grid-row: 2; margin-top: 10px">Date:</label>
+        <input type="date" class="shortInput" id="rostingDate" name="rostingDate" value="" style="grid-column: 2; grid-row: 2">
     </div>
     <?php include("../forms/customerSelector.php") ?>
     
     <div id="servicesTable" >
-        <label>Activities and Services</label>
-        
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12"><label for="inputQty">Input</label></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="inputGrade">Input Grade</label>
+                    <select id="inputGrade" name="inputGrade" class="shortInput" style="width: 250px;">
+                        <?php coffeeGrades(); ?>
+                    </select>
+                    <label for="inputQty" style="padding-left: 20px;" >Quantity</label>
+                    <input type="number" id="inputQty" name="inputQty" class="shortInput" step="0.01">
+                </div>
+            </div>
+        </div>
+        <h5>Activities</h5>
         <table class="table table-striped table-hover table-condensed table-bordered">
             <thead>
                 <tr>
@@ -46,14 +60,13 @@ $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "R
     </div>
 
     <div  id="inventoryTable" style="display: none;">
-        <label>Stock Changes</label>
-        <table class="table table-striped table-hover table-condensed table-bordered">
+        <h5>Output Items</h5>
+        <table class="w-75 table table-striped table-hover table-condensed table-bordered">
             <thead>
                 <tr>
-                    <th style="width: 350px;">Item Name</th>
-                    <th style="width: 100px;">Input Quantity</th>
-                    <th style="width: 100px;">Output Quantity</th>
-                    <th style="width: 150px;"></th>
+                    <th style="width: 400px;">Item Name</th>
+                    <th style="width: 100px;">Output Qty</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -62,12 +75,6 @@ $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "R
                     activitySheetItems($row);
                 }
             ?>
-            <tr id="totalRow">
-                <td class="emptyCell"></td>
-                <td class="emptyCell"></td>
-                <th>Total</th>
-                <th><input type="text" id="totalAmount" name="totalAmount" class="tableInput" readonly></th>
-            </tr>
             </tbody>
         </table>
     </div>
@@ -116,8 +123,25 @@ $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "R
         itmAmountList.push("itm"+x+"Amount");
     }
 
+    //create service ids
+    var svcCodeList = [];
+    var svcNameList = [];
+    var svcSelectList = [];
+    var svcQtyList = [];
+    var svcRateList = [];
+    var svcAmountList = [];
+    var svcQtyAndRateList = svcQtyList.concat(svcRateList);
 
-    //Create service ids
+    for (var x=1; x<=10; x++){ 
+        svcCodeList.push("svc"+x+"Code");
+        svcNameList.push("svc"+x+"Name");
+        svcSelectList.push("svc"+x+"Select");
+        svcQtyList.push("svc"+x+"Qty");
+        svcRateList.push("svc"+x+"Rate");
+        svcAmountList.push("svc"+x+"Amount");
+    }
+
+    //item selection
     function selectItemx(itmSelectId){
         
         var selectedItem = document.getElementById(itmSelectId).value;
@@ -126,25 +150,38 @@ $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "R
         document.getElementById(itmCodeList[selectedIndex]).setAttribute("value", selectedItem.slice(0,6));
         document.getElementById(itmNameList[selectedIndex]).setAttribute("value", selectedItem.substr(8));
     }
-    
-    // for (var x=0; x<itmSelectList.length;x++){
-        // var idf = itmSelectList[0];
-        // document.getElementById("itm1Select").addEventListener("change", selectItemx("itm1Select"));
-    // }
-    // function selectItem(selectId, selectIdList, codeIdList, nameIdList){
-        
-    //     var selectedItem = document.getElementById(selectId).value;
-    //     var selectIndex = Number(selectIdList.indexOf(selectId));
 
-    //     document.getElementById(codeIdList[selectIndex]).setAttribute("value", selectedItem.slice(0,6));
-    //     document.getElementById(nameIdList[selectIndex]).setAttribute("value", selectedItem.substr(8));
-    // }
+    // service selection
+    function selectService(svcSelectId){
+        
+        var selectedItem = document.getElementById(svcSelectId).value;
+        var selectedIndex = svcSelectList.indexOf(svcSelectId);
+
+        document.getElementById(svcCodeList[selectedIndex]).setAttribute("value", selectedItem.slice(0,6));
+        document.getElementById(svcNameList[selectedIndex]).setAttribute("value", selectedItem.substr(8));
+    }
     
-    // for (var x=0; x<itmSelectList.length;x++){
-    //     document.getElementById(itmSelectList[x]).addEventListener("change", selectItem(itmSelectList[x], itmSelectList, 
-    //     itmCodeList, itmNameList));
-    // }
-    //toggle between tables
+    //updating qty and price
+    function updateQty(){
+        var totalAmt = 0;
+        for (var x=0; x<svcCodeList.length; x++){
+            var qty = Number(document.getElementById(svcQtyList[x]).value);
+            var rate = Number(document.getElementById(svcRateList[x]).value);
+            var total = qty*rate;
+            if (svcNameList[x] != "" ){
+                document.getElementById(svcAmountList[x]).value = total;
+                totalAmt += total;
+            }else{
+                document.getElementById(svcQtyList[x]).value = "";
+                document.getElementById(svcRateList[x]).value = "";
+                document.getElementById(svcAmountList[x]).value = "";
+            }
+        }
+        document.getElementById("totalAmount").value = totalAmt;
+    }
+
+
+    //Toggling between tables
     var nextBtn = document.getElementById("nextButton");
     var nextTbl = document.getElementById("inventoryTable");
     var prevTbl = document.getElementById("servicesTable");
@@ -174,8 +211,3 @@ $activityNo = nextDocNumber("roastery_activity_summary", "activity_sheet_no", "R
     document.getElementById("previousButton").addEventListener("click", switchToServices);
 </script>
 
-//45M
-3rd Party app 20M
-farmers 25M
-Transfer 50M for payment
-contact David and Deus for approval

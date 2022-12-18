@@ -5,9 +5,9 @@
 <?php
 $no = $_POST["grnKeyId"];
 verifyActivity("grn", "grn_no", $no, $verifiedBy);
-// $verifySql = $conn->prepare("UPDATE grn SET verified_by=? WHERE (grn_no=?)");
-// $verifySql->bind_param("ss", $verifiedBy, $no);
-// $verifySql->execute();
+$verifySql = $conn->prepare("UPDATE grn SET verified_by=? WHERE (grn_no=?)");
+$verifySql->bind_param("ss", $verifiedBy, $no);
+$verifySql->execute();
 
 
 

@@ -264,13 +264,12 @@ function activitySheetItems($itemNo){
       <input type="text" value="" id="itm<?=$itemNo?>Code" readonly name="itm<?=$itemNo?>Code" class="itmNameInput" style="grid-column: 1; display:none">
       <input type="text" value="" id="itm<?=$itemNo?>Name" readonly name="itm<?=$itemNo?>Name" class="itmNameInput" style="grid-column: 2; width: 360px">
       <select id="itm<?=$itemNo?>Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itemSelect"
-      onchange="selectItemx(this.id)">
+      onchange="selectItemx(this.id, )">
         <?php CoffeeGrades(); ?>
       </select>
     </td>
     <td ><input type="number" value="0" id="itm<?=$itemNo?>Qty" name="itm<?=$itemNo?>Qty" class="tableInput" style="height: 100%;" ></td>
-    <td ><input type="number" value="0" id="itm<?=$itemNo?>Rate" name="itm<?=$itemNo?>Rate" class="tableInput"></td>
-    <td><input type="text" value="0" id="itm<?=$itemNo?>Amount" name="itm<?=$itemNo?>Amount" class="tableInput" readonly></td>
+
   <?php
 }
 
@@ -279,15 +278,18 @@ function activityServices($itemNo){
   ?>
   <tr>
     <td>
-      <input type="text" value="" id="svc<?=$itemNo?>Code" readonly name="svc<?=$itemNo?>Code" class="tableInput" style="grid-column: 1; display:none">
-      <input type="text" value="" id="svc<?=$itemNo?>Name" readonly name="svc<?=$itemNo?>Name" class="tableInput" style="grid-column: 2; width: 360px">
-      <select id="svc<?=$itemNo?>Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="tableInput">
+      <input type="text" value="" id="svc<?=$itemNo?>Code" readonly name="svc<?=$itemNo?>Code" class="itmNameInput" style="grid-column: 1; display:none">
+      <input type="text" value="" id="svc<?=$itemNo?>Name" readonly name="svc<?=$itemNo?>Name" class="itmNameInput" style="grid-column: 2; width: 360px">
+      <select id="svc<?=$itemNo?>Select" style="margin-left: 0px; width: 20px; grid-column: 3;" class="itmNameInput"
+      onchange="selectService(this.id)">
         <?php getServices(); ?>
       </select>
     </td>
-    <td ><input type="number" value="0" id="svc<?=$itemNo?>Qty" name="svc<?=$itemNo?>Qty" class="tableInput" style="height: 100%;" ></td>
-    <td ><input type="number" value="0" id="svc<?=$itemNo?>Rate" name="svc<?=$itemNo?>Rate" class="tableInput"></td>
-    <td><input type="text" value="0" id="svc<?=$itemNo?>Amount" name="svc<?=$itemNo?>Amount" class="tableInput" readonly></td>
+    <td ><input type="number" value="" id="svc<?=$itemNo?>Qty" name="svc<?=$itemNo?>Qty" class="tableInput" 
+    style="height: 100%;" onblur="updateQty()"></td>
+    <td ><input type="number" value="" id="svc<?=$itemNo?>Rate" name="svc<?=$itemNo?>Rate" class="tableInput"
+    onblur="updateQty()"></td>
+    <td><input type="number" value="" id="svc<?=$itemNo?>Amount" name="svc<?=$itemNo?>Amount" class="tableInput" readonly></td>
   <?php
 }
 

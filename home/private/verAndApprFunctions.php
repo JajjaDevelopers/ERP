@@ -101,7 +101,7 @@ function grnApprovalList(){
         while ($getList->fetch()){
             ?>
             <tr>
-                <td><a href="verifyGrn.php?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
+                <td><a href="../approval/grn.php?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
                 <td><?= $grn_date ?></td>
                 <td><?= $customer_name ?></td>
                 <td><?= $grade_name ?></td>
@@ -165,7 +165,7 @@ function submitButton($value){
 <?php
 }
 
-// Verify function
+// Verify document
 function verifyActivity($table, $keyColName, $keyVariable, $verifyUser){
     include "connlogin.php";
     $verifySql = $conn->prepare("UPDATE $table SET verified_by = ? WHERE ($keyColName=?)");
@@ -173,4 +173,17 @@ function verifyActivity($table, $keyColName, $keyVariable, $verifyUser){
     $verifySql->execute();
 
 }
+
+// Approve document
+function approveActivity($table, $keyColName, $keyVariable, $approveUser){
+    include "connlogin.php";
+    $approveSql = $conn->prepare("UPDATE $table SET approved_by = ? WHERE ($keyColName=?)");
+    $approveSql->bind_param("ss", $approveUser, $keyVariable);
+    $approveSql->execute();
+
+}
+
+
+
+
 ?>

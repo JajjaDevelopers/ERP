@@ -394,14 +394,14 @@ form{
     background-color: white;
     border-width: 1px;
 }
-/* table, th, td{
+table, th, td{
     border: 1px solid #0f0f0f;
     border-collapse: collapse;
     font-size: 12px;
-} */
-/* th, td{
+}
+th, td{
     padding: 2px
-} */
+} 
 th{
     padding: 0px;
 }

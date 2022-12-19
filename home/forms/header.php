@@ -69,7 +69,7 @@ include "../private/verAndApprFunctions.php";
        <?=$_SESSION["userName"];?>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="settingslist">
-        <li> <a class="dropdown-item d-flex align-items-center" href="settings.php">
+        <li> <a class="dropdown-item d-flex align-items-center" href="../forms/settings.php">
                 <span class="material-icons-sharp">
                   settings
                   </span>

@@ -21,13 +21,14 @@ require("../forms/customerSelector.php"); ?>
     <label >Coffee Details</label>
     <div>
     <label for="type">Type</label>
+    <input class="shortInput" value="<?=$coffee_type?>" id="typeName">
     <select class="shortInput" name="coffeetype" id="type" onchange="getGrades(this.value)">
         <option></option>
         <option value="Robusta">Robusta</option>
         <option value="Arabica">Arabica</option>
     </select>    <br>
     <label>Grade:</label>
-    <label>Grade:</label>
+    <input id="gradeName" value="<?=$grade_name?>" class="shortInput" style="width: 250px;">
     <select id="gradeId" name="coffeegrades" class="shortInput" style="width: 250px;">
 
     </select><br>
@@ -41,6 +42,7 @@ require("../forms/customerSelector.php"); ?>
     <label for="mc" class="form-label" style="margin: 0px 0px 0px 0px;">Average Moisture:</label>
     <input type="number" class="shortInput" id="mc" placeholder="%" name="mc"  value="<?=$grn_mc?>" style="margin-top: 0px; width: 70px"><br>
     <label for="purpose" class="">Purpose:</label><br>
+    <input class="longInputField" id="purposeName" value="<?=$purpose?>" style="margin-left: 0px; width:280px">
     <select class="longInputField" id="purpose" placeholder="purpose" name="purpose" style="margin-left: 0px; width:280px">
         <option value="Processing">Processing</option>
         <option value="Roasting">Roastery Services</option>
@@ -67,13 +69,13 @@ require("../forms/customerSelector.php"); ?>
     <input class="form-control" id="remarks" name="remarks" value="<?=$quality_remarks?>" placeholder="quality remarks" rows="3">
 </div>
 <div id="usersDiv" class="container">
-    <div class="row">
-        <div id="preparedBy" class="col-sm-12">
-            <?= "Prepared By: ".$prepared_by." (Date and Time)" ?><label></label><br>
-            <?= "Verified By: ".$verified_by." (Date and Time)" ?><br>
-            <?= "Approved By: ".$approved_by." (Date and Time)" ?>
-        </div>
+  <div class="row">
+    <div id="preparedBy" class="col-sm-12">
+      <?= "Prepared By: ".$prepared_by." (Date and Time)" ?><br><br>
+      <?= "Verified By: ".$verified_by." (Date and Time)" ?><br><br>
+      <?= "Approved By: ".$approved_by." (Date and Time)" ?>
     </div>
+  </div>
 </div>
 
 

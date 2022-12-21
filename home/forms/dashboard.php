@@ -236,6 +236,7 @@
 
   <div class="col-6">
     <h1>Waiting For Data</h1>
+    <?php include "../dashboard/quarterlyCoffeeTypesReceived.php" ?>
   </div>
 </div><!--End Of Second Row-->
 </section>

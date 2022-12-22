@@ -235,14 +235,17 @@
   </div><!---End of First Row-->
 
   <div class="col-6">
-    <h1>Waiting For Data</h1>
-    <?php include "../dashboard/quarterlyCoffeeTypesReceived.php" ?>
+    <div class="row">
+      <div class="col" id="quarterlyReceived">
+      </div>
+    </div>
   </div>
 </div><!--End Of Second Row-->
 </section>
 <script src="../assets/css/bootsrap/js/bootstrap.min.js"></script>
 <script src="../assets/js/tabledata.js"></script>
 <script src="../assets/js/graph1.js" type="module"></script>
+<script src="../assets/js/quartGraded.js" type="module"></script>
 <script src="../assets/js/graph2.js" type="module"></script>
 <script src="../assets/js/currMonthPro.js"></script>
 </body>

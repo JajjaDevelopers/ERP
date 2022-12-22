@@ -108,7 +108,6 @@ include ("../ajax/batchReportReturnsAjax.php");
         xhttp.send();
     }
 
-    
 </script>
 
 

@@ -5,7 +5,7 @@
     <div id="criteriaSelection" class="container">
         <div class="row">
             <div class="col-md-2">
-                <label for="grade">Coffee Type:</label><br>
+                <label for="type">Coffee Type:</label><br>
                 <select id="type" name="type" class="shortInput"
                 onchange="filterOptions('category',this.value, 'typeCat')">
                     <option value="all">All</option>
@@ -14,7 +14,7 @@
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="grade">Type Category:</label><br>
+                <label for="category">Type Category:</label><br>
                 <select id="category" name="category" class="shortInput" style="width: 150px;"
                 onchange="filterOptions('grade',this.value, 'grades')">
                     <option value="all">All</option>
@@ -29,7 +29,7 @@
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="grade">As at:</label><br>
+                <label for="date">As at:</label><br>
                 <input type="date" id="date" name="date" class="shortInput" style="width: 150px;">
             </div>
         </div>

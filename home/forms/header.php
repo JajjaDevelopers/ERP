@@ -240,15 +240,16 @@ include "../private/verAndApprFunctions.php";
                 <span>Membership &#38; Production</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><h6 class="dropdown-header text-dark">Membership</h6></li>
-              <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header text-dark">Membership</h6></li>
+                <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../forms/newClient.php">New Client</a></li>
               </ul>
             </div>
           </li>
           
+
           <!---Analytics--->
-          <li class="nav-heading">Analytics</li>
+          <li class="nav-heading">Reports &#38; Analytics</li>
 
           <li class="nav-item">
             <div class="dropdown" >
@@ -258,6 +259,18 @@ include "../private/verAndApprFunctions.php";
                 </span>
                 <span>Charts &#38;Graphs</span>
               </button>
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
+                <span class="material-icons-sharp">
+                analytics
+                </span>
+                <span>Stock Reports</span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <!-- <li><h6 class="dropdown-header text-dark">Stock</h6></li> -->
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../reports/stockBalances.php">Stock Balances</a></li>
+              </ul>
+              
               <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><h6 class="dropdown-header">Roast &#38; Data Entry Forms</h6></li>
                 <li><a class="dropdown-item" href="Receivednote.php">Recieve Goods</a></li>

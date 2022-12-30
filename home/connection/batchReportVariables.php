@@ -1,4 +1,5 @@
 <?php
+include "../private/connlogin.php";
 $customerId = $_POST["customerId"];
 $customerName = $_POST["customerName"];
 $customerTel = $_POST["customerTel"];
@@ -8,6 +9,16 @@ $coffeeType = $_POST["coffeeType"];
 $inputMc = $_POST["batchMc"];
 $netInputQty = $_POST["inputQty"];
 $inputGradeName = $_POST["coffeeGrade"];
+$inputGradeId = $_POST["gradeId"];
+
+$categorySql = $conn->prepare("SELECT type_category FROM grades WHERE grade_id=?");
+$categorySql->bind_param("s", $inputGradeId);
+$categorySql->execute();
+$categorySql->bind_result($typeCategory);
+$categorySql->fetch();
+$categorySql->close();
+
+
 
 
 

@@ -148,7 +148,7 @@ function formatDocNo($docNo, $prefix){
 }
 
 //Single submit button
-function submitButton($value){
+function submitButton($value, $type){
     ?>
     <style>
          #verifyBtn:hover{
@@ -159,7 +159,7 @@ function submitButton($value){
         }
     </style>
     <div id="activityPrepareDiv">
-    <input type="submit" id="verifyBtn" value="<?=$value?>" class="btn  btn-primary btn-sm text-white" name="btnsubmit">
+    <input type="<?=$type?>" id="verifyBtn" value="<?=$value?>" class="btn  btn-primary btn-sm text-white" name="btnsubmit">
     </div>
 
 <?php

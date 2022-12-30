@@ -26,8 +26,9 @@ $conn->rollback();
 $inventory_reference = "Hulling";
 $item_no = 1;
 $inputSql = $conn->prepare("INSERT INTO inventory (inventory_reference, document_number, customer_id, item_no, 
-                            grade_id, qty_out) VALUES (?, ?, ?, ?, ?, ?)");
-$inputSql->bind_param("sisisd", $inventory_reference, $hulling_no, $customer_id, $item_no, $input_grade_id, $input_qty);
+                            grade_id, qty_out, trans_date) VALUES (?, ?, ?, ?, ?, ?, ?)");
+$inputSql->bind_param("sisisds", $inventory_reference, $hulling_no, $customer_id, $item_no, $input_grade_id, 
+                        $input_qty, $hulling_date);
 $inputSql->execute();
 $conn->rollback();
 

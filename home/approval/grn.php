@@ -7,7 +7,7 @@ $grnNo = formatDocNo($grn_no, "GRN-");
     <?php include "../forms/grnTemplate.php" ?>
 
     <?php 
-    submitButton("Approve");
+    submitButton("Approve", "Submit");
     ?>
 </form>
 <?php include "../forms/footer.php" ?>

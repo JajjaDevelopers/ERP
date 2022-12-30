@@ -76,9 +76,9 @@ require_once ("../connection/batchReportVariables.php");
         <div style="display: grid;">
             <div style="grid-column:1; grid-row:1">
                 <?php 
-                    getGrades($coffeeType, "HIGH", "", "high", "High Grades"); //HIgh grades
-                    getGrades($coffeeType, "LOW", "", "low", "Low Grades"); //Low grades
-                    getGrades($coffeeType, "HIGH", "Blacks", "blacks", "Color Sorter Rejects"); //Blacks beans
+                    getGrades($typeCategory, "HIGH", "", "high", "High Grades"); //HIgh grades
+                    getGrades($typeCategory, "LOW", "", "low", "Low Grades"); //Low grades
+                    getGrades($typeCategory, "HIGH", "Blacks", "blacks", "Color Sorter Rejects"); //Blacks beans
                     getGrades("NONE", "WASTES", "", "wastes", "Wastes"); //Wastes
                     getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses"); //Other Losses 
                 ?>

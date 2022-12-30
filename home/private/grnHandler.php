@@ -30,12 +30,12 @@ $grnSql -> bind_param("issssdiisssssss", $grnNo, $grnDate, $timein, $customerId,
 $grnSql -> execute();
 $conn->rollback();
 
-$grnDetailStmt = "INSERT INTO inventory (inventory_reference, document_number, customer_id, item_no, grade_id, qty_in)
-                VALUES (?, ?, ?, ?, ?, ?)";
+$grnDetailStmt = "INSERT INTO inventory (inventory_reference, document_number, customer_id, item_no, grade_id, 
+                qty_in, trans_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
 $grnDetails = $conn-> prepare($grnDetailStmt);
 $ref = "GRN";
 $itemNo = 1;
-$grnDetails -> bind_param("sisisd", $ref, $grnNo, $customerId, $itemNo, $coffeeGrade, $gradeweight);
+$grnDetails -> bind_param("sisisds", $ref, $grnNo, $customerId, $itemNo, $coffeeGrade, $gradeweight, $grnDate);
 $grnDetails -> execute();
 
 if(isset($_POST["btnsubmit"]))

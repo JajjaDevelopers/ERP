@@ -5,28 +5,11 @@ if($conn->connect_error) {
 }
 ?>
 <?php
-//Get Coffee Type
-$typeSql = $conn->prepare("SELECT coffee_type FROM grades
-                            JOIN grn USING (grade_id)
-                            JOIN batch_processing_order USING (batch_order_no)
-                            WHERE batch_order_no=?");
-// $batch_order_no = $_GET['q'];
-// $typeSql->bind_param("i", $batch_order_no);
-// $typeSql->execute();
-// $typeSql->bind_result($type);
-// $typeSql->fetch();
-// $typeSql->close();
-// $typ1 = "Robusta";//$type;
 
-
-//Generate grades
-//Batch returns based on coffee type
-//Generate grades
-
-
-function getGrades($coffeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $tableHeader){
+function getGrades($typeCategory, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $tableHeader){
     include "../private/connlogin.php";
-    $gradeSql = $conn->prepare("SELECT grade_id, grade_name FROM grades WHERE (coffee_type=? AND grade_type=?) ORDER BY grade_rank");
+    $gradeSql = $conn->prepare("SELECT grade_id, grade_name FROM grades WHERE (type_category=? AND grade_type=?)
+                                ORDER BY grade_rank");
   
     $highGradeList = array();
     $lowGradeList = array();
@@ -36,7 +19,7 @@ function getGrades($coffeeType, $gradeType, $gradeNamePrefix, $gradeIdPrefix, $t
     $allLists = array($highGradeList, $lowGradeList, $blacksGradeList, $wastesGradeList, $lossesGradeList);
     $listsIdentifier = array("high", "low", "blacks", "wastes", "losses");
     //global $conn, $gradeSql, $listsIdentifier, $allLists, $highGradeList, $lowGradeList, $blacksGradeList, $wastesGradeList, $lossesGradeList;
-    $gradeSql->bind_param("ss", $coffeeType, $gradeType);
+    $gradeSql->bind_param("ss", $typeCategory, $gradeType);
     $gradeSql->execute();
     $allGrades = $gradeSql -> get_result();
     $rows = $conn -> affected_rows;

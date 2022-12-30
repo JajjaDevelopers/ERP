@@ -66,69 +66,70 @@
   function plotGraph(data1,data2,data3,)
   {
     var trace1={
-        x:data1,
-        y:data3[0],
+        y:data1,
+        x:data3[0],
         type:"bar",
         name:data2[1],
         text:data3[0].map(String),
         textposition: 'auto',
         // hoverinfo: 'none'
+        orientation:"h"
     }
   
     var trace2=
       {
-        x:data1,
-        y:data3[1],
+        y:data1,
+        x:data3[1],
         type:"bar",
         name:data2[2],
         text:data3[1].map(String),
         textposition: 'auto',
         // hoverinfo: 'none'
+        orientation:"h"
       };
 
       
     var trace3=
     {
-      x:data1,
-      y:data3[2],
+      y:data1,
+      x:data3[2],
       type:"bar",
       name:data2[3],
       text:data3[2].map(String),
       textposition: 'auto',
       // hoverinfo: 'none'
+      orientation:"h"
     };
 
     var trace4=
       {
-        x:data1,
-        y:data3[3],
+        y:data1,
+        x:data3[3],
         name:data2[4],
+        type:"bar",
         text:data3[3].map(String),
         textposition: 'auto',
         // hoverinfo: 
+        orientation:"h"
       };
     
     var layout={
       barmode: 'stack',
       title:"Coffee Graded per Quarter",
       xaxis: {
-        title:{text:data2[0],standoff:20},
-        showgrid:false,
-        zeroline:false,
-        showline:true,
-        // mirror:'ticks',
-        gridcolor:'#bdbdbd',
-        gridwidth:1,
-        zerolinecolor:'#969696',
-        zerolinewidth:1,
-        linecolor:'#636363',
-        linewidth:1,
-        showdividers:true
+        title:"Values",
+        // gridcolor:'#bdbdbd',
+        // gridwidth:1,
+        // zerolinecolor:'#969696',
+        // zerolinewidth:1,
+        // linecolor:'#636363',
+        // linewidth:1,
+        // showdividers:true
       },
       // width:300,
       height:300,
       yaxis:{
-        title:"Values",
+        title:{text:data2[0],standoff:20},
         // type: 'linear',
         showgrid:true,
         zeroline:true,

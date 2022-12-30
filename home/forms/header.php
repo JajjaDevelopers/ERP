@@ -90,9 +90,9 @@ include "../private/verAndApprFunctions.php";
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar" style="display:none;">
+  <aside id="sidebar" class="sidebar" style="display:none; color:white;">
 
-    <ul class="sidebar-nav" id="sidebar-nav">
+    <ul class="sidebar-nav" id="sidebar-nav" style="color:white">
     <li class="nav-item">
        <div class="nav-item">
           <a href="../forms/index.php" class="btn" role="button">

@@ -13,11 +13,14 @@ $grnNo = nextDocNumber('grn', 'grn_no', 'GRN');
   </form>
 
   <?php include_once('footer.php'); ?>
+  <script src="../assets/js/locationsFilter.js"></script>
   <script>
     $("#usersDiv").hide();
     $("#typeName").hide();
     $("#purposeName").hide();
     $("#gradeName").hide();
+    $("#regionName").hide();
+    $("#districtName").hide();
     function getGrades(str){
       if (str == " ") {
           return;

@@ -177,7 +177,24 @@ function GetCustomerList(){
       echo '<option value="'.$customer_id.' '.$customer_name.'">'.$customer_id.' '.$customer_name.'</option>';
   }
   $stmt->close();
+  }
 }
+
+// Customer IDs list
+function clientPicker(){
+  include "connlogin.php"; 
+  $queryCustomer = "SELECT customer_id, customer_name FROM customer";
+  if ($stmt = $conn->prepare($queryCustomer)) {
+  $stmt->execute();
+  $stmt->bind_result($customer_id, $customer_name);
+  ?><option value="all">Clients</option><?php
+  while ($stmt->fetch()) {
+    ?>
+      <option value="<?=$customer_id?>"><?=$customer_name?></option>
+      <?php
+  }
+  $stmt->close();
+  }
 }
 
 
@@ -494,7 +511,15 @@ function customerFill(){
   <?php
 }
 
-
-
-
+//Getting regions
+function getRegion(){
+  include "connlogin.php";
+  $sql = $conn->prepare("SELECT region FROM districts GROUP BY region");
+  $sql->execute();
+  $sql->bind_result($region);
+  ?><option>Regions</option><?php
+  while ($sql->fetch()){
+      ?><option value="<?=$region?>"><?=$region?></option><?php
+  }
+}
 ?>

@@ -266,9 +266,10 @@ include "../private/verAndApprFunctions.php";
                 <span>Stock Reports</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <!-- <li><h6 class="dropdown-header text-dark">Stock</h6></li> -->
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../reports/stockBalances.php">Stock Balances</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../reports/stockTransactions.php">Stock Transactions</a></li>
               </ul>
               
               <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

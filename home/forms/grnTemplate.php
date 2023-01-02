@@ -16,50 +16,111 @@
 <?php 
 require("../forms/customerSelector.php"); ?>
 <br>
-<div style="display: grid; width:fit-content ">
-<div style="grid-column: 1; grid-row:1;">
-    <label >Coffee Details</label>
-    <div>
-    <label for="type">Type</label>
-    <input class="shortInput" value="<?=$coffee_type?>" id="typeName">
-    <select class="shortInput" name="coffeetype" id="type" onchange="getGrades(this.value)">
-        <option></option>
-        <option value="Robusta">Robusta</option>
-        <option value="Arabica">Arabica</option>
-    </select>    <br>
-    <label>Grade:</label>
-    <input id="gradeName" value="<?=$grade_name?>" class="shortInput" style="width: 250px;">
-    <select id="gradeId" name="coffeegrades" class="shortInput" style="width: 250px;">
+    
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <label>Coffee Details</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="type">Coffee Type:</label><br>
+            <input class="shortInput" value="<?=$coffee_type?>" id="typeName">
+            <select id="type" name="coffeetype" class="shortInput"
+                onchange="itemFilterOptions('category',this.value, 'typeCat')">
+                <option value="all">All</option>
+                <option value="Arabica">Arabica</option>
+                <option value="Robusta">Robusta</option>
+            </select><br>
+            <label for="bags" class="form-label" style="margin-top: 20px;">Bags:</label><br>
+            <input type="number" class="shortInput" id="bags" placeholder="bags" name="bags"  
+            value="<?=$no_of_bags?>" style="margin-top: 0px; width: 60px">
+        </div>
+        <div class="col-md-3">
+            <label for="category">Type Category:</label><br>
+            <select id="category" name="category" class="shortInput" style="width: 150px;"
+                onchange="itemFilterOptions('gradeId',this.value, 'grades')">
+                <option value="all">All</option>
+                
+            </select><br>
+            <label for="mc" style="margin-top: 20px;">Average Moisture:</label><br>
+            <input type="number" class="shortInput" id="mc" placeholder="%" name="mc"  value="<?=$grn_mc?>" 
+            style="margin-top: 10px; width: 70px"><br>
+        </div>
+        <div class="col-md-4">
+            <label for="gradeId">Grade:</label><br>
+            <input id="gradeName" value="<?=$grade_name?>" class="shortInput" style="width: 250px;">
+            <select id="gradeId" name="coffeegrades" class="shortInput" style="width: 250px;">
+                <option value="all">All</option>
+                
+            </select><br>
+            <label for="purpose" style="margin-top: 20px;">Purpose:</label><br>
+            <input class="longInputField" id="purposeName" value="<?=$purpose?>" 
+            style="margin-left: 0px; width:200px">
+            <select class="longInputField" id="purpose" placeholder="purpose" name="purpose" 
+            style="margin-top: 10px; width:200px; margin-left:0px">
+                <option value="Processing">Processing</option>
+                <option value="Roasting">Roastery Services</option>
+                <option value="Storage">Storage</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="weight" >Weight:</label><br>
+            <input type="number" id="weight"  class="shortInput" placeholder="kgs" 
+            name="gradeweight"  value="<?=$grn_qty?>">
+        </div>
+    </div>
+    
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <label>Delivery Details</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="region">Region:</label><br>
+            <input type="text" class="shortInput" id="regionName" placeholder="district" value="<?=$regName?>">
+            <select type="text" class="shortInput" id="region" name="region" 
+            onchange="locationFilters('origin', this.value, 'district')">
+                <?php getRegion(); ?>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="origin">District:</label><br>
+            <input type="text" class="longInputField" id="districtName" value="<?=$distName?>" style="width: 150px;">
+            <select type="text" class="shortInput" id="origin" name="origin" style="width: 150px;">
 
-    </select><br>
-    <label for="weight" class="form-label">Weight:</label>
-    <input type="number" id="weight"  class="shortInput" id="grdweight" placeholder="kgs" name="gradeweight"  value="<?=$grn_qty?>">
-    <label for="bags" class="form-label" style="margin-left: 50px;">Bags:</label>
-    <input type="number" class="shortInput" id="bags" placeholder="bags" name="bags"  value="<?=$no_of_bags?>" style="margin-top: 0px; width: 60px">
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="driverName">Driver:</label><br>
+            <input type="text" class="longInputField" id="driverName" placeholder="driver name"  
+            name="driverName" value="<?=$driver?>" style="width:200px">
+        </div>
+        <div class="col-md-3">
+            <label for="truckNumber">Truck Number:</label><br>
+            <input type="text" class="shortInput" id="truckNumber" placeholder="number" name="truckNumber" 
+            value="<?=$truck_no?>" style="width: 110px;">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-md-5">
+            <label for="deliveryPerson">Delivery Person:</label>
+            <input type="text" class="longInputField" id="deliveryPerson" placeholder="delivery person" 
+            name="deliveryPerson" value="<?=$delivery_person?>"><br>
+        </div>
     </div>
 </div>
-<div style="grid-column: 2; grid-row:1; margin: 20px 0px 0px 150px">
-    <label for="mc" class="form-label" style="margin: 0px 0px 0px 0px;">Average Moisture:</label>
-    <input type="number" class="shortInput" id="mc" placeholder="%" name="mc"  value="<?=$grn_mc?>" style="margin-top: 0px; width: 70px"><br>
-    <label for="purpose" class="">Purpose:</label><br>
-    <input class="longInputField" id="purposeName" value="<?=$purpose?>" style="margin-left: 0px; width:280px">
-    <select class="longInputField" id="purpose" placeholder="purpose" name="purpose" style="margin-left: 0px; width:280px">
-        <option value="Processing">Processing</option>
-        <option value="Roasting">Roastery Services</option>
-        <option value="Storage">Storage</option>
-    </select>    
-</div>
-</div>
+
 <div style="display: grid; margin-top:30px">
 <div class="">
-    <label for="origin" class="form-label">Origin:</label>
-    <input type="text" class="longInputField" id="origin" placeholder="district" name="origin" value="<?=$origin?>" style="width: 150px;">
-    <label for="deliveryPerson" class="" style="margin-left: 210px;">Delivery Person:</label>
-    <input type="text" class="longInputField" id="deliveryPerson" placeholder="delivery person" name="deliveryPerson" value="<?=$delivery_person?>"><br>
-    <label for="trucknumber" class="">Truck Number:</label>
-    <input type="text" class="shortInput" id="truckNumber" placeholder="number" name="truckNumber"  value="<?=$truck_no?>" style="width: 110px;">
-    <label for="driver" class="" style="margin-left: 210px;">Driver:</label>
-    <input type="text" class="longInputField" id="driverName" placeholder="driver name"  name="driverName" value="<?=$driver?>" style="margin-left: 10px; width:200px">
+    
+    
+    
+    
 </div>
 </div>
 
@@ -77,4 +138,4 @@ require("../forms/customerSelector.php"); ?>
     </div>
   </div>
 </div>
-
+<script src="../assets/js/itemsFilter.js"></script>

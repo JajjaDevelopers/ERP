@@ -1,5 +1,5 @@
 <?php $pageTitle="Batch Processing Order"; ?>
-<?php include_once('header.php'); ?>
+<?php include_once('../forms/header.php'); ?>
 <?php include ("../connection/databaseConn.php"); ?>
   <!-- <div class="container"> -->
 <div id="ajaxDiv1" style="display:none"></div>
@@ -60,7 +60,7 @@
     <?php include_once("../private/approvalDetails.php"); ?>
 </form>
 
-<?php include_once('footer.php'); ?>
+<?php include_once('../forms/footer.php'); ?>
 
 
 <script>

@@ -1,5 +1,5 @@
 <?php $pageTitle="Select Batch Order"; ?>
-<?php include_once ("header.php");
+<?php include_once ("../forms/header.php");
 include ("../connection/databaseConn.php");
 include ("../ajax/batchReportReturnsAjax.php");
 ?>
@@ -43,6 +43,8 @@ include ("../ajax/batchReportReturnsAjax.php");
         </div>
     </div>
     <?php insertNextButton(); ?>
+    </form>
+<?php include_once ("../forms/footer.php")?>
     <script>
     //pick available customer orders
     document.getElementById("salesReportBuyer").addEventListener('change', checkCustomerOrders);
@@ -110,15 +112,3 @@ include ("../ajax/batchReportReturnsAjax.php");
 
 </script>
 
-
-
-
-
-
-
-
-
-
-
-</form>
-<?php include_once ("footer.php")?>

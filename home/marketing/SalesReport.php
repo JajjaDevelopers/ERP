@@ -1,5 +1,5 @@
 <?php $pageTitle="Sales Report"; ?>
-<?php include_once('header.php');?>
+<?php include_once('../forms/header.php');?>
 <?php include ("../connection/databaseConn.php");
 $nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");
 ?>
@@ -105,8 +105,7 @@ $nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");
     <?php include_once("../private/approvalDetails.php"); ?>
     
 </form>
-
-
+<?php   include_once('../forms/footer.php'); ?>
 <script>
     document.getElementById("exchangeRate").setAttribute("value", 3500);
    
@@ -114,4 +113,4 @@ $nextSalesNo = nextDocNumber("sales_reports_summary", "sales_report_no", "SR");
 </script>
 <script src="../assets/js/salesreport.js"></script>
 <!-- <script src="../assets/js/salesreport.js"></script> -->
-<?php   include_once('footer.php'); ?>
+

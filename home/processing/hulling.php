@@ -1,5 +1,5 @@
 <?php $pageTitle="Hulling"; ?>
-<?php require ("header.php") ?>
+<?php require ("../forms/header.php") ?>
 <?php include ("../connection/databaseConn.php");
 $hullingNo = nextDocNumber("hulling", "hulling_no", "HLP"); 
 ?>
@@ -56,6 +56,7 @@ $hullingNo = nextDocNumber("hulling", "hulling_no", "HLP");
 
     <?php include_once("../private/approvalDetails.php"); ?>
 </form>
+<?php require ("../forms/footer.php") ?>
 <script src="../assets/js/gradePicker.js"></script>
 <script>
     var detailsId = ["input", "output", "husks", "otherLoss"];
@@ -89,4 +90,4 @@ $hullingNo = nextDocNumber("hulling", "hulling_no", "HLP");
     }
 
 </script>
-<?php require ("footer.php") ?>
+

@@ -155,21 +155,21 @@ include "../private/verAndApprFunctions.php";
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="listdata">
             <li><h6 class="dropdown-header text-dark"> Processing Activities</h6></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item " href="../forms/Goods_Received_Note.php">Recieve Goods</a></li>
+            <li><a class="dropdown-item " href="../inventory/Goods_Received_Note.php">Recieve Goods</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../forms/batchProcessingOrder.php">Batch Processing Order</a></li>
+            <li><a class="dropdown-item" href="../processing/batchProcessingOrder.php">Batch Processing Order</a></li>
             <li><hr class="dropdown-divider"></li>
             <!-- <li><a class="dropdown-item" href="batchReport.php">Batch Report</a></li>
             <li><hr class="dropdown-divider"></li> -->
-            <li><a class="dropdown-item" href="../forms/BatchOrderSelection.php">Batch Report</a></li>
+            <li><a class="dropdown-item" href="../processing/BatchOrderSelection.php">Batch Report</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../forms/dispatch.php">Dispatch</a></li>
+            <li><a class="dropdown-item" href="../inventory/dispatch.php">Dispatch</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../forms/transfer.php">Transfer</a></li>
+            <li><a class="dropdown-item" href="../inventory/transfer.php">Transfer</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../forms/drying.php">Drying</a></li>
+            <li><a class="dropdown-item" href="../processing/drying.php">Drying</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../forms/hulling.php">Hulling</a></li> 
+            <li><a class="dropdown-item" href="../processing/hulling.php">Hulling</a></li> 
           </ul>
         </div>
       </li>
@@ -185,11 +185,11 @@ include "../private/verAndApprFunctions.php";
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><h6 class="dropdown-header text-dark">Marketing Activities</h6></li>
               <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../forms/valuation.php">Valuation</a></li>
+                <li><a class="dropdown-item" href="../marketing/valuation.php">Valuation</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../forms/SalesReport.php">Sales Report</a></li>
+                <li><a class="dropdown-item" href="../marketing/SalesReport.php">Sales Report</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../forms/dispatch.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="../inventory/dispatch.php">Dispatch</a></li>
               </ul>
             </div>
           </li>
@@ -204,11 +204,33 @@ include "../private/verAndApprFunctions.php";
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><h6 class="dropdown-header">Roast &#38; Ground Activities</h6></li>
-                <li><a class="dropdown-item" href="../forms/Goods_Received_Note.php">Recieve Goods</a></li>
+                <li><a class="dropdown-item" href="../inventory/Goods_Received_Note.php">Recieve Goods</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../forms/activtySheet.php">Services</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../forms/dispatch.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="../inventory/dispatch.php">Dispatch</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="material-icons-sharp">
+                coffee_maker
+                </span>
+                <span>Inventroy</span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><h6 class="dropdown-header">Inventory Activities</h6></li>
+                <li><a class="dropdown-item" href="../inventory/Goods_Received_Note.php">Receive Goods</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../inventory/bulking.php">Bulking</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../inventory/transfer.php">Transfer</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../inventory/dispatch.php">Dispatch</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../inventory/adjustment.php">Adjustment</a></li>
               </ul>
             </div>
           </li>
@@ -259,6 +281,8 @@ include "../private/verAndApprFunctions.php";
                 </span>
                 <span>Charts &#38;Graphs</span>
               </button>
+            </div>
+            <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
                 <span class="material-icons-sharp">
                 analytics
@@ -271,15 +295,6 @@ include "../private/verAndApprFunctions.php";
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../reports/stockTransactions.php">Stock Transactions</a></li>
               </ul>
-              
-              <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><h6 class="dropdown-header">Roast &#38; Data Entry Forms</h6></li>
-                <li><a class="dropdown-item" href="Receivednote.php">Recieve Goods</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="activtySheet.php">Services</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="roasterydispatch.php">Dispatch</a></li>
-              </ul> -->
             </div>
           </li>
           <?php
@@ -314,7 +329,7 @@ include "../private/verAndApprFunctions.php";
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><h6 class="dropdown-header text-dark">Inventory Settings</h6></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../forms/NewItem.php">Add New Item</a></li>
+                <li><a class="dropdown-item" href="../inventory/NewItem.php">Add New Item</a></li>
                 
               </ul>
             </div>

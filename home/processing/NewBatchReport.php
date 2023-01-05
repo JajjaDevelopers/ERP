@@ -1,5 +1,5 @@
 <?php $pageTitle="Batch Report"; ?>
-<?php include_once ("header.php");
+<?php include_once ("../forms/header.php");
 include ("../connection/databaseConn.php");
 include ("../ajax/batchReportReturnsAjax.php");
 ?>
@@ -118,6 +118,7 @@ require_once ("../connection/batchReportVariables.php");
     </div>
     <?php include_once("../private/approvalDetails.php"); ?>
 </form>
+<?php include_once ("../forms/footer.php")?>
 <script>
     // get grade Ids    
     function categoryItemsFreq(){
@@ -186,25 +187,8 @@ require_once ("../connection/batchReportVariables.php");
         xhttp.send();
     }
 
-    // function returnCoffeeTypeTemplate(){
-    //     var selectedCoffeeType = document.getElementById("coffeeTypeSelector").value;
-    //     var arabicaDiv = document.getElementById("arabicaBatchReturnsAjax");
-    //     var robustaDiv = document.getElementById("robustaBatchReturnsAjax");
-    //     if (selectedCoffeeType == "Robusta"){
-    //         robustaDiv.style.display = "block";
-    //         arabicaDiv.style.display = "none";
-    //     }else if (selectedCoffeeType == "Arabica"){
-    //         arabicaDiv.style.display = "block";
-    //         robustaDiv.style.display = "none";
-    //     }else{
-    //         arabicaDiv.style.display = "none";
-    //         robustaDiv.style.display = "none";
-    //     }
-
-    // }
-    
 </script>
 
 <script src="../assets/js/batchReport.js"></script>
-<?php include_once ("footer.php")?>
+
 

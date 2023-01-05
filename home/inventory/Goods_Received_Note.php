@@ -3,7 +3,7 @@
 $pageTitle="Goods Received Note";
 $grnNo = nextDocNumber('grn', 'grn_no', 'GRN');
 ?>
-<?php include_once('header.php'); ?>
+<?php include_once('../forms/header.php'); ?>
 
   <!-- <div class="container"> -->
   <form action="../connection/grn.php" class="regularForm" method="POST" style="height:fit-content;">
@@ -12,7 +12,7 @@ $grnNo = nextDocNumber('grn', 'grn_no', 'GRN');
       
   </form>
 
-  <?php include_once('footer.php'); ?>
+  <?php include_once('../forms/footer.php'); ?>
   <script src="../assets/js/locationsFilter.js"></script>
   <script>
     $("#usersDiv").hide();

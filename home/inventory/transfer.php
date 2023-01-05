@@ -1,5 +1,5 @@
 <?php $pageTitle="Transfer"; ?>
-<?php include_once('header.php'); 
+<?php include_once('../forms/header.php'); 
 include ("../connection/databaseConn.php");
 $transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN');
 ?>
@@ -77,7 +77,7 @@ $transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN');
 
     <?php include_once("../private/approvalDetails.php"); ?>
 </form>
-<?php include_once('footer.php');?>
+<?php include_once('../forms/footer.php');?>
 <script src="../assets/js/itemSelector.js" ></script>
 <script>
     function setCustomer(selectId){

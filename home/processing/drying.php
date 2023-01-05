@@ -1,7 +1,7 @@
 <?php $pageTitle="Coffee Drying"; ?>
 <?php
 include("../private/database.php");
-include("header.php");
+include("../forms/header.php");
 $dryingNo = nextDocNumber("drying", "drying_no", "DRY");
 ?>
 
@@ -56,7 +56,7 @@ $dryingNo = nextDocNumber("drying", "drying_no", "DRY");
 
 </form>
 <script src="../assets/js/gradePicker.js"></script>
-<?php include("footer.php") ?>
+<?php include("../forms/footer.php") ?>
 <script>
   document.getElementById("inputQty").addEventListener("blur", getDryingLoss);
   document.getElementById("outputQty").addEventListener("blur", getDryingLoss);

@@ -1,5 +1,5 @@
 <?php $pageTitle="Valuation Report"; ?>
-<?php include_once('header.php'); 
+<?php include_once('../forms/header.php'); 
 include ("../connection/databaseConn.php");
 $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VAL");
 ?>
@@ -128,6 +128,7 @@ $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VA
     </div>
     <?php include_once("../private/approvalDetails.php"); ?>
 </form>
+<?php include_once('../forms/footer.php');?>
 <!-- summarizing valuation info -->
 <script>
     function updateOrder(str){
@@ -188,4 +189,3 @@ $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VA
 <!-- <script src=".\ASSETS\SCRIPTS\valuationJavaScript.js"></script> -->
 <script src="../assets/js/valuationJavaScript.js"></script>
 
-<?php include_once('footer.php');?>

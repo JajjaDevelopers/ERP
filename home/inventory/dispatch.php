@@ -1,5 +1,5 @@
 <?php $pageTitle="Goods Dispatch"; ?>
-<?php include("header.php");?>
+<?php include("../forms/header.php");?>
 <?php include ("../connection/databaseConn.php");
 $hullingNo = nextDocNumber("dispatch", "dispatch_no", "DIS"); 
 ?>
@@ -34,5 +34,5 @@ $hullingNo = nextDocNumber("dispatch", "dispatch_no", "DIS");
     <?php include_once("../private/approvalDetails.php"); ?>
 </form>
     
-<?php include("footer.php");?>
+<?php include("../forms/footer.php");?>
 <script src="../assets/js/itemSelector.js" ></script>

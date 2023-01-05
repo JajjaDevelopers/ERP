@@ -1,5 +1,5 @@
 <?php $pageTitle="Add New Item"; ?>
-<?php require "header.php" ?>
+<?php require "../forms/header.php" ?>
 <?php include ("../connection/databaseConn.php");?>
 <?php
 // Item Label
@@ -98,4 +98,4 @@ function newInput($inputType, $inputId, $gridColumnNo, $gridRowNo, $placeHolder,
     document.onload = function(){document.getElementById("itemId").style.maxLength = "4";}
     
 </script>
-<?php include "footer.php" ?>
+<?php include "../forms/footer.php" ?>

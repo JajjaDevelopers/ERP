@@ -3,11 +3,11 @@
 include "../forms/header.php";
 include "../private/database.php";
 ?>
-<form class="regularForm">
+<form class="regularForm" style="height: fit-content; width: 800px">
     <h3 class="formHeading">Stock Transactions</h3>
-    <div id="criteriaSelection" class="container">
+    <div id="criteriaSelection" class="container" style="border: 1px solid green; padding: 5px; border-radius: 10px">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label for="type">Coffee Type:</label><br>
                 <select id="type" name="type" class="shortInput"
                 onchange="itemFilterOptions('category',this.value, 'typeCat')">
@@ -24,7 +24,7 @@ include "../private/database.php";
                     
                 </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <label for="gradeId">Grade:</label><br>
                 <select id="gradeId" name="gradeId" class="shortInput" style="width: 250px;">
                     <option value="all">All</option>
@@ -34,7 +34,7 @@ include "../private/database.php";
             
         </div><br>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label for="fromDate">Date From:</label><br>
                 <input type="date" id="fromDate" name="fromDate" class="shortInput" style="width: 150px;">
             </div>
@@ -42,7 +42,7 @@ include "../private/database.php";
                 <label for="toDate">Date To:</label><br>
                 <input type="date" id="toDate" name="toDate" class="shortInput" style="width: 150px;">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <label for="customerId">Client:</label><br>
                 <select id="customerId" name="customerId" class="shortInput" style="width: 250px;">
                    

@@ -231,6 +231,8 @@ include "../private/verAndApprFunctions.php";
                 <li><a class="dropdown-item" href="../inventory/dispatch.php">Dispatch</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../inventory/adjustment.php">Adjustment</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../inventory/stockCounting.php">Stock Count</a></li>
               </ul>
             </div>
           </li>

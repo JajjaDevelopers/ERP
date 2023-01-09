@@ -213,6 +213,20 @@ function coffeeGrades(){
   }
 }
 
+function selectCoffeeGrades(){
+  include "connlogin.php"; 
+  $query = "SELECT grade_id, grade_name FROM grades";
+  if ($stmt = $conn->prepare($query)) {
+      $stmt->execute();
+      $stmt->bind_result($grade_id, $grade_name);
+      echo '<option></option>';
+      while ($stmt->fetch()) { ?>
+          <option value="<?=$grade_id?>"><?=$grade_name?></option><?php
+      }
+      $stmt->close();
+  }
+}
+
 
 // Coffee Grades according to coffee type
 function coffeeTypeGrades($type){
@@ -445,7 +459,7 @@ function gradePicker($itemId, $gradeOption){
 function itemsTable($itemsNo, $tableHeading){
   
   ?>
-  <label style="margin-top: 20px;"><?= $tableHeading?></label>
+  <h6 style="margin-top: 20px;"><?= $tableHeading?></h6>
   <table style="margin-top: 5px;">
     <tr>
       <th style="width: 40px;">No.</th>
@@ -522,4 +536,77 @@ function getRegion(){
       ?><option value="<?=$region?>"><?=$region?></option><?php
   }
 }
+
+//comment div
+function comment($width){
+  ?>
+  <div style="margin-top: 20px;">
+  <label for="comment" >Comment:</label><br>
+    <input id="comment" name="comment" class="shortInput" style="width: <?=$width?>;" required>
+    </div>
+  <?php
+}
+
+//getting names
+function getName($table, $column, $keyColumn, $key){
+  include "connlogin.php";
+  $sql = $conn->prepare("SELECT $column FROM $table WHERE $keyColumn=?");
+  $sql->bind_param("s", $key);
+  $sql->execute();
+  $sql->bind_result($fullName);
+  $sql->fetch();
+  $sql->close();
+  return $fullName;
+}
+
+//stock counting returns
+function stockCountItems(){
+  include "connlogin.php";
+  $sql = $conn->prepare("SELECT grade_id, grade_name FROM grades GROUP BY grade_id 
+                        ORDER BY coffee_type, type_category, grade_name");
+  $sql->bind_param("s", $customer_id);
+  $sql->execute();
+  $sql->bind_result($id, $name);
+  ?><br>
+  <label>Stock Counting Summary</label>
+  <table class="table table-striped table-hover table-condensed table-bordered">
+    <thead>
+      <tr>
+        <th style="width: 80px;">Grade Id</th>
+        <th style="width: 300px;">Grade Name</th>
+        <th style="width: 100px;">Available</th>
+        <th style="width: 100px;">Physical Count</th>
+        <th style="width: 100px;">Variance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      $no = 1;
+      while ($sql->fetch()){
+        ?>
+        <tr>
+          <td><input id="<?= 'itm'.$no.'Id'?>" name="<?= 'itm'.$no.'Id'?>" value="<?=$id?>" class="itmNameInput" readonly></td>
+          <td><?=$name?></td>
+          <td><input id="<?= 'itm'.$no.'Available'?>" name="<?= 'itm'.$no.'Available'?>" value="" class="itmQtyInput"></td>
+          <td><input id="<?= 'itm'.$no.'Count'?>" name="<?= 'itm'.$no.'Count'?>" value="" class="itmQtyInput"></td>
+          <td><input id="<?= 'itm'.$no.'Var'?>" name="<?= 'itm'.$no.'Var'?>" value="" class="itmQtyInput" readonly></td>
+        </tr>
+        <?php
+        $no +=1;
+      }
+      ?>
+      <tr>
+          <td colspan="2">Total</td>
+          <td><input id="<?= 'totalAvailable'?>" name="totalAvailable'?>" value="" class="itmQtyInput" readonly></td>
+          <td><input id="<?= 'totalCount'?>" name="totalCount'?>" value="" class="itmQtyInput" readonly></td>
+          <td><input id="<?= 'totalVar'?>" name="<?= 'totalVar'?>" value="" class="itmQtyInput" readonly></td>
+        </tr>
+    </tbody>
+  </table>
+  <?php
+}
+
+
+
+
 ?>

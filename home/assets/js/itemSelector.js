@@ -61,7 +61,7 @@ function updateItemQty(noOfItems){
     }
     for (var m=0; m < noOfItems; m++){
         var qtyValue = Number(document.getElementById(qtyIdList[m]).value);
-        if (qtyValue > 0){
+        if (qtyValue != ""){
             totalQty += qtyValue;
             nonEmptyList.push(totalQty);
         }

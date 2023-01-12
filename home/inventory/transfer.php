@@ -106,14 +106,7 @@ $transferNo = nextDocNumber('transfers', 'transfer_no', 'GTN');
 
         document.getElementById(sectionList[index]).innerHTML = this.responseText;
 
-        // var ajaxCustomerName = document.getElementById("name").value;
-        // document.getElementById("customerName").setAttribute('value', ajaxCustomerName);
-
-        // var ajaxCustomerContact = document.getElementById("contactPerson").value;
-        // document.getElementById("salesReportContact").setAttribute('value', ajaxCustomerContact);
-
-        // var ajaxTel = document.getElementById("tel").value;
-        // document.getElementById("salesReportTel").setAttribute('value', ajaxTel);
+       
       }
       xhttp.open("GET", "../ajax/getWareHouseSection.php?q="+blockNo);
       xhttp.send();

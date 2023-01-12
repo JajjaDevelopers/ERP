@@ -559,52 +559,7 @@ function getName($table, $column, $keyColumn, $key){
   return $fullName;
 }
 
-//stock counting returns
-function stockCountItems(){
-  include "connlogin.php";
-  $sql = $conn->prepare("SELECT grade_id, grade_name FROM grades GROUP BY grade_id 
-                        ORDER BY coffee_type, type_category, grade_name");
-  $sql->bind_param("s", $customer_id);
-  $sql->execute();
-  $sql->bind_result($id, $name);
-  ?><br>
-  <label>Stock Counting Summary</label>
-  <table class="table table-striped table-hover table-condensed table-bordered">
-    <thead>
-      <tr>
-        <th style="width: 80px;">Grade Id</th>
-        <th style="width: 300px;">Grade Name</th>
-        <th style="width: 100px;">Available</th>
-        <th style="width: 100px;">Physical Count</th>
-        <th style="width: 100px;">Variance</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-      $no = 1;
-      while ($sql->fetch()){
-        ?>
-        <tr>
-          <td><input id="<?= 'itm'.$no.'Id'?>" name="<?= 'itm'.$no.'Id'?>" value="<?=$id?>" class="itmNameInput" readonly></td>
-          <td><?=$name?></td>
-          <td><input id="<?= 'itm'.$no.'Available'?>" name="<?= 'itm'.$no.'Available'?>" value="" class="itmQtyInput"></td>
-          <td><input id="<?= 'itm'.$no.'Count'?>" name="<?= 'itm'.$no.'Count'?>" value="" class="itmQtyInput"></td>
-          <td><input id="<?= 'itm'.$no.'Var'?>" name="<?= 'itm'.$no.'Var'?>" value="" class="itmQtyInput" readonly></td>
-        </tr>
-        <?php
-        $no +=1;
-      }
-      ?>
-      <tr>
-          <td colspan="2">Total</td>
-          <td><input id="<?= 'totalAvailable'?>" name="totalAvailable'?>" value="" class="itmQtyInput" readonly></td>
-          <td><input id="<?= 'totalCount'?>" name="totalCount'?>" value="" class="itmQtyInput" readonly></td>
-          <td><input id="<?= 'totalVar'?>" name="<?= 'totalVar'?>" value="" class="itmQtyInput" readonly></td>
-        </tr>
-    </tbody>
-  </table>
-  <?php
-}
+
 
 
 

@@ -232,7 +232,7 @@ include "../private/verAndApprFunctions.php";
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../inventory/adjustment.php">Adjustment</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../inventory/stockCounting.php">Stock Count</a></li>
+                <li><a class="dropdown-item" href="../inventory/stkCountCustomer.php">Stock Count</a></li>
               </ul>
             </div>
           </li>

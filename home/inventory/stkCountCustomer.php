@@ -9,16 +9,16 @@ include ("../connection/databaseConn.php");
         <div class="row">
             <div class="col-sm-6">
                 <label for="clientId">Customer</label><br>
-                <select id="clientId" name="clientId" class="shortInput" style="width: 300px;">
+                <select id="clientId" name="clientId" class="shortInput" style="width: 300px;" required>
                     <?php clientPicker(); ?>
                 </select>
             </div>
             <div class="col-sm-6">
                 <label for="selDate">As at Date</label><br>
-                <input type="date" id="selDate" class="shortInput" name="selDate" style="width: 150px;">
+                <input type="date" id="selDate" class="shortInput" name="selDate" style="width: 150px;" required>
             </div>
         </div>
     </div>
-    <?php submitButton("Next", 'submit') ?>
+    <?php submitButton("Next", 'submit', 'confirm') ?>
 </form>
 <?php include "../forms/footer.php" ?>

@@ -61,7 +61,7 @@ $sql->bind_result($id, $avail, $name);
         </tr>
     </tbody>
 </table>
-<input type="number" id="grdNo" class="shortInput" value="<?=$no-1?>" readonly style="display: none;">
+<input type="number" id="grdNo" name="grdNo" class="shortInput" value="<?=$no-1?>" readonly style="display: none;">
 <?php
   
 

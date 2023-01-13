@@ -4,7 +4,7 @@
 include ("../connection/databaseConn.php");
 $stkCountNo = nextDocNumber("stock_counting", "count_no", "STC"); 
 ?>
-<form class="regularForm" style="height: fit-content;">
+<form class="regularForm" method="post" action="../connection/stockCounting.php" style="height: fit-content;">
     <h3 class="formHeading">Stock Counting</h3>
     <div style="display: grid; width:fit-content; margin-left: 70%; margin-bottom:20px">
         <label for="stkCountNo" style="grid-column: 1; grid-row: 1; width:70px; margin-top: 5px">Count No:</label>
@@ -20,11 +20,11 @@ $stkCountNo = nextDocNumber("stock_counting", "count_no", "STC");
     <?php comment("700px") ?>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <?php submitButton("Back", "submit") ?>
-            </div>
-            <div class="col-md-6">
-                <?php submitButton("Submit", "submit") ?>
+            <!-- <div class="col-md-6">
+                <?php //submitButton("Back", "", "back") ?>
+            </div> -->
+            <div class="col-md-12">
+                <?php submitButton("Submit", "submit", "confirm") ?>
             </div>
         </div>
     </div>

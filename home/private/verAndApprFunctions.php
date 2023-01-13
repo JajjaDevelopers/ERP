@@ -53,7 +53,7 @@ function grnVerificationList(){
     $getList = $conn->prepare($sql);
     $getList->execute();
     $getList->bind_result($grn_no, $grn_date, $customer_name, $grade_name, $grn_qty, $purpose, $FullName);
-    $rows = $conn->mysqli_affected_rows;
+    $rows = $conn->$mysqli_affected_rows;
     if ($rows<0){
         ?>
         <tr>
@@ -90,7 +90,7 @@ function grnApprovalList(){
     $getList = $conn->prepare($sql);
     $getList->execute();
     $getList->bind_result($grn_no, $grn_date, $customer_name, $grade_name, $grn_qty, $purpose, $FullName);
-    $rows = $conn->mysqli_affected_rows;
+    $rows = $conn->$mysqli_affected_rows;
     if ($rows<0){
         ?>
         <tr>
@@ -148,7 +148,7 @@ function formatDocNo($docNo, $prefix){
 }
 
 //Single submit button
-function submitButton($value, $type){
+function submitButton($value, $type, $btName){
     ?>
     <style>
          #verifyBtn:hover{
@@ -159,7 +159,7 @@ function submitButton($value, $type){
         }
     </style>
     <div id="activityPrepareDiv">
-    <input type="<?=$type?>" id="verifyBtn" value="<?=$value?>" class="btn  btn-primary btn-sm text-white" name="btnsubmit">
+    <input type="<?=$type?>" id="verifyBtn" value="<?=$value?>" class="btn  btn-primary btn-sm text-white" name="<?=$btName?>">
     </div>
 
 <?php

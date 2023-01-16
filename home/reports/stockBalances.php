@@ -35,7 +35,7 @@
         </div>
         <div class="row">
             <div class="col-md-12"><br>
-                <?php submitButton("Submit", "button");?>
+                <?php submitButton("Submit", "button", "confirm");?>
             </div>
         </div>
     </div>

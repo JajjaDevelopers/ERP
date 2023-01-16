@@ -11,7 +11,7 @@ $grnNo = formatDocNo($grn_no, "GRN-");
 <form class="regularForm" action="../connection/grnVerifyFinal.php" method="POST" style="height: fit-content;">
 
   <?php include "../forms/grnTemplate.php" ?>
-  <?php submitButton("Verify", "Submit");?>
+  <?php submitButton("Verify", "Submit", "confirm");?>
 </form>
 
 <?php include "../forms/footer.php" ?>

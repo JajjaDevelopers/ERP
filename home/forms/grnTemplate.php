@@ -63,6 +63,7 @@ require("../forms/customerSelector.php"); ?>
                 <option value="Processing">Processing</option>
                 <option value="Roasting">Roastery Services</option>
                 <option value="Storage">Storage</option>
+                <option value="Sale">Sale to Nucafe</option>
             </select>
         </div>
         <div class="col-md-3">

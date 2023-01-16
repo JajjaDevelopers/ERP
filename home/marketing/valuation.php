@@ -2,55 +2,37 @@
 <?php include_once('../forms/header.php'); 
 include ("../connection/databaseConn.php");
 $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VAL");
+$fxRate = getFx();
 ?>
-<form id="valuationForm" name="valuationForm" class="regularForm" style="height: 930px;" method="POST" action="../connection/valuation.php">
+<form id="valuationForm" name="valuationForm" class="regularForm" style="height:fit-content;" method="POST" action="../connection/valuation.php">
     <h3 class="formHeading">VALUATION REPORT</h3>
     <?php
      include "../alerts/message.php";
     ?>
-    <div style="padding: 15px 5px 5px 70%;">
-        <label for="valuationNumber" id="valuationNumberLabel" class="valuationLabel" >Valuation No.:</label>
-
-        <?php
-            
-        echo '<input type="text" id="valuationNumber" name="valuationNumber" class="shortInput" readonly value='.$valuationNumber.' 
-                style="width: 100px; text-align: center;"><br>';
-        ?>
-        <label for="valuationDate" id="valuationNumberLabel" class="valuationLabel" >Date:</label>
-        
-        <input type="date" id="valuationDate" name="valuationDate" class="shortInput" style="width: 100px; text-align: center;"><br>
-
-        <label for="valuationGrnNumber" id="valuationNumberLabel" class="valuationLabel" >GRN No.:</label>
-        <input type="text" id="valuationGrnNumber" class="shortInput" style="width: 100px; text-align: center;"><br>
-        
-        <label for="batchNo" id="batchNoLabel" class="valuationLabel" >Batch No:</label>
-        <input type="number" id="batchNo" name="batchNo" class="shortInput" value="" style="width: 100px; text-align: center;"
-        onchange="updateOrder(this.value)">
-    </div>
+    <div class="container">
+        <div class="row" style="margin-left: 65%;">
+            <div class="col-md-6" style="display:grid; margin-top:15px">
+                <label for="valuationNumber" style="text-align: right;">Valuation No.:</label>
+                <label for="valuationDate" style="text-align: right; margin-top:5px">Date:</label>
+                <label for="batchNo" style="text-align: right; margin-top:5px">Batch No:</label>
+            </div>
+            <div class="col-md-6">
+                <input type="text" id="valuationNumber" name="valuationNumber" class="shortInput" readonly value="<?=$valuationNumber?>"
+                style="width: 100px; text-align: center;">
+                <input type="date" id="valuationDate" name="valuationDate" class="shortInput" style="width: 100px; text-align: center;"><br>
+                <input type="number" id="batchNo" name="batchNo" class="shortInput" value="" style="width: 100px; text-align: center;"
+                onchange="updateOrder(this.value)">
+            </div>
+        </div>
     <div>
-        <label for="valuationSupplier" id="valuationSupplierLabel" class="regularLabel">Supplier:</label>
-        <!-- <input type="text" id="valuationSupplier" name="valuationSupplier" class="longInputField" style="width: 400px;"><br> -->
-
-        <input type="text" id="customerId" name="customerId" class="shortInput" readonly value="" style="margin: 0px; width: 70px">
-        <input type="text" id="valuationSupplier" name="valuationSupplier" class="longInputField" readonly value="" style="margin: 0px; width: 300px">
-
-        <?php
-            echo '<select id="valuationClient" class="longInputField" name="batchReportClient" style="width: 20px; margin: 0px;"
-            onchange="updateOrder(this.value)">';
-            valuationCustomer();
-            echo '</select><br>';
-            
-        ?>
-        <label for="valuationContactPerson" id="valuationContactPersonLabel" class="regularLabel">Contact Person:</label>
-        <input type="text" id="valuationContactPerson" class="longInputField">
-        <label for="valuationTelephone" id="valuationTelephoneLabel" class="regularLabel" style="padding-left: 20px;">Telephone:</label>
-        <input type="tel" id="valuationTelephone" class="longInputField" style=" width:150px"><br>
-    </div>
+        <br>
+        <?php include("../forms/customerSelector.php") ?>
+        <br>
     <div id="ajaxDiv" style="display: none;"></div>
     
         <table id="valuationsTable">
             <tr>
-                <th colspan="8">VALUATION SCHEDULE</th>
+                <th colspan="8" style="text-align: center;">VALUATION SCHEDULE</th>
             </tr>
             <tr>
                 <td>Kibooko Delivered (Kg)</td>
@@ -60,7 +42,7 @@ $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VA
             </tr>
             <tr>
                 <td>Exchange Rate</td>
-                <td colspan="2"><input type="number" value="3500" id="exchangeRate" name="exchangeRate" class="tableInput"></td>
+                <td colspan="2"><input type="number" value="<?= $fxRate?>" id="exchangeRate" name="exchangeRate" class="tableInput"></td>
                 <td colspan="5">Market facilitator and owner settlement rate</td>
                 
             </tr>
@@ -126,7 +108,7 @@ $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VA
             
         </table>
     </div>
-    <?php include_once("../private/approvalDetails.php"); ?>
+    <?php submitButton("Submit", "submit", "confirm"); ?>
 </form>
 <?php include_once('../forms/footer.php');?>
 <!-- summarizing valuation info -->

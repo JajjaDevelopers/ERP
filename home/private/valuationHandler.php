@@ -41,30 +41,35 @@ $conn->rollback();
 
 
 // Posting valuations items into nucafe invetory
-$quantityInSql = $conn->prepare("INSERT INTO nucafe_inventory (document_type, document_no, grade_id, qty_in, price_ugx) VALUES (?, ?, ?, ?, ?)"); // nucafe inventory
-$quantityOutSql = $conn->prepare("INSERT INTO inventory (inventory_reference, document_number, grade_id, qty_out) VALUES (?, ?, ?, ?)"); // General inventory
+$quantityInSql = $conn->prepare("INSERT INTO inventory (inventory_reference, document_number, 
+                                trans_date, customer_id, item_no, grade_id, qty_in) VALUES (?,?,?,?,?,?,?)");
+$quantityOutSql = $conn->prepare("INSERT INTO inventory (inventory_reference, document_number, 
+                                trans_date, customer_id, item_no, grade_id, qty_out) VALUES (?,?,?,?,?,?,?)");
 
 $docType = "Valuation Report";
+$itmNo = 1;
+$self = "SELF01";
 for ($x=0; $x < count($allGradeQty); $x++ ) {
-    
-    
     $gradeQty = sanitize_table($_POST[$allGradeQty[$x]]);
     if ($gradeQty > 0){
         
         $gradePrice = sanitize_table($_POST[$allGradePriceUgx[$x]]);
         $gradeName = $_POST[$allGradeName[$x]];
-        $quantityInSql->bind_param("sisdd", $docType, $valuationNo, $gradeName, $gradeQty, $gradePrice);
+        $quantityInSql->bind_param("sissisd", $docType, $valuationNo, $valuationDate, $self, $itmNo, 
+                                                $gradeName, $gradeQty);
         $quantityInSql->execute();
-
-        $quantityOutSql->bind_param("sisd", $docType, $valuationNo, $gradeName, $gradeQty);
+        $itmNo += 1;
+        $quantityOutSql->bind_param("sissisd", $docType, $valuationNo, $valuationDate, $customerId, $itmNo, 
+                                                $gradeName, $gradeQty);
         $quantityOutSql->execute();
+        $itmNo += 1;
     }
     
 }
 
-if(isset($_POST["btnsubmit"]))
+if(isset($_POST["confirm"]))
 {
-    header("location:../forms/valuation.php?formmsg=success");
+    header("location:../marketing/valuation.php?formmsg=success");
 }
 
 ?>

@@ -332,7 +332,21 @@ include "../private/verAndApprFunctions.php";
                 <li><h6 class="dropdown-header text-dark">Inventory Settings</h6></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../inventory/NewItem.php">Add New Item</a></li>
-                
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="material-icons-sharp">
+                storefront
+                </span>
+                <span>General Settings</span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><h6 class="dropdown-header text-dark">General Settings</h6></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../settings/exchangeRate.php">Exchange Rate</a></li>
               </ul>
             </div>
           </li>

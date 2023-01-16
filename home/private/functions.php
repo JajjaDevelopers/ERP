@@ -559,7 +559,18 @@ function getName($table, $column, $keyColumn, $key){
   return $fullName;
 }
 
-
+//exchange rate retrieval
+function getFx(){
+  include "connlogin.php";
+  $curDate = new DateTime();
+  $date = date_format($curDate, 'Y-m-d');
+  $sql = $conn->prepare("SELECT rate FROM exchange_rate WHERE rate_date=?");
+  $sql->bind_param("s", $date);
+  $sql->execute();
+  $sql->bind_result($rate);
+  $sql->fetch();
+  return $rate;
+}
 
 
 

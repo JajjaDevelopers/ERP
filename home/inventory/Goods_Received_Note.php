@@ -8,7 +8,7 @@ $grnNo = nextDocNumber('grn', 'grn_no', 'GRN');
   <!-- <div class="container"> -->
   <form action="../connection/grn.php" class="regularForm" method="POST" style="height:fit-content;">
     <?php include "../forms/grnTemplate.php" ?>
-    <?php submitButton("Submit", "Submit");?>
+    <?php submitButton("Submit", "Submit", "confirm");?>
       
   </form>
 

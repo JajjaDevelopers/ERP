@@ -158,7 +158,7 @@ function submitButton($value, $type, $btName){
             background-color:#765341;
         }
     </style>
-    <div id="activityPrepareDiv">
+    <div id="activityPrepareDiv" style="margin-top:10px; margin-bottom:10px">
     <input type="<?=$type?>" id="verifyBtn" value="<?=$value?>" class="btn  btn-primary btn-sm text-white" name="<?=$btName?>">
     </div>
 

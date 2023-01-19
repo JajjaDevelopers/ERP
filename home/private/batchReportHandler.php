@@ -91,7 +91,7 @@ for ($x=0; $x<count($allLists); $x++){
 // Capturing grade input
 
 
-header("location:../forms/BatchOrderSelection.php");
+header("location:../processing/BatchOrderSelection.php");
 exit();
 
 

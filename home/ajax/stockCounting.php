@@ -28,7 +28,7 @@ $sql->bind_result($id, $avail, $name);
 <label>Stock Counting Summary</label>
 <table class="table table-striped table-hover table-condensed table-bordered">
     <thead>
-    <tr>
+    <tr style="background-color: green; color:white">
         <th style="width: 80px;">Grade Id</th>
         <th style="width: 300px;">Grade Name</th>
         <th style="width: 100px;">Available</th>
@@ -44,21 +44,21 @@ $sql->bind_result($id, $avail, $name);
         <tr>
         <td><input id="<?= 'itm'.$no.'Id'?>" name="<?= 'itm'.$no.'Id'?>" value="<?=$id?>" class="itmNameInput" readonly></td>
         <td><?=$name?></td>
-        <td><input type="number" id="<?= 'itm'.$no.'Available'?>" name="<?= 'itm'.$no.'Available'?>" value="<?=$avail?>" class="itmQtyInput" readonly></td>
-        <td><input type="number" id="<?= 'itm'.$no.'Count'?>" name="<?= 'itm'.$no.'Count'?>" value="" class="itmQtyInput"
+        <td><input type="number" id="<?= 'itm'.$no.'Available'?>" name="<?= 'itm'.$no.'Available'?>" value="<?=$avail?>" class="tableInput" readonly></td>
+        <td><input type="number" id="<?= 'itm'.$no.'Count'?>" name="<?= 'itm'.$no.'Count'?>" value="" class="tableInput"
         onblur="getVariance()"></td>
-        <td><input type="number" id="<?= 'itm'.$no.'Var'?>" name="<?= 'itm'.$no.'Var'?>" value="0" class="itmQtyInput" readonly></td>
+        <td><input type="number" id="<?= 'itm'.$no.'Var'?>" name="<?= 'itm'.$no.'Var'?>" value="0" class="tableInput" readonly></td>
         </tr>
         <?php
         $no +=1;
     }
     ?>
     <tr>
-        <td colspan="2">Total</td>
-        <td><input type="number" id="<?= 'totalAvailable'?>" name="totalAvailable'?>" value="" class="itmQtyInput" readonly></td>
-        <td><input type="number" id="<?= 'totalCount'?>" name="totalCount'?>" value="" class="itmQtyInput" readonly></td>
-        <td><input type="number" id="<?= 'totalVar'?>" name="<?= 'totalVar'?>" value="" class="itmQtyInput" readonly></td>
-        </tr>
+        <th colspan="2">Total</th>
+        <th><input type="number" id="<?= 'totalAvailable'?>" name="totalAvailable'?>" value="" class="tableInput" readonly></th>
+        <th><input type="number" id="<?= 'totalCount'?>" name="totalCount'?>" value="" class="tableInput" readonly></th>
+        <th><input type="number" id="<?= 'totalVar'?>" name="<?= 'totalVar'?>" value="" class="tableInput" readonly></th>
+    </tr>
     </tbody>
 </table>
 <input type="number" id="grdNo" name="grdNo" class="shortInput" value="<?=$no-1?>" readonly style="display: none;">

@@ -2,7 +2,6 @@
 <?php include_once('../forms/header.php'); 
 include ("../connection/databaseConn.php");
 $valuationNumber = nextDocNumber("valuation_report_summary", "valuation_no", "VAL");
-$fxRate = getFx();
 ?>
 <form id="valuationForm" name="valuationForm" class="regularForm" style="height:fit-content;" method="POST" action="../connection/valuation.php">
     <h3 class="formHeading">VALUATION REPORT</h3>
@@ -19,7 +18,7 @@ $fxRate = getFx();
             <div class="col-md-6">
                 <input type="text" id="valuationNumber" name="valuationNumber" class="shortInput" readonly value="<?=$valuationNumber?>"
                 style="width: 100px; text-align: center;">
-                <input type="date" id="valuationDate" name="valuationDate" class="shortInput" style="width: 100px; text-align: center;"><br>
+                <input type="date" id="valuationDate" name="valuationDate" value="<?=$fmDate?>" class="shortInput" style="width: 100px; text-align: center;"><br>
                 <input type="number" id="batchNo" name="batchNo" class="shortInput" value="" style="width: 100px; text-align: center;"
                 onchange="updateOrder(this.value)">
             </div>

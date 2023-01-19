@@ -25,7 +25,7 @@ require_once ("../connection/batchReportVariables.php");
             <label for="batchOrderNumber">Order No.:</label>
             <input type="number" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" value="<?= '00'.$batchOrderNumber ?>"><br>
             <label for="batchReportDate">Date:</label>
-            <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate">
+            <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate" value="<?= $fmDate ?>">
             <br>
         </div>
         <div style="padding-top: 50px; margin-bottom: 5px; ">
@@ -76,11 +76,11 @@ require_once ("../connection/batchReportVariables.php");
         <div style="display: grid;">
             <div style="grid-column:1; grid-row:1">
                 <?php 
-                    getGrades($typeCategory, "HIGH", "", "high", "High Grades"); //HIgh grades
-                    getGrades($typeCategory, "LOW", "", "low", "Low Grades"); //Low grades
-                    getGrades($typeCategory, "HIGH", "Blacks", "blacks", "Color Sorter Rejects"); //Blacks beans
-                    getGrades("NONE", "WASTES", "", "wastes", "Wastes"); //Wastes
-                    getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses"); //Other Losses 
+                    getGrades($typeCategory, "HIGH", "", "high", "High Grades"); echo '<br>'; //HIgh grades
+                    getGrades($typeCategory, "LOW", "", "low", "Low Grades"); echo '<br>';//Low grades
+                    getGrades($typeCategory, "BLACKS", "", "blacks", "Color Sorter Rejects"); echo '<br>';//Blacks beans
+                    getGrades("NONE", "WASTES", "", "wastes", "Wastes"); echo '<br>';//Wastes
+                    getGrades("NONE", "OTHER LOSSES", "", "losses", "Other Losses"); echo '<br>';//Other Losses 
                 ?>
             </div>
             <div style="grid-column:2; grid-row:1">
@@ -116,7 +116,7 @@ require_once ("../connection/batchReportVariables.php");
             </tr>
         </table>
     </div>
-    <?php include_once("../private/approvalDetails.php"); ?>
+    <?php submitButton("Submit", "submit", "confirm"); ?>
 </form>
 <?php include_once ("../forms/footer.php")?>
 <script>

@@ -72,6 +72,7 @@ function newInput($inputType, $inputId, $gridColumnNo, $gridRowNo, $placeHolder,
                     <option></option>
                     <option value="HIGH">HIGH</option>
                     <option value="LOW">LOW</option>
+                    <option value="BLACKS">BLACKS</option>
                     <option value="UNPROCESSED">UNPROCESSED</option>
                     <option value="OTHER LOSSES">OTHER LOSS</option>
                     <option value="WASTES">WASTES</option>

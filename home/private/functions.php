@@ -516,7 +516,7 @@ function customerFill(){
   <div id="customerDetailsDiv">
     <label for="customerId" class="salesReportLabel" >Client:</label>
     <input type="text" id="customerId" name="customerId" readonly class="longInputField" value="<?= $customerId?>" style="width: 70px; margin-right: 0px;" >
-    <input type="text" id="customerName" name="customerName" readonly class="longInputField" value="<?= $customerName?>" style="margin-left: 0px; margin-right: 0px;"><br>
+    <input type="text" id="customerName" name="customerName" readonly class="longInputField" value="<?= $customerName?>" style="margin-left: 0px; margin-right: 0px; width: 250px"><br>
     <label for="customerContact" id="salesReportBuyerLabel"  class="salesReportLabel" >Contact:</label>
     <input type="text" id="contactPerson" name="contactPerson" readonly class="longInputField" value="<?= $contactPerson?>" style="margin-right: 0px; width:150px">
     <label for="customerTel" class="salesReportLabel" >Tel:</label>
@@ -572,7 +572,46 @@ function getFx(){
   return $rate;
 }
 
+//Fx history
+function previousFx(){
+  include "connlogin.php";
+  $sql = $conn->prepare("SELECT rate_date, currency, rate, reference FROM exchange_rate
+                        ORDER BY rate_date DESC LIMIT 20");
+  $sql->execute();
+  $sql->bind_result($date, $currency, $rate, $ref);
+  ?>
+  <div style="border-radius: 10px; border: solid 1px green; padding: 5px" >
+  <table class="table table-striped table-hover table-condensed table-bordered">
+    <thead>
+      <tr style="background-color: green; color: white; ">
+        <th style="text-align: center; width: 150px;">Date</th>
+        <th style="text-align: center;">Currency</th>
+        <th style="text-align: center;">Rate</th>
+        <th style="text-align: center;">Reference</th>
+      </tr>
+    </thead>
+    <tbody>
+  <?php
+  while ($sql->fetch()){
+    ?>
+    <tr>
+      <td><?= $date ?></td>
+      <td><?= $currency ?></td>
+      <td style="text-align: center;"><?= $rate ?></td>
+      <td><?= $ref ?></td>
+    </tr>
+    <?php
+  }
+  ?>
+    </tbody>
+  </table>
+  </div>
+  <?php
+}
 
-
+//date
+$currentDate = new DateTime();
+$fmDate = date_format($currentDate, 'Y-m-d');
+$fxRate = getFx();
 
 ?>

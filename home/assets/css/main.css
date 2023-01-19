@@ -404,6 +404,7 @@ th, td{
 } 
 th{
     padding: 0px;
+    text-align: center;
 }
 td{
     margin: 0px;
@@ -442,6 +443,7 @@ td{
     background-color: inherit;
     border: none;
     width: 95%;
+    text-align: right;
   
 }
 

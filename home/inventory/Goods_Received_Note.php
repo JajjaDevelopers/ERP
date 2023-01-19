@@ -21,6 +21,7 @@ $grnNo = nextDocNumber('grn', 'grn_no', 'GRN');
     $("#gradeName").hide();
     $("#regionName").hide();
     $("#districtName").hide();
+    document.getElementById("grnDate").setAttribute("value", "<?= $fmDate?>");
     function getGrades(str){
       if (str == " ") {
           return;

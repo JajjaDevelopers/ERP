@@ -29,7 +29,7 @@ for ($i=0; $i<count($grnList); $i++){
 }
 if(isset($_POST["btnsubmit"]))
 {
-    header("location:../forms/batchProcessingOrder.php?formmsg=success");
+    header("location:../processing/batchProcessingOrder.php?formmsg=success");
 }
 
 // header("location:../forms/batchProcessingOrder.php");

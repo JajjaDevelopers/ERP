@@ -94,7 +94,7 @@ function grnApprovalList(){
     if ($rows<0){
         ?>
         <tr>
-            <td>There are no unverified GRNs currently!</td>
+            <td colspan="7">There are no unverified GRNs currently!</td>
         </tr>
         <?php
     }else{

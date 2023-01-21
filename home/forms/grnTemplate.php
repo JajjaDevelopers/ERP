@@ -39,6 +39,7 @@ require("../forms/customerSelector.php"); ?>
         </div>
         <div class="col-md-3">
             <label for="category">Type Category:</label><br>
+            <input class="shortInput" value="<?=$type_category?>" id="typCatName" name="typCatName" style="width: 150px;" readonly>
             <select id="category" name="category" class="shortInput" style="width: 150px;"
                 onchange="itemFilterOptions('gradeId',this.value, 'grades')">
                 <option value="all">All</option>
@@ -131,11 +132,17 @@ require("../forms/customerSelector.php"); ?>
     <input class="form-control" id="remarks" name="remarks" value="<?=$quality_remarks?>" placeholder="quality remarks" rows="3">
 </div>
 <div id="usersDiv" class="container">
+  
   <div class="row">
-    <div id="preparedBy" class="col-sm-12">
-      <?= "Prepared By: ".$prepared_by." (Date and Time)" ?><br><br>
-      <?= "Verified By: ".$verified_by." (Date and Time)" ?><br><br>
-      <?= "Approved By: ".$approved_by." (Date and Time)" ?>
+    <div class="col-md-4">
+        <?= "Prepared By: ".$prepBy?><br>
+        <?= "Verified By: ".$verpBy?><br>
+        <?= "Approved By: ".$apprpBy?>
+    </div>
+    <div class="col-md-8">
+        <?= "Date: ".$prep_time ?><br>
+        <?= "Date: ".$ver_time ?><br>
+        <?= "Date: ".$appr_time ?>
     </div>
   </div>
 </div>

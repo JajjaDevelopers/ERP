@@ -4,10 +4,10 @@
 <?php include ("verAndApprFunctions.php"); ?>
 <?php
 $no = $_POST["grnKeyId"];
-approveActivity("grn", "grn_no", $no, $approvedBy);
-// $verifySql = $conn->prepare("UPDATE grn SET approved_by=? WHERE (grn_no=?)");
-// $verifySql->bind_param("ss", $approvedBy, $no);
-// $verifySql->execute();
+// approveActivity("grn", "grn_no", $no, $approvedBy);
+$verifySql = $conn->prepare("UPDATE grn SET approved_by=?, appr_time=NOW() WHERE (grn_no=?)");
+$verifySql->bind_param("ss", $approvedBy, $no);
+$verifySql->execute();
 
 
 

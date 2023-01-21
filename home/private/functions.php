@@ -614,4 +614,15 @@ $currentDate = new DateTime();
 $fmDate = date_format($currentDate, 'Y-m-d');
 $fxRate = getFx();
 
+//getting users names
+function userFullName($userName){
+  include "connlogin.php";
+  $userSql = $conn->prepare("SELECT FullName FROM members WHERE UserName=?");
+  $userSql->bind_param("s", $userName);
+  $userSql->execute();
+  $userSql->bind_result($fullName);
+  $userSql->fetch();
+  $userSql->close();
+  return $fullName;
+}
 ?>

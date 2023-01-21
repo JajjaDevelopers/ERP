@@ -1,10 +1,7 @@
-<?php
-$pageTitle = "GRN Verification";
-include_once ('../forms/header.php');
-// include "../private/verAndApprFunctions.php";
-include "../connection/verifyGrn.php";
-?>
-<?php include ("../connection/databaseConn.php"); ?>
+<?php $pageTitle = "GRN Verification";?>
+<?php include "../forms/header.php" ?>
+<?php include "../private/database.php"?>
+<?php include "../connection/verifyGrn.php";?>
 <?php
 $grnNo = formatDocNo($grn_no, "GRN-");
 ?>
@@ -29,7 +26,7 @@ $grnNo = formatDocNo($grn_no, "GRN-");
     for (var x=0; x<noEditList.length; x++){
         document.getElementById(noEditList[x]).setAttribute("readonly", "readonly");
     }
-    var noDisplayList = ["gradeId", "salesReportBuyer", "type", "purpose", "region", "origin"];
+    var noDisplayList = ["gradeId", "salesReportBuyer", "type", "purpose", "region", "origin", "category"];
     for (var x=0; x<noDisplayList.length; x++){
         document.getElementById(noDisplayList[x]).style.display = "none";
     }

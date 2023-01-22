@@ -5,7 +5,7 @@ $category = $_GET["category"];
 $grade = $_GET["grade"];
 $date = $_GET["date"];
 
-//Filters
+$expResults = array();
 //Coffee Type filter sql
 if ($type == "all"){
     $balSql = $conn->prepare("SELECT grade_id, grade_name, sum(qty_in) AS qty_in, sum(qty_out) AS qty_out, 
@@ -56,6 +56,7 @@ $balSql->bind_result($grade_id, $grade_name, $qty_in, $qty_out, $balance)
     <tbody>
         <?php
         while ($balSql->fetch()){
+            $row = array();
             ?>
         <tr>
             <td><?= $grade_id ?></td>
@@ -65,7 +66,11 @@ $balSql->bind_result($grade_id, $grade_name, $qty_in, $qty_out, $balance)
             <td><?= $balance ?></td>
         </tr>
         <?php
+        array_push($row, $grade_id, $grade_name, $qty_in, $qty_out, $balance);
+        array_push($expResults, "ID", "Item", "Qty In", "Qty Out", "Balance", $row);
     }
+    $data = json_encode($expResults);
     ?>
     </tbody>
 </table>
+<?php echo $data; ?>

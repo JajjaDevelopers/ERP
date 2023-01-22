@@ -289,6 +289,20 @@ include "../private/verAndApprFunctions.php";
                 <span class="material-icons-sharp">
                 analytics
                 </span>
+                <span>Transactions</span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../transactions/grnList.php">Goods Received</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../reports/stockTransactions.php">Batch Reports</a></li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
+                <span class="material-icons-sharp">
+                analytics
+                </span>
                 <span>Stock Reports</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

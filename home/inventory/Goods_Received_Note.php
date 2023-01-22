@@ -6,7 +6,7 @@ $grnNo = nextDocNumber('grn', 'grn_no', 'GRN');
 <?php include_once('../forms/header.php'); ?>
 
   <!-- <div class="container"> -->
-  <form action="../connection/grn.php" class="regularForm" method="POST" style="height:fit-content;">
+  <form action="../connection/grn.php" class="regularForm" method="POST" style="height:fit-content; width: 1000px">
     <?php include "../forms/grnTemplate.php" ?>
     <?php submitButton("Submit", "Submit", "confirm");?>
       
@@ -21,6 +21,7 @@ $grnNo = nextDocNumber('grn', 'grn_no', 'GRN');
     $("#gradeName").hide();
     $("#regionName").hide();
     $("#districtName").hide();
+    $("#typCatName").hide();
     document.getElementById("grnDate").setAttribute("value", "<?= $fmDate?>");
     function getGrades(str){
       if (str == " ") {

@@ -1,3 +1,4 @@
+<?php $pageTitle = "Stock Balances";?>
 <?php require "../forms/header.php" ?>
 <?php ?>
 <form class="regularForm" style="height: fit-content;">

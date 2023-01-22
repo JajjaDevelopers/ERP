@@ -5,7 +5,7 @@ $category = $_GET["category"];
 $grade = $_GET["grade"];
 $date = $_GET["date"];
 
-$expResults = array("ID", "Item", "Qty In", "Qty Out", "Balance");
+$expResults = array(["ID", "Item", "Qty In", "Qty Out", "Balance"]);
 //Coffee Type filter sql
 if ($type == "all"){
     $balSql = $conn->prepare("SELECT grade_id, grade_name, sum(qty_in) AS qty_in, sum(qty_out) AS qty_out, 

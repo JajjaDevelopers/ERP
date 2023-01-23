@@ -43,10 +43,14 @@
     <div id="stockBalanceReturns" class="container">
 
     </div>
-
-
-
 </form>
+<div class="container text-center">
+<form action="../phpspreadsheet/export.php" method="post" style="display:none; background-color:#6F4E37;border:none;" id="export">
+    <div class="form-group text-end">
+    <input type="submit" name="export" value="Export to Excel" class="btn" style="background-color:green; color:white; margin-right: 60px;">
+    </div>
+ </form>
+</div>
 
 <?php require "../forms/footer.php" ?>
 <script src="../assets/js/itemsFilter.js"></script>
@@ -67,6 +71,7 @@
       xhttp.open("GET", "../ajax/stockBalance.php?type="+coffType+"&category="+typCategory+"&grade="+
                 coffGrade+"&date="+atDate);
       xhttp.send();
+      document.getElementById("export").style.display="block";
     }
 
 </script>

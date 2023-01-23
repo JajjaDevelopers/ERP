@@ -1,4 +1,5 @@
 <?php
+// session_start();
 include "../private/database.php";
 $type = $_GET["type"];
 $category = $_GET["category"];
@@ -41,8 +42,9 @@ if ($type == "all"){
 }
 
 $balSql->execute();
-$balSql->bind_result($grade_id, $grade_name, $qty_in, $qty_out, $balance)
+$balSql->bind_result($grade_id, $grade_name, $qty_in, $qty_out, $balance);
 ?>
+
 <table class="table table-striped table-hover table-condensed table-bordered">
     <thead>
         <tr>
@@ -55,6 +57,7 @@ $balSql->bind_result($grade_id, $grade_name, $qty_in, $qty_out, $balance)
     </thead>
     <tbody>
         <?php
+          session_start();
         while ($balSql->fetch()){
             $row = array();
             ?>
@@ -70,7 +73,8 @@ $balSql->bind_result($grade_id, $grade_name, $qty_in, $qty_out, $balance)
         array_push($expResults, $row);
     }
     $data = json_encode($expResults);
+    $_SESSION["data"]=$data;
     ?>
     </tbody>
 </table>
-<?php echo $data; ?>
+

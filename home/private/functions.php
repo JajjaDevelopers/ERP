@@ -611,7 +611,7 @@ function previousFx(){
 
 //date
 $currentDate = new DateTime();
-$fmDate = date_format($currentDate, 'Y-m-d');
+$today = date_format($currentDate, 'Y-m-d');
 $fxRate = getFx();
 
 //getting users names

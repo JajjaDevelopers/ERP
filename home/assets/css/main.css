@@ -83,7 +83,7 @@ h1{
 }
 .formHeading{
     text-align: center;
-    color: rgb(40, 109, 66);
+    color: green;
     grid-row: 1;
     grid-column: 1;
     grid-column-start: 1;

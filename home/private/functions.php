@@ -1,6 +1,9 @@
 <?php
 // require_once "connlogin.php";
 //function that tests for empty fields
+
+use PhpOffice\PhpSpreadsheet\Calculation\DateTimeExcel\Days;
+
 function emptyFieldSignUp($fullname,$username,$email,$tel,$password,$passwordRepeat,$access)
 {
   if(empty($fullname)||empty($username)||empty($email)||empty($tel)||empty($password)||empty($passwordRepeat)||empty($access))
@@ -460,7 +463,7 @@ function itemsTable($itemsNo, $tableHeading){
   
   ?>
   <h6 style="margin-top: 20px;"><?= $tableHeading?></h6>
-  <table style="margin-top: 5px;">
+  <table style="margin-top: 5px;" >
     <tr>
       <th style="width: 40px;">No.</th>
       <th>Grade</th>
@@ -609,9 +612,13 @@ function previousFx(){
   <?php
 }
 
-//date
+//dates
 $currentDate = new DateTime();
 $today = date_format($currentDate, 'Y-m-d');
+$fromDateObj=$currentDate->sub(new DateInterval('P30D')); //returning 30 days back date
+$fromDate = date_format($fromDateObj, 'Y-m-d');
+
+//forex
 $fxRate = getFx();
 
 //getting users names

@@ -90,7 +90,7 @@ include "../private/verAndApprFunctions.php";
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar" style="display:none; color:white;">
+  <aside id="sidebar" class="sidebar" style="display:none; color:white; width:310px">
 
     <ul class="sidebar-nav" id="sidebar-nav" style="color:white">
     <li class="nav-item">
@@ -216,7 +216,7 @@ include "../private/verAndApprFunctions.php";
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="material-icons-sharp">
-                coffee_maker
+              local_grocery_store
                 </span>
                 <span>Inventroy</span>
               </button>
@@ -286,9 +286,7 @@ include "../private/verAndApprFunctions.php";
             </div>
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
-                <span class="material-icons-sharp">
-                analytics
-                </span>
+              <span class="material-icons-sharp">receipt</span>
                 <span>Transactions</span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -301,7 +299,7 @@ include "../private/verAndApprFunctions.php";
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" >
                 <span class="material-icons-sharp">
-                analytics
+                assignment
                 </span>
                 <span>Stock Reports</span>
               </button>
@@ -353,7 +351,7 @@ include "../private/verAndApprFunctions.php";
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="material-icons-sharp">
-                storefront
+                settings
                 </span>
                 <span>General Settings</span>
               </button>

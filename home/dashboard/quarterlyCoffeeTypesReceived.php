@@ -14,7 +14,6 @@ function getQuarterlyKgs($typeCategory, $Quarter){
     $getSql->execute();
     $getSql->bind_result($qtrQty);
     $getSql->fetch();
-    $conn->rollback();
     if ($qtrQty == null){
         $qtrQty = 0;
     }

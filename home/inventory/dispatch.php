@@ -4,7 +4,7 @@
 $hullingNo = nextDocNumber("dispatch", "dispatch_no", "DIS"); 
 ?>
     
-<form id="deliveryNoteForm" class="regularForm" method="POST" style="height: 900px;" action="../connection/dispatch.php">
+<form class="regularForm" method="POST" style="height:fit-content; width:1000px" action="../connection/dispatch.php">
     <h3 id="deliveryNoteHeading" class="formHeading">Delivery Note</h3>
     <div style="display: grid; width:fit-content; margin-left: 70%;">
         <label for="hullingNo" style="grid-column: 1; grid-row: 1; width:80px; margin-top: 5px">Dispatch No:</label>
@@ -31,7 +31,7 @@ $hullingNo = nextDocNumber("dispatch", "dispatch_no", "DIS");
             <input style="width: 550px; padding-left: 5px" type="text" id="remarks" class="longInputField" name="remarks">
         </div>
     </div>
-    <?php include_once("../private/approvalDetails.php"); ?>
+    <?php submitButton("Submit", "button", "confirm"); ?>
 </form>
     
 <?php include("../forms/footer.php");?>

@@ -1,16 +1,15 @@
-<?php $pageTitle = "GRN Approval";?>
+<?php $pageTitle = "GRN";?>
 <?php include "../forms/header.php" ?>
 <?php include "../private/database.php"?>
-<?php include "../connection/verifyGrn.php";
-$grnNo = formatDocNo($grn_no, "GRN-");
+<?php include "../connection/verifyGrn.php";?>
+<?php
+$grnNo = formatDocNo(intval($grn_no), "GRN-");
 ?>
-<form class="regularForm" action="../connection/grnApprovalFinal.php" method="POST" style="height: fit-content; width:1000px">
-    <?php include "../forms/grnTemplate.php" ?>
+<form class="regularForm" style="height: fit-content; width:1000px">
 
-    <?php 
-    submitButton("Approve", "submit", "confirm");
-    ?>
+  <?php include "../forms/grnTemplate.php" ?>
 </form>
+
 <?php include "../forms/footer.php" ?>
 <script>
     document.getElementById("salesReportBuyer").style.display = "none";

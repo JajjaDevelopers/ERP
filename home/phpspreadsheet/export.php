@@ -64,7 +64,6 @@ if(isset($_POST["export"])){
     header("Content-Disposition: attachment; filename=\"$fileName\"");	
     $writer = new Xlsx($spreadsheet);
     $writer->save("php://output");
-    $writer->save($fileName);
 
 }
 ?>

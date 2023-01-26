@@ -170,6 +170,7 @@ include "../private/verAndApprFunctions.php";
             <li><a class="dropdown-item" href="../processing/drying.php">Drying</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="../processing/hulling.php">Hulling</a></li> 
+            <li><a class="dropdown-item" href="../inventory/release.php">Release Request</a></li> 
           </ul>
         </div>
       </li>
@@ -190,6 +191,7 @@ include "../private/verAndApprFunctions.php";
                 <li><a class="dropdown-item" href="../marketing/SalesReport.php">Sales Report</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../inventory/dispatch.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="../inventory/release.php">Release Request</a></li> 
               </ul>
             </div>
           </li>
@@ -209,14 +211,15 @@ include "../private/verAndApprFunctions.php";
                 <li><a class="dropdown-item" href="../forms/activtySheet.php">Services</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../inventory/dispatch.php">Dispatch</a></li>
+                <li><a class="dropdown-item" href="../inventory/release.php">Release Request</a></li> 
               </ul>
             </div>
           </li>
           <li class="nav-item">
             <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="material-icons-sharp">
-              local_grocery_store
+                <span class="material-icons-sharp">
+                  local_grocery_store
                 </span>
                 <span>Inventroy</span>
               </button>
@@ -233,6 +236,8 @@ include "../private/verAndApprFunctions.php";
                 <li><a class="dropdown-item" href="../inventory/adjustment.php">Adjustment</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../inventory/stkCountCustomer.php">Stock Count</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../inventory/release.php">Release Request</a></li> 
               </ul>
             </div>
           </li>

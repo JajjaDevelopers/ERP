@@ -1,2 +1,2 @@
-import graded from "./module3";
+import graded from "./module3.js";
 graded();

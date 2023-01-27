@@ -14,7 +14,7 @@ function getQuarterlyKgs($typeCategory, $Quarter){
     $getSql->execute();
     $getSql->bind_result($qtrQty);
     $getSql->fetch();
-    $conn->rollback();
+    // $conn->rollback();
     if ($qtrQty == null){
         $qtrQty = 0;
     }
@@ -56,6 +56,5 @@ $q4 = array("Q4", $natural4, $wugar4, $drugar4, $washed4);
 
 $data = json_encode(array($guide, $q1, $q2, $q3, $q4));
 echo $data;
-
 
 ?>

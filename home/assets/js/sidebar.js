@@ -1,5 +1,5 @@
-import graph1 from "./module1";
-import graph2 from "./module2";
+import graph1 from "./module1.js";
+import graph2 from "./module2.js";
 const btnOpen=document.getElementById("openbtn");
 const btnClose=document.getElementById("closebtn");
 const elSideBar=document.getElementById("sidebar");

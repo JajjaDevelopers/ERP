@@ -40,7 +40,7 @@ $grnDetails -> execute();
 
 if(isset($_POST["btnsubmit"]))
 {
-    header("location:../forms/Goods_Received_Note.php?formmsg=success");
+    header("location:../inventory/Goods_Received_Note.php?formmsg=success");
 }
 // header("location:../forms/Goods_Received_Note.php")
 ?>

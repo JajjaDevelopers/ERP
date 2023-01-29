@@ -1,4 +1,4 @@
-<?php include("../private/grnHandler.php") ?>
+<?php include("../private/grnHandler.php"); ?>
 
 
 

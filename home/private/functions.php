@@ -105,7 +105,7 @@ function pwdMatch($password,$passwordRepeat){
   
   if(!$stmt)
   {
-    header("location:..forms/signup.php?error=stmtfailed");
+    header("location:..forms/signup?error=stmtfailed");
     exit();
   }
 
@@ -118,7 +118,7 @@ function pwdMatch($password,$passwordRepeat){
   $stmt->bindParam(6,$access,PDO::PARAM_INT);
   $stmt->execute();
   $pdo=null;
-  header("location:../forms/signup.php?error=successfully");
+  header("location:../forms/signup?error=successfully");
   exit();
  }
  

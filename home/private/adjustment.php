@@ -72,5 +72,5 @@ for ($x=0;$x<count($qtyList);$x++){
 
 
 
-header("location:../inventory/adjustment.php");
+header("location:../inventory/adjustment");
 ?>

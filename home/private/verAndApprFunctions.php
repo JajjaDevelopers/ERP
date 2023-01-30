@@ -69,7 +69,7 @@ function grnVerificationList(){
         while ($getList->fetch()){
             ?>
             <tr>
-                <td><a href="verifyGrn.php?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
+                <td><a href="verifyGrn?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
                 <td><?= $grn_date ?></td>
                 <td><?= $customer_name ?></td>
                 <td><?= $grade_name ?></td>
@@ -106,7 +106,7 @@ function grnApprovalList(){
         while ($getList->fetch()){
             ?>
             <tr>
-                <td><a href="../approval/grn.php?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
+                <td><a href="../approval/grn?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
                 <td><?= $grn_date ?></td>
                 <td><?= $customer_name ?></td>
                 <td><?= $grade_name ?></td>
@@ -199,7 +199,7 @@ function releaseVerList(){
     while ($sql->fetch()){
         ?>
         <tr>
-            <td><a href="../verification/release.php?relNo=<?=$relNo?>"><?= formatDocNo($relNo, "")?></a></td>
+            <td><a href="../verification/release?relNo=<?=$relNo?>"><?= formatDocNo($relNo, "")?></a></td>
             <td><?=$reqDate?></td>
             <td><?=$client?></td>
             <td style="text-align: right;"><?=$qty?></td>

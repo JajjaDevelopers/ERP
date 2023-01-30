@@ -25,7 +25,7 @@ require_once ("../connection/batchReportVariables.php");
             <label for="batchOrderNumber">Order No.:</label>
             <input type="number" id="batchOrderNumber" class="shortInput" name="batchOrderNumber" value="<?= '00'.$batchOrderNumber ?>"><br>
             <label for="batchReportDate">Date:</label>
-            <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate" value="<?= $fmDate ?>">
+            <input type="date" id="batchReportDate" class="shortInput" name="batchReportDate" value="<?= $today ?>">
             <br>
         </div>
         <div style="padding-top: 50px; margin-bottom: 5px; ">

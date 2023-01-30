@@ -36,7 +36,7 @@ $hullingNo = nextDocNumber("dispatch", "dispatch_no", "DIS");
             <input style="width: 550px; padding-left: 5px" type="text" id="remarks" class="longInputField" name="remarks">
         </div>
     </div>
-    <?php submitButton("Submit", "button", "confirm"); ?>
+    <?php submitButton("Submit", "dispatch", "btnsubmit"); ?>
 </form>
     
 <?php include("../forms/footer.php");?>

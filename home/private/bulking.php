@@ -49,5 +49,5 @@ $outputSql->execute();
 
 
 
-header("location: ../inventory/bulking.php");
+header("location: ../inventory/bulking");
 ?>

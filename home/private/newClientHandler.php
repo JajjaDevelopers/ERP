@@ -20,5 +20,5 @@ $clientSql->execute();
 $clientSql->close();
 
 
-header("Location:../forms/newClient.php");
+header("Location:../forms/newClient");
 ?>

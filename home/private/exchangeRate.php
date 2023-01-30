@@ -21,5 +21,5 @@ $sql->close();
 
 
 
-header("location:../settings/exchangeRate.php");
+header("location:../settings/exchangeRate");
 ?>

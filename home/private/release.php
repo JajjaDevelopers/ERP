@@ -49,5 +49,5 @@ for ($x=0; $x<count($itmIds); $x++){
 
 
 
-header("location:../inventory/release.php");
+header("location:../inventory/release");
 ?>

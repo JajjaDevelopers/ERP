@@ -16,12 +16,12 @@ include_once ('../forms/header.php');
             </thead>
             <tbody>
                 <tr>
-                    <td><a href="../verification/grnVerifyList.php">Goods Received Notes (GRN)</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
+                    <td><a href="../verification/grnVerifyList">Goods Received Notes (GRN)</a></td>
+                    <td style="text-align: right;"><a href="../verification/grnVerifyList"><?= $grnVerNum ?></a></td>
                 </tr>
                 <tr>
-                    <td><a href="../verification/releaseList.php">Releases</a></td>
-                    <td style="text-align: right;"><a href="../verification/releaseList.php"><?= $releasVerNum ?></a></td>
+                    <td><a href="../verification/releaseList">Releases</a></td>
+                    <td style="text-align: right;"><a href="../verification/releaseList"><?= $releasVerNum ?></a></td>
                 </tr>
                 
                 

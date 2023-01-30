@@ -22,7 +22,7 @@ $grnNo = nextDocNumber('grn', 'grn_no', 'GRN');
     $("#regionName").hide();
     $("#districtName").hide();
     $("#typCatName").hide();
-    document.getElementById("grnDate").setAttribute("value", "<?= $fmDate?>");
+    document.getElementById("grnDate").setAttribute("value", "<?= $today?>");
     function getGrades(str){
       if (str == " ") {
           return;

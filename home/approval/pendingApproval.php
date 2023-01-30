@@ -9,30 +9,18 @@ include_once ('../forms/header.php');
     <div>
         <table class="table table-striped table-hover table-condensed table-bordered">
             <thead>
-                <tr>
+                <tr style="background-color: green; color:white;">
                     <th style="width: 500px;">Approval Item</th>
-                    <th style="width: 100px;">Number</th>
+                    <th style="width: 100px; ">Number</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><a href="../approval/grnApprovalList.php">Goods Received Notes (GRN)</a></td>
-                    <td><a href="../approval/grnApprovalList.php"><?= $grnApprNum ?></a></td>
+                    <td><a href="../approval/grnApprovalList">Goods Received Notes (GRN)</a></td>
+                    <td style="text-align: right"><a href="../approval/grnApprovalList"><?= $grnApprNum ?></a></td>
                 </tr>
             </tbody>
         </table>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

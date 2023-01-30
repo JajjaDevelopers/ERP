@@ -10,18 +10,6 @@
 
 <?php require "../forms/releaseTemplate.php" ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
     <?php submitButton("Verify", "submit", "confirm"); ?>
 </form>
 <?php include "../forms/footer.php" ?>

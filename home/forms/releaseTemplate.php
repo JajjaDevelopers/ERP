@@ -1,10 +1,12 @@
     
     <h3 id="deliveryNoteHeading" class="formHeading">Release Request</h3>
     <div style="display: grid; width:fit-content; margin-left: 70%;">
-        <label for="relNo" style="grid-column: 1; grid-row: 1; width:80px; margin-top: 5px">Release No:</label>
-        <input class="shortInput" id="relNo" name="relNo" value="<?= $relsNo?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;" readonly>
-        <label for="relDate" class="" style="grid-column: 1; grid-row: 2; margin-top: 10px">Date:</label>
-        <input type="date" class="shortInput" id="relDate" name="relDate" value="<?= $date?>" style="grid-column: 2; grid-row: 2">
+        <label id="dispNoLabel" for="dispNo" style="grid-column: 1; grid-row: 1; width:80px; margin-top: 5px">Dispatch No:</label>
+        <input class="shortInput" id="dispNo" name="dispNo" value="<?= $dispNo?>" style="grid-column: 2; grid-row: 1; margin-top: 0px;" readonly>
+        <label for="relNo" style="grid-column: 1; grid-row: 2; width:80px; margin-top: 10px">Release No:</label>
+        <input class="shortInput" id="relNo" name="relNo" value="<?= $relsNo?>" style="grid-column: 2; grid-row: 2; margin-top: 10px;" readonly>
+        <label for="relDate" class="" style="grid-column: 1; grid-row: 3; margin-top: 10px">Date:</label>
+        <input type="date" class="shortInput" id="relDate" name="relDate" value="<?= $relsDate?>" style="grid-column: 2; grid-row: 3">
     </div><br><br>
     <?php include("../forms/customerSelector.php") ?>
     

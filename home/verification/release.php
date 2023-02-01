@@ -19,7 +19,11 @@
     document.getElementById("salesReportContact").setAttribute("value", "<?=$ctctPersn?>");
     document.getElementById("salesReportTel").setAttribute("value", "<?=$tel?>");
     //non displaying
-    document.getElementById("salesReportBuyer").style.display = "none";
+    var noDispList = ["salesReportBuyer", "dispNoLabel", "dispNo"];
+    for (var x=0; x<noDispList.length; x++){
+        document.getElementById(noDispList[x]).style.display = "none";
+    }
+    
 
 
 </script>

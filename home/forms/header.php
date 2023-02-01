@@ -163,8 +163,6 @@ include "../private/verAndApprFunctions.php";
             <li><hr class="dropdown-divider"></li> -->
             <li><a class="dropdown-item" href="../processing/BatchOrderSelection">Batch Report</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../inventory/dispatch">Dispatch</a></li>
-            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="../inventory/transfer">Transfer</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="../processing/drying">Drying</a></li>
@@ -190,7 +188,7 @@ include "../private/verAndApprFunctions.php";
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../marketing/SalesReport">Sales Report</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../inventory/dispatch">Dispatch</a></li>
+                
                 <li><a class="dropdown-item" href="../inventory/release">Release Request</a></li> 
               </ul>
             </div>
@@ -210,7 +208,6 @@ include "../private/verAndApprFunctions.php";
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../forms/activtySheet">Services</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../inventory/dispatch">Dispatch</a></li>
                 <li><a class="dropdown-item" href="../inventory/release">Release Request</a></li> 
               </ul>
             </div>
@@ -231,7 +228,7 @@ include "../private/verAndApprFunctions.php";
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../inventory/transfer">Transfer</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../inventory/dispatch">Dispatch</a></li>
+                <li><a class="dropdown-item" href="../inventory/pendingDispatch">Dispatch</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../inventory/adjustment">Adjustment</a></li>
                 <li><hr class="dropdown-divider"></li>

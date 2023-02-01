@@ -632,4 +632,29 @@ function userFullName($userName){
   $userSql->close();
   return $fullName;
 }
+
+//pending dispatch list
+function pendingDispatch(){
+  include "connlogin.php";
+  $sql = $conn->prepare("SELECT release_no, request_date, customer_name, FullName FROM release_request
+                        JOIN customer USING (customer_id) JOIN members WHERE (release_request.prep_by=members.UserName)");
+  $sql->execute();
+  $sql->bind_result($rel_no, $req_date, $cus_name, $user_name);
+  while ($sql->fetch()){
+    ?>
+    <tr>
+      <td><a href="../inventory/dispatch?relNo=<?=$rel_no?>"> <?=$rel_no?> </a></td>
+      <td><?=$req_date?></td>
+      <td><?=$cus_name?></td>
+      <td><?=$user_name?></td>
+    </tr>
+    <?php
+  }
+  $sql->close();
+}
+
+
+
+
+
 ?>

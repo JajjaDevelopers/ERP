@@ -1,1 +1,1 @@
-<?php include ("../private/dispatchHandler.php")?>
+<?php include ("../private/dispatch.php")?>

@@ -1,5 +1,6 @@
 <?php
 include "connlogin.php";
+include "functions.php";
 $releaseNo = intval($_GET['relNo']);
 $relSummSql = $conn->prepare("SELECT request_date, dispatch_time, customer_id, total_qty, prep_by, prep_date, verified_by, ver_date, 
                         appr_by, appr_date, comment, destination, initiated_by, customer_name, contact_person, telephone

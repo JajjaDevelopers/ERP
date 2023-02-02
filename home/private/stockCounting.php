@@ -66,5 +66,5 @@ for ($x=0;$x<count($varList);$x++){
 
 
 
-header("location: ../inventory/stkCountCustomer.php");
+header("location: ../inventory/stkCountCustomer");
 ?>

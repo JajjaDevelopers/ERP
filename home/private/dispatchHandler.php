@@ -57,5 +57,5 @@ for ($i=0; $i<count($gradeList); $i++){
 
 
 
-header("location: ../forms/dispatch.php")
+header("location: ../forms/dispatch")
 ?>

@@ -47,7 +47,7 @@ require("../forms/customerSelector.php"); ?>
             </select><br>
             <label for="mc" style="margin-top: 20px;">Average Moisture:</label><br>
             <input type="number" class="shortInput" id="mc" placeholder="%" name="mc"  value="<?=$grn_mc?>" 
-            style="margin-top: 10px; width: 70px"><br>
+            style="margin-top: 10px; width: 70px" step="0.01"><br>
         </div>
         <div class="col-md-4">
             <label for="gradeId">Grade:</label><br>

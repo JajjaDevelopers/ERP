@@ -8,12 +8,12 @@ include_once ('../forms/header.php');
     <div>
         <table class="table table-striped table-hover table-condensed table-bordered">
             <thead>
-                <tr>
-                    <th style="width: 60px;">GRN No.</th>
+                <tr style="background-color: green; color:white;">
+                    <th style="width: 100px;">GRN No.</th>
                     <th style="width: 100px;">Date</th>
                     <th style="width: 250px;">Client</th>
                     <th style="width: 250px;">Grade</th>
-                    <th style="width: 70px;">Qty (Kgs)</th>
+                    <th style="width: 100px; text-align:right">Qty (Kgs)</th>
                     <th style="width: 100px;">Purpose</th>
                     <th style="width: 150px;">Captured By</th>
                 </tr>
@@ -25,31 +25,8 @@ include_once ('../forms/header.php');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
+</form>
 
 
 

@@ -1,6 +1,9 @@
 <?php
 // require_once "connlogin.php";
 //function that tests for empty fields
+
+use PhpOffice\PhpSpreadsheet\Calculation\DateTimeExcel\Days;
+
 function emptyFieldSignUp($fullname,$username,$email,$tel,$password,$passwordRepeat,$access)
 {
   if(empty($fullname)||empty($username)||empty($email)||empty($tel)||empty($password)||empty($passwordRepeat)||empty($access))
@@ -102,7 +105,7 @@ function pwdMatch($password,$passwordRepeat){
   
   if(!$stmt)
   {
-    header("location:..forms/signup.php?error=stmtfailed");
+    header("location:..forms/signup?error=stmtfailed");
     exit();
   }
 
@@ -115,7 +118,7 @@ function pwdMatch($password,$passwordRepeat){
   $stmt->bindParam(6,$access,PDO::PARAM_INT);
   $stmt->execute();
   $pdo=null;
-  header("location:../forms/signup.php?error=successfully");
+  header("location:../forms/signup?error=successfully");
   exit();
  }
  
@@ -460,7 +463,7 @@ function itemsTable($itemsNo, $tableHeading){
   
   ?>
   <h6 style="margin-top: 20px;"><?= $tableHeading?></h6>
-  <table style="margin-top: 5px;">
+  <table style="margin-top: 5px;" >
     <tr>
       <th style="width: 40px;">No.</th>
       <th>Grade</th>
@@ -609,9 +612,13 @@ function previousFx(){
   <?php
 }
 
-//date
+//dates
 $currentDate = new DateTime();
 $today = date_format($currentDate, 'Y-m-d');
+$fromDateObj=$currentDate->sub(new DateInterval('P30D')); //returning 30 days back date
+$fromDate = date_format($fromDateObj, 'Y-m-d');
+
+//forex
 $fxRate = getFx();
 
 //getting users names
@@ -625,4 +632,29 @@ function userFullName($userName){
   $userSql->close();
   return $fullName;
 }
+
+//pending dispatch list
+function pendingDispatch(){
+  include "connlogin.php";
+  $sql = $conn->prepare("SELECT release_no, request_date, customer_name, FullName FROM release_request
+                        JOIN customer USING (customer_id) JOIN members WHERE (release_request.prep_by=members.UserName)");
+  $sql->execute();
+  $sql->bind_result($rel_no, $req_date, $cus_name, $user_name);
+  while ($sql->fetch()){
+    ?>
+    <tr>
+      <td><a href="../inventory/dispatch?relNo=<?=$rel_no?>"> <?=$rel_no?> </a></td>
+      <td><?=$req_date?></td>
+      <td><?=$cus_name?></td>
+      <td><?=$user_name?></td>
+    </tr>
+    <?php
+  }
+  $sql->close();
+}
+
+
+
+
+
 ?>

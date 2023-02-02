@@ -55,5 +55,5 @@ $conn->rollback();
 
 
 
-header("location: ../forms/drying.php");
+header("location: ../processing/drying");
 ?>

@@ -55,5 +55,5 @@ for ($x=0; $x<count($outpuIdtList); $x++){
 
 
 
-header("location: ../forms/hulling.php")
+header("location: ../processing/hulling")
 ?>

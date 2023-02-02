@@ -16,57 +16,15 @@ include_once ('../forms/header.php');
             </thead>
             <tbody>
                 <tr>
-                    <td><a href="../verification/grnVerifyList.php">Goods Received Notes (GRN)</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
+                    <td><a href="../verification/grnVerifyList">Goods Received Notes (GRN)</a></td>
+                    <td style="text-align: right;"><a href="../verification/grnVerifyList"><?= $grnVerNum ?></a></td>
                 </tr>
                 <tr>
-                    <td><a href="../verification/grnVerifyList.php">Batch Reports</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
+                    <td><a href="../verification/releaseList">Releases</a></td>
+                    <td style="text-align: right;"><a href="../verification/releaseList"><?= $releasVerNum ?></a></td>
                 </tr>
-                <tr>
-                    <td><a href="../verification/grnVerifyList.php">Transfers</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
-                </tr>
-                <tr>
-                    <td><a href="../verification/grnVerifyList.php">Hulling</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
-                </tr>
-                <tr>
-                    <td><a href="../verification/grnVerifyList.php">Drying</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
-                </tr>
-                <tr>
-                    <td><a href="../verification/grnVerifyList.php">Valuations</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
-                </tr>
-                <tr>
-                    <td><a href="../verification/grnVerifyList.php">Sales Reports</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
-                </tr>
-                <tr>
-                    <td><a href="../verification/grnVerifyList.php">Releases</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
-                </tr>
-                <tr>
-                    <td><a href="../verification/grnVerifyList.php">Roastery Orders</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
-                </tr>
-                <tr>
-                    <td><a href="../verification/grnVerifyList.php">Coffee Bulking</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
-                </tr>
-                <tr>
-                    <td><a href="../verification/grnVerifyList.php">Stock Transfers</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
-                </tr>
-                <tr>
-                    <td><a href="../verification/grnVerifyList.php">Stock Adjustments</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
-                </tr>
-                <tr>
-                    <td><a href="../verification/grnVerifyList.php">Stock Counting</a></td>
-                    <td style="text-align: right;"><a href="../verification/grnVerifyList.php"><?= $grnVerNum ?></a></td>
-                </tr>
+                
+                
             </tbody>
         </table>
     </div>

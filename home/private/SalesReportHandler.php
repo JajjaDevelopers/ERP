@@ -73,7 +73,7 @@ $conn->rollback();
     //message 
     if(isset($_POST["btnsubmit"]))
     {
-        header("location:../forms/SalesReport.php?formmsg=success");
+        header("location:../marketing/SalesReport?formmsg=success");
     }
 
 

@@ -1,7 +1,7 @@
 
 </main><!-- End #main -->
 
-<footer id="footer" class="footer">
+<footer id="footer" class="footer" style="background-color: green;">
   <div class="copyright">
     &copy; Copyright <strong><span>JAJJA DEV<span></strong>. All Rights Reserved
   </div>

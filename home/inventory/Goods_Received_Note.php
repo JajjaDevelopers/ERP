@@ -8,7 +8,7 @@ $grnNo = nextDocNumber('grn', 'grn_no', 'GRN');
   <!-- <div class="container"> -->
   <form action="../connection/grn.php" class="regularForm" method="POST" style="height:fit-content; width: 1000px">
     <?php include "../forms/grnTemplate.php" ?>
-    <?php submitButton("Submit", "Submit", "confirm");?>
+    <?php submitButton("Submit", "Submit", "btnsubmit");?>
       
   </form>
 
@@ -22,7 +22,7 @@ $grnNo = nextDocNumber('grn', 'grn_no', 'GRN');
     $("#regionName").hide();
     $("#districtName").hide();
     $("#typCatName").hide();
-    document.getElementById("grnDate").setAttribute("value", "<?= $fmDate?>");
+    document.getElementById("grnDate").setAttribute("value", "<?= $today?>");
     function getGrades(str){
       if (str == " ") {
           return;

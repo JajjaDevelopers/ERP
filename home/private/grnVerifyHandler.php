@@ -14,5 +14,5 @@ $verifySql->execute();
 
 
 
-header("location: ../verification/grnVerifyList.php");
+header("location: ../verification/grnVerifyList");
 ?>

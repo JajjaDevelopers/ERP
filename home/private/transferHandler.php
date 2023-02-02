@@ -57,5 +57,5 @@ for ($x=0; $x<count($itemIdList); $x++){
 
 
 
-header("location: ../forms/transfer.php");
+header("location: ../inventory/transfer");
 ?>

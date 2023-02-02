@@ -2,15 +2,15 @@
 <?php require "../forms/header.php" ?>
 <?php require "../connection/databaseConn.php" ?>
 <?php ?>
-<div class="regularForm" style="height: fit-content; width:fit-content; border-radius: 10px">
-    <form class="regularForm" style="height: fit-content;">
-        <h3 class="formHeading">Stock Balances</h3>
+<div class="regularForm" style="height: fit-content; width:fit-content; border-radius: 10px; width: 1000px">
+    <h3 class="formHeading">Stock Balances</h3>
+    <form style="height: fit-content; background-color:inherit; border:solid green 1px ">
+        
         <div id="criteriaSelection" class="container">
             <div class="row">
                 <div class="col-md-2">
                     <label for="type">Coffee Type:</label><br>
-                    <select id="type" name="type" class="shortInput"
-                    onchange="itemFilterOptions('category',this.value, 'typeCat')">
+                    <select id="type" name="type" class="shortInput" onchange="itemFilterOptions('category',this.value, 'typeCat')">
                         <option value="all">All</option>
                         <option value="Arabica">Arabica</option>
                         <option value="Robusta">Robusta</option>

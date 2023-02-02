@@ -7,6 +7,8 @@ function countPendVerifications($table, $column){
     $conn->rollback();
     return $number;
 }
+$grnVerNum = countPendVerifications("grn", "verified_by");
+$releasVerNum = countPendVerifications("release_request", "verified_by");
 
 //Counting pending approvals
 function countPendApprovals($table, $column){
@@ -18,11 +20,14 @@ function countPendApprovals($table, $column){
     return $number;
 }
 
-$grnVerNum = countPendVerifications("grn", "verified_by");
-$grnApprNum = countPendApprovals("grn", "approved_by");
 
-$totalPendVer= $grnVerNum+0; //to be added to other forms
-$totalPendAppr= $grnApprNum+0; //to be added to other forms
+
+$grnApprNum = countPendApprovals("grn", "approved_by");
+$releaseApprNum = countPendApprovals("release_request", "appr_by");
+
+
+$totalPendVer= $grnVerNum+$releasVerNum+0; //to be added to other forms
+$totalPendAppr= $grnApprNum+$releaseApprNum+0; //to be added to other forms
 function getAllPendingVerifications(){
     global $totalPendVer;
     if ($totalPendVer > 0){
@@ -64,7 +69,7 @@ function grnVerificationList(){
         while ($getList->fetch()){
             ?>
             <tr>
-                <td><a href="verifyGrn.php?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
+                <td><a href="verifyGrn?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
                 <td><?= $grn_date ?></td>
                 <td><?= $customer_name ?></td>
                 <td><?= $grade_name ?></td>
@@ -101,7 +106,7 @@ function grnApprovalList(){
         while ($getList->fetch()){
             ?>
             <tr>
-                <td><a href="../approval/grn.php?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
+                <td><a href="../approval/grn?grnNo=<?= $grn_no?>" ><?= formatDocNo($grn_no, "")?></a></td>
                 <td><?= $grn_date ?></td>
                 <td><?= $customer_name ?></td>
                 <td><?= $grade_name ?></td>
@@ -183,6 +188,27 @@ function approveActivity($table, $keyColName, $keyVariable, $approveUser){
 
 }
 
+//Release verification list
+function releaseVerList(){
+    include "connlogin.php";
+    $sql = $conn->prepare("SELECT release_no, request_date, customer_name, total_qty, destination, initiated_by FROM release_request
+                            JOIN customer USING (customer_id) WHERE verified_by='0' ");
+    $sql->execute();
+    $sql->bind_result($relNo, $reqDate, $client, $qty, $destn, $initiator);
+    
+    while ($sql->fetch()){
+        ?>
+        <tr>
+            <td><a href="../verification/release?relNo=<?=$relNo?>"><?= formatDocNo($relNo, "")?></a></td>
+            <td><?=$reqDate?></td>
+            <td><?=$client?></td>
+            <td style="text-align: right;"><?=$qty?></td>
+            <td><?=$destn?></td>
+            <td><?=$initiator?></td>
+        </tr>
+        <?php
+    }
+}
 
 
 

@@ -69,7 +69,7 @@ for ($x=0; $x < count($allGradeQty); $x++ ) {
 
 if(isset($_POST["confirm"]))
 {
-    header("location:../marketing/valuation.php?formmsg=success");
+    header("location:../marketing/valuation?formmsg=success");
 }
 
 ?>

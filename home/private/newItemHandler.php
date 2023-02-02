@@ -20,5 +20,5 @@ $newGradeSql->close();
 
 
 
-header("Location:../inventory/NewItem.php");
+header("Location:../inventory/NewItem");
 ?>

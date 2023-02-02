@@ -103,6 +103,6 @@ $conn->rollback();
 
 
 
-header("location:../forms/activtySheet.php");
+header("location:../forms/activtySheet");
 exit();
 ?>

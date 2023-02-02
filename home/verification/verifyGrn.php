@@ -3,9 +3,9 @@
 <?php include "../private/database.php"?>
 <?php include "../connection/verifyGrn.php";?>
 <?php
-$grnNo = formatDocNo($grn_no, "GRN-");
+$grnNo = formatDocNo(intval($grn_no), "GRN-");
 ?>
-<form class="regularForm" action="../connection/grnVerifyFinal.php" method="POST" style="height: fit-content;">
+<form class="regularForm" action="../connection/grnVerifyFinal.php" method="POST" style="height: fit-content; width:1000px">
 
   <?php include "../forms/grnTemplate.php" ?>
   <?php submitButton("Verify", "Submit", "confirm");?>

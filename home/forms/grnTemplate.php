@@ -132,7 +132,6 @@ require("../forms/customerSelector.php"); ?>
     <input class="form-control" id="remarks" name="remarks" value="<?=$quality_remarks?>" placeholder="quality remarks" rows="3">
 </div>
 <div id="usersDiv" class="container">
-  
   <div class="row">
     <div class="col-md-4">
         <?= "Prepared By: ".$prepBy?><br>

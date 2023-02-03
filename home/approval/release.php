@@ -1,4 +1,4 @@
-<?php $pageTitle="Verify Release"; ?>
+<?php $pageTitle="Approve Release Request"; ?>
 <?php include("../forms/header.php");?>
 <?php include "../connection/releaseVariables.php" ?>
 <?php include ("../connection/databaseConn.php");
@@ -6,11 +6,11 @@
 ?>
 
 
-<form class="regularForm" method="POST" action="../connection/releaseVerification.php" style="height:fit-content; width:800px">
+<form class="regularForm" method="POST" action="../connection/releaseApproval.php" style="height:fit-content; width:800px">
 <input id="releaseNo" name="releaseNo" value="<?=$releaseNo?>" style="display:none" readonly>
 <?php require "../forms/releaseTemplate.php" ?>
 
-    <?php submitButton("Verify", "submit", "confirm"); ?>
+    <?php submitButton("Approve", "submit", "confirm"); ?>
 </form>
 <?php include "../forms/footer.php" ?>
 <script>

@@ -78,8 +78,8 @@ $expResult = array($headers);
     </table>
 </div>
 <?php
-$data = json_encode($expResult);
-echo $data;
+// $data = json_encode($expResult);
+// echo $data;
 
 
 

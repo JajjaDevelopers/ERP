@@ -50,8 +50,8 @@ $previousQtrString = $quarterNamesList[$previousQtr];
 
 <?php
 //Getting current quarter qty out
-$currentQuarterQtyOutSql = $conn->prepare("SELECT sum(dispatch_qty) AS dispQty FROM dispatch WHERE (QUARTER(dispatch_date)=QUARTER(now()) 
-                                        AND YEAR(dispatch_date)=YEAR(now()))");
+$currentQuarterQtyOutSql = $conn->prepare("SELECT sum(total_qty) AS dispQty FROM release_request WHERE (QUARTER(dispatch_time)=QUARTER(now()) 
+                                        AND YEAR(dispatch_time)=YEAR(now()) AND status=2)");
 $currentQuarterQtyOutSql->execute();
 $currentQuarterQtyOutSql->bind_result($currentQuarterQtyOut);
 $currentQuarterQtyOutSql->fetch();
@@ -64,8 +64,8 @@ if ($currentQuarterQtyOut == ""){
 
 <?php
 //Getting previous quarter qty out
-$previousQuarterQtyOutSql = $conn->prepare("SELECT sum(dispatch_qty) AS dispQty FROM dispatch WHERE (QUARTER(dispatch_date)=QUARTER(now())-1 
-                                        AND YEAR(dispatch_date)=?)");
+$previousQuarterQtyOutSql = $conn->prepare("SELECT sum(total_qty) AS dispQty FROM release_request WHERE (QUARTER(dispatch_time)=QUARTER(now())-1 
+                                        AND YEAR(dispatch_time)=? AND status=2)");
 $previousQuarterQtyOutSql->bind_param("i", $year);
 $previousQuarterQtyOutSql->execute();
 $previousQuarterQtyOutSql->bind_result($previousQuarterQtyOut);

@@ -54,8 +54,8 @@ if ($currentMonthName == 'January'){
 
 <?php
 // Getting current month qty out
-$currentMonthQtyOutSql = $conn->prepare("SELECT sum(dispatch_qty) AS dispQty FROM dispatch WHERE (MONTH(dispatch_date)=MONTH(now()) 
-                                        AND YEAR(dispatch_date)=YEAR(now()))");
+$currentMonthQtyOutSql = $conn->prepare("SELECT sum(total_qty) AS dispQty FROM release_request WHERE (MONTH(dispatch_time)=MONTH(now()) 
+                                        AND YEAR(dispatch_time)=YEAR(now()) AND status=2)");
 $currentMonthQtyOutSql->execute();
 $currentMonthQtyOutSql->bind_result($currentMonthQtyOut);
 $currentMonthQtyOutSql->fetch();
@@ -65,8 +65,8 @@ $currentMonthQtyOutSql->close();
 
 <?php
 // Getting previous month qty out
-$previousMonthQtyOutSql = $conn->prepare("SELECT sum(dispatch_qty) AS dispQty FROM dispatch WHERE (MONTH(dispatch_date)=MONTH(now())-1 
-                                        AND YEAR(dispatch_date)=?)");
+$previousMonthQtyOutSql = $conn->prepare("SELECT sum(total_qty) AS dispQty FROM release_request WHERE (MONTH(dispatch_time)=MONTH(now())-1 
+                                        AND YEAR(dispatch_time)=? AND status=2)");
 $previousMonthQtyOutSql->bind_param("i",$year);
 $previousMonthQtyOutSql->execute();
 $previousMonthQtyOutSql->bind_result($previousMonthQtyOut);

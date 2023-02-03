@@ -41,7 +41,7 @@ function getDailyQty(){
 getDailyQty();
 
 
-$dispatchedQuery = $conn->prepare("SELECT sum(dispatch_qty) AS qty1 FROM dispatch WHERE dispatch_date=?");
+$dispatchedQuery = $conn->prepare("SELECT sum(total_qty) AS qty1 FROM release_request WHERE dispatch_time=? AND status=2");
 function getDailyOut(){
     include("../private/database.php");
     global $daysList, $dailyDispatchedList, $dispatchedQuery;

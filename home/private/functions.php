@@ -613,10 +613,10 @@ function previousFx(){
 }
 
 //dates
-$currentDate = new DateTime();
-$today = date_format($currentDate, 'Y-m-d');
-$fromDateObj=$currentDate->sub(new DateInterval('P30D')); //returning 30 days back date
-$fromDate = date_format($fromDateObj, 'Y-m-d');
+// $currentDate = new DateTime();
+// $today = date_format($currentDate, 'Y-m-d');
+// $fromDateObj=$currentDate->sub(new DateInterval('P30D')); //returning 30 days back date
+// $fromDate = date_format($fromDateObj, 'Y-m-d');
 
 //forex
 $fxRate = getFx();
@@ -637,7 +637,8 @@ function userFullName($userName){
 function pendingDispatch(){
   include "connlogin.php";
   $sql = $conn->prepare("SELECT release_no, request_date, customer_name, FullName FROM release_request
-                        JOIN customer USING (customer_id) JOIN members WHERE (release_request.prep_by=members.UserName)");
+                        JOIN customer USING (customer_id) JOIN members ON release_request.prep_by=members.UserName
+                        WHERE verified_by <> '0' AND appr_by <> '0' AND status=1");
   $sql->execute();
   $sql->bind_result($rel_no, $req_date, $cus_name, $user_name);
   while ($sql->fetch()){

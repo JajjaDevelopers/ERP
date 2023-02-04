@@ -1,5 +1,6 @@
 <?php
 include "connlogin.php";
+include "functions.php";
 $releaseNo = intval($_GET['relNo']);
 $relSummSql = $conn->prepare("SELECT request_date, dispatch_time, customer_id, total_qty, prep_by, prep_date, verified_by, ver_date, 
                         appr_by, appr_date, comment, destination, initiated_by, customer_name, contact_person, telephone
@@ -7,7 +8,7 @@ $relSummSql = $conn->prepare("SELECT request_date, dispatch_time, customer_id, t
                         WHERE release_no=?");
 $relSummSql->bind_param("s", $releaseNo);
 $relSummSql->execute();
-$relSummSql->bind_result($relsDate, $dispDate, $custId, $qty, $prepBy, $preDate, $verBy, $verDate, $apprBy, $apprDate, $comt,
+$relSummSql->bind_result($relsDate, $dispDate, $custId, $qty, $prepBy, $prep_time, $verBy, $ver_time, $apprBy, $appr_time, $comt,
                     $destn, $initiator, $custName, $ctctPersn, $tel);
 $relSummSql->fetch();
 $relSummSql->close();

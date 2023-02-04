@@ -208,7 +208,9 @@ include "../private/verAndApprFunctions.php";
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="../forms/activtySheet">Services</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="../inventory/release">Release Request</a></li> 
+                <li><a class="dropdown-item" href="../inventory/release">Release Request</a></li>
+                <!-- <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../testing/testing.php">Testing</a></li>  -->
               </ul>
             </div>
           </li>

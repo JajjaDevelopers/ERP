@@ -19,6 +19,10 @@ include_once ('../forms/header.php');
                     <td><a href="../approval/grnApprovalList">Goods Received Notes (GRN)</a></td>
                     <td style="text-align: right"><a href="../approval/grnApprovalList"><?= $grnApprNum ?></a></td>
                 </tr>
+                <tr>
+                    <td><a href="../approval/releaseList">Release Requests</a></td>
+                    <td style="text-align: right"><a href="../approval/releaseList"><?= $releaseApprNum ?></a></td>
+                </tr>
             </tbody>
         </table>
 

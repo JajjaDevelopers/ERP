@@ -4,7 +4,7 @@ function countPendVerifications($table, $column){
     $coutnSql = $conn->query("SELECT count($column) as num FROM $table WHERE $column='0'");
     $result = mysqli_fetch_array($coutnSql);
     $number = $result['num'];
-    $conn->rollback();
+    // $conn->rollback();
     return $number;
 }
 $grnVerNum = countPendVerifications("grn", "verified_by");
@@ -13,10 +13,10 @@ $releasVerNum = countPendVerifications("release_request", "verified_by");
 //Counting pending approvals
 function countPendApprovals($table, $column){
     include "connlogin.php";
-    $coutnSql = $conn->query("SELECT count($column) as num FROM $table WHERE  ($column='0' AND verified_by !='0')");
+    $coutnSql = $conn->query("SELECT count($column) as num FROM $table WHERE  ($column='0' AND verified_by <>'0')");
     $result = mysqli_fetch_array($coutnSql);
     $number = $result['num'];
-    $conn->rollback();
+    // $conn->rollback();
     return $number;
 }
 
@@ -210,6 +210,27 @@ function releaseVerList(){
     }
 }
 
+//Release Approval list
+function releaseApprList(){
+    include "connlogin.php";
+    $sql = $conn->prepare("SELECT release_no, request_date, customer_name, total_qty, destination, initiated_by FROM release_request
+                            JOIN customer USING (customer_id) WHERE verified_by<>'0' AND appr_by='0'");
+    $sql->execute();
+    $sql->bind_result($relNo, $reqDate, $client, $qty, $destn, $initiator);
+    
+    while ($sql->fetch()){
+        ?>
+        <tr>
+            <td><a href="../approval/release?relNo=<?=$relNo?>"><?= formatDocNo($relNo, "")?></a></td>
+            <td><?=$reqDate?></td>
+            <td><?=$client?></td>
+            <td style="text-align: right;"><?=$qty?></td>
+            <td><?=$destn?></td>
+            <td><?=$initiator?></td>
+        </tr>
+        <?php
+    }
+}
 
 
 ?>

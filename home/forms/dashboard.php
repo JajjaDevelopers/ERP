@@ -78,6 +78,7 @@
     
     <div class="row">
     <div class="col overflow-hidden" id="coffeeInAndOut" style="padding:2px; border:2px solid green;">
+    <?php include "../dashboard/inAndOut.php";?>
     </div>
     </div>
 
@@ -231,6 +232,7 @@
     </div>
     <div class="row">
       <h1>Waiting For Data</h1>
+      <?php include "../dashboard/monthlyMovement.php";?>
     </div>
   </div><!---End of First Row-->
 
